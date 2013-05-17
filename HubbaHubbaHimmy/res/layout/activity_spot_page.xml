@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical" >
+	
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#000" >
+		
+        <Button
+
+            android:layout_alignParentLeft="true"
+            android:id = "@+id/backButton"
+            android:paddingLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            tools:context=".MainActivity"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:background="#000"
+            android:textColor="#FFF" />
+            
+        
+        <TextView
+            android:id = "@+id/SpotTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            tools:context=".MainActivity"
+            android:layout_centerInParent="true"
+            android:textSize="25sp"
+            android:textColor="#FFF" />
+    </RelativeLayout>
+    
+	<include
+	   	layout="@layout/item_row"
+	    android:id="@+id/rowView"/>
+
+     
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#CCC" >
+		
+        <Button
+            android:layout_weight="1"
+            android:id = "@+id/viewMapButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/viewMap"
+            tools:context=".MainActivity"
+            android:textSize="10sp"
+            android:textColor="#000" />
+        
+         <Button
+            android:layout_weight="1"
+            android:id = "@+id/uploadPhotoButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/uploadPhoto"
+            tools:context=".MainActivity"
+            android:textSize="10sp"
+            android:textColor="#000" />   
+        <Button
+            android:layout_weight="1"
+            android:id = "@+id/commentsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/comments"
+            tools:context=".MainActivity"
+            android:textSize="10sp"
+            android:textColor="#000" />
+        <Button
+            android:layout_weight="1"
+            android:id = "@+id/favoritesButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/favorites"
+            tools:context=".MainActivity"
+            android:textSize="10sp"
+            android:textColor="#000" />
+    </LinearLayout>
+    
+    <!-- xmlns:android="http://schemas.android.com/apk/res/android" -->
+    <GridView 
+	    android:id="@+id/gridviewPictures"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:columnWidth="90dp"
+	    android:numColumns="auto_fit"
+	    android:verticalSpacing="10dp"
+	    android:horizontalSpacing="10dp"
+	    android:stretchMode="columnWidth"
+	    android:scaleType="centerCrop"
+	    android:gravity="center"
+	/>
+
+</LinearLayout>

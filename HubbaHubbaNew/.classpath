@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="/Users/Robbie/android-sdks/extras/android/support/v4/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="/Users/Robbie/Documents/JakeWharton-ActionBarSherlock-e5c2d1c/library/libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="/Users/Robbie/android-sdks/add-ons/addon-google_apis-google-8/libs/maps.jar"/>
+	<classpathentry kind="lib" path="/Users/Robbie/android-sdks/add-ons/addon-google_apis-google-16/libs/maps.jar"/>
+	<classpathentry kind="lib" path="/Users/Robbie/android-sdks/add-ons/addon-google_apis-google-17/libs/maps.jar"/>
+	<classpathentry kind="lib" path="/Users/Robbie/android-sdks/extras/google/google_play_services/libproject/google-play-services_lib/bin/google-play-services_lib.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

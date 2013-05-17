@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_2"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+
+	<RelativeLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:gravity="center">
+	    
+		<RelativeLayout
+		    android:layout_width="wrap_content"
+		    android:paddingTop="-10dp"
+		    android:layout_height="wrap_content"
+		    android:layout_centerInParent="true"
+		    android:layout_margin="10dp"
+		    android:background="@drawable/lightbox">
+		        
+				<ImageView
+				    android:id="@+id/image"
+				    android:layout_alignParentTop="true"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:contentDescription="@string/titleOfSpot"
+				    android:layout_centerHorizontal="true" />
+			
+		    	<RelativeLayout
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/btn_red_matte"
+			        android:layout_below="@+id/image"
+			        android:layout_alignTop="@+id/thumbs_down_wrapper"
+					android:layout_toLeftOf="@+id/thumbs_down_wrapper"
+					android:id="@+id/thumbs_up_wrapper">
+					
+					<Button 
+					    android:id="@+id/thumbs_up"
+					    android:layout_width="40dp"
+					    android:layout_height="40dp"
+					    android:background="@drawable/thumbs_down_crop_copy"
+					    />
+				</RelativeLayout>
+				
+		    	<RelativeLayout
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/btn_green_matte"
+			        android:layout_below="@+id/image"
+				    android:layout_marginLeft="5dp"
+				    android:layout_alignRight="@+id/image"
+				    android:layout_marginTop="5dp"
+					android:id="@+id/thumbs_down_wrapper">
+					
+					<Button 
+					    android:id="@+id/thumbs_down"
+					    android:layout_width="40dp"
+					    android:layout_height="40dp"
+					    android:background="@drawable/thumbs_up_crop_copy"
+					    />
+				</RelativeLayout>
+				
+		    	<TextView 
+		    	    android:layout_alignLeft="@+id/image"
+		    	    android:layout_marginTop="10dp"
+		    	    android:layout_below="@+id/image"
+		    	    android:layout_width="wrap_content"
+		    	    android:layout_height="wrap_content"
+		    	    android:id="@+id/rider_text"
+		    	    android:text="Rider: Robbie Small"/>
+		    	
+		    	<TextView 
+		    	    android:layout_alignLeft="@+id/image"
+		    	    android:layout_below="@+id/rider_text"
+		    	    android:id="@+id/photog_text"
+		    	    android:layout_width="wrap_content"
+		    	    android:layout_height="wrap_content"
+		    	    android:text="Photog: Robbie Small"/>
+		
+	</RelativeLayout>
+</RelativeLayout>
+</ScrollView>

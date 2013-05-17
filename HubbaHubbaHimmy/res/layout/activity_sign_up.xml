@@ -1,0 +1,203 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF" >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF"
+    android:orientation="vertical" >
+	
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#000" >
+		
+        <Button
+
+            android:layout_alignParentLeft="true"
+            android:id = "@+id/backButton"
+            android:paddingLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            tools:context=".SignUp"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:background="#000"
+            android:textColor="#FFF" />
+            
+        
+        <TextView
+            android:id = "@+id/signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signUp"
+            tools:context=".MainActivity"
+            android:layout_centerInParent="true"
+            android:textSize="25sp"
+            android:textColor="#FFF" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="#FFF" >
+
+        <TextView
+            android:id = "@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            tools:context=".MainActivity"
+            android:layout_centerInParent="true"
+            android:textSize="25sp"
+            android:textColor="#000" />
+    </RelativeLayout>
+	
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#FFF" >
+
+        <EditText
+        android:id = "@+id/name"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/Name" />
+     </RelativeLayout>
+     
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#FFF" >
+
+        <EditText
+        android:id = "@+id/email"
+        android:inputType="textEmailAddress"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/email" />
+     </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#FFF" >
+
+        <EditText
+        android:id = "@+id/username"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/username" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#FFF" >
+
+       <EditText
+        android:id = "@+id/Password"
+        android:inputType="textPassword"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/password" />
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#FFF" >
+
+       <EditText
+        android:id = "@+id/ConfirmPassword"
+        android:inputType="textPassword"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/confirmPassword" />
+
+    </RelativeLayout>
+    
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="#FFF"
+        android:layout_marginRight="92dp"
+        android:layout_marginBottom="10dp">
+
+        <CheckBox
+            android:id="@+id/RCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/rememberPassword" />
+
+        <TextView
+            android:id="@+id/rememberPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/RCheckBox"
+            android:layout_alignBottom="@+id/RCheckBox"
+            android:layout_alignParentRight="true"
+            android:hint="@string/rememberPassword" />
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="#FFF"
+        android:layout_marginRight="105dp">
+
+        <CheckBox
+            android:id="@+id/KCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/KeepLoggedIn" />
+
+        <TextView
+            android:id="@+id/KeepLoggedIn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/KCheckBox"
+            android:layout_alignBottom="@+id/KCheckBox"
+            android:layout_alignParentRight="true"
+            android:hint="@string/keepLoggedIn" />
+
+    </RelativeLayout>
+    
+    <!-- Should I put this all in a scroll view so the Sign Up isn't off the end? -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#FFF"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/SignUpButton"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/signUp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
+</ScrollView>

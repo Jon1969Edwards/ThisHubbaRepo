@@ -1,0 +1,136 @@
+<resources>
+	
+    <string-array name="pageTitle">
+        <item>Map View</item>
+        <item>List View</item>
+        <item>My Spots</item>
+    </string-array>
+    <string name="title_activity_edit">Edit Activity</string>
+    <string name="title_activity_action_bar">Hubba Hubba</string>
+    <string name="app_name">Hubba Hubba</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Hubba Hubba</string>
+    <string name="title"> Hubba Hubba</string>
+    <string name="logIn"> Log In</string>
+    <string name="signUp"> Sign Up</string>
+    <string name="viewMap">Map View</string>
+    <string name="listViewHubba"> List View</string>
+    <string name="listViewComments">Comments</string>
+	<string name="addLocation">Add Spot</string>
+	<string name="spotPage">Hubba Hubba</string>
+	<string name="listViewFavorites">Hubba Hubba</string>
+	<string name="viewImage">View Image</string>
+	<string name="takePhoto">Take Photo</string>
+  
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="rememberPassword">Remember Password</string>
+    <string name="title_activity_log">Log</string>
+	<string name="back">Back</string>
+	
+	<string name="difficulty">Difficulty Level:</string>
+	<string name="dangerLevel">Bust Level:</string>
+	<string name="overallRating">Overall Rating:</string>
+	<string name="comments">Comments:</string>
+	<string name="commentHint">Landing, materials, hazzards, etc.</string>
+	
+	<string name="addSpot">Add Spot</string>
+	<string name="one">1</string>
+	<string name="two">2</string>
+	<string name="three">3</string>
+	<string name="four">4</string>
+	<string name="five">5</string>
+	<string name="six">6</string>
+	<string name="seven">7</string>
+	<string name="eight">8</string>
+	<string name="nine">9</string>
+	<string name="ten">10</string>
+	<string name="showOff">Show Off:</string>
+	<string name="browseButton">Browse</string>
+	<string name="browseBar">Upload File</string>
+	<string name="locateOnMap">Locate on Map</string>
+	
+	<string name="address">Address*</string>
+	<string name="cityStateZip">City, State, Zip*</string>
+	<string name="spotTitle">Spot Title*</string>
+	<string name="cancel">Cancel</string>
+	<string name="continu">Continue</string>
+	
+	<!-- Array of Types of Spots -->
+	
+	<string-array name="spotTypes">
+        <item>Hubba</item>
+        <item>Handrail</item>
+        <item>Flat Rail</item>
+        <item>Ledge(s)</item>
+        <item>Transition</item>
+        <item>Gap</item>
+        <item>Stairs</item>
+        <item>Skate Park</item>
+        <item>Bank</item>
+        <item>Pool</item>
+        <item>Other</item>
+    </string-array>
+    <string name="spinnerPrompt">Spot Type</string>
+    <string-array name="showSpotTypes">
+        <item>Show All</item>
+        <item>Hubbas</item>
+        <item>Handrails</item>
+        <item>Flat Rails</item>
+        <item>Ledges</item>
+        <item>Transitions</item>
+        <item>Gaps</item>
+        <item>Stairs</item>
+        <item>Skate Parks</item>
+        <item>Banks</item>
+        <item>Pools</item>
+        <item>Others</item>
+    </string-array>
+	<!-- End of Array for Types of Spots -->
+	
+	<string name="hubba">Hubbas</string>
+	<string name="handrail">Handrails</string>
+	<string name="flatRail">Flat Rails</string>
+	<string name="ledge">Ledges</string>
+	<string name="transition">Transitions</string>
+	<string name="gap">Gaps</string>
+	<string name="stair">Stairs</string>
+	<string name="skatePark">Skate Parks</string>
+	<string name="bank">Banks</string>
+	<string name="pool">Pool</string>
+	<string name="shop">Shops</string>
+	
+	
+	<string name="Name">First and Last Name</string>
+	<string name="email">Email</string>
+	<string name="keepLoggedIn">Keep Me Logged In</string>
+	<string name="confirmPassword">Confirm Password</string>
+	
+	<string name="listView">List View</string>
+	<string name="add">add</string>
+	<string name="searchSpots">Search Spots</string>
+	<string name="show">Show...</string>
+	<string name="titleOfSpot">Spot Title Here</string>
+	<string name="txtPolice">Bust Level</string>
+	<string name="txtDiff">Difficulty Level</string>
+	
+	<string name="uploadPhoto">Upload</string>
+	<string name="favorites">Favorites</string>
+	<string name="txtOverall">Overall</string>
+	
+	<string name="miles">10 mi</string>
+	
+	<string name="search">Search</string>
+	<string name="layers">Layers</string>
+	
+	<!-- riley strings -->
+	<string name="riley">Riley</string>
+	
+	<string name="overall">Overall:</string>
+	
+	<string name="viewOnMap">View on Map</string>
+	<string name="addToFavorites">Add to Favorites</string>
+	<string name="Comments">Comments</string>
+	
+	<string name="changeImage">Change Image</string>
+</resources>

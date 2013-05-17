@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout   
+    android:id="@+id/relativeLayout1"   
+    android:layout_width="fill_parent"   
+    android:layout_height="100dp"   
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="5dp"
+    android:background="@drawable/list_view_style">  
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"   
+        android:layout_height="90dp"
+        android:id="@+id/ratings" >
+        
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/txtUsername"
+	        android:layout_alignParentTop="true" 
+	        android:textColor="#FFF" >  
+	    </TextView> 
+        
+        <RelativeLayout
+	        android:id="@+id/OverallRatings"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/txtUsername" >
+	        
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtOverall"
+		        android:text="@string/txtOverall" 
+		        android:layout_marginTop="5dp"  
+		        android:textColor="#FFF" >  
+		    </TextView>
+		    
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtOverallRating" 
+		        android:layout_toRightOf="@+id/txtOverall"
+		        android:layout_marginTop="5dp"  
+		        android:layout_marginLeft="5dp"
+		        android:textColor="#FFF"
+		        android:layout_centerHorizontal="true" >  
+		    </TextView>
+	        
+	    </RelativeLayout>
+	    
+	    <RelativeLayout
+	        android:id="@+id/PoliceRatings"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/OverallRatings" >
+	        
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtPolice"
+		        android:text="@string/txtPolice" 
+		        android:layout_marginTop="5dp"  
+		        android:textColor="#FFF" >  
+		    </TextView>
+		    
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtPoRating"   
+		        android:layout_toRightOf="@+id/txtPolice"
+		        android:layout_marginTop="5dp"  
+		        android:layout_marginLeft="5dp"
+		        android:textColor="#FFF"
+		        android:layout_centerHorizontal="true" >  
+		    </TextView>
+	        
+	    </RelativeLayout>
+    
+	    <RelativeLayout
+	        android:id="@+id/DiffRatings"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/PoliceRatings" >
+	        
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtDiff"   
+		        android:text="@string/txtDiff" 
+		        android:layout_marginTop="5dp"  
+		        android:textColor="#FFF" >  
+		    </TextView>
+		    
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtDiffRating"   
+		        android:layout_toRightOf="@+id/txtDiff"
+		        android:layout_marginTop="5dp"  
+		        android:layout_marginLeft="5dp"
+		        android:layout_centerHorizontal="true"
+		        android:textColor="#FFF" >  
+		    </TextView>
+	        
+	    </RelativeLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="90dp"
+	    android:layout_toRightOf="@+id/ratings"
+	    android:layout_marginLeft="5dp"
+	    android:background="#000">
+        
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/txtCommentText"
+	        android:layout_toRightOf="@+id/txtDiff"
+	        android:layout_marginTop="5dp"  
+	        android:layout_marginLeft="5dp"
+	        android:layout_centerHorizontal="true"
+	        android:textColor="#FFF" >  
+	    </TextView>
+        
+    </RelativeLayout>
+
+</RelativeLayout> 

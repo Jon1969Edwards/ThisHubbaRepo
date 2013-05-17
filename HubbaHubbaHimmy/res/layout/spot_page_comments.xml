@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical" >
+	
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#000" >
+		
+        <Button
+
+            android:layout_alignParentLeft="true"
+            android:id = "@+id/backButton"
+            android:paddingLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            tools:context=".MainActivity"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:background="#000"
+            android:textColor="#FFF" />
+            
+        
+        <TextView
+            android:id = "@+id/TitleBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            tools:context=".MainActivity"
+            android:layout_centerInParent="true"
+            android:textSize="25sp"
+            android:textColor="#FFF" />
+    </RelativeLayout>
+     
+    <!-- Top of spot page goes here -->
+    
+    <!-- End Top of Spot -->
+    
+    <!-- List of Comments Here -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:gravity="left" >
+        
+        <ListView
+        	android:id="@+id/listViewComments"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content" >
+    	</ListView>
+        
+   	</RelativeLayout>
+	<!-- End List of Comments -->
+	
+</LinearLayout>

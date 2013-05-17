@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout   
+    android:id="@+id/relativeLayout1"   
+    android:layout_width="fill_parent"   
+    android:layout_height="90dp"   
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="5dp"
+    android:background="#ccc">  
+      
+    <ImageView
+        android:contentDescription="@+id/titleOfSpot"
+        android:layout_width="80dp"   
+        android:layout_height="80dp"   
+        android:id="@+id/imgThumbnail"   
+        android:layout_alignParentLeft="true"  
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:background="#FFF">  
+    </ImageView>  
+      
+    <TextView   
+        android:layout_height="wrap_content"   
+        android:layout_width="wrap_content"   
+        android:id="@+id/txtTitle"   
+        android:layout_toRightOf="@+id/imgThumbnail"
+        android:layout_alignTop="@+id/imgThumbnail" 
+        android:layout_marginLeft="5dp"
+        android:textColor="#000" >  
+    </TextView>  
+    
+    <TextView   
+        android:layout_height="wrap_content"   
+        android:layout_width="wrap_content"   
+        android:id="@+id/txtOverallRating"   
+        android:layout_toRightOf="@+id/imgThumbnail"  
+        android:layout_below="@+id/txtTitle"
+        android:layout_marginTop="5dp"  
+        android:layout_marginLeft="5dp"
+        android:textColor="#000">  
+    </TextView>
+    
+    <TextView   
+        android:layout_height="wrap_content"   
+        android:layout_width="wrap_content"   
+        android:id="@+id/txtDistance"   
+        android:layout_toRightOf="@+id/imgThumbnail"  
+        android:layout_below="@+id/txtOverallRating"
+        android:layout_marginTop="5dp"  
+        android:layout_marginLeft="5dp"
+        android:textColor="#000" >  
+    </TextView>
+    
+    <TextView   
+        android:layout_height="wrap_content"   
+        android:layout_width="wrap_content"   
+        android:id="@+id/miles"   
+        android:text="@string/miles"
+        android:layout_toRightOf="@+id/txtDistance"  
+        android:layout_alignBottom="@+id/txtDistance"
+        android:layout_marginTop="5dp"  
+        android:layout_marginLeft="1dp"
+        android:textColor="#000" >  
+    </TextView>
+    
+    <RelativeLayout
+        android:id="@+id/PoliceRatings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTitle"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/txtDistance" >
+        
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/txtPolice"
+	        android:text="@string/txtPolice" 
+	        android:layout_marginTop="5dp"  
+	        android:layout_marginLeft="5dp"
+	        android:textColor="#000" >  
+	    </TextView>
+	    
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/txtPoRating"   
+	        android:layout_below="@+id/txtPolice"
+	        android:layout_marginTop="5dp"  
+	        android:layout_marginLeft="5dp"
+	        android:textColor="#000"
+	        android:layout_centerHorizontal="true" >  
+	    </TextView>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/txtTitle"
+        android:layout_toRightOf="@+id/PoliceRatings" >
+        
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/txtDiff"   
+	        android:text="@string/txtDiff" 
+	        android:layout_marginTop="5dp"  
+	        android:layout_marginLeft="5dp"
+	        android:textColor="#000" >  
+	    </TextView>
+	    
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/txtDiffRating"   
+	        android:layout_below="@+id/txtDiff"
+	        android:layout_marginTop="5dp"  
+	        android:layout_marginLeft="5dp"
+	        android:layout_centerHorizontal="true"
+	        android:textColor="#000" >  
+	    </TextView>
+        
+    </RelativeLayout>
+
+</RelativeLayout>
