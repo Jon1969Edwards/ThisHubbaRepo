@@ -215,7 +215,45 @@ public class AddLocation extends Activity {
 				}
 				
 				
+			
+			FromPage = getIntent().getStringExtra("FromPage");
+			
+			if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites")){
+				
+				Address address = new Address(Locale.ENGLISH);
+				
+				address.setAddressLine(0, mAddress);
+				address.setAddressLine(0, mCity);
+				
+				if(address.hasLatitude() && address.hasLongitude()){
+				    double selectedLat = address.getLatitude();
+				    double selectedLng = address.getLongitude();
+				    
+				    String lat = Double.toString(selectedLat);
+				    String lng = Double.toString(selectedLng);
+				    
+				    text = "IT WORKED" + lat + " " + lng;
+
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				}
+				else{
+					
+					text = "FUCKKK";
+
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				}
 			}
+			else{
+				text = "FUCKKK";
+
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
+			}
+
+		}
+
 
 		});
 
