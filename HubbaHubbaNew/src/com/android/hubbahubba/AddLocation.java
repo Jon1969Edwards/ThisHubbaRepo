@@ -218,16 +218,33 @@ public class AddLocation extends Activity {
 			
 			FromPage = getIntent().getStringExtra("FromPage");
 			
-			if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites")){
+			if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites") || FromPage.equals("ViewMap")){
 				
-				Address address = new Address(Locale.ENGLISH);
+				List<Address> address = null; //= new Address(Locale.ENGLISH);
+				try {
+					address = new Geocoder(getApplicationContext()).getFromLocationName("address here", 1);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					text = "IOE";
+
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+					e.printStackTrace();
+				}
 				
-				address.setAddressLine(0, mAddress);
-				address.setAddressLine(0, mCity);
+				//address.setAddressLine(0, mAddress);
+				//address.setAddressLine(1, mCity);
 				
-				if(address.hasLatitude() && address.hasLongitude()){
-				    double selectedLat = address.getLatitude();
-				    double selectedLng = address.getLongitude();
+				try {
+					address = new Geocoder(getApplicationContext()).getFromLocationName(mAddress + ' ' + mCity, 1);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				if(address.get(0).hasLatitude() && address.get(0).hasLongitude()){
+				    double selectedLat = address.get(0).getLatitude();
+				    double selectedLng = address.get(0).getLongitude();
 				    
 				    String lat = Double.toString(selectedLat);
 				    String lng = Double.toString(selectedLng);
@@ -246,7 +263,7 @@ public class AddLocation extends Activity {
 				}
 			}
 			else{
-				text = "FUCKKK";
+				text = "FUCKKK hih";
 
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();
