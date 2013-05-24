@@ -40,8 +40,6 @@ public class ViewMap extends SherlockFragment {
 	private View rootView;
 	private String text;
 	
-	//private Map<LatLng, Integer> mMarkerMap = new HashMap<LatLng, Integer>();
-	
 	//@SuppressLint("NewApi")
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
             Bundle savedInstanceState) {
@@ -73,19 +71,6 @@ public class ViewMap extends SherlockFragment {
         mUiSettings.setMyLocationButtonEnabled(true);
         mUiSettings.setZoomControlsEnabled(false);
         
-        
-        
-        /* -- NEW SHIT
-        Map<Marker, MyModel> markerMap = new HashMap<Marker, MyModel>();
-        
-        Marker item = mMap.addMarker(new MarkerOptions()
-        				.position(null)
-        				.title("CLICK TO")
-        				.snippet("ADD SPOT")
-        				.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-
-        */
-        
         final LatLng Riley = new LatLng(42.4409000, -83.3978000 );
         Marker riley = mMap.addMarker(new MarkerOptions()
                                   .position(Riley)
@@ -102,14 +87,15 @@ public class ViewMap extends SherlockFragment {
 	         .build();                   // Creates a CameraPosition from the builder
 	     mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 	     
+	     // TODO JIMMY: If you could write a function that will give me one lat and lng at a time (looping through all)
+	     //	so I can add a marker to the map from the latitude and longitude for all of the spots in the db
+	     
 	     //NEW STUFF
 	     mMap.setOnMapLongClickListener(new OnMapLongClickListener(
 					) {
 				
 				@Override
 				public void onMapLongClick(LatLng point) {
-					
-					// TODO Auto-generated method stub
 					if(!spotAdded){
 						
 						Marker addSpot = mMap.addMarker(new MarkerOptions()
@@ -194,6 +180,9 @@ public class ViewMap extends SherlockFragment {
 
 				// Toast.makeText(getApplicationContext(),
 				// clickId + " is the ID", Toast.LENGTH_SHORT).show();
+				
+				// TODO JIMMY: Instead of just choosing riley this needs to be able to look up the position
+				// by the id of the row the info window is displaying... not sure how to do this
 
 				Bundle bundleData = new Bundle();
 				bundleData.putInt("keyid", 2);
@@ -218,10 +207,21 @@ public class ViewMap extends SherlockFragment {
 			// Defines the contents of the InfoWindow
 			@Override
 			public View getInfoContents(Marker arg0) {
+				String LatLong = arg0.getPosition().toString();
+				//mMarkerMap.put(addSpot.getPosition(), TYPE_NEW);
+				LatLong = LatLong.substring(10, LatLong.length() - 1);
 				
-				//if nothing at that lat and long display an add spot info window
+				String[] separated = LatLong.split(",");
+				String latitude = separated[0];
+				String longitude = separated[1];
 				
-				//else do below
+				// This produces the latitude and longitude from the spot
+				double Lat = Double.parseDouble(latitude);
+				double Lng = Double.parseDouble(longitude);
+				
+				// TODO JIMMY: If you could help me write a function to get all the info from the db
+				// to mirror what is happening below here but by looking it up by Lat and Lng defined above
+				
 				
 				// Getting view from the layout file info_window_layout
 				View v = getSherlockActivity().getLayoutInflater().inflate(R.layout.info_window_layout, null);
@@ -258,9 +258,6 @@ public class ViewMap extends SherlockFragment {
     public void onDestroyView() {
         super.onDestroyView();
 
-        // Your Programing skills goes here
-
-        
         // Do Not Miss this
         try {
             Fragment fragment = (getFragmentManager().findFragmentById(R.id.map));  
@@ -272,16 +269,12 @@ public class ViewMap extends SherlockFragment {
         }
     }
     
+    // TODO Possibly delete this
     @Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
     	if(requestCode == 0){
     		if(resultCode == AddSpot.RESULT_CODE_SPOT_ADDED){
     			spotAdded = false;
-    			
-    			// get lat and long from data
-    			// change type of marker at lat and long to type existing
-    			
-    			//TODO ADD INFO INTO THE POPUP
     		}
     	}
     }

@@ -21,6 +21,7 @@ import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 //import android.view.Menu;
 
@@ -42,6 +43,8 @@ public class AddSpot extends Activity {
 	Uri mSelectedImage = Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);;
 	private static final int SELECT_PHOTO = 1;
 	public static final int RESULT_CODE_SPOT_ADDED = 2;
+	double mLat;
+	double mLng;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,21 @@ public class AddSpot extends Activity {
 		//Read in extras passed from AddLocation Activity (i.e. Title and Type )
 		mTitle = getIntent().getStringExtra("spotTitle");
 		mType = getIntent().getStringExtra("spotType");
+		
+		//get the doubles
+		mLat = getIntent().getDoubleExtra("Lat", 0);
+		mLng = getIntent().getDoubleExtra("Lng", 0);
+		
+		// TODO DELETE THIS -- FOR DEBUGGING
+		String lat = Double.toString(mLat);
+	    String lng = Double.toString(mLng);
+	    Context context = getApplicationContext();
+		int duration = Toast.LENGTH_LONG;
+	    
+	    String text = "Passed Through Lat and Long: " + lat + " " + lng;
+	    
+	    Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
 		
 		//initialize objects in layout
 		mComment = (EditText) findViewById(R.id.commentBlock);
@@ -744,8 +762,8 @@ public class AddSpot extends Activity {
 				//retrieve everything else to store in db
 				stringName = mTitle;
 				stringType = mType;
-				doubleLat = 100.001;
-				doubleLong = 100.001;
+				doubleLat = mLat;
+				doubleLong = mLng;
 				intRate = overallClicked;
 				intDiff = diffClicked;
 				intLevel = poClicked;

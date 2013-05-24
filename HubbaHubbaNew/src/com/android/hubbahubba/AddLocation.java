@@ -27,6 +27,8 @@ public class AddLocation extends Activity {
 	String LatLong;
 	String FromPage;
 	String addressList[] = new String[10];
+	double selectedLat;
+    double selectedLng;
 	//String ViewMap = "ViewMap";
 
 	@Override
@@ -101,7 +103,7 @@ public class AddLocation extends Activity {
 			} catch (NumberFormatException e) {
 				
 				double D1 = Double.parseDouble(latitude);
-				double D2 = Double.parseDouble(latitude);
+				double D2 = Double.parseDouble(longitude);
 				
 				String lat = Double.toString(D1);
 				String lon = Double.toString(D2);
@@ -115,7 +117,7 @@ public class AddLocation extends Activity {
 			} catch (IOException e) {
 				
 				double D1 = Double.parseDouble(latitude);
-				double D2 = Double.parseDouble(latitude);
+				double D2 = Double.parseDouble(longitude);
 				
 				String lat = Double.toString(D1);
 				String lon = Double.toString(D2);
@@ -211,64 +213,71 @@ public class AddLocation extends Activity {
 					intent.putExtra("spotType", mType);
 					intent.putExtra("spotAddress", mAddress);
 					intent.putExtra("spotCity", mCity );
+					
+					FromPage = getIntent().getStringExtra("FromPage");
+					
+					if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites") || FromPage.equals("ViewMap")){
+						
+						List<Address> address = null; //= new Address(Locale.ENGLISH);
+						try {
+							address = new Geocoder(getApplicationContext()).getFromLocationName("address here", 1);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							text = "IOE";
+
+							Toast toast = Toast.makeText(context, text, duration);
+							toast.show();
+							e.printStackTrace();
+						}
+						
+						//address.setAddressLine(0, mAddress);
+						//address.setAddressLine(1, mCity);
+						
+						try {
+							address = new Geocoder(getApplicationContext()).getFromLocationName(mAddress + ' ' + mCity, 1);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						if(address.get(0).hasLatitude() && address.get(0).hasLongitude()){
+						    selectedLat = address.get(0).getLatitude();
+						    selectedLng = address.get(0).getLongitude();
+						    
+						    String lat = Double.toString(selectedLat);
+						    String lng = Double.toString(selectedLng);
+						    
+						    text = "IT WORKED " + lat + " " + lng;
+
+							Toast toast = Toast.makeText(context, text, duration);
+							toast.show();
+						}
+						else{
+							// TODO Better err message
+							text = "Incorrect Address";
+
+							Toast toast = Toast.makeText(context, text, duration);
+							toast.show();
+						}
+					}
+					
+					intent.putExtra("Lat", selectedLat);
+					intent.putExtra("Lng", selectedLng);
+					//put extra the doubles
+					
+					
+					
 					startActivity(intent);
 				}
-				
-				
-			
-			FromPage = getIntent().getStringExtra("FromPage");
-			
-			if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites") || FromPage.equals("ViewMap")){
-				
-				List<Address> address = null; //= new Address(Locale.ENGLISH);
-				try {
-					address = new Geocoder(getApplicationContext()).getFromLocationName("address here", 1);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					text = "IOE";
-
-					Toast toast = Toast.makeText(context, text, duration);
-					toast.show();
-					e.printStackTrace();
-				}
-				
-				//address.setAddressLine(0, mAddress);
-				//address.setAddressLine(1, mCity);
-				
-				try {
-					address = new Geocoder(getApplicationContext()).getFromLocationName(mAddress + ' ' + mCity, 1);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				if(address.get(0).hasLatitude() && address.get(0).hasLongitude()){
-				    double selectedLat = address.get(0).getLatitude();
-				    double selectedLng = address.get(0).getLongitude();
-				    
-				    String lat = Double.toString(selectedLat);
-				    String lng = Double.toString(selectedLng);
-				    
-				    text = "IT WORKED" + lat + " " + lng;
-
-					Toast toast = Toast.makeText(context, text, duration);
-					toast.show();
-				}
-				else{
-					
-					text = "FUCKKK";
-
-					Toast toast = Toast.makeText(context, text, duration);
-					toast.show();
-				}
-			}
+				/*
 			else{
-				text = "FUCKKK hih";
+				// TODO better error message
+				text = "You came from an illegal page, try again!";
 
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();
 			}
-
+			*/
 		}
 
 
