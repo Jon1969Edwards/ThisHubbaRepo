@@ -19,13 +19,12 @@
         android:paddingBottom="10dp"
         android:id="@+id/buttons"
         android:background="#000"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" >
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
 		
         <Button
             android:layout_weight="1"
             android:textAllCaps="true"
-            android:layout_marginRight="10dp"
             android:id = "@+id/viewMapButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -43,7 +42,6 @@
             android:layout_height="match_parent"
             android:text="@string/Comments"
             tools:context=".MainActivity"
-            android:layout_marginRight="10dp"
             android:textSize="12sp"
             android:textColor="#FFF"
             android:background="@drawable/button_layout" />
@@ -81,8 +79,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp">
         
 	    <Button
@@ -100,7 +98,6 @@
 	    
 	    <Button
 	        android:id = "@+id/takePhotoButton"
-	        android:layout_marginLeft="10dp"
 	        android:paddingTop="10dp"
 	        android:layout_width="0dp"
 	        android:layout_weight="1"

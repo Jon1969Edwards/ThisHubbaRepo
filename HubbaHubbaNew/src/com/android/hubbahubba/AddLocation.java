@@ -239,8 +239,13 @@ public class AddLocation extends Activity {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						
-						if(address.get(0).hasLatitude() && address.get(0).hasLongitude()){
+						if(address.size() == 0){
+							text = "Please Enter a Valid Address";
+
+							Toast toast = Toast.makeText(context, text, duration);
+							toast.show();
+						}
+						else if(address.get(0).hasLatitude() && address.get(0).hasLongitude()){
 						    selectedLat = address.get(0).getLatitude();
 						    selectedLng = address.get(0).getLongitude();
 						    
@@ -248,9 +253,14 @@ public class AddLocation extends Activity {
 						    String lng = Double.toString(selectedLng);
 						    
 						    text = "IT WORKED " + lat + " " + lng;
+						    
+						    intent.putExtra("Lat", selectedLat);
+							intent.putExtra("Lng", selectedLng);
 
 							Toast toast = Toast.makeText(context, text, duration);
 							toast.show();
+							
+							startActivity(intent);
 						}
 						else{
 							// TODO Better err message
@@ -260,14 +270,6 @@ public class AddLocation extends Activity {
 							toast.show();
 						}
 					}
-					
-					intent.putExtra("Lat", selectedLat);
-					intent.putExtra("Lng", selectedLng);
-					//put extra the doubles
-					
-					
-					
-					startActivity(intent);
 				}
 				/*
 			else{

@@ -14,7 +14,7 @@ public class SpinnerActivity extends Activity implements OnItemSelectedListener 
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.add_location);
+		setContentView(R.layout.add_location_layout);
 		
 		Spinner spinner = (Spinner) findViewById(R.id.spotTypeSpinner);
 	    spinner.setOnItemSelectedListener(this);

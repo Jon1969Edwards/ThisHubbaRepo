@@ -219,4 +219,26 @@ public class HubbaDBAdapter {
  		  createSpot("Favorite Spot", "skate park", 830.153, 198.38, 9, 6, 2, "Favorite Spot is awesome", null);
  		 
  		 }
+ 	/*
+ 	This function allows you to search the DB by Lat/Long (as doubles) and return 
+ 	a cursor to the spot in the db. I will give an example of how to use the cursor
+ 	and close the db after.
+ 	*/
+ 	/*
+ 	public Cursor fetchSpotByLatLong(double latitude, double longitude) throws SQLException {
+ 	 	Cursor mCursor = null;
+ 	  
+ 	 	if (latitude != null && longitude != null)  {
+ 	 	mCursor = mDb.query(true, SQLITE_TABLE, new String[] {KEY_ROWID, KEY_NAME, KEY_TYPE,  
+ 	 	KEY_LAT, KEY_LONG, KEY_RATING, KEY_DIFF, KEY_LEVEL, KEY_COMMENTS, KEY_IMAGE}, 
+ 	 	KEY_LAT + " like '%" + latitude + "%' and " + KEY_LONG + " like '%" + longitude + "%'", null,
+ 	 	null, null, null, null);
+ 	 	}
+ 	else
+ 	 	mCursor.moveToFirst();
+ 	 	
+ 	 	
+ 	 	return mCursor;
+ 	 	}
+ 	 	*/
 }	
