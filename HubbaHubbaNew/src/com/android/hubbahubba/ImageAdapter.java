@@ -15,7 +15,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 public class ImageAdapter extends BaseAdapter {
 	
-	ImageLoader imageLoader = ImageLoader.getInstance();
+	//ImageLoader imageLoader = ImageLoader.getInstance();
 
 	private Context mContext;
 
@@ -38,6 +38,8 @@ public class ImageAdapter extends BaseAdapter {
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        //imageLoader.destroy();
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(200, 200));

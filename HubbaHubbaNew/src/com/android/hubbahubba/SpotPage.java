@@ -401,4 +401,12 @@ public class SpotPage extends Activity {
 		.start();
 	}
 	*/
+	/*
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		imageLoader.destroy();
+		super.onDestroy();
+	}
+	*/
 }

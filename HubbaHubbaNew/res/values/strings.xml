@@ -60,6 +60,7 @@
 	
 	<string-array name="spotTypes">
         <item>Hubba</item>
+        <item>Miniramp</item>
         <item>Handrail</item>
         <item>Flat Rail</item>
         <item>Ledge(s)</item>
@@ -75,6 +76,7 @@
     <string-array name="showSpotTypes">
         <item>Show All</item>
         <item>Hubbas</item>
+        <item>Miniramp</item>
         <item>Handrails</item>
         <item>Flat Rails</item>
         <item>Ledges</item>
