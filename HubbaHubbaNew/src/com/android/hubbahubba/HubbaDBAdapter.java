@@ -210,13 +210,13 @@ public class HubbaDBAdapter {
  	
  	public void insertSomeSpots() {
  		 
- 		  createSpot("Grind Spot", "rail", 123.456, 123.456, 5, 8, 2, "Grind Spot is awesome", null);
- 		  createSpot("Bowl","pool", 722.1234, 123.1234, 8, 2, 5, "Bowl spot is awesome", null);
- 		  createSpot("Hidden Spot", "rail",  123.6533, 948.2354, 2, 6, 9, "Hidden Spot is awesome", null);
- 		  createSpot("My Secret Spot", "gap", 890.345, 3342.123, 3, 5, 5, "My secret spot is awesome", null );
- 		  createSpot("Michigan's Best", "gap",  1.123, 991.123, 7, 8, 9, "Michigan's best spot is awesome", null);
- 		  createSpot("Check this spot out", "hubba", 18.3456, 1829.374, 0, 9, 1, "check this spot out is awesome", null);
- 		  createSpot("Favorite Spot", "skate park", 830.153, 198.38, 9, 6, 2, "Favorite Spot is awesome", null);
+ 		  createSpot("Drake Skate Park", "skate park", 42.535469, -83.399513, 5, 8, 2, "Drake skate park is awesome", null);
+ 		  createSpot("Riley Skate Park","skate park", 	42.4400061, -83.396546, 8, 2, 5, "This spot is awesome", null);
+ 		  //createSpot("Hidden Spot", "rail",  123.6533, 948.2354, 2, 6, 9, "Hidden Spot is awesome", null);
+ 		  //createSpot("My Secret Spot", "gap", 890.345, 3342.123, 3, 5, 5, "My secret spot is awesome", null );
+ 		  //createSpot("Michigan's Best", "gap",  1.123, 991.123, 7, 8, 9, "Michigan's best spot is awesome", null);
+ 		  //createSpot("Check this spot out", "hubba", 18.3456, 1829.374, 0, 9, 1, "check this spot out is awesome", null);
+ 		  //createSpot("Favorite Spot", "skate park", 830.153, 198.38, 9, 6, 2, "Favorite Spot is awesome", null);
  		 
  		 }
  	/*
@@ -224,11 +224,11 @@ public class HubbaDBAdapter {
  	a cursor to the spot in the db. I will give an example of how to use the cursor
  	and close the db after.
  	*/
- 	/*
+ 	
  	public Cursor fetchSpotByLatLong(double latitude, double longitude) throws SQLException {
  	 	Cursor mCursor = null;
  	  
- 	 	if (latitude != null && longitude != null)  {
+ 	 	if (latitude !=0 && longitude!=0)  {
  	 	mCursor = mDb.query(true, SQLITE_TABLE, new String[] {KEY_ROWID, KEY_NAME, KEY_TYPE,  
  	 	KEY_LAT, KEY_LONG, KEY_RATING, KEY_DIFF, KEY_LEVEL, KEY_COMMENTS, KEY_IMAGE}, 
  	 	KEY_LAT + " like '%" + latitude + "%' and " + KEY_LONG + " like '%" + longitude + "%'", null,
@@ -240,5 +240,5 @@ public class HubbaDBAdapter {
  	 	
  	 	return mCursor;
  	 	}
- 	 	*/
+ 	 	
 }	
