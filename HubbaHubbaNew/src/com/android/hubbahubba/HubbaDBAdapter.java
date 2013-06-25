@@ -1,5 +1,7 @@
 package com.android.hubbahubba;
 
+import java.text.DecimalFormat;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -86,20 +88,29 @@ public class HubbaDBAdapter {
  	}
  
  	public long createSpot(String name, String type, double latitude, 
- 			double longitude, int rating, int difficulty, int level, String comments, String imageURI) {
- 
- 		ContentValues initialValues = new ContentValues();
- 		initialValues.put(KEY_NAME, name);
- 		initialValues.put(KEY_TYPE, type);
- 		initialValues.put(KEY_LAT, latitude);
- 		initialValues.put(KEY_LONG, longitude);
- 		initialValues.put(KEY_RATING, rating);
- 		initialValues.put(KEY_DIFF, difficulty);
- 		initialValues.put(KEY_LEVEL, level);
- 		initialValues.put(KEY_COMMENTS, comments);
- 		initialValues.put(KEY_IMAGE, imageURI);
- 
- 		return mDb.insert(SQLITE_TABLE, null, initialValues);
+ 		 	double longitude, int rating, int difficulty, int level, String comments, String imageURI) {
+ 		 		
+ 		 		
+ 		 	//latitude
+ 		 	DecimalFormat df = new DecimalFormat("##.######");
+ 		 	 latitude = Double.parseDouble(df.format(latitude));
+ 		 	 	
+ 		 	 //longitude
+ 		 	 DecimalFormat df2 = new DecimalFormat("###.######");
+ 		 	 longitude = Double.parseDouble(df2.format(longitude));
+ 		 
+ 		 	ContentValues initialValues = new ContentValues();
+ 		 	initialValues.put(KEY_NAME, name);
+ 		 	initialValues.put(KEY_TYPE, type);
+ 		 	initialValues.put(KEY_LAT, latitude);
+ 		 	initialValues.put(KEY_LONG, longitude);
+ 		 	initialValues.put(KEY_RATING, rating);
+ 		 	initialValues.put(KEY_DIFF, difficulty);
+ 		 	initialValues.put(KEY_LEVEL, level);
+ 		 	initialValues.put(KEY_COMMENTS, comments);
+ 		 	initialValues.put(KEY_IMAGE, imageURI);
+ 		 
+ 		 	return mDb.insert(SQLITE_TABLE, null, initialValues);
  	}
  
  
@@ -224,7 +235,7 @@ public class HubbaDBAdapter {
  	a cursor to the spot in the db. I will give an example of how to use the cursor
  	and close the db after.
  	*/
- 	
+ 	/*
  	public Cursor fetchSpotByLatLong(double latitude, double longitude) throws SQLException {
  	 	Cursor mCursor = null;
  	  
@@ -240,5 +251,37 @@ public class HubbaDBAdapter {
  	 	
  	 	return mCursor;
  	 	}
+ 	 */
+ 	
+ 		// ======================= THIS GOES IN HubbbaDBAdapter.Java ==================================//
+ 		/*
+ 	 	This function allows you to search the DB by Lat/Long (as doubles) and return 
+ 	 	a cursor to the spot in the db. I will give an example of how to use the cursor
+ 	 	and close the db after.
+ 	 	*/
  	 	
+ 	public Cursor fetchSpotByLatLong(double latitude, double longitude) throws SQLException 
+ 	{
+ 	 	 Cursor mCursor = null;
+
+ 	 	 //latitude
+ 	 	 DecimalFormat df = new DecimalFormat("##.######");
+ 	 	 latitude = Double.parseDouble(df.format(latitude));
+ 	 	 	
+ 	 	 //longitude
+ 	 	 DecimalFormat df2 = new DecimalFormat("###.######");
+ 	 	 longitude = Double.parseDouble(df2.format(longitude));
+ 	 	 	
+ 	 	 if (!Double.isNaN(latitude) && !Double.isNaN(longitude))  
+ 	 	 {
+ 		  	mCursor = mDb.query(true, SQLITE_TABLE, new String[] {KEY_ROWID, KEY_NAME, KEY_TYPE,  
+ 		  	KEY_LAT, KEY_LONG, KEY_RATING, KEY_DIFF, KEY_LEVEL, KEY_COMMENTS, KEY_IMAGE}, 
+ 		  	KEY_LAT + " LIKE '%" + latitude + 
+ 		  	"%' AND " + 
+ 		  	KEY_LONG + " LIKE '%" + longitude + "%'", null,
+ 		  	null, null, null, null);
+ 		 }
+ 	 	 	
+ 	 	 return mCursor;
+ 	 }
 }	

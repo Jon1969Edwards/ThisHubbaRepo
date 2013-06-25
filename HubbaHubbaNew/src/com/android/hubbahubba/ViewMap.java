@@ -282,36 +282,53 @@ public class ViewMap extends SherlockFragment {
 				TextView txtDistance = (TextView) v.findViewById(R.id.info_window_distance);
 				Context context = getActivity().getApplicationContext();
 				//String mImagePath;
+				
+				int duration = Toast.LENGTH_LONG;
+				
+				Toast toaster = Toast.makeText(context, "Name: ", duration);
+				toaster.show();
 
 
-				dbHelper = new HubbaDBAdapter(context);
+				//dbHelper = new HubbaDBAdapter(context);
+				// DOESNT WORK: HubbaDBAdapter dbHelper;
 				dbHelper.open();
 				Cursor cur;
 				
-				//if (latitude != null && longitude != null){
-					cur = dbHelper.fetchSpotByLatLong(Lat, Lng);
-				//}
+				
+				String lat = Double.toString(Lat);
+			    String lng = Double.toString(Lng);
+			    
+			    text = lat + " " + lng;
+
+				Toast toasted = Toast.makeText(context, text, duration);
+				toasted.show();
+				
+				
+				cur = dbHelper.fetchSpotByLatLong(Lat, Lng);
 				
 					
-				// TODO JIMMY - NEVER MAKES IT INTO THIS IF STATEMENT
+				// TODO JIMMY
 			    if (cur.moveToFirst()) {
 			    	
-			    	int duration = Toast.LENGTH_LONG;
+			    	//int duration = Toast.LENGTH_LONG;
 					
-					Toast toast = Toast.makeText(context, "Name: ", duration);
-					toast.show();
+					//Toast toast = Toast.makeText(context, "Name: ", duration);
+					//toast.show();
 					
 					do {
 						txtTitle.setText(cur.getString(1)); //name
 						txtOverallRating.setText(cur.getString(5)); //rating
 						txtDiffRating.setText(cur.getString(6)); //difficulty
-						txtPoRating.setText(cur.getString(7)); //level
+						txtPoRating.setText(cur.getString(7)); //police level
 						String mImagePath = cur.getString(9); //image URI
 
 						if(mImagePath != null ) {
 							Uri imageViewUri = Uri.parse(mImagePath); //parse URI
 							imgThumbnail.setImageURI(imageViewUri); //set Image via parsed URI
 						}
+						
+						Toast toast = Toast.makeText(context, "Name: " + cur.getString(1) + "Overall Rating: " + cur.getString(5), duration);
+						toast.show();
 						
 						//int duration = Toast.LENGTH_LONG;
 						

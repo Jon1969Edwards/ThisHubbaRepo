@@ -70,10 +70,21 @@ public class AddSpot extends Activity {
 	    Toast toast = Toast.makeText(context, text, duration);
 		toast.show();
 		
+		//get image passed through
+		mSelectedImage = Uri.parse(getIntent().getStringExtra("mSelectedImage"));
+		
 		//initialize objects in layout
 		mComment = (EditText) findViewById(R.id.commentBlock);
 		browseButton = (Button) findViewById(R.id.browseButton);
 		mImage = (ImageView) findViewById(R.id.showOffImage);
+		
+		try {
+			spotImage = decodeUri(mSelectedImage);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		mImage.setImageBitmap(spotImage);
 				
 		
 
@@ -339,16 +350,16 @@ public class AddSpot extends Activity {
 
 			public boolean onTouch(View v, MotionEvent event) {
 				if (poClicked != 2) {
-					oneButtonDiff.setPressed(false);
-					twoButtonDiff.setPressed(true);
-					threeButtonDiff.setPressed(false);
-					fourButtonDiff.setPressed(false);
-					fiveButtonDiff.setPressed(false);
-					sixButtonDiff.setPressed(false);
-					sevenButtonDiff.setPressed(false);
-					eightButtonDiff.setPressed(false);
-					nineButtonDiff.setPressed(false);
-					tenButtonDiff.setPressed(false);
+					oneButtonDanger.setPressed(false);
+					twoButtonDanger.setPressed(true);
+					threeButtonDanger.setPressed(false);
+					fourButtonDanger.setPressed(false);
+					fiveButtonDanger.setPressed(false);
+					sixButtonDanger.setPressed(false);
+					sevenButtonDanger.setPressed(false);
+					eightButtonDanger.setPressed(false);
+					nineButtonDanger.setPressed(false);
+					tenButtonDanger.setPressed(false);
 					poClicked = 2;
 				}
 				return true;
