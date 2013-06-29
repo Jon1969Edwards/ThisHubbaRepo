@@ -237,7 +237,8 @@ public class AddLocation extends Activity {
 		// login Button takes you to the map view (ROB: YOU WILL NEED TO CHANGE THIS BACK TO MAPVIEW, not MainActivity)
 		cancelButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				
+				Intent intent = new Intent(AddLocation.this, ActionBarActivity.class);
+				setResult(Activity.RESULT_CANCELED, intent);
 				finish();
 				/*
 				Intent intent = new Intent(AddLocation.this,
@@ -428,60 +429,63 @@ public class AddLocation extends Activity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	    switch(requestCode) { 
-	    case SELECT_PHOTO:
-	        if(resultCode == RESULT_OK){  
-	            mSelectedImage = data.getData();
+	    switch(requestCode) {
+		    case SELECT_PHOTO:
+		        if(resultCode == RESULT_OK){  
+		            mSelectedImage = data.getData();
+		            try {
+						spotImage = decodeUri(mSelectedImage);
+						uploadPhotoButton.setImageBitmap(spotImage);
+						//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
+						takePhotoButton.setClickable(false);
+						takePhotoButton.setEnabled(false);
+						
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		        }
+		        break;
+		        
+		    //case CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE:
+		    case TAKE_PHOTO:
+		        if (resultCode == RESULT_OK) {
+		            // Image captured and saved to fileUri specified in the Intent
+		            Toast.makeText(this, "Image saved to:\n" +
+		                     data.getData(), Toast.LENGTH_LONG).show();
+		            
+		        } else if (resultCode == RESULT_CANCELED) {
+		            // User cancelled the image capture
+		        } else {
+		            // Image capture failed, advise user
+		        }
+		        
+		        mSelectedImage = data.getData();
 	            
 	            try {
 					spotImage = decodeUri(mSelectedImage);
-					uploadPhotoButton.setImageBitmap(spotImage);
+					takePhotoButton.setImageBitmap(spotImage);
 					//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
-					takePhotoButton.setClickable(false);
-					takePhotoButton.setEnabled(false);
+					uploadPhotoButton.setClickable(false);
+					uploadPhotoButton.setEnabled(false);
 					
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-	        }
-	    //case CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE:
-	    case TAKE_PHOTO:
-	        if (resultCode == RESULT_OK) {
-	            // Image captured and saved to fileUri specified in the Intent
-	            Toast.makeText(this, "Image saved to:\n" +
-	                     data.getData(), Toast.LENGTH_LONG).show();
+	            break;
 	            
-	        } else if (resultCode == RESULT_CANCELED) {
-	            // User cancelled the image capture
-	        } else {
-	            // Image capture failed, advise user
-	        }
-	        
-	        mSelectedImage = data.getData();
-            
-            try {
-				spotImage = decodeUri(mSelectedImage);
-				takePhotoButton.setImageBitmap(spotImage);
-				//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
-				uploadPhotoButton.setClickable(false);
-				uploadPhotoButton.setEnabled(false);
-				
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-	    case CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE:
-	        if (resultCode == RESULT_OK) {
-	            // Video captured and saved to fileUri specified in the Intent
-	            Toast.makeText(this, "Video saved to:\n" +
-	                     data.getData(), Toast.LENGTH_LONG).show();
-	        } else if (resultCode == RESULT_CANCELED) {
-	            // User cancelled the video capture
-	        } else {
-	            // Video capture failed, advise user
-	        }
+		    case CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE:
+		        if (resultCode == RESULT_OK) {
+		            // Video captured and saved to fileUri specified in the Intent
+		            Toast.makeText(this, "Video saved to:\n" +
+		                     data.getData(), Toast.LENGTH_LONG).show();
+		        } else if (resultCode == RESULT_CANCELED) {
+		            // User cancelled the video capture
+		        } else {
+		            // Video capture failed, advise user
+		        }
+		        break;
 	    }
 	}
 	

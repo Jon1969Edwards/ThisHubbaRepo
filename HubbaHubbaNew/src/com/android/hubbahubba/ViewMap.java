@@ -1,6 +1,7 @@
 package com.android.hubbahubba;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -44,6 +45,7 @@ public class ViewMap extends SherlockFragment {
 	private View rootView;
 	private String text;
 	private HubbaDBAdapter dbHelper;
+	Marker addSpot;
 
 	//@SuppressLint("NewApi")
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
@@ -144,7 +146,7 @@ public class ViewMap extends SherlockFragment {
 				public void onMapLongClick(LatLng point) {
 					if(!spotAdded){
 
-						Marker addSpot = mMap.addMarker(new MarkerOptions()
+						addSpot = mMap.addMarker(new MarkerOptions()
 	                      		.position(point)
 	                      		.title("Tap to Add Spot")
 	                      		.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
@@ -169,7 +171,7 @@ public class ViewMap extends SherlockFragment {
 						intent.putExtra("LatLong", text);
 						intent.putExtra("FromPage", "ViewMap");
 						//startActivityForResult(intent, 0);
-						startActivity(intent);
+						startActivityForResult(intent, 0);
 
 
 					}
@@ -386,8 +388,9 @@ public class ViewMap extends SherlockFragment {
     @Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
     	if(requestCode == 0){
-    		if(resultCode == AddSpot.RESULT_CODE_SPOT_ADDED){
+    		if(resultCode != Activity.RESULT_OK){
     			spotAdded = false;
+    			addSpot.remove();
     		}
     	}
     }

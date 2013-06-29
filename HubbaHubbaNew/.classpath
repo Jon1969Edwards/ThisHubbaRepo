@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="/Users/Robbie/android-sdks/extras/google/google_play_services/libproject/google-play-services_lib/bin/google-play-services_lib.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="/Users/Robbie/Desktop/newtrunk/mongo-java-driver/mongo-2.10.1.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

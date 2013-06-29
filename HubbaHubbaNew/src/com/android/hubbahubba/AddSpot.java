@@ -789,6 +789,7 @@ public class AddSpot extends Activity {
 				
 				//now return to listview
 				Intent intent = new Intent(AddSpot.this, ActionBarActivity.class);
+				setResult(Activity.RESULT_OK, intent);
 				startActivity(intent);
 				
 				//return true;
