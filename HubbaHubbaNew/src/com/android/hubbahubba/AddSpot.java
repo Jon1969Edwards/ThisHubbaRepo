@@ -37,11 +37,11 @@ public class AddSpot extends Activity {
 	HubbaDBAdapter dbHelper;
 	String mTitle, mType;
 	EditText mComment;
-	Button browseButton;
-	Bitmap spotImage;
-	ImageView mImage;
+	//Button browseButton;
+	//Bitmap spotImage;
+	//ImageView mImage;
 	Uri mSelectedImage = Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);;
-	private static final int SELECT_PHOTO = 1;
+	//private static final int SELECT_PHOTO = 1;
 	public static final int RESULT_CODE_SPOT_ADDED = 2;
 	double mLat;
 	double mLng;
@@ -75,9 +75,10 @@ public class AddSpot extends Activity {
 		
 		//initialize objects in layout
 		mComment = (EditText) findViewById(R.id.commentBlock);
-		browseButton = (Button) findViewById(R.id.browseButton);
-		mImage = (ImageView) findViewById(R.id.showOffImage);
+		//browseButton = (Button) findViewById(R.id.browseButton);
+		//mImage = (ImageView) findViewById(R.id.showOffImage);
 		
+		/*
 		try {
 			spotImage = decodeUri(mSelectedImage);
 		} catch (FileNotFoundException e) {
@@ -85,7 +86,7 @@ public class AddSpot extends Activity {
 			e.printStackTrace();
 		}
 		mImage.setImageBitmap(spotImage);
-				
+		*/	
 		
 
 		/* --------------------------- DIFF BUTTONS ---------------------------- */
@@ -729,7 +730,7 @@ public class AddSpot extends Activity {
 		});
 		
 		
-		
+		/*
 		browseButton.setOnTouchListener(new OnTouchListener() {
 
 			// @Override
@@ -743,7 +744,7 @@ public class AddSpot extends Activity {
 			}
 			
 		});
-		
+		*/
 	
 				
 
@@ -799,7 +800,7 @@ public class AddSpot extends Activity {
 
 	}
 	
-	
+	/*
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) { 
 	    super.onActivityResult(requestCode, resultCode, imageReturnedIntent); 
@@ -832,7 +833,8 @@ public class AddSpot extends Activity {
 	        }
 	    }
 	}
-	
+	*/
+	/*
 	private Bitmap decodeUri(Uri selectedImage) throws FileNotFoundException {
 
         // Decode image size
@@ -862,7 +864,7 @@ public class AddSpot extends Activity {
         return BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o2);
 
     }
-	
+	*/
 	private String getRealPathFromUri(Uri contentUri) {
 		Context context = getApplicationContext();
 	    String[] proj = { MediaStore.Images.Media.DATA };

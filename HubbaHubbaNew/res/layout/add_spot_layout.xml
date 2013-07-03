@@ -491,7 +491,7 @@
                 android:textColor="#33b5e5"
                 android:textSize="20sp" />
         </RelativeLayout>
-
+		<!-- 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="80dp"
@@ -544,7 +544,8 @@
                 android:scaleType="centerCrop" />
 
         </RelativeLayout>
-
+		-->
+		
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

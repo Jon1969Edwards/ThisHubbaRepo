@@ -197,7 +197,7 @@ public class ViewMap extends SherlockFragment {
 
 				}
 	     });
-
+	     
 	     mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
 
 			@Override
@@ -248,13 +248,7 @@ public class ViewMap extends SherlockFragment {
 
 			// Use default InfoWindow frame
 			@Override
-			public View getInfoWindow(Marker arg0) {				
-				return null;
-			}			
-
-			// Defines the contents of the InfoWindow
-			@Override
-			public View getInfoContents(Marker arg0) {
+			public View getInfoWindow(Marker arg0) {	
 				String LatLong = arg0.getPosition().toString();
 				//mMarkerMap.put(addSpot.getPosition(), TYPE_NEW);
 				LatLong = LatLong.substring(10, LatLong.length() - 1);
@@ -357,7 +351,119 @@ public class ViewMap extends SherlockFragment {
 
 				// Returning the view containing InfoWindow contents
 				return v;
+				
+				//View v = inflater.inflate(R.layout.info_window_background, null);
+				//return v;
+			}			
 
+			// Defines the contents of the InfoWindow
+			@Override
+			public View getInfoContents(Marker arg0) {
+				/*
+				String LatLong = arg0.getPosition().toString();
+				//mMarkerMap.put(addSpot.getPosition(), TYPE_NEW);
+				LatLong = LatLong.substring(10, LatLong.length() - 1);
+
+				String[] separated = LatLong.split(",");
+				String latitude = separated[0];
+				String longitude = separated[1];
+
+				// This produces the latitude and longitude from the spot
+				double Lat = Double.parseDouble(latitude);
+				double Lng = Double.parseDouble(longitude);
+
+				// TODO JIMMY: If you could help me write a function to get all the info from the db
+				// to mirror what is happening below here but by looking it up by Lat and Lng defined above
+
+
+				// Getting view from the layout file info_window_layout
+				View v = getSherlockActivity().getLayoutInflater().inflate(R.layout.info_window_layout, null);
+				
+				
+				//=========== NEW CODE==========//
+				ImageView imgThumbnail = (ImageView) v.findViewById(R.id.info_window_image);
+				TextView txtTitle = (TextView) v.findViewById(R.id.info_window_title);
+				TextView txtOverallRating = (TextView) v.findViewById(R.id.info_window_OverallRating);
+				TextView txtPoRating = (TextView) v.findViewById(R.id.info_window_txtPoRating);
+				TextView txtDiffRating = (TextView)  v.findViewById(R.id.info_window_diffRating);
+				TextView txtDistance = (TextView) v.findViewById(R.id.info_window_distance);
+				Context context = getActivity().getApplicationContext();
+				//String mImagePath;
+				
+				int duration = Toast.LENGTH_LONG;
+				
+				Toast toaster = Toast.makeText(context, "Name: ", duration);
+				toaster.show();
+
+
+				//dbHelper = new HubbaDBAdapter(context);
+				// DOESNT WORK: HubbaDBAdapter dbHelper;
+				dbHelper.open();
+				Cursor cur;
+				
+				
+				String lat = Double.toString(Lat);
+			    String lng = Double.toString(Lng);
+			    
+			    text = lat + " " + lng;
+
+				Toast toasted = Toast.makeText(context, text, duration);
+				toasted.show();
+				
+				
+				cur = dbHelper.fetchSpotByLatLong(Lat, Lng);
+				
+					
+				// TODO JIMMY
+			    if (cur.moveToFirst()) {
+			    	
+			    	//int duration = Toast.LENGTH_LONG;
+					
+					//Toast toast = Toast.makeText(context, "Name: ", duration);
+					//toast.show();
+					
+					do {
+						txtTitle.setText(cur.getString(1)); //name
+						txtOverallRating.setText(cur.getString(5)); //rating
+						txtDiffRating.setText(cur.getString(6)); //difficulty
+						txtPoRating.setText(cur.getString(7)); //police level
+						String mImagePath = cur.getString(9); //image URI
+
+						if(mImagePath != null ) {
+							Uri imageViewUri = Uri.parse(mImagePath); //parse URI
+							imgThumbnail.setImageURI(imageViewUri); //set Image via parsed URI
+						}
+						
+						Toast toast = Toast.makeText(context, "Name: " + cur.getString(1) + "Overall Rating: " + cur.getString(5), duration);
+						toast.show();
+						
+						//int duration = Toast.LENGTH_LONG;
+						
+						//Toast toast = Toast.makeText(context, "Name: " + cur.getString(1), duration);
+						//toast.show();
+					} while (cur.moveToNext());
+				}
+				//========END OF NEW CODE=========//
+			  	
+				/*
+		        ImageView imgThumbnail = (ImageView) v.findViewById(R.id.info_window_image);
+		        imgThumbnail.setImageResource(R.drawable.indysunburst);
+		        TextView txtTitle = (TextView) v.findViewById(R.id.info_window_title);
+		        txtTitle.setText("Riley Skate Park");
+		        TextView txtOverallRating = (TextView) v.findViewById(R.id.info_window_OverallRating);
+		        txtOverallRating.setText("10");
+		        TextView txtPoRating = (TextView) v.findViewById(R.id.info_window_txtPoRating);
+		        txtPoRating.setText("5");
+		        TextView txtDiffRating = (TextView)  v.findViewById(R.id.info_window_diffRating);
+		        txtDiffRating.setText("7");
+		        TextView txtDistance = (TextView) v.findViewById(R.id.info_window_distance);
+		        txtDistance.setText("4.00");
+				*//*
+
+				// Returning the view containing InfoWindow contents
+				return v;
+				*/
+				return null;
 			}
 
 		});
