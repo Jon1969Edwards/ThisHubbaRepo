@@ -1074,19 +1074,20 @@ containing a value of this type.
         public static final int img_background=0x7f02008c;
         public static final int indysunburst=0x7f02008d;
         public static final int info_window=0x7f02008e;
-        public static final int lightbox=0x7f02008f;
-        public static final int list_view_style=0x7f020090;
-        public static final int nosegrabup=0x7f020091;
-        public static final int riley1=0x7f020092;
-        public static final int riley2=0x7f020093;
-        public static final int riley3=0x7f020094;
-        public static final int spinner_style=0x7f020095;
-        public static final int take_picture_background=0x7f020096;
-        public static final int thumbs_down_crop=0x7f020097;
-        public static final int thumbs_down_crop_copy=0x7f020098;
-        public static final int thumbs_up_crop=0x7f020099;
-        public static final int thumbs_up_crop_copy=0x7f02009a;
-        public static final int tony_hawk=0x7f02009b;
+        public static final int info_window_background=0x7f02008f;
+        public static final int lightbox=0x7f020090;
+        public static final int list_view_style=0x7f020091;
+        public static final int nosegrabup=0x7f020092;
+        public static final int riley1=0x7f020093;
+        public static final int riley2=0x7f020094;
+        public static final int riley3=0x7f020095;
+        public static final int spinner_style=0x7f020096;
+        public static final int take_picture_background=0x7f020097;
+        public static final int thumbs_down_crop=0x7f020098;
+        public static final int thumbs_down_crop_copy=0x7f020099;
+        public static final int thumbs_up_crop=0x7f02009a;
+        public static final int thumbs_up_crop_copy=0x7f02009b;
+        public static final int tony_hawk=0x7f02009c;
     }
     public static final class id {
         public static final int AddSpot=0x7f040038;
@@ -1304,17 +1305,16 @@ containing a value of this type.
         public static final int dbadapter_layout=0x7f030021;
         public static final int edit_layout=0x7f030022;
         public static final int full_screen_image=0x7f030023;
-        public static final int info_window_background=0x7f030024;
-        public static final int info_window_layout=0x7f030025;
-        public static final int item_grid_image=0x7f030026;
-        public static final int item_row=0x7f030027;
-        public static final int login_layout=0x7f030028;
-        public static final int sherlock_spinner_dropdown_item=0x7f030029;
-        public static final int sherlock_spinner_item=0x7f03002a;
-        public static final int spinner_row=0x7f03002b;
-        public static final int spot_info_updated=0x7f03002c;
-        public static final int spot_page_comments=0x7f03002d;
-        public static final int spot_page_layout=0x7f03002e;
+        public static final int info_window_layout=0x7f030024;
+        public static final int item_grid_image=0x7f030025;
+        public static final int item_row=0x7f030026;
+        public static final int login_layout=0x7f030027;
+        public static final int sherlock_spinner_dropdown_item=0x7f030028;
+        public static final int sherlock_spinner_item=0x7f030029;
+        public static final int spinner_row=0x7f03002a;
+        public static final int spot_info_updated=0x7f03002b;
+        public static final int spot_page_comments=0x7f03002c;
+        public static final int spot_page_layout=0x7f03002d;
     }
     public static final class menu {
         public static final int activity_list_view=0x7f0c0000;

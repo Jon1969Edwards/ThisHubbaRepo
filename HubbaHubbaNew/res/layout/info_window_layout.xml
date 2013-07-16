@@ -5,7 +5,9 @@
     android:id="@+id/relativeLayout1"   
     android:layout_width="match_parent"   
     android:layout_height="match_parent"
-    android:background="@drawable/list_view_style">  
+    android:background="@drawable/list_view_style">
+    
+    <!--  SHOLD BE INFO_WINDOW_BACKGROUND -->
       
     <ImageView
         android:contentDescription="@+id/titleOfSpot"

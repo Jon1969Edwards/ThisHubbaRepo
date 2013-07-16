@@ -29,7 +29,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-//import android.view.Menu;
 
 public class AddLocation extends Activity {
 
@@ -63,6 +62,7 @@ public class AddLocation extends Activity {
 	private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
 	private static final String JPEG_FILE_SUFFIX = "Hubba_Hubba";
 	private static final String JPEG_FILE_PREFIX = "Hubba_Hubba";
+	//boolean photo_selected = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -215,8 +215,6 @@ public class AddLocation extends Activity {
 				else{
 					//TODO output error message
 				}
-				
-				//TODO ADD TO DO
 				
 				// TODO UNCOMMENT: FOR VIEWING THE PHOTO
 				//handleSmallCameraPhoto(takePictureIntent);
@@ -379,14 +377,15 @@ public class AddLocation extends Activity {
 
 	    fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
 	    intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-
+	    intent.setType("image/*");
+	    
 	    // start the image capture Intent
 	    startActivityForResult(intent, actionCode);
 	    
 	    File f = createImageFile();
-	    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-
+	    //intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
 	}
+	
 	/** Create a file Uri for saving an image or video */
 	private static Uri getOutputMediaFileUri(int type){
 	      return Uri.fromFile(getOutputMediaFile(type));
@@ -416,10 +415,10 @@ public class AddLocation extends Activity {
 	    File mediaFile;
 	    if (type == MEDIA_TYPE_IMAGE){
 	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-	        "IMG_"+ timeStamp + ".jpg");
+	        "HUBBA_HUBBA_IMG_"+ timeStamp + ".jpg");
 	    } else if(type == MEDIA_TYPE_VIDEO) {
 	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-	        "VID_"+ timeStamp + ".mp4");
+	        "HUBBA_HUBBA_VID_"+ timeStamp + ".mp4");
 	    } else {
 	        return null;
 	    }
@@ -433,17 +432,19 @@ public class AddLocation extends Activity {
 		    case SELECT_PHOTO:
 		        if(resultCode == RESULT_OK){  
 		            mSelectedImage = data.getData();
+		            
+		            Toast.makeText(this, "IMG From:\n" +
+		                     data.getData(), Toast.LENGTH_LONG).show();
 		            try {
 						spotImage = decodeUri(mSelectedImage);
 						uploadPhotoButton.setImageBitmap(spotImage);
 						//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
-						takePhotoButton.setClickable(false);
-						takePhotoButton.setEnabled(false);
 						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+		            takePhotoButton.setClickable(false);
 		        }
 		        break;
 		        
@@ -453,26 +454,28 @@ public class AddLocation extends Activity {
 		            // Image captured and saved to fileUri specified in the Intent
 		            Toast.makeText(this, "Image saved to:\n" +
 		                     data.getData(), Toast.LENGTH_LONG).show();
+		            mSelectedImage = data.getData();
+		            //TODO THE BUG IS SOMEWHERE IN THE TRY CATCH BLOCK
+		            
+		            try {
+						spotImage = decodeUri(mSelectedImage);
+						uploadPhotoButton.setImageBitmap(spotImage);
+						Toast.makeText(this, "GOT EM" +
+			                     data.getData(), Toast.LENGTH_LONG).show();
+						//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
+						
+					} catch (FileNotFoundException e) {
+						Toast.makeText(this, "FILE NOT FOUND FUCKER", Toast.LENGTH_LONG).show();
+						e.printStackTrace();
+					}
+		            uploadPhotoButton.setClickable(false);
 		            
 		        } else if (resultCode == RESULT_CANCELED) {
-		            // User cancelled the image capture
+		        	Toast.makeText(this, "Image cancelled\n you suck", Toast.LENGTH_LONG).show();
 		        } else {
-		            // Image capture failed, advise user
+		        	Toast.makeText(this, "Image FAILED\n you REALLY suck", Toast.LENGTH_LONG).show();
 		        }
 		        
-		        mSelectedImage = data.getData();
-	            
-	            try {
-					spotImage = decodeUri(mSelectedImage);
-					takePhotoButton.setImageBitmap(spotImage);
-					//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
-					uploadPhotoButton.setClickable(false);
-					uploadPhotoButton.setEnabled(false);
-					
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 	            break;
 	            
 		    case CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE:
