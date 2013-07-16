@@ -142,12 +142,10 @@ public final class R {
         public static final int add_location=0x7f03000c;
         public static final int add_spot=0x7f03000d;
         public static final int comment_item_row=0x7f03000e;
-        public static final int dummy_layout=0x7f03000f;
-        public static final int info_window_layout=0x7f030010;
-        public static final int item_row=0x7f030011;
-        public static final int login_layout=0x7f030012;
-        public static final int myspots_layout=0x7f030013;
-        public static final int spot_page_comments=0x7f030014;
+        public static final int info_window_layout=0x7f03000f;
+        public static final int item_row=0x7f030010;
+        public static final int login_layout=0x7f030011;
+        public static final int spot_page_comments=0x7f030012;
     }
     public static final class menu {
         public static final int activity_action_bar=0x7f070000;

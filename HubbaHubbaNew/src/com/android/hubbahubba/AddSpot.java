@@ -30,7 +30,7 @@ import android.widget.Toast;
 @SuppressLint("NewApi")
 public class AddSpot extends Activity {
 
-	// WILL BE USED LATER
+	// Define Variables
 	int diffClicked = 0;
 	int overallClicked = 0;
 	int poClicked = 0;
@@ -41,7 +41,6 @@ public class AddSpot extends Activity {
 	//Bitmap spotImage;
 	//ImageView mImage;
 	Uri mSelectedImage = Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);;
-	//private static final int SELECT_PHOTO = 1;
 	public static final int RESULT_CODE_SPOT_ADDED = 2;
 	double mLat;
 	double mLng;
@@ -727,26 +726,7 @@ public class AddSpot extends Activity {
 				}
 				return true;
 			}
-		});
-		
-		
-		/*
-		browseButton.setOnTouchListener(new OnTouchListener() {
-
-			// @Override
-			public boolean onTouch(View v, MotionEvent event) {
-
-				Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-				photoPickerIntent.setType("image/*");
-				startActivityForResult(photoPickerIntent, SELECT_PHOTO); 
-				
-				return true;
-			}
-			
-		});
-		*/
-	
-				
+		});			
 
 		dbHelper = new HubbaDBAdapter(this);
 		dbHelper.open();
@@ -800,71 +780,6 @@ public class AddSpot extends Activity {
 
 	}
 	
-	/*
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) { 
-	    super.onActivityResult(requestCode, resultCode, imageReturnedIntent); 
-
-	    switch(requestCode) { 
-	    case SELECT_PHOTO:
-	        if(resultCode == RESULT_OK){  
-	            mSelectedImage = imageReturnedIntent.getData();
-	            
-	            
-	            // THIS WAS TO SHOW THE IMAGE PATH
-	            //Context context = getApplicationContext();
-	            //CharSequence text = mSelectedImage.getPath();
-	            //int duration = Toast.LENGTH_SHORT;
-
-	            //Toast toast = Toast.makeText(context, text, duration);
-	            //toast.show();
-	            
-	            
-	            //InputStream imageStream = getContentResolver().openInputStream(selectedImage);
-	            //Bitmap yourSelectedImage = BitmapFactory.decodeStream(imageStream);
-	            try {
-					spotImage = decodeUri(mSelectedImage);
-					mImage.setImageBitmap(spotImage);
-					
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	        }
-	    }
-	}
-	*/
-	/*
-	private Bitmap decodeUri(Uri selectedImage) throws FileNotFoundException {
-
-        // Decode image size
-        BitmapFactory.Options o = new BitmapFactory.Options();
-        o.inJustDecodeBounds = true;
-        BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o);
-
-        // The new size we want to scale to
-        final int REQUIRED_SIZE = 140;
-
-        // Find the correct scale value. It should be the power of 2.
-        int width_tmp = o.outWidth, height_tmp = o.outHeight;
-        int scale = 1;
-        while (true) {
-            if (width_tmp / 2 < REQUIRED_SIZE
-               || height_tmp / 2 < REQUIRED_SIZE) {
-                break;
-            }
-            width_tmp /= 2;
-            height_tmp /= 2;
-            scale *= 2;
-        }
-
-        // Decode with inSampleSize
-        BitmapFactory.Options o2 = new BitmapFactory.Options();
-        o2.inSampleSize = scale;
-        return BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o2);
-
-    }
-	*/
 	private String getRealPathFromUri(Uri contentUri) {
 		Context context = getApplicationContext();
 	    String[] proj = { MediaStore.Images.Media.DATA };
