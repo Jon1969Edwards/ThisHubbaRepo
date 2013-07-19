@@ -269,6 +269,10 @@ public class AddLocation extends Activity {
 					intent.putExtra("spotCity", mCity );
 					intent.putExtra("mSelectedImage", mSelectedImage.toString());
 					
+					text = mSelectedImage.toString();
+					Toast toaster = Toast.makeText(context, text, duration);
+					toaster.show();
+					
 					FromPage = getIntent().getStringExtra("FromPage");
 					
 					if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites") || FromPage.equals("ViewMap")){
@@ -415,12 +419,12 @@ public class AddLocation extends Activity {
 		            mSelectedImage = data.getData();
 		            try {
 						spotImage = decodeUri(mSelectedImage);
-						uploadPhotoButton.setImageBitmap(spotImage);
+						takePhotoButton.setImageBitmap(spotImage);
 					} catch (FileNotFoundException e) {
 						Toast.makeText(this, "FILE NOT FOUND FUCKER", Toast.LENGTH_LONG).show();
 						e.printStackTrace();
 					}
-		            takePhotoButton.setClickable(false);
+		            uploadPhotoButton.setClickable(false);
 		            
 		        } else if (resultCode == RESULT_CANCELED) {
 		        	Toast.makeText(this, "Image cancelled.", Toast.LENGTH_LONG).show();

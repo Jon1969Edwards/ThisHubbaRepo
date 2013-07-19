@@ -83,8 +83,8 @@
         </activity>
         <activity
             android:name=".AddLocation"
-            android:theme="@style/Theme.Sherlock.Light.NoActionBar"
-            android:configChanges="keyboardHidden|orientation"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/addLocation" >
         </activity>
         <activity

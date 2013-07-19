@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme" parent="@style/Theme.Sherlock.Light">
@@ -6,12 +7,18 @@
     </style>
     
     <style name="SpinnerItem">
-        <item name="android:textColor">#FFF</item>
+        <!--  item name="android:textColor">#FFFFFF</item -->
+        <item name="android:background">@drawable/spinner_style</item>
+        <item name="android:textAppearance">@style/SpinnerTextItem</item>
+    </style>
+    
+    <style name="SpinnerDropDownItem">
+        <item name="android:textAppearance">@style/SpinnerTextItem</item>
         <item name="android:background">@drawable/spinner_style</item>
     </style>
-    <style name="SpinnerDropDownItem">
+ 
+    <style name="SpinnerTextItem" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
         <item name="android:textColor">#FFF</item>
-        <item name="android:background">@drawable/spinner_style</item>
     </style>
 
 </resources>
