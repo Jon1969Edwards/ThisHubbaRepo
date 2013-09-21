@@ -17,7 +17,7 @@ public class Spot {
 	private int mDiff;
 	private int mBust;
 	private String[] mComments;
-	private String mImage;
+	private String[] mImages;
 	
 	//=====================================================
 	//   Getters/Setters
@@ -154,18 +154,17 @@ public class Spot {
 	/*
 	 * @return the imageURI of an image
 	 */
-	public String getImage() {
-		return mImage;
+	public String[] getImages() {
+		return mImages;
 	}
 	
 	/*
 	 * @param imageUri of an image of the spot
-	 */
-	public void setImage(String image){
-		this.mImage = image;
+	 *//*
+	public void setImages(String image){
+		this.mImages = image;
 	}
-
-	
+	*/
 	
 	//==========================================
 	//    BASIC MODEL / OBJECT IMPLEMENTATIONS
@@ -207,11 +206,11 @@ public class Spot {
 		return null;
 	}
 	
-	/* Private constructor */
+	/* Public constructor */
 	public Spot(int id, String name, String type,
 				 double lat, double lon, int rating,
 				 int diff, int bust, String[] comments,
-				 String image){
+				 String[] images){
 		
 		this.mId = id;
 		this.mName = name;
@@ -222,6 +221,6 @@ public class Spot {
 		this.mDiff = diff;
 		this.mBust = bust;
 		this.mComments = comments;
-		this.mImage = image;
+		this.mImages = images;
 	}
 }
