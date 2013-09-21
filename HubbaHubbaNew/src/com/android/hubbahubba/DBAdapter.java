@@ -30,12 +30,17 @@ public class DBAdapter {
 		return true;
 	}
 	
-	/* creates a spot given the info for the spot */
+	/* creates a spot given the info for the spot - returns true on success */
 	public boolean createUser(String name, String pass){
 		
-		/* TODO - insert user into the BD here */
+		/* TODO - insert user into the DB here */
 		return true;
 	}
 	
-	
+	/* Creates an image given the relevant info - returns true on success */
+	public boolean createImage(String photog, String rider, int spotID){
+		
+		/* TODO - insert image into DB here with ups and downs = 0 */
+		return true;
+	}
 }
