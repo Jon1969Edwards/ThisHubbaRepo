@@ -22,6 +22,14 @@ public class User {
 		return akey;
 	}
 
+	public static User findUser(String name, String pass){
+
+		//if user is found in database
+		//	return new user
+		// else 
+		return null; //or throw exception
+	}
+
 	private User(String name, String pass, int ukey, int akey){
 		this.name = name;
 		this.pass = pass;
