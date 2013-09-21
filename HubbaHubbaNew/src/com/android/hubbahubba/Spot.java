@@ -11,12 +11,12 @@ public class Spot {
 	private int mId;
 	private String mName;
 	private String mType;
-	private int mLat;
-	private int mLong;
+	private double mLat;
+	private double mLong;
 	private int mRating;
 	private int mDiff;
-	private int mLevel;
-	private String mComments;
+	private int mBust;
+	private String[] mComments;
 	private String mImage;
 	
 	//=====================================================
@@ -68,7 +68,7 @@ public class Spot {
 	/*
 	 * @return the Latitude of the Spot
 	 */
-	public int getLat() {
+	public double getLat() {
 		return mLat;
 	}
 	
@@ -82,7 +82,7 @@ public class Spot {
 	/*
 	 * @return the Longitude of the Spot
 	 */
-	public int getLong() {
+	public double getLong() {
 		return mLong;
 	}
 	
@@ -125,15 +125,15 @@ public class Spot {
 	/*
 	 * @return the 50 level of the spot
 	 */
-	public int getLevel() {
-		return mLevel;
+	public int getBust() {
+		return mBust;
 	}
 	
 	/*
 	 * @param level of the spot
 	 */
-	public void setLevel(int level) {
-		this.mLevel = level;
+	public void setBust(int level) {
+		this.mBust = level;
 	}
 	
 	
@@ -141,14 +141,14 @@ public class Spot {
 	 * @return the comments of the spot
 	 */
 	public String getComments() {
-		return mComments;
+		return mComments[0];
 	}
 	
 	/*
 	 * @param comments of the spot
 	 */
 	public void setComments(String comment){
-		this.mComments = comment;
+		this.mComments[0] = comment;
 	}
 	
 	/*
@@ -207,5 +207,21 @@ public class Spot {
 		return null;
 	}
 	
-	
+	/* Private constructor */
+	public Spot(int id, String name, String type,
+				 double lat, double lon, int rating,
+				 int diff, int bust, String[] comments,
+				 String image){
+		
+		this.mId = id;
+		this.mName = name;
+		this.mType = type;
+		this.mLat = lat;
+		this.mLong = lon;
+		this.mRating = rating;
+		this.mDiff = diff;
+		this.mBust = bust;
+		this.mComments = comments;
+		this.mImage = image;
+	}
 }

@@ -5,19 +5,13 @@
     android:id="@+id/relativeLayout1"   
     android:layout_width="match_parent"   
     android:layout_height="match_parent"
-    android:background="@drawable/list_view_style">
+    android:background="@drawable/info_window_edit_small"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp">
     
     <!--  SHOLD BE INFO_WINDOW_BACKGROUND -->
-      
-    <ImageView
-        android:contentDescription="@+id/titleOfSpot"
-        android:layout_width="80dp"   
-        android:layout_height="80dp"   
-        android:id="@+id/info_window_image"   
-        android:layout_alignParentLeft="true"  
-        android:layout_centerInParent="true"
-        android:scaleType="centerCrop">  
-    </ImageView>  
       
     <TextView   
         android:layout_height="wrap_content"   
@@ -26,10 +20,20 @@
         android:textStyle="bold"   
         android:textAllCaps="true"
         android:layout_toRightOf="@+id/info_window_image"
-        android:layout_alignTop="@+id/info_window_image" 
         android:layout_marginLeft="5dp"
         android:textColor="#FFF" >  
     </TextView>  
+    
+    <ImageView
+        android:contentDescription="@+id/titleOfSpot"
+        android:layout_width="80dp"   
+        android:layout_height="80dp"   
+        android:id="@+id/info_window_image"   
+        android:layout_alignParentLeft="true"  
+        android:layout_centerInParent="true"
+        android:layout_alignTop="@id/info_window_title"
+        android:scaleType="centerCrop">  
+    </ImageView>  
     
     <TextView   
         android:layout_height="wrap_content"   
@@ -37,7 +41,7 @@
         android:id="@+id/info_window_OverallRating"   
         android:layout_toRightOf="@+id/info_window_image"  
         android:layout_below="@+id/info_window_title"
-        android:layout_marginTop="5dp"  
+        android:layout_marginTop="10dp"  
         android:layout_marginLeft="5dp"
         android:textColor="#FFF">  
     </TextView>
@@ -48,7 +52,7 @@
         android:id="@+id/info_window_distance"   
         android:layout_toRightOf="@+id/info_window_image"  
         android:layout_below="@+id/info_window_OverallRating"
-        android:layout_marginTop="5dp"  
+        android:layout_marginTop="10dp"  
         android:layout_marginLeft="5dp"
         android:textColor="#FFF" >  
     </TextView>
@@ -71,6 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/info_window_title"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/info_window_distance" >
         
         <TextView   
@@ -100,6 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/info_window_title"
         android:layout_toRightOf="@+id/PoliceRatings" >
         

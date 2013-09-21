@@ -89,6 +89,7 @@ public class AddLocation extends Activity {
 		
 		// why does this not work?
 		if(FromPage.equals("ViewMap")){
+			// TODO only add the marker to the map if you press the "AddSpotButton" in addspot
 			LatLong = getIntent().getStringExtra("LatLong");
 			//LatLong = LatLong.substring(1, LatLong.length() - 1);
 			
@@ -166,12 +167,14 @@ public class AddLocation extends Activity {
 			
 			/*
 			if(list != null && list.get(0) != null){
+				// TODO THIS DOESNT WORK
 				address = list.get(0);
 					text = address.toString();
 					Toast toast0 = Toast.makeText(context, text, duration);
 					toast0.show();
 			}
 			else{
+					//TODO GETTING IOE EXCEPTION  
 					text = "SHEEEETTTT";
 					Toast toast1 = Toast.makeText(context, text, duration);
 					toast1.show();
@@ -194,11 +197,11 @@ public class AddLocation extends Activity {
 		
 		takePhotoButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				// Take picture
+				//TODO take picture
 				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 				startActivityForResult(intent, TAKE_PHOTO);
 				
-				// Save to file
+				// SAVE TO FILE
 				File f = null;
 				try {
 					f = createImageFile();
@@ -212,16 +215,34 @@ public class AddLocation extends Activity {
 				else{
 					//TODO output error message
 				}
+				
+				// TODO UNCOMMENT: FOR VIEWING THE PHOTO
+				//handleSmallCameraPhoto(takePictureIntent);
+				
+				/*
+				File storageDir = new File(
+					    Environment.getExternalStoragePublicDirectory(
+					        Environment.DIRECTORY_PICTURES
+					    ), 
+					    getAlbumName()
+					);   
+				
+				*/
 			}
 
 		});
 		
-		// Cancel button takes you back
+		// login Button takes you to the map view (ROB: YOU WILL NEED TO CHANGE THIS BACK TO MAPVIEW, not MainActivity)
 		cancelButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent intent = new Intent(AddLocation.this, ActionBarActivity.class);
 				setResult(Activity.RESULT_CANCELED, intent);
 				finish();
+				/*
+				Intent intent = new Intent(AddLocation.this,
+						MainActivity.class);
+				startActivity(intent);
+				*/
 			}
 		});
 		
@@ -330,11 +351,30 @@ public class AddLocation extends Activity {
 						}
 					}
 				}
+				/*
+			else{
+				// TODO better error message
+				text = "You came from an illegal page, try again!";
+
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
 			}
+			*/
+		}
+
+
 		});
 	}
 	
 	// NEW
+	
+	/* TODO UNCOMMENT
+	private void handleSmallCameraPhoto(Intent intent) {
+	    Bundle extras = intent.getExtras();
+	    mImageBitmap = (Bitmap) extras.get("data");
+	    mImageView.setImageBitmap(mImageBitmap);
+	}
+	*/
 	private void dispatchTakePictureIntent(final int actionCode) throws IOException {    
 	 // create Intent to take a picture and return control to the calling application
 	    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -402,6 +442,8 @@ public class AddLocation extends Activity {
 		            try {
 						spotImage = decodeUri(mSelectedImage);
 						uploadPhotoButton.setImageBitmap(spotImage);
+						//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
+						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -417,9 +459,14 @@ public class AddLocation extends Activity {
 		            Toast.makeText(this, "Image saved to:\n" +
 		                     data.getData(), Toast.LENGTH_LONG).show();
 		            mSelectedImage = data.getData();
+		            //TODO THE BUG IS SOMEWHERE IN THE TRY CATCH BLOCK
+		            
 		            try {
 						spotImage = decodeUri(mSelectedImage);
 						takePhotoButton.setImageBitmap(spotImage);
+						Toast.makeText(this, "GOT EM" +
+			                     data.getData(), Toast.LENGTH_LONG).show();
+						//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
 					} catch (FileNotFoundException e) {
 						Toast.makeText(this, "FILE NOT FOUND FUCKER", Toast.LENGTH_LONG).show();
 						e.printStackTrace();
@@ -427,9 +474,9 @@ public class AddLocation extends Activity {
 		            uploadPhotoButton.setClickable(false);
 		            
 		        } else if (resultCode == RESULT_CANCELED) {
-		        	Toast.makeText(this, "Image cancelled.", Toast.LENGTH_LONG).show();
+		        	Toast.makeText(this, "Image cancelled\n you suck", Toast.LENGTH_LONG).show();
 		        } else {
-		        	Toast.makeText(this, "Image failed.", Toast.LENGTH_LONG).show();
+		        	Toast.makeText(this, "Image FAILED\n you REALLY suck", Toast.LENGTH_LONG).show();
 		        }
 		        
 	            break;
@@ -492,4 +539,10 @@ public class AddLocation extends Activity {
 	    mCurrentPhotoPath = image.getAbsolutePath();
 	    return image;
 	}
+
+	// @Override
+	// public boolean onCreateOptionsMenu(Menu menu) {
+	// getMenuInflater().inflate(R.menu.activity_sign_up, menu);
+	// return true;
+	// }
 }

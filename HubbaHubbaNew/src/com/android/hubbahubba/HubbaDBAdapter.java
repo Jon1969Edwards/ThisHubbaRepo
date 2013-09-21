@@ -220,15 +220,8 @@ public class HubbaDBAdapter {
  	
  	
  	public void insertSomeSpots() {
- 		 
  		  createSpot("Drake Skate Park", "skate park", 42.535469, -83.399513, 5, 8, 2, "Drake skate park is awesome", null);
  		  createSpot("Riley Skate Park","skate park", 	42.4400061, -83.396546, 8, 2, 5, "This spot is awesome", null);
- 		  //createSpot("Hidden Spot", "rail",  123.6533, 948.2354, 2, 6, 9, "Hidden Spot is awesome", null);
- 		  //createSpot("My Secret Spot", "gap", 890.345, 3342.123, 3, 5, 5, "My secret spot is awesome", null );
- 		  //createSpot("Michigan's Best", "gap",  1.123, 991.123, 7, 8, 9, "Michigan's best spot is awesome", null);
- 		  //createSpot("Check this spot out", "hubba", 18.3456, 1829.374, 0, 9, 1, "check this spot out is awesome", null);
- 		  //createSpot("Favorite Spot", "skate park", 830.153, 198.38, 9, 6, 2, "Favorite Spot is awesome", null);
- 		 
  		 }
  	/*
  	This function allows you to search the DB by Lat/Long (as doubles) and return 

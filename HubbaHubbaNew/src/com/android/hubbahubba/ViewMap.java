@@ -137,7 +137,8 @@ public class ViewMap extends SherlockFragment {
 		 }while (c.moveToNext());
 		 dbHelper.close();
 		 //=======END OF NEW CODE======//
-
+		 
+	     
 	     //NEW STUFF
 	     mMap.setOnMapLongClickListener(new OnMapLongClickListener(
 					) {
@@ -285,7 +286,7 @@ public class ViewMap extends SherlockFragment {
 				toaster.show();
 
 
-				//dbHelper = new HubbaDBAdapter(context);
+				dbHelper = new HubbaDBAdapter(context);
 				// DOESNT WORK: HubbaDBAdapter dbHelper;
 				dbHelper.open();
 				Cursor cur;

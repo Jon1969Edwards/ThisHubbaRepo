@@ -269,11 +269,6 @@ public class SpotPage extends Activity {
 	}
 	
 	// NEW
-	private void handleSmallCameraPhoto(Intent intent) {
-	    Bundle extras = intent.getExtras();
-	    mImageBitmap = (Bitmap) extras.get("data");
-	    mImageView.setImageBitmap(mImageBitmap);
-	}
 	
 	private void dispatchTakePictureIntent(final int actionCode) throws IOException {    
 	 // create Intent to take a picture and return control to the calling application
