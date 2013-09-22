@@ -1,23 +1,19 @@
 package com.android.hubbahubba;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
 
 public class Spot {
 	
 	
-	private int mId;
-	private String mName;
-	private String mType;
-	private double mLat;
-	private double mLong;
-	private int mRating;
-	private int mDiff;
-	private int mBust;
-	private String[] mComments;
-	private String[] mImages;
+	private int sid;
+	private String name;
+	private String type;
+	private double lat;
+	private double lon;
+	private int rating;
+	private int diff;
+	private int bust;
+	private String[] comments;
+	// private String[] mImages; -- Search by spotid
 	
 	//=====================================================
 	//   Getters/Setters
@@ -27,98 +23,71 @@ public class Spot {
 	 * @return SpotId of this spot
 	 */
 	public int getId() {
-		return mId;
-	}
-	
-	/*
-	 * @param spotId set this spots Id
-	 */
-	public void setId(int spotId) {
-		this.mId = spotId;
+		return sid;
 	}
 	
 	/*
 	 * @return name of this spot
 	 */
 	public String getName() {
-		return mName;
+		return name;
 	}
 	
 	/*
 	 * @param name of this spot
 	 */
 	public void setName(String spotName) {
-		this.mName = spotName;
+		this.name = spotName;
 	}
 	
 	/*
 	 * @return type of spot
 	 */
 	public String getType() {
-		return mType;
+		return type;
 	}
 	
-	/*
-	 * @param type of spot
-	 */
-	public void setType(String type) {
-		this.mType = type;
-	}
 	
 	/*
 	 * @return the Latitude of the Spot
 	 */
 	public double getLat() {
-		return mLat;
-	}
-	
-	/*
-	 * @param Latitude of the spot
-	 */
-	public void setLat(int latitude){
-		this.mLat = latitude;
+		return lat;
 	}
 	
 	/*
 	 * @return the Longitude of the Spot
 	 */
 	public double getLong() {
-		return mLong;
-	}
-	
-	/*
-	 * @param Longitude of the spot
-	 */
-	public void setLong(int longitude) {
-		this.mLong = longitude;
+		return lon;
 	}
 	
 	/*
 	 * @return the Rating of the spot
 	 */
 	public int getRating() {
-		return mRating;
+		return rating;
 	}
 	
 	/*
 	 * @param the Rating of the spot
 	 */
 	public void setRating(int rating) {
-		this.mRating = rating;
+		this.rating = rating;
 	}
 	
 	/*
 	 * @return the difficulty of the spot
 	 */
 	public int getDiff() {
-		return mDiff;
+		return diff;
 	}
 	
 	/*
 	 * @param difficulty of the spot
 	 */
 	public void setDiff(int diff){
-		this.mDiff = diff;
+		this.diff = diff;
 	}
 	
 	
@@ -126,14 +95,14 @@ public class Spot {
 	 * @return the 50 level of the spot
 	 */
 	public int getBust() {
-		return mBust;
+		return bust;
 	}
 	
 	/*
 	 * @param level of the spot
 	 */
 	public void setBust(int level) {
-		this.mBust = level;
+		this.bust = level;
 	}
 	
 	
@@ -141,22 +110,23 @@ public class Spot {
 	 * @return the comments of the spot
 	 */
 	public String getComments() {
-		return mComments[0];
+		return comments[0];
 	}
 	
 	/*
 	 * @param comments of the spot
 	 */
 	public void setComments(String comment){
-		this.mComments[0] = comment;
+		this.comments[0] = comment;
 	}
 	
 	/*
 	 * @return the imageURI of an image
-	 */
+	 
 	public String[] getImages() {
 		return mImages;
 	}
+	*/
 	
 	/*
 	 * @param imageUri of an image of the spot
@@ -166,61 +136,102 @@ public class Spot {
 	}
 	*/
 	
-	//==========================================
-	//    BASIC MODEL / OBJECT IMPLEMENTATIONS
-	//==========================================
-	
-	public List<NameValuePair> getRequestParams() {
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		return params;
-	}
-	
-	/*
-	 * Create / update the Model / Object from a JSON object
-	 */
-	public static void createFromJson() {}
-	
-	/*
-	 * Checks to see if the model/object already exists in the database
-	 * based on the unique ID of that model/object class. 
-	 * @return True if there is alrady a row in the database that matches
-	 * that id. False otherwise.
-	 */
-	public static boolean alreadyExists(String id){
-		return false;
-	}
-	
-	/*
-	 * Update an existing Model/object with new data.
-	 * @return the Model/Object
-	 */
-	public static Spot updateModel() {
-		return null;
-	}
-	
-	/*
-	 * Create a new Model/Object
-	 * @return The New Model/Object
-	 */
-	public static Spot createModel() {
-		return null;
-	}
-	
 	/* Public constructor */
-	public Spot(int id, String name, String type,
+	private Spot(int sid, String name, String type,
 				 double lat, double lon, int rating,
 				 int diff, int bust, String[] comments,
 				 String[] images){
 		
-		this.mId = id;
-		this.mName = name;
-		this.mType = type;
-		this.mLat = lat;
-		this.mLong = lon;
-		this.mRating = rating;
-		this.mDiff = diff;
-		this.mBust = bust;
-		this.mComments = comments;
-		this.mImages = images;
+		this.sid = sid;
+		this.name = name;
+		this.type = type;
+		this.lat = lat;
+		this.lon = lon;
+		this.rating = rating;
+		this.diff = diff;
+		this.bust = bust;
+		this.comments = comments;
+		//this.mImages = images;
+	}
+	
+	/* ===========================================
+	 * Spot Functions
+	 * ===========================================
+	 */
+	
+	/* query DB for spot in immediate area, if no spot return false
+	 * else return true
+	 */
+	public static boolean spotExists(double lat, double lon){
+		return true;
+	}
+	
+	/* creates a spot given the info for the spot */
+	public static Spot createSpot(String name, String type, double lat,
+							  double lon, int rating, int diff, int bust,
+							  String comment, String image){
+		
+		// If there is a spot there (or around), do not create a new one
+		if(spotExists(lat, lon)){
+			// TODO - Or throw
+			return null;
+		}
+		
+		/* create new array for comments and images*/
+		String[] comments = new String[1];
+		comments[0] = comment;
+		String[] images = new String[1];
+		images[0] = image;
+		
+		/* TODO - Insert Spot into DB here */
+		
+		return null;
+	}
+	
+	public static Spot getSpotByID(int sid){
+		// TODO
+		return null;
+	}
+	
+	public static Spot getSpotByName(String name){
+		// TODO
+		return null;
+	}
+	
+	public static Spot getSpotByType(String type){
+		// TODO
+		return null;
+	}
+	
+	public static Spot getSpotByLatLong(double lat, double lon){
+		// TODO
+		return null;
+	}
+	
+	public static boolean alreadyExists(double lat, double lon){
+		// TODO - checks if there is a spot within N feet of the
+		// Spot someone is trying to add -- false if none there
+		return false;
+	}
+	
+	/* 
+	 * For returning more than one spot
+	 * This could be used for search functions
+	 * or for populating with all spots
+	 */
+	
+	public static Spot[] getSpotsByName(String name){
+		// TODO
+		return null;
+	}
+	
+	public static Spot[] getSpotsByType(String type){
+		// TODO
+		return null;
+	}
+	
+	public static Spot[] getAllSpots(){
+		// TODO - Get all Spots
+		return null;
 	}
 }
