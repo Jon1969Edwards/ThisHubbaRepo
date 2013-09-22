@@ -3,7 +3,7 @@ package com.android.hubbahubba;
 
 public class Spot {
 	
-	
+	// Member Variables
 	private int sid;
 	private String name;
 	private String type;

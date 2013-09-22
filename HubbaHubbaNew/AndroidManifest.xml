@@ -51,7 +51,6 @@
             android:theme="@style/Theme.Sherlock.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -70,6 +69,15 @@
         <activity
             android:name=".ViewMap"
             android:label="@string/viewMap" >
+        </activity>
+        <activity
+            android:name=".UploadImage"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="uploadImage" >
+        </activity>
+        <activity
+            android:name=".UploadComment"
+            android:label="uploadComment" >
         </activity>
         <activity
             android:name=".ListViewHubba"

@@ -1156,6 +1156,7 @@ containing a value of this type.
         public static final int buttons=0x7f040049;
         public static final int cancelButton=0x7f040057;
         public static final int cityStateZip=0x7f040055;
+        public static final int comment=0x7f0400ac;
         public static final int commentBlock=0x7f04007b;
         public static final int comments=0x7f04007a;
         public static final int commentsButton=0x7f04004b;
@@ -1203,7 +1204,7 @@ containing a value of this type.
         public static final int logInButton=0x7f04003e;
         public static final int map=0x7f040050;
         public static final int map_container=0x7f04004f;
-        public static final int menu_settings=0x7f0400ac;
+        public static final int menu_settings=0x7f0400af;
         public static final int miles=0x7f04009f;
         public static final int name=0x7f040040;
         public static final int nineButtonDanger=0x7f04006d;
@@ -1219,6 +1220,7 @@ containing a value of this type.
         public static final int photog_text=0x7f040099;
         public static final int ratings=0x7f04007e;
         public static final int relativeLayout1=0x7f04007d;
+        public static final int rider=0x7f0400ae;
         public static final int rider_text=0x7f040098;
         public static final int rowView=0x7f040048;
         public static final int satellite=0x7f040002;
@@ -1266,6 +1268,7 @@ containing a value of this type.
         public static final int txtUsername=0x7f04007f;
         public static final int uploadPhotoButton=0x7f04004e;
         public static final int useLogo=0x7f040008;
+        public static final int user=0x7f0400ad;
         public static final int username=0x7f040042;
         public static final int viewMapButton=0x7f04004a;
         public static final int wrap_content=0x7f040005;
@@ -1320,6 +1323,8 @@ containing a value of this type.
         public static final int spot_info_updated=0x7f03002b;
         public static final int spot_page_comments=0x7f03002c;
         public static final int spot_page_layout=0x7f03002d;
+        public static final int upload_comment=0x7f03002e;
+        public static final int upload_image=0x7f03002f;
     }
     public static final class menu {
         public static final int activity_list_view=0x7f0c0000;

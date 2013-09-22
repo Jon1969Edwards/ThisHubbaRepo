@@ -371,6 +371,7 @@ int id btn_update 0x7f040092
 int id buttons 0x7f040049
 int id cancelButton 0x7f040057
 int id cityStateZip 0x7f040055
+int id comment 0x7f0400ac
 int id commentBlock 0x7f04007b
 int id comments 0x7f04007a
 int id commentsButton 0x7f04004b
@@ -418,7 +419,7 @@ int id locateOnMap 0x7f040052
 int id logInButton 0x7f04003e
 int id map 0x7f040050
 int id map_container 0x7f04004f
-int id menu_settings 0x7f0400ac
+int id menu_settings 0x7f0400af
 int id miles 0x7f04009f
 int id name 0x7f040040
 int id nineButtonDanger 0x7f04006d
@@ -434,6 +435,7 @@ int id password 0x7f0400a7
 int id photog_text 0x7f040099
 int id ratings 0x7f04007e
 int id relativeLayout1 0x7f04007d
+int id rider 0x7f0400ae
 int id rider_text 0x7f040098
 int id rowView 0x7f040048
 int id satellite 0x7f040002
@@ -481,6 +483,7 @@ int id txtType 0x7f0400aa
 int id txtUsername 0x7f04007f
 int id uploadPhotoButton 0x7f04004e
 int id useLogo 0x7f040008
+int id user 0x7f0400ad
 int id username 0x7f040042
 int id viewMapButton 0x7f04004a
 int id wrap_content 0x7f040005
@@ -531,6 +534,8 @@ int layout spinner_row 0x7f03002a
 int layout spot_info_updated 0x7f03002b
 int layout spot_page_comments 0x7f03002c
 int layout spot_page_layout 0x7f03002d
+int layout upload_comment 0x7f03002e
+int layout upload_image 0x7f03002f
 int menu activity_list_view 0x7f0c0000
 int menu activity_main 0x7f0c0001
 int menu activity_sign_up 0x7f0c0002

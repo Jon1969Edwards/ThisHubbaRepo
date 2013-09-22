@@ -2,6 +2,7 @@ package com.android.hubbahubba;
 
 public class User {
 	
+	// Member variables
 	private String name;
 	private String pass;
 	// private int[] spotsRated;	// ID's of spots the user has rated

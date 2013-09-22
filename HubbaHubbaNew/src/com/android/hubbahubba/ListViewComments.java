@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class ListViewComments extends Activity {
@@ -18,6 +22,15 @@ public class ListViewComments extends Activity {
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.spot_page_comments);
+        
+        Button uploadPhotoButton = (Button) findViewById(R.id.uploadPhotoButton);
+        
+        uploadPhotoButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent intent = new Intent(ListViewComments.this, UploadImage.class);
+				startActivity(intent);
+			}
+		});
         
         ListView lv = (ListView) findViewById(R.id.listViewComments);
         List<ListViewCommentsItem> items = new ArrayList<ListViewComments.ListViewCommentsItem>();
