@@ -47,7 +47,6 @@ public class Spot {
 		return type;
 	}
 	
-	
 	/*
 	 * @return the Latitude of the Spot
 	 */

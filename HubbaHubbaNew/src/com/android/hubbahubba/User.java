@@ -8,10 +8,15 @@ public class User {
 	// private int[] imagesRated;	// ID's of images the user has rated
 	private int ukey;
 	private int akey;
+	private int[] favs;
 	
 	/* Getters */
 	public String getName() {
 		return name;
+	}
+	
+	public int[] getFavs(){
+		return favs;
 	}
 	
 	public int getUkey(){
@@ -29,11 +34,12 @@ public class User {
 	}
 	
 	/* Private constructor */
-	private User(String name, String pass, int ukey, int akey){
+	private User(String name, String pass, int ukey, int akey, int[] favs){
 		this.name = name;
 		this.pass = pass;
 		this.ukey = ukey;
 		this.akey = akey;
+		this.favs = favs;
 	}
 	
 	/* 

@@ -36,9 +36,9 @@
 	  android:required="true"/>
 
     <application
-        android:icon="@drawable/gettinthere"
+        android:icon="@drawable/icon_hubba"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         
         <!-- ALLOWS FOR GOOGLE MAPS API -->
         <meta-data
