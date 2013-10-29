@@ -15,12 +15,13 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class UploadComment extends Activity{
 	// WILL BE USED LATER
-	int diffClicked = 0;
-	int overallClicked = 0;
-	int poClicked = 0;
+	int diffClicked = -1;
+	int overallClicked = -1;
+	int poClicked = -1;
 	EditText mComment;
 
 	@Override
@@ -673,43 +674,39 @@ public class UploadComment extends Activity{
 		});
 
 		// by pressing submit, you insert comment into DB
-		Button addSpotButton = (Button) findViewById(R.id.addSpotButton);
-		addSpotButton.setOnClickListener(new View.OnClickListener() {
-
-			// @Override
+		Button addCommentButton = (Button) findViewById(R.id.addCommentButton);
+		addCommentButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				String stringComments;
-				int intRate, intDiff, intLevel;
-
-				// Get info
-				intRate = overallClicked;
-				intDiff = diffClicked;
-				intLevel = poClicked;
-				stringComments = mComment.getText().toString();
-				
-				//now return to listview
-				Intent intent = new Intent(UploadComment.this, ActionBarActivity.class);
-				setResult(Activity.RESULT_OK, intent);
-				startActivity(intent);
-				
-				//return true;
+				String stringComments = mComment.getText().toString();
+				if(overallClicked != -1 && diffClicked != -1 && poClicked != -1 && stringComments.trim().length() > 0){
+					// define vars
+					int intRate, intDiff, intLevel;
+	
+					// Get info
+					intRate = overallClicked;
+					intDiff = diffClicked;
+					intLevel = poClicked;
+					
+					// TODO: Add comment to the DB HERE
+					
+					// TODO: now return to listview for correct spot
+					Intent intent = new Intent(UploadComment.this, ListViewComments.class);
+					setResult(Activity.RESULT_OK, intent);
+					startActivity(intent);
+					
+					//return true;
+				}
+				else{
+					Context context = getApplicationContext();
+					CharSequence text = "Please complete all fields";
+					int duration = Toast.LENGTH_SHORT;
+					
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				}
 			}
 
 		});
 
 	}
-	
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private String getRealPathFromUri(Uri contentUri) {
-		Context context = getApplicationContext();
-	    String[] proj = { MediaStore.Images.Media.DATA };
-	    CursorLoader loader = new CursorLoader(context, contentUri, proj, null, null, null);
-	    Cursor cursor = loader.loadInBackground();
-	    int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-	    cursor.moveToFirst();
-	    return cursor.getString(column_index);
-	}
-
 }

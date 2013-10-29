@@ -14,12 +14,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -27,7 +26,8 @@ import android.widget.Toast;
 public class UploadImage extends Activity{
 
 	//declare Strings to pass through to AddSpot activity
-	Button cancelButton, locateOnMapButton, continueButton;
+	Button cancelButton, locateOnMapButton, uploadButton;
+	EditText riderName, userName;
     
     //for take photo
 	String mCurrentPhotoPath;
@@ -35,12 +35,11 @@ public class UploadImage extends Activity{
 	ImageButton takePhotoButton, uploadPhotoButton;
 	String mImagePath;
 	Uri imageViewUri;
-	Uri mSelectedImage = Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);
+	Uri mSelectedImage = null;//Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);
 	Bitmap spotImage;
 	Bitmap mImageBitmap;
 	ImageView mImageView;
-	private Uri fileUri;
-    private static final int SELECT_PHOTO = 1;
+	private static final int SELECT_PHOTO = 1;
     private static final int TAKE_PHOTO = 2;
     public static final int MEDIA_TYPE_IMAGE = 3;
 	public static final int MEDIA_TYPE_VIDEO = 4;
@@ -54,18 +53,17 @@ public class UploadImage extends Activity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.add_location_layout);
+		setContentView(R.layout.upload_image);
 		
-		// FOR TOAST
-		Context context = getApplicationContext();
-		int duration = Toast.LENGTH_LONG;
-		String text;
 		
 		//initialize all needed objects 
 		cancelButton = (Button) findViewById(R.id.cancelButton);
-		continueButton = (Button) findViewById(R.id.continueButton);
+		uploadButton = (Button) findViewById(R.id.uploadButton);
 		takePhotoButton = (ImageButton) findViewById(R.id.takePhotoButton);
 		uploadPhotoButton = (ImageButton) findViewById(R.id.uploadPhotoButton);
+		riderName = (EditText) findViewById(R.id.rider);
+		userName = (EditText) findViewById(R.id.user);
+		
 		
 		uploadPhotoButton.setOnClickListener(new OnClickListener() {
 			@Override
@@ -110,79 +108,35 @@ public class UploadImage extends Activity{
 			}
 		});
 
-		continueButton.setOnClickListener(new View.OnClickListener() {
+		uploadButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Context context = getApplicationContext();
 				int duration = Toast.LENGTH_LONG;
 				CharSequence text;
-
-				Intent intent = new Intent(UploadImage.this, AddSpot.class);
-				intent.putExtra("mSelectedImage", mSelectedImage.toString());
-				
-				text = mSelectedImage.toString();
-				Toast toaster = Toast.makeText(context, text, duration);
-				toaster.show();
-				
-				startActivity(intent);
+				if(mSelectedImage != null && riderName.getText().toString().trim().length() > 0 && userName.getText().toString().trim().length() > 0){
+					
+					// TODO: this should go back to the spot page
+					//Intent intent = new Intent(UploadImage.this, ListViewHubba.class);
+					
+					
+					text = mSelectedImage.toString();
+					Toast toaster = Toast.makeText(context, text, duration);
+					toaster.show();
+					
+					// TODO: Add image to the DB Here
+					
+					//startActivity(intent);
+					finish();
+				}
+				else{
+					text = "Please fill out all fields to continue";
+					Toast toaster = Toast.makeText(context, text, duration);
+					toaster.show();
+				}
 			}
 		});
 	}
 	
-	private void dispatchTakePictureIntent(final int actionCode) throws IOException {    
-	 // create Intent to take a picture and return control to the calling application
-	    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-	    fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
-	    intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-	    intent.setType("image/*");
-	    
-	    // start the image capture Intent
-	    startActivityForResult(intent, actionCode);
-	    
-	    File f = createImageFile();
-	    //intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-	}
-	
-	/** Create a file Uri for saving an image or video */
-	private static Uri getOutputMediaFileUri(int type){
-	      return Uri.fromFile(getOutputMediaFile(type));
-	}
-	
-	/** Create a File for saving an image or video */
-	@SuppressLint("SimpleDateFormat")
-	private static File getOutputMediaFile(int type){
-	    // To be safe, you should check that the SDCard is mounted
-	    // using Environment.getExternalStorageState() before doing this.
-
-	    File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-	              Environment.DIRECTORY_PICTURES), "MyCameraApp");
-	    // This location works best if you want the created images to be shared
-	    // between applications and persist after your app has been uninstalled.
-
-	    // Create the storage directory if it does not exist
-	    if (! mediaStorageDir.exists()){
-	        if (! mediaStorageDir.mkdirs()){
-	            Log.d("MyCameraApp", "failed to create directory");
-	            return null;
-	        }
-	    }
-
-	    // Create a media file name
-	    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-	    File mediaFile;
-	    if (type == MEDIA_TYPE_IMAGE){
-	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-	        "HUBBA_HUBBA_IMG_"+ timeStamp + ".jpg");
-	    } else if(type == MEDIA_TYPE_VIDEO) {
-	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-	        "HUBBA_HUBBA_VID_"+ timeStamp + ".mp4");
-	    } else {
-	        return null;
-	    }
-
-	    return mediaFile;
-	}
-
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    switch(requestCode) {
@@ -217,7 +171,7 @@ public class UploadImage extends Activity{
 		            try {
 						spotImage = decodeUri(mSelectedImage);
 						takePhotoButton.setImageBitmap(spotImage);
-						Toast.makeText(this, "GOT EM" +
+						Toast.makeText(this, "GOT EM " +
 			                     data.getData(), Toast.LENGTH_LONG).show();
 						//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
 					} catch (FileNotFoundException e) {

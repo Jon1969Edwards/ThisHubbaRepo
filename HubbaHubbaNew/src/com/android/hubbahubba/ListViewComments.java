@@ -27,7 +27,7 @@ public class ListViewComments extends Activity {
         
         uploadPhotoButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Intent intent = new Intent(ListViewComments.this, UploadImage.class);
+				Intent intent = new Intent(ListViewComments.this, UploadComment.class);
 				startActivity(intent);
 			}
 		});

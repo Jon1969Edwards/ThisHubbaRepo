@@ -99,7 +99,7 @@
 	            android:textSize="20sp" />
 	
 	        <Button
-	            android:id="@+id/continueButton"
+	            android:id="@+id/uploadButton"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_alignParentRight="true"
@@ -108,7 +108,7 @@
 	            android:background="@drawable/button_layout_3"
 	            android:gravity="center"
 	            android:padding="10dp"
-	            android:text="@string/continu"
+	            android:text="@string/uploadPhoto"
 	            android:textColor="#FFF"
 	            android:textSize="20sp" />
 	    </RelativeLayout>

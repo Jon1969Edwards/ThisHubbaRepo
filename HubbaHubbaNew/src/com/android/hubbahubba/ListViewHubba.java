@@ -96,9 +96,6 @@ public class ListViewHubba extends SherlockFragment {
 		listView.setAdapter(dataAdapter);
 
 		
-
-
-		
 		//short press is to view the spot (SpotPage.java)
 		listView.setOnItemClickListener(new OnItemClickListener() {
 

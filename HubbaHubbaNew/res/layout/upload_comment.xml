@@ -499,7 +499,7 @@
 
             <Button
                 android:layout_marginTop="20dp"
-                android:id="@+id/addSpotButton"
+                android:id="@+id/addCommentButton"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

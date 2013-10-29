@@ -6,23 +6,20 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ViewImage extends Activity {
 
 	int mImageID;
 	Bitmap mBitmap;
 	ImageView imageView;
-	int counter;				//TODO from db
-	int negCounter;				//TODO from db
-	boolean votedOn = false;	//TODO from db
-
-	// ImageLoader imageLoader = ImageLoader.getInstance();
-	// private Context mContext;
-
-	// public ViewImage(Context c) {
-	// mContext = c;
-	// }
+	int counter;				// TODO from db
+	int negCounter;				// TODO from db
+	boolean votedOn = false;	// TODO from db
+	String rider;				// TODO from db
+	String photog;				// TODO from db
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +32,6 @@ public class ViewImage extends Activity {
 		if (bundle != null) {
 			mImageID = bundle.getInt("imageName");
 
-			// SET IMAGE LOADER
-			//imageView.setLayoutParams(new LayoutParams(720, 960));
-			//imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
-			// DisplayImageOptions options = new DisplayImageOptions.Builder()
-			// .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
-			// .showImageForEmptyUri(R.drawable.ic_empty)
-			// .showImageOnFail(R.drawable.ic_error)
-			// .cacheInMemory()
-			// .cacheOnDisc()
-			// .bitmapConfig(Bitmap.Config.RGB_565)
-			// .build();
-			//
-			// imageLoader.init(ImageLoaderConfiguration.createDefault(mContext));
-			// imageLoader.displayImage("drawable://" + mImageID, imageView,
-			// options);
-
 			BitmapFactory.Options bfo = new BitmapFactory.Options();
 			bfo.inSampleSize = 2;
 			mBitmap = BitmapFactory.decodeResource(getResources(), mImageID, bfo);
@@ -61,6 +41,11 @@ public class ViewImage extends Activity {
 		//Buttons to incriment/decriment counter
 		Button thumbsUpButton= (Button) findViewById(R.id.thumbs_up);
 		Button thumbsDownButton= (Button) findViewById(R.id.thumbs_down);
+		
+		// TODO: TO BE FILLED FROM THE DB
+		TextView rider = (EditText) findViewById(R.id.rider_text);
+		TextView photog = (EditText) findViewById(R.id.photog_text);
+		
 		
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view){
@@ -80,7 +65,5 @@ public class ViewImage extends Activity {
         	}
         });
 
-
 	};
-
 }

@@ -204,15 +204,10 @@ public class SpotPage extends Activity {
 				}
 
 			});
-			/*
-			uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					Intent intent = new Intent(SpotPage.this, MainActivity.class);
-					startActivity(intent);
-				}
-
-			});
-			*/
+			/* 
+			 * TODO: DELETE THIS IF YOU WANT TO HAVE 1 PHOTO INTENT
+			 * -------- GO TO PICK PHOTO INTENT --------
+			 
 			uploadPhotosButton.setOnTouchListener(new OnTouchListener() {
 
 				// @Override
@@ -226,6 +221,16 @@ public class SpotPage extends Activity {
 				}
 				
 			});
+			*/
+			
+			uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View view) {
+					Intent intent = new Intent(SpotPage.this, UploadImage.class);
+					startActivity(intent);
+				}
+			});
+			
+			
 			
 			favoritesButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View view) {

@@ -363,6 +363,7 @@ int id abs__textButton 0x7f040017
 int id abs__title 0x7f04001f
 int id abs__titleDivider 0x7f040020
 int id abs__up 0x7f04000f
+int id addCommentButton 0x7f0400ad
 int id addSpotButton 0x7f04007c
 int id address 0x7f040054
 int id browseButton 0x7f04008f
@@ -419,7 +420,7 @@ int id locateOnMap 0x7f040052
 int id logInButton 0x7f04003e
 int id map 0x7f040050
 int id map_container 0x7f04004f
-int id menu_settings 0x7f0400af
+int id menu_settings 0x7f0400b1
 int id miles 0x7f04009f
 int id name 0x7f040040
 int id nineButtonDanger 0x7f04006d
@@ -435,7 +436,7 @@ int id password 0x7f0400a7
 int id photog_text 0x7f040099
 int id ratings 0x7f04007e
 int id relativeLayout1 0x7f04007d
-int id rider 0x7f0400ae
+int id rider 0x7f0400af
 int id rider_text 0x7f040098
 int id rowView 0x7f040048
 int id satellite 0x7f040002
@@ -481,9 +482,10 @@ int id txtPolice 0x7f040083
 int id txtTitle 0x7f0400a5
 int id txtType 0x7f0400aa
 int id txtUsername 0x7f04007f
+int id uploadButton 0x7f0400b0
 int id uploadPhotoButton 0x7f04004e
 int id useLogo 0x7f040008
-int id user 0x7f0400ad
+int id user 0x7f0400ae
 int id username 0x7f040042
 int id viewMapButton 0x7f04004a
 int id wrap_content 0x7f040005

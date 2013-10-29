@@ -1148,6 +1148,7 @@ containing a value of this type.
         public static final int abs__title=0x7f04001f;
         public static final int abs__titleDivider=0x7f040020;
         public static final int abs__up=0x7f04000f;
+        public static final int addCommentButton=0x7f0400ad;
         public static final int addSpotButton=0x7f04007c;
         public static final int address=0x7f040054;
         public static final int browseButton=0x7f04008f;
@@ -1204,7 +1205,7 @@ containing a value of this type.
         public static final int logInButton=0x7f04003e;
         public static final int map=0x7f040050;
         public static final int map_container=0x7f04004f;
-        public static final int menu_settings=0x7f0400af;
+        public static final int menu_settings=0x7f0400b1;
         public static final int miles=0x7f04009f;
         public static final int name=0x7f040040;
         public static final int nineButtonDanger=0x7f04006d;
@@ -1220,7 +1221,7 @@ containing a value of this type.
         public static final int photog_text=0x7f040099;
         public static final int ratings=0x7f04007e;
         public static final int relativeLayout1=0x7f04007d;
-        public static final int rider=0x7f0400ae;
+        public static final int rider=0x7f0400af;
         public static final int rider_text=0x7f040098;
         public static final int rowView=0x7f040048;
         public static final int satellite=0x7f040002;
@@ -1266,9 +1267,10 @@ containing a value of this type.
         public static final int txtTitle=0x7f0400a5;
         public static final int txtType=0x7f0400aa;
         public static final int txtUsername=0x7f04007f;
+        public static final int uploadButton=0x7f0400b0;
         public static final int uploadPhotoButton=0x7f04004e;
         public static final int useLogo=0x7f040008;
-        public static final int user=0x7f0400ad;
+        public static final int user=0x7f0400ae;
         public static final int username=0x7f040042;
         public static final int viewMapButton=0x7f04004a;
         public static final int wrap_content=0x7f040005;
