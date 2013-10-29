@@ -90,13 +90,13 @@
 	        android:layout_weight="1"
 	        android:textAllCaps="true"
 	        android:layout_height="wrap_content"
-	        android:text="@string/uploadPhoto"
+	        android:text="Add Photo"
 	        tools:context=".MainActivity"
 	        android:textSize="18sp"
 	        android:textColor="@drawable/button_color_3"
 	        android:background="@drawable/button_layout"/>
 	    
-	    <Button
+	    <!-- Button
 	        android:id = "@+id/takePhotoButton"
 	        android:paddingTop="10dp"
 	        android:layout_width="0dp"
@@ -107,7 +107,7 @@
 	        tools:context=".MainActivity"
 	        android:textSize="18sp"
 	        android:textColor="@drawable/button_color_3"
-	        android:background="@drawable/button_layout"/>
+	        android:background="@drawable/button_layout"/-->
     </LinearLayout>
 
 </RelativeLayout>

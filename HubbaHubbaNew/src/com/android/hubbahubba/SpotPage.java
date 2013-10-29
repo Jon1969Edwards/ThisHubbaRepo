@@ -148,8 +148,8 @@ public class SpotPage extends Activity {
 			Button uploadPhotosButton = (Button) findViewById(R.id.uploadPhotoButton);
 			Button commentsButton = (Button) findViewById(R.id.commentsButton);
 			Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
-			Button takePhotoButton = (Button) findViewById(R.id.takePhotoButton);
-			
+			//Button takePhotoButton = (Button) findViewById(R.id.takePhotoButton);
+			/*
 			takePhotoButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View view) {
 					//TODO take picture
@@ -193,10 +193,10 @@ public class SpotPage extends Activity {
 						);   
 					
 					*/
-				}
+				/*}
 
 			});
-
+			*/
 			viewMapButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View view) {
 					Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
