@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,8 +42,8 @@ public class ViewImage extends Activity {
 		Button thumbsDownButton= (Button) findViewById(R.id.thumbs_down);
 		
 		// TODO: TO BE FILLED FROM THE DB
-		TextView rider = (EditText) findViewById(R.id.rider_text);
-		TextView photog = (EditText) findViewById(R.id.photog_text);
+		TextView rider = (TextView) findViewById(R.id.rider_text);
+		TextView photog = (TextView) findViewById(R.id.photog_text);
 		
 		
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {

@@ -16,9 +16,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -263,13 +261,13 @@ public class SpotPage extends Activity {
 				}
 			});
 			
-			
+			/*
 			//TO AVOID SCROLLING LAGS
 			boolean pauseOnScroll = false; // or true
 			boolean pauseOnFling = true; // or false
 			PauseOnScrollListener listener = new PauseOnScrollListener(imageLoader, pauseOnScroll, pauseOnFling);
 			gridview.setOnScrollListener(listener);
-			
+			*/
 			
 	}
 	
@@ -371,36 +369,6 @@ public class SpotPage extends Activity {
 	    return image;
 	}
 	
-	// WAS A TESTER FUNCTION
-	/*	
-	private void copyTestImageToSdCard(final File testImageOnSdCard) {
-		new Thread(new Runnable() {
-				@Override
-				public void run() {
-					try {
-					InputStream is = getAssets().open(TEST_FILE_NAME);
-					FileOutputStream fos = new FileOutputStream(testImageOnSdCard);
-					byte[] buffer = new byte[8192];
-					int read;
-						try {
-							while ((read = is.read(buffer)) != -1) {
-								fos.write(buffer, 0, read);
-							}
-						}
-						finally {
-								fos.flush();
-								fos.close();
-								is.close();
-								}
-						}
-						catch (IOException e) {
-							L.w("Can't copy test image onto SD card");
-						}
-				}
-		})
-		.start();
-	}
-	*/
 	/*
 	@Override
 	protected void onDestroy() {

@@ -42,16 +42,14 @@ public class ImageAdapter extends BaseAdapter {
         //imageLoader.destroy();
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
+            //imageView.setLayoutParams(new GridView.LayoutParams(-1, -1));
+            imageView.setLayoutParams(new GridView.LayoutParams(-1, 200));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             //imageView.setPadding(8, 8, 8, 8);
         }
         else {
             imageView = (ImageView) convertView;
         }
-        
-        //imageView.setImageResource(mThumbIds[position]);
-        
         
         //set options
         DisplayImageOptions options = new DisplayImageOptions.Builder()
