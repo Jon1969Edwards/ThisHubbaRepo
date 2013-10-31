@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 eecs499. All rights reserved.
 //
 
-#import "login.h"
+#import "loginPage.h"
 
 @interface login ()
 

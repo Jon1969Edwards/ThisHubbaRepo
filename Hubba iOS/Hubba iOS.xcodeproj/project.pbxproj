@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04910DC11821CF8100719010 /* mapPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04910DBF1821CF8100719010 /* mapPage.m */; };
+		04910DC21821CF8100719010 /* mapPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04910DC01821CF8100719010 /* mapPage.xib */; };
 		04BD5818182093270014D419 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5817182093270014D419 /* Foundation.framework */; };
 		04BD581A182093270014D419 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5819182093270014D419 /* CoreGraphics.framework */; };
 		04BD581C182093270014D419 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD581B182093270014D419 /* UIKit.framework */; };
 		04BD5822182093270014D419 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04BD5820182093270014D419 /* InfoPlist.strings */; };
 		04BD5824182093270014D419 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD5823182093270014D419 /* main.m */; };
 		04BD5828182093270014D419 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD5827182093270014D419 /* AppDelegate.m */; };
-		04BD582E182093270014D419 /* login.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD582D182093270014D419 /* login.m */; };
+		04BD582E182093270014D419 /* loginPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD582D182093270014D419 /* loginPage.m */; };
 		04BD5830182093270014D419 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BD582F182093270014D419 /* Images.xcassets */; };
 		04BD5837182093270014D419 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5836182093270014D419 /* XCTest.framework */; };
 		04BD5838182093270014D419 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5817182093270014D419 /* Foundation.framework */; };
 		04BD5839182093270014D419 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD581B182093270014D419 /* UIKit.framework */; };
 		04BD5841182093270014D419 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04BD583F182093270014D419 /* InfoPlist.strings */; };
 		04BD5843182093270014D419 /* Hubba_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD5842182093270014D419 /* Hubba_iOSTests.m */; };
-		04BD584F182093A20014D419 /* login.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BD584E182093A20014D419 /* login.xib */; };
+		04BD584F182093A20014D419 /* loginPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BD584E182093A20014D419 /* loginPage.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04910DBE1821CF8100719010 /* mapPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapPage.h; sourceTree = "<group>"; };
+		04910DBF1821CF8100719010 /* mapPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapPage.m; sourceTree = "<group>"; };
+		04910DC01821CF8100719010 /* mapPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mapPage.xib; sourceTree = "<group>"; };
 		04BD5814182093270014D419 /* Hubba iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hubba iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BD5817182093270014D419 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04BD5819182093270014D419 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -44,15 +49,15 @@
 		04BD5825182093270014D419 /* Hubba iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hubba iOS-Prefix.pch"; sourceTree = "<group>"; };
 		04BD5826182093270014D419 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04BD5827182093270014D419 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04BD582C182093270014D419 /* login.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = login.h; sourceTree = "<group>"; };
-		04BD582D182093270014D419 /* login.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = login.m; sourceTree = "<group>"; };
+		04BD582C182093270014D419 /* loginPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginPage.h; sourceTree = "<group>"; };
+		04BD582D182093270014D419 /* loginPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loginPage.m; sourceTree = "<group>"; };
 		04BD582F182093270014D419 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		04BD5835182093270014D419 /* Hubba iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hubba iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BD5836182093270014D419 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		04BD583E182093270014D419 /* Hubba iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hubba iOSTests-Info.plist"; sourceTree = "<group>"; };
 		04BD5840182093270014D419 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04BD5842182093270014D419 /* Hubba_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hubba_iOSTests.m; sourceTree = "<group>"; };
-		04BD584E182093A20014D419 /* login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = login.xib; sourceTree = "<group>"; };
+		04BD584E182093A20014D419 /* loginPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = loginPage.xib; sourceTree = "<group>"; };
 		04BD58501820942C0014D419 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,8 +161,10 @@
 		04BD584C182093650014D419 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				04BD582C182093270014D419 /* login.h */,
-				04BD582D182093270014D419 /* login.m */,
+				04BD582C182093270014D419 /* loginPage.h */,
+				04BD582D182093270014D419 /* loginPage.m */,
+				04910DBE1821CF8100719010 /* mapPage.h */,
+				04910DBF1821CF8100719010 /* mapPage.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -165,7 +172,8 @@
 		04BD584D182093750014D419 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				04BD584E182093A20014D419 /* login.xib */,
+				04BD584E182093A20014D419 /* loginPage.xib */,
+				04910DC01821CF8100719010 /* mapPage.xib */,
 			);
 			name = xibs;
 			sourceTree = "<group>";
@@ -247,8 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04BD5830182093270014D419 /* Images.xcassets in Resources */,
-				04BD584F182093A20014D419 /* login.xib in Resources */,
+				04BD584F182093A20014D419 /* loginPage.xib in Resources */,
 				04BD5822182093270014D419 /* InfoPlist.strings in Resources */,
+				04910DC21821CF8100719010 /* mapPage.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,9 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04BD582E182093270014D419 /* login.m in Sources */,
+				04BD582E182093270014D419 /* loginPage.m in Sources */,
 				04BD5828182093270014D419 /* AppDelegate.m in Sources */,
 				04BD5824182093270014D419 /* main.m in Sources */,
+				04910DC11821CF8100719010 /* mapPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +480,7 @@
 				04BD5848182093270014D419 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04BD5849182093270014D419 /* Build configuration list for PBXNativeTarget "Hubba iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +489,7 @@
 				04BD584B182093270014D419 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
