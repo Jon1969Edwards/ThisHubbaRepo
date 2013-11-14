@@ -1,13 +1,18 @@
 package com.android.hubbahubba;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ViewImage extends Activity {
 
@@ -20,6 +25,7 @@ public class ViewImage extends Activity {
 	String rider;				// TODO from db
 	String photog;				// TODO from db
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,11 +36,59 @@ public class ViewImage extends Activity {
 
 		if (bundle != null) {
 			mImageID = bundle.getInt("imageName");
+			
+			// Decode image size
+	        BitmapFactory.Options o = new BitmapFactory.Options();
+	        o.inJustDecodeBounds = true;
+	        BitmapFactory.decodeResource(getResources(), mImageID, o);
+	        
+	        // Get screen size
+	        Display display = getWindowManager().getDefaultDisplay();
+	        Point size = new Point();
+	        display.getSize(size);
+	        int width = size.x;
+	        int height = size.y;
+	        
+	        // The new size we want to scale to
+	        final int REQUIRED_WIDTH = width - 50;
+	        final int REQUIRED_HEIGHT = height - 50;
 
+	        // Find the correct scale value. It should be the power of 2.
+	        int width_tmp = o.outWidth, height_tmp = o.outHeight;
+	        int scale = 1;
+	        while (true) {
+	            if (width_tmp / 2 < REQUIRED_WIDTH
+	               || height_tmp / 2 < REQUIRED_HEIGHT) {
+	                break;
+	            }
+	            width_tmp /= 2;
+	            height_tmp /= 2;
+	            scale *= 2;
+	        }
+	        // TODO: Delete this
+	        //scale = 2;
+
+	        // Decode with inSampleSize
+	        BitmapFactory.Options o2 = new BitmapFactory.Options();
+	        o2.inSampleSize = scale;
+	        mBitmap =  BitmapFactory.decodeResource(getResources(), mImageID, o2);
+	        
+	        // To see if it scaled
+	        Context context = getApplicationContext();
+	        String text = "Scale: " + Integer.toString(scale) + " Swidth: " + width + " pic width: " + width_tmp;
+	        int duration = Toast.LENGTH_SHORT;
+
+	        Toast toast = Toast.makeText(context, text, duration);
+	        toast.show();
+	        
+	        imageView.setImageBitmap(mBitmap);
+			
+	        /*
 			BitmapFactory.Options bfo = new BitmapFactory.Options();
 			bfo.inSampleSize = 2;
 			mBitmap = BitmapFactory.decodeResource(getResources(), mImageID, bfo);
 			imageView.setImageBitmap(mBitmap);
+			*/
 		}
 		
 		//Buttons to incriment/decriment counter

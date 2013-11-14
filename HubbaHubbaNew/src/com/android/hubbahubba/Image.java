@@ -9,22 +9,22 @@ public class Image {
 	private int spotID;
 	
 	/* Getters */
-	private int getId(){
+	public int getId(){
 		return id;
 	}
-	private int getRating(){
+	public int getRating(){
 		return ups / (ups + downs);
 	}
 	
-	private int getSpotID(){
+	public int getSpotID(){
 		return spotID;
 	}
 	
-	private String getRider(){
+	public String getRider(){
 		return rider;
 	}
 	
-	private String getPhotog(){
+	public String getPhotog(){
 		return photog;
 	}
 	
@@ -35,7 +35,7 @@ public class Image {
 		return null; //or throw exception
 	}
 	
-	/* Public constructor */
+	/* Private constructor */
 	private Image(int ups, int id, int downs, String photog, String rider, int spotID){
 		this.ups = ups;
 		this.id = id;

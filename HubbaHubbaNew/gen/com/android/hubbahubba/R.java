@@ -1248,10 +1248,10 @@ containing a value of this type.
         public static final int threeButtonDanger=0x7f040067;
         public static final int threeButtonDiff=0x7f04005c;
         public static final int threeButtonOverall=0x7f040072;
-        public static final int thumbs_down=0x7f040097;
-        public static final int thumbs_down_wrapper=0x7f040094;
-        public static final int thumbs_up=0x7f040096;
-        public static final int thumbs_up_wrapper=0x7f040095;
+        public static final int thumbs_down=0x7f040096;
+        public static final int thumbs_down_wrapper=0x7f040095;
+        public static final int thumbs_up=0x7f040097;
+        public static final int thumbs_up_wrapper=0x7f040094;
         public static final int titleOfSpot=0x7f04009c;
         public static final int twoButtonDanger=0x7f040066;
         public static final int twoButtonDiff=0x7f04005b;
@@ -1319,14 +1319,15 @@ containing a value of this type.
         public static final int item_grid_image=0x7f030025;
         public static final int item_row=0x7f030026;
         public static final int login_layout=0x7f030027;
-        public static final int sherlock_spinner_dropdown_item=0x7f030028;
-        public static final int sherlock_spinner_item=0x7f030029;
-        public static final int spinner_row=0x7f03002a;
-        public static final int spot_info_updated=0x7f03002b;
-        public static final int spot_page_comments=0x7f03002c;
-        public static final int spot_page_layout=0x7f03002d;
-        public static final int upload_comment=0x7f03002e;
-        public static final int upload_image=0x7f03002f;
+        public static final int new_lightbox_image=0x7f030028;
+        public static final int sherlock_spinner_dropdown_item=0x7f030029;
+        public static final int sherlock_spinner_item=0x7f03002a;
+        public static final int spinner_row=0x7f03002b;
+        public static final int spot_info_updated=0x7f03002c;
+        public static final int spot_page_comments=0x7f03002d;
+        public static final int spot_page_layout=0x7f03002e;
+        public static final int upload_comment=0x7f03002f;
+        public static final int upload_image=0x7f030030;
     }
     public static final class menu {
         public static final int activity_list_view=0x7f0c0000;

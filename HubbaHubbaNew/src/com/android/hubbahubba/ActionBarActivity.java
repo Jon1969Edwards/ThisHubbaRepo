@@ -75,6 +75,7 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
 				f = new ViewMap();
 				break;
 			case 1:
+				//f = new NewListView();
 				f = new ListViewHubba();
 				break;
 			case 2:
