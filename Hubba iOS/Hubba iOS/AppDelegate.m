@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "loginPage.h"
+#import "openingPage.h"
 
 @implementation AppDelegate
 
@@ -20,7 +20,7 @@
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
   // sets up title screens to open.
-  login *titleScreen = [[login alloc] initWithNibName:@"login" bundle:nil];
+  openingPage *titleScreen = [[openingPage alloc] initWithNibName:@"openingPage" bundle:nil];
   UINavigationController *masterNav = [[UINavigationController alloc] initWithRootViewController:titleScreen];
   [self.window setRootViewController:masterNav];
   [masterNav setNavigationBarHidden:YES];

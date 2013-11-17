@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04392567182C1A1C00D37F06 /* openingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392565182C1A1C00D37F06 /* openingPage.m */; };
+		0463B9B3183532380092D696 /* main_iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0463B9B2183532380092D696 /* main_iphone.storyboard */; };
 		04910DC11821CF8100719010 /* mapPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04910DBF1821CF8100719010 /* mapPage.m */; };
-		04910DC21821CF8100719010 /* mapPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04910DC01821CF8100719010 /* mapPage.xib */; };
 		04BD5818182093270014D419 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5817182093270014D419 /* Foundation.framework */; };
 		04BD581A182093270014D419 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5819182093270014D419 /* CoreGraphics.framework */; };
 		04BD581C182093270014D419 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD581B182093270014D419 /* UIKit.framework */; };
@@ -22,7 +23,6 @@
 		04BD5839182093270014D419 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD581B182093270014D419 /* UIKit.framework */; };
 		04BD5841182093270014D419 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04BD583F182093270014D419 /* InfoPlist.strings */; };
 		04BD5843182093270014D419 /* Hubba_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD5842182093270014D419 /* Hubba_iOSTests.m */; };
-		04BD584F182093A20014D419 /* loginPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BD584E182093A20014D419 /* loginPage.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04392564182C1A1C00D37F06 /* openingPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openingPage.h; sourceTree = "<group>"; };
+		04392565182C1A1C00D37F06 /* openingPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openingPage.m; sourceTree = "<group>"; };
+		0463B9B2183532380092D696 /* main_iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main_iphone.storyboard; sourceTree = "<group>"; };
 		04910DBE1821CF8100719010 /* mapPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapPage.h; sourceTree = "<group>"; };
 		04910DBF1821CF8100719010 /* mapPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapPage.m; sourceTree = "<group>"; };
-		04910DC01821CF8100719010 /* mapPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mapPage.xib; sourceTree = "<group>"; };
 		04BD5814182093270014D419 /* Hubba iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hubba iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BD5817182093270014D419 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04BD5819182093270014D419 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,7 +59,6 @@
 		04BD583E182093270014D419 /* Hubba iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hubba iOSTests-Info.plist"; sourceTree = "<group>"; };
 		04BD5840182093270014D419 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04BD5842182093270014D419 /* Hubba_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hubba_iOSTests.m; sourceTree = "<group>"; };
-		04BD584E182093A20014D419 /* loginPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = loginPage.xib; sourceTree = "<group>"; };
 		04BD58501820942C0014D419 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +123,7 @@
 				04BD5826182093270014D419 /* AppDelegate.h */,
 				04BD5827182093270014D419 /* AppDelegate.m */,
 				04BD584C182093650014D419 /* controllers */,
-				04BD584D182093750014D419 /* xibs */,
+				04BD584D182093750014D419 /* storyboard */,
 				04BD582F182093270014D419 /* Images.xcassets */,
 				04BD581E182093270014D419 /* Supporting Files */,
 			);
@@ -161,6 +162,8 @@
 		04BD584C182093650014D419 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04392564182C1A1C00D37F06 /* openingPage.h */,
+				04392565182C1A1C00D37F06 /* openingPage.m */,
 				04BD582C182093270014D419 /* loginPage.h */,
 				04BD582D182093270014D419 /* loginPage.m */,
 				04910DBE1821CF8100719010 /* mapPage.h */,
@@ -169,13 +172,12 @@
 			name = controllers;
 			sourceTree = "<group>";
 		};
-		04BD584D182093750014D419 /* xibs */ = {
+		04BD584D182093750014D419 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				04BD584E182093A20014D419 /* loginPage.xib */,
-				04910DC01821CF8100719010 /* mapPage.xib */,
+				0463B9B2183532380092D696 /* main_iphone.storyboard */,
 			);
-			name = xibs;
+			name = storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,10 +256,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0463B9B3183532380092D696 /* main_iphone.storyboard in Resources */,
 				04BD5830182093270014D419 /* Images.xcassets in Resources */,
-				04BD584F182093A20014D419 /* loginPage.xib in Resources */,
 				04BD5822182093270014D419 /* InfoPlist.strings in Resources */,
-				04910DC21821CF8100719010 /* mapPage.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04392567182C1A1C00D37F06 /* openingPage.m in Sources */,
 				04BD582E182093270014D419 /* loginPage.m in Sources */,
 				04BD5828182093270014D419 /* AppDelegate.m in Sources */,
 				04BD5824182093270014D419 /* main.m in Sources */,
