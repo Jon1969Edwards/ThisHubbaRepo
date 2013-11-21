@@ -1,13 +1,17 @@
 package com.android.hubbahubba;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class HubbaCursorAdapter extends CursorAdapter /*implements Filterable*/ {
 	
@@ -84,7 +88,21 @@ public class HubbaCursorAdapter extends CursorAdapter /*implements Filterable*/ 
 	    int bust = cursor.getColumnIndexOrThrow(HubbaDBAdapter.KEY_LEVEL);
 	    int diff = cursor.getColumnIndexOrThrow(HubbaDBAdapter.KEY_DIFF);
 	    
-	    vh.imgThumbnail.setImageResource(R.drawable.gettinthere);
+	    //vh.imgThumbnail.setImageResource(R.drawable.gettinthere);
+	    
+	    // Convert the dp value for xml to pixels (casted to int from float)
+	    int size = convertDpToPixel(80, context);
+	    
+	    // Use picasso to load the image into view
+	    // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE
+	    Picasso.with(context)
+	    	   .load(R.drawable.gettinthere)
+	    	   .centerCrop()
+	    	   .resize(size, size)
+	    	   .placeholder(R.drawable.ic_empty)
+	    	   .into(vh.imgThumbnail);
+	    
+	    //vh.imgThumbnail.
         vh.txtTitle.setText(cursor.getString(title));
         vh.txtOverallRating.setText(cursor.getString(overall));
         vh.txtPoRating.setText(cursor.getString(bust));
@@ -153,4 +171,11 @@ public class HubbaCursorAdapter extends CursorAdapter /*implements Filterable*/ 
                 buffer == null ? null : buffer.toString(), args, People.NAME + " ASC");
     }
     */
+	public static int convertDpToPixel(float dp, Context context){
+	    Resources resources = context.getResources();
+	    DisplayMetrics metrics = resources.getDisplayMetrics();
+	    float Pix = dp * (metrics.densityDpi / 160f);
+	    int px = (int) Pix;
+	    return px;
+	}
 }

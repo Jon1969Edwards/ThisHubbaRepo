@@ -9,8 +9,8 @@
       
     <ImageView
         android:contentDescription="@+id/titleOfSpot"
-        android:layout_width="80dp"   
-        android:layout_height="80dp"   
+        android:layout_width="wrap_content"   
+        android:layout_height="wrap_content"   
         android:id="@+id/imgThumbnail" 
         android:src="@drawable/tony_hawk"  
         android:layout_alignParentLeft="true"  

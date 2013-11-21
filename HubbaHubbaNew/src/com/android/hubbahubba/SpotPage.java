@@ -8,13 +8,13 @@ import java.util.Date;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,8 +25,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.PauseOnScrollListener;
+import com.squareup.picasso.Picasso;
 //import com.android.hubbahubba.ListViewFavorites.ListViewItem;
 
 //import com.nostra13.universalimageloader.core.ImageLoader;
@@ -35,17 +34,18 @@ import com.nostra13.universalimageloader.core.assist.PauseOnScrollListener;
 
 public class SpotPage extends Activity {
 	
-	private static final int SELECT_PHOTO = 1;
-	private static final int TAKE_PHOTO = 2;
+	//private static final int SELECT_PHOTO = 1;
+	//private static final int TAKE_PHOTO = 2;
 	public static final int MEDIA_TYPE_IMAGE = 3;
 	public static final int MEDIA_TYPE_VIDEO = 4;
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 	private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
 	private static final String JPEG_FILE_SUFFIX = "Hubba_Hubba";
 	private static final String JPEG_FILE_PREFIX = "Hubba_Hubba";
+	//private GridAdapter gridAdapter;
 
 
-	ImageLoader imageLoader = ImageLoader.getInstance();
+	//ImageLoader imageLoader = ImageLoader.getInstance();
 	//private static final String TEST_FILE_NAME = "Universal Image Loader @#&=+-_.,!()~'%20.png";
 
 	HubbaDBAdapter dbHelper;
@@ -57,11 +57,12 @@ public class SpotPage extends Activity {
 	String mImagePath;
 	Uri imageViewUri;
 	String mCurrentPhotoPath;
+	Context context = this;
 	
 	//NEW VARS
 	Bitmap mImageBitmap;
 	ImageView mImageView;
-	private Uri fileUri;
+	//private Uri fileUri;
 
 
 	@Override
@@ -108,38 +109,25 @@ public class SpotPage extends Activity {
 	                
 	                if(mImagePath != null ) {
 	                	imageViewUri = Uri.parse(mImagePath);
-	                	mImage.setImageURI(imageViewUri);
+	                	
+	                	// Convert the dp value for xml to pixels (casted to int from float)
+	            	    int size = HubbaCursorAdapter.convertDpToPixel(80, context);
+	            	    
+	            	    // use picasso to load the image into view
+	            	    Picasso.with(context)
+	            	    	   //.load(mImagePath)
+	            	    	   .load(R.drawable.gettinthere)
+	            	    	   .centerCrop()
+	            	    	   .resize(size, size)
+	            	    	   //.placeholder(R.drawable.ic_empty)
+	            	    	   .into(mImage);
+	            	    
+	                	//mImage.setImageURI(imageViewUri);
 	                }
 	                
 	                
 	            } while (c.moveToNext());
 	        }
-
-		//NEW
-		  /*
-			File testImageOnSdCard = new File("/mnt/sdcard", TEST_FILE_NAME);
-				if (!testImageOnSdCard.exists()) {
-					copyTestImageToSdCard(testImageOnSdCard);
-				}
-			
-
-			ListViewItem item = new ListViewItem(getIntent());
-
-			ImageView imgThumbnail = (ImageView) findViewById(R.id.imgThumbnail);
-			TextView txtTitle = (TextView) findViewById(R.id.txtTitle);
-			TextView txtOverallRating = (TextView) findViewById(R.id.txtOverallRating);
-			TextView txtPoRating = (TextView) findViewById(R.id.txtPoRating);
-			TextView txtDiffRating = (TextView) findViewById(R.id.txtDiffRating);
-			TextView txtDistance = (TextView) findViewById(R.id.txtDistance);
-
-			imgThumbnail.setImageResource(item.Thumbnail);
-			txtTitle.setText(item.Title);
-			txtOverallRating.setText(String.valueOf(item.OverallRating));
-			txtPoRating.setText(String.valueOf(item.PoRating));
-			txtDiffRating.setText(String.valueOf(item.DiffRating));
-			txtDistance.setText(String.format("%.2f", item.Distance));
-			
-			*/
 		  
 			// create buttons
 			Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
@@ -245,9 +233,10 @@ public class SpotPage extends Activity {
 				}
 
 			});
-
+			
+			
 			GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
-			gridview.setAdapter(new ImageAdapter(this));
+			gridview.setAdapter(new GridAdapter(this));
 			
 			
 			gridview.setOnItemClickListener(new OnItemClickListener() {
@@ -270,9 +259,8 @@ public class SpotPage extends Activity {
 			*/
 			
 	}
-	
-	// NEW
-	
+
+	/*
 	private void dispatchTakePictureIntent(final int actionCode) throws IOException {    
 	 // create Intent to take a picture and return control to the calling application
 	    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -287,10 +275,11 @@ public class SpotPage extends Activity {
 	    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
 
 	}
-	/** Create a file Uri for saving an image or video */
+	*/
+	/** Create a file Uri for saving an image or video *//*
 	private static Uri getOutputMediaFileUri(int type){
 	      return Uri.fromFile(getOutputMediaFile(type));
-	}
+	}*/
 	
 	/** Create a File for saving an image or video */
 	@SuppressLint("SimpleDateFormat")
@@ -369,12 +358,12 @@ public class SpotPage extends Activity {
 	    return image;
 	}
 	
-	/*
+	
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
-		imageLoader.destroy();
+		//imageLoader.destroy();
 		super.onDestroy();
 	}
-	*/
+	
 }
