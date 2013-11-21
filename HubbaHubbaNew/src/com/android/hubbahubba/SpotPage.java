@@ -244,7 +244,8 @@ public class SpotPage extends Activity {
 						int position, long id) {
 
 					Intent intent = new Intent(SpotPage.this, ViewImage.class);
-					int imageID = (Integer)parent.getAdapter().getItem(position);
+					//int imageID = (Integer)parent.getAdapter().getItem(position);
+					int imageID = mThumbIds[position];
 					intent.putExtra("imageName", imageID);
 					startActivity(intent);
 				}
@@ -365,5 +366,14 @@ public class SpotPage extends Activity {
 		//imageLoader.destroy();
 		super.onDestroy();
 	}
+	
+	// references to our images
+    private Integer[] mThumbIds = {
+    		R.drawable.riley1, R.drawable.riley2, R.drawable.riley3,
+            R.drawable.connorock , R.drawable.indysunburst,
+            R.drawable.nosegrabup , R.drawable.img1,
+            R.drawable.heart1, R.drawable.deatroit1, R.drawable.detroit2,
+
+    };
 	
 }
