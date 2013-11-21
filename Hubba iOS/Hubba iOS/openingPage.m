@@ -44,7 +44,7 @@
   [signupBut.layer setBorderWidth:1];
   
   
-  [self.view setBackgroundColor:GRAY1];
+  [self.view setBackgroundColor:GRAY2];
 
   if( self.view.frame.size.width == 320 ){
     NSLog(@"Vertical");
