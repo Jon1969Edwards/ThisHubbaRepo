@@ -1,5 +1,9 @@
 package com.android.hubbahubba;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+
 public class Image {
 	private int ups;
 	private int id;
@@ -73,5 +77,13 @@ public class Image {
 	public static Image[] getImagesBySid(int sid){
 		// TODO - returns all the images associated with a spot
 		return null;
+	}
+	
+	public static int convertDpToPixel(float dp, Context context){
+	    Resources resources = context.getResources();
+	    DisplayMetrics metrics = resources.getDisplayMetrics();
+	    float Pix = dp * (metrics.densityDpi / 160f);
+	    int px = (int) Pix;
+	    return px;
 	}
 }

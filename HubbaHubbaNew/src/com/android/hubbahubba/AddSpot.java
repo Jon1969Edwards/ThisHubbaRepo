@@ -746,8 +746,6 @@ public class AddSpot extends Activity {
 		});
 		*/
 	
-				
-
 		dbHelper = new HubbaDBAdapter(this);
 		dbHelper.open();
 
@@ -865,6 +863,7 @@ public class AddSpot extends Activity {
 
     }
 	*/
+	
 	private String getRealPathFromUri(Uri contentUri) {
 		Context context = getApplicationContext();
 	    String[] proj = { MediaStore.Images.Media.DATA };

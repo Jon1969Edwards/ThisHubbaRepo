@@ -108,10 +108,10 @@ public class SpotPage extends Activity {
 	                mImagePath = c.getString(9);
 	                
 	                if(mImagePath != null ) {
-	                	imageViewUri = Uri.parse(mImagePath);
+	                	//imageViewUri = Uri.parse(mImagePath);
 	                	
 	                	// Convert the dp value for xml to pixels (casted to int from float)
-	            	    int size = HubbaCursorAdapter.convertDpToPixel(80, context);
+	            	    int size = Image.convertDpToPixel(80, context);
 	            	    
 	            	    // use picasso to load the image into view
 	            	    Picasso.with(context)
@@ -238,7 +238,7 @@ public class SpotPage extends Activity {
 			GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
 			gridview.setAdapter(new GridAdapter(this));
 			
-			
+			// TODO: call getThumbnail from the Image class on the gridview's position
 			gridview.setOnItemClickListener(new OnItemClickListener() {
 				public void onItemClick(AdapterView<?> parent, View v,
 						int position, long id) {

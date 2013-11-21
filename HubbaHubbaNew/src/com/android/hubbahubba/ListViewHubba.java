@@ -20,6 +20,7 @@ import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
@@ -99,10 +100,18 @@ public class ListViewHubba extends SherlockFragment {
 					//to-do open viewSpot
 				
 				int clickId;
-
+				
+				// TODO toaster
+				int duration = Toast.LENGTH_LONG;
+				Context context = getActivity().getBaseContext();
+				
 				Cursor cursor = (Cursor) listView.getItemAtPosition(position);
 				clickId = Integer.valueOf(cursor.getString(cursor
 						.getColumnIndexOrThrow("_id")));
+				/*
+				Toast toaster = Toast.makeText(context, "Name: " + String.valueOf(clickId), duration);
+				toaster.show();
+				*/
 				/*
 				 Toast.makeText(getSherlockActivity().getApplicationContext(),
 				 clickId + " is the ID", Toast.LENGTH_SHORT).show();
@@ -113,6 +122,7 @@ public class ListViewHubba extends SherlockFragment {
 				Intent intent = new Intent(getActivity().getApplicationContext(),
 						SpotPage.class);
 				intent.putExtras(bundleData);
+				cursor.close();
 				startActivity(intent);
 			}
 		});
@@ -137,6 +147,7 @@ public class ListViewHubba extends SherlockFragment {
 				Intent intent = new Intent(getActivity().getApplicationContext(),
 						EditActivity.class);
 				intent.putExtras(bundleData);
+				cursor.close();
 				startActivity(intent);
 			
 		      return true;
@@ -177,6 +188,12 @@ public class ListViewHubba extends SherlockFragment {
 
 		dataAdapter.changeCursor(c);
 		super.onResume();
+		//dbHelper.close();
+		//c.close();
 	}
 
+	@Override
+	public void onDestroy(){
+		dbHelper.close();
+	}
 }

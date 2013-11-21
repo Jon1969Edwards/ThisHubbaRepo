@@ -1,5 +1,7 @@
 package com.android.hubbahubba;
 
+import com.squareup.picasso.Picasso;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -30,13 +32,14 @@ public class ViewImage extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.full_screen_image);
+		Context context = this;
 
 		imageView = (ImageView) findViewById(R.id.image);
 		Bundle bundle = getIntent().getExtras();
 
 		if (bundle != null) {
 			mImageID = bundle.getInt("imageName");
-			
+			/*
 			// Decode image size
 	        BitmapFactory.Options o = new BitmapFactory.Options();
 	        o.inJustDecodeBounds = true;
@@ -77,11 +80,33 @@ public class ViewImage extends Activity {
 	        Context context = getApplicationContext();
 	        String text = "Scale: " + Integer.toString(scale) + " Swidth: " + width + " pic width: " + width_tmp;
 	        int duration = Toast.LENGTH_SHORT;
-
+			
+			
 	        Toast toast = Toast.makeText(context, text, duration);
 	        toast.show();
 	        
 	        imageView.setImageBitmap(mBitmap);
+		    */
+			
+		    // Use picasso to load the image into view
+		    // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE
+			Display display = getWindowManager().getDefaultDisplay();
+	        Point size = new Point();
+	        display.getSize(size);
+	        int width = size.x;
+	        int height = size.y;
+	        
+	        // The new size we want to scale to
+	        width -= 80;
+	        height -= 300;
+	        
+		    Picasso.with(context)
+		    	   .load(mImageID)
+		    	   //.centerCrop()
+		    	   .centerInside()
+		    	   .resize(width, height)
+		    	   .placeholder(R.drawable.ic_empty)
+		    	   .into(imageView);
 			
 	        /*
 			BitmapFactory.Options bfo = new BitmapFactory.Options();

@@ -39,16 +39,8 @@ public class GridAdapter extends BaseAdapter /*implements Filterable*/ {
 	public void setContext(Context context) {
 		this.context = context;
 	}
-
-	public static int convertDpToPixel(float dp, Context context){
-	    Resources resources = context.getResources();
-	    DisplayMetrics metrics = resources.getDisplayMetrics();
-	    float Pix = dp * (metrics.densityDpi / 160f);
-	    int px = (int) Pix;
-	    return px;
-	}
 	
-	 // references to our images
+	// references to our images
     private Integer[] mThumbIds = {
     		R.drawable.riley1, R.drawable.riley2, R.drawable.riley3,
             R.drawable.connorock , R.drawable.indysunburst,
@@ -93,7 +85,7 @@ public class GridAdapter extends BaseAdapter /*implements Filterable*/ {
 		}
 		
 		// Convert the dp value for xml to pixels (casted to int from float)
-		int size = convertDpToPixel(80, context);
+		int size = Image.convertDpToPixel(80, context);
 		
 		// Use picasso to load the image into view
 		// XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE

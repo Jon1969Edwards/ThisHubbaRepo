@@ -91,7 +91,7 @@ public class HubbaCursorAdapter extends CursorAdapter /*implements Filterable*/ 
 	    //vh.imgThumbnail.setImageResource(R.drawable.gettinthere);
 	    
 	    // Convert the dp value for xml to pixels (casted to int from float)
-	    int size = convertDpToPixel(80, context);
+	    int size = Image.convertDpToPixel(80, context);
 	    
 	    // Use picasso to load the image into view
 	    // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE
@@ -171,11 +171,4 @@ public class HubbaCursorAdapter extends CursorAdapter /*implements Filterable*/ 
                 buffer == null ? null : buffer.toString(), args, People.NAME + " ASC");
     }
     */
-	public static int convertDpToPixel(float dp, Context context){
-	    Resources resources = context.getResources();
-	    DisplayMetrics metrics = resources.getDisplayMetrics();
-	    float Pix = dp * (metrics.densityDpi / 160f);
-	    int px = (int) Pix;
-	    return px;
-	}
 }

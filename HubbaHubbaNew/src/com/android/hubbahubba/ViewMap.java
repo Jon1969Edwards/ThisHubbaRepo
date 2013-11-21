@@ -1,5 +1,7 @@
 package com.android.hubbahubba;
 
+import java.io.File;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -15,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ViewMap extends SherlockFragment {
@@ -53,7 +55,7 @@ public class ViewMap extends SherlockFragment {
             Bundle savedInstanceState) {
 
 		rootView =  inflater.inflate(R.layout.activity_view_map, container, false);
-		Context context = getActivity().getApplicationContext();
+		final Context context = getActivity().getApplicationContext();
         
         
         Button searchButton = (Button)rootView.findViewById(R.id.searchButton);
@@ -137,6 +139,7 @@ public class ViewMap extends SherlockFragment {
 	        counter++;
 		 }while (c.moveToNext());
 		 dbHelper.close();
+		 c.close();
 		 //=======END OF NEW CODE======//
 		 
 	     
@@ -183,7 +186,6 @@ public class ViewMap extends SherlockFragment {
 					int duration = Toast.LENGTH_SHORT;
 
 					Toast toast = Toast.makeText(context, Text, duration);
-					toast.show();
 					*/
 
 					/*
@@ -204,41 +206,38 @@ public class ViewMap extends SherlockFragment {
 
 			@Override
 			public void onInfoWindowClick(Marker marker) {
-
-				/*
-				int type = mMarkerMap.get(marker.getPosition());
 				
-				if(type == TYPE_NEW) {
-					
-					
-					// intent.addextra lat and long
-					// in add spot retrieve lat and long
-					// when done add lat and long to intent
-					// start add spot
-					
-				} else if(type == TYPE_EXISTING) {
-					// add lat and long to intent to check in databse
-					// launch spot page
-				}
-        		*/
+				String LatLong = marker.getPosition().toString();
+				LatLong = LatLong.substring(10, LatLong.length() - 1);
 
-        		//startActivity(intent);
-                //ViewMap.this.startActivity(intent);
-                
-				//Intent intent = new Intent(getSherlockActivity(), SpotPage.class);
-        		//startActivityForResult(intent, 0);
+				String[] separated = LatLong.split(",");
+				String latitude = separated[0];
+				String longitude = separated[1];
 
-				// Toast.makeText(getApplicationContext(),
-				// clickId + " is the ID", Toast.LENGTH_SHORT).show();
+				// This produces the latitude and longitude from the spot
+				double Lat = Double.parseDouble(latitude);
+				double Lng = Double.parseDouble(longitude);
+				
+				dbHelper = new HubbaDBAdapter(context);
+				dbHelper.open();
+				Cursor cur;
+				
+				cur = dbHelper.fetchSpotByLatLong(Lat, Lng);
+				/*
+				int clickId = Integer.valueOf(cur.getString(cur
+						.getColumnIndexOrThrow("_id")));
 
-				// TODO JIMMY: Instead of just choosing riley this needs to be able to look up the position
-				// by the id of the row the info window is displaying... not sure how to do this
-
+				Toast toast = Toast.makeText(getActivity().getApplicationContext(), "ID: " + String.valueOf(clickId), Toast.LENGTH_SHORT);
+				toast.show();
+				*/ 
+				
 				Bundle bundleData = new Bundle();
-				bundleData.putInt("keyid", 39);
+				bundleData.putInt("keyid", 29);
 				Intent intent = new Intent(getActivity().getApplicationContext(),
 						SpotPage.class);
 				intent.putExtras(bundleData);
+				dbHelper.close();
+				cur.close();
 				startActivity(intent);		
 			}
 		});
@@ -262,9 +261,8 @@ public class ViewMap extends SherlockFragment {
 				// This produces the latitude and longitude from the spot
 				double Lat = Double.parseDouble(latitude);
 				double Lng = Double.parseDouble(longitude);
-
-				// TODO JIMMY: If you could help me write a function to get all the info from the db
-				// to mirror what is happening below here but by looking it up by Lat and Lng defined above
+				
+				Context context = getActivity().getApplicationContext();
 
 
 				// Getting view from the layout file info_window_layout
@@ -278,14 +276,13 @@ public class ViewMap extends SherlockFragment {
 				TextView txtPoRating = (TextView) v.findViewById(R.id.info_window_txtPoRating);
 				TextView txtDiffRating = (TextView)  v.findViewById(R.id.info_window_diffRating);
 				TextView txtDistance = (TextView) v.findViewById(R.id.info_window_distance);
-				Context context = getActivity().getApplicationContext();
-				//String mImagePath;
 				
+				/*
 				int duration = Toast.LENGTH_LONG;
 				
 				Toast toaster = Toast.makeText(context, "Name: ", duration);
 				toaster.show();
-
+				*/
 
 				dbHelper = new HubbaDBAdapter(context);
 				// DOESNT WORK: HubbaDBAdapter dbHelper;
@@ -295,23 +292,19 @@ public class ViewMap extends SherlockFragment {
 				
 				String lat = Double.toString(Lat);
 			    String lng = Double.toString(Lng);
-			    
+			    /*
 			    text = lat + " " + lng;
 
 				Toast toasted = Toast.makeText(context, text, duration);
 				toasted.show();
 				
-				
+				*/
+			    
 				cur = dbHelper.fetchSpotByLatLong(Lat, Lng);
 				
 					
 				// TODO JIMMY
 			    if (cur.moveToFirst()) {
-			    	
-			    	//int duration = Toast.LENGTH_LONG;
-					
-					//Toast toast = Toast.makeText(context, "Name: ", duration);
-					//toast.show();
 					
 					do {
 						txtTitle.setText(cur.getString(1)); //name
@@ -321,12 +314,31 @@ public class ViewMap extends SherlockFragment {
 						String mImagePath = cur.getString(9); //image URI
 
 						if(mImagePath != null ) {
-							Uri imageViewUri = Uri.parse(mImagePath); //parse URI
-							imgThumbnail.setImageURI(imageViewUri); //set Image via parsed URI
+							//Uri imageViewUri = Uri.parse(mImagePath); //parse URI
+							
+							// Convert the dp value for xml to pixels (casted to int from float)
+							int size = Image.convertDpToPixel(80, context);
+							
+							Uri imageViewUri = Uri.fromFile(new File(mImagePath));
+							//File f = new File(mImagePath);
+							
+							Toast toast = Toast.makeText(context, "URI: " + imageViewUri + " path: " + mImagePath, Toast.LENGTH_LONG);
+							toast.show();
+							
+							// Use picasso to load the image into view
+							Picasso.with(context)
+								   .load(imageViewUri)
+								   .centerCrop()
+								   .resize(size, size)
+								   .placeholder(R.drawable.gettinthere)
+								   .into(imgThumbnail);
+							
+							//imgThumbnail.setImageURI(imageViewUri); //set Image via parsed URI
 						}
-						
+						/*
 						Toast toast = Toast.makeText(context, "Name: " + cur.getString(1) + "Overall Rating: " + cur.getString(5), duration);
 						toast.show();
+						*/
 						
 						//int duration = Toast.LENGTH_LONG;
 						
@@ -334,137 +346,17 @@ public class ViewMap extends SherlockFragment {
 						//toast.show();
 					} while (cur.moveToNext());
 				}
+			    dbHelper.close();
+			    cur.close();
 				//========END OF NEW CODE=========//
-			  	
-				/*
-		        ImageView imgThumbnail = (ImageView) v.findViewById(R.id.info_window_image);
-		        imgThumbnail.setImageResource(R.drawable.indysunburst);
-		        TextView txtTitle = (TextView) v.findViewById(R.id.info_window_title);
-		        txtTitle.setText("Riley Skate Park");
-		        TextView txtOverallRating = (TextView) v.findViewById(R.id.info_window_OverallRating);
-		        txtOverallRating.setText("10");
-		        TextView txtPoRating = (TextView) v.findViewById(R.id.info_window_txtPoRating);
-		        txtPoRating.setText("5");
-		        TextView txtDiffRating = (TextView)  v.findViewById(R.id.info_window_diffRating);
-		        txtDiffRating.setText("7");
-		        TextView txtDistance = (TextView) v.findViewById(R.id.info_window_distance);
-		        txtDistance.setText("4.00");
-				*/
 
 				// Returning the view containing InfoWindow contents
 				return v;
-				
-				//View v = inflater.inflate(R.layout.info_window_background, null);
-				//return v;
 			}			
 
 			// Defines the contents of the InfoWindow
 			@Override
 			public View getInfoContents(Marker arg0) {
-				/*
-				String LatLong = arg0.getPosition().toString();
-				//mMarkerMap.put(addSpot.getPosition(), TYPE_NEW);
-				LatLong = LatLong.substring(10, LatLong.length() - 1);
-
-				String[] separated = LatLong.split(",");
-				String latitude = separated[0];
-				String longitude = separated[1];
-
-				// This produces the latitude and longitude from the spot
-				double Lat = Double.parseDouble(latitude);
-				double Lng = Double.parseDouble(longitude);
-
-				// TODO JIMMY: If you could help me write a function to get all the info from the db
-				// to mirror what is happening below here but by looking it up by Lat and Lng defined above
-
-
-				// Getting view from the layout file info_window_layout
-				View v = getSherlockActivity().getLayoutInflater().inflate(R.layout.info_window_layout, null);
-				
-				
-				//=========== NEW CODE==========//
-				ImageView imgThumbnail = (ImageView) v.findViewById(R.id.info_window_image);
-				TextView txtTitle = (TextView) v.findViewById(R.id.info_window_title);
-				TextView txtOverallRating = (TextView) v.findViewById(R.id.info_window_OverallRating);
-				TextView txtPoRating = (TextView) v.findViewById(R.id.info_window_txtPoRating);
-				TextView txtDiffRating = (TextView)  v.findViewById(R.id.info_window_diffRating);
-				TextView txtDistance = (TextView) v.findViewById(R.id.info_window_distance);
-				Context context = getActivity().getApplicationContext();
-				//String mImagePath;
-				
-				int duration = Toast.LENGTH_LONG;
-				
-				Toast toaster = Toast.makeText(context, "Name: ", duration);
-				toaster.show();
-
-
-				//dbHelper = new HubbaDBAdapter(context);
-				// DOESNT WORK: HubbaDBAdapter dbHelper;
-				dbHelper.open();
-				Cursor cur;
-				
-				
-				String lat = Double.toString(Lat);
-			    String lng = Double.toString(Lng);
-			    
-			    text = lat + " " + lng;
-
-				Toast toasted = Toast.makeText(context, text, duration);
-				toasted.show();
-				
-				
-				cur = dbHelper.fetchSpotByLatLong(Lat, Lng);
-				
-					
-				// TODO JIMMY
-			    if (cur.moveToFirst()) {
-			    	
-			    	//int duration = Toast.LENGTH_LONG;
-					
-					//Toast toast = Toast.makeText(context, "Name: ", duration);
-					//toast.show();
-					
-					do {
-						txtTitle.setText(cur.getString(1)); //name
-						txtOverallRating.setText(cur.getString(5)); //rating
-						txtDiffRating.setText(cur.getString(6)); //difficulty
-						txtPoRating.setText(cur.getString(7)); //police level
-						String mImagePath = cur.getString(9); //image URI
-
-						if(mImagePath != null ) {
-							Uri imageViewUri = Uri.parse(mImagePath); //parse URI
-							imgThumbnail.setImageURI(imageViewUri); //set Image via parsed URI
-						}
-						
-						Toast toast = Toast.makeText(context, "Name: " + cur.getString(1) + "Overall Rating: " + cur.getString(5), duration);
-						toast.show();
-						
-						//int duration = Toast.LENGTH_LONG;
-						
-						//Toast toast = Toast.makeText(context, "Name: " + cur.getString(1), duration);
-						//toast.show();
-					} while (cur.moveToNext());
-				}
-				//========END OF NEW CODE=========//
-			  	
-				/*
-		        ImageView imgThumbnail = (ImageView) v.findViewById(R.id.info_window_image);
-		        imgThumbnail.setImageResource(R.drawable.indysunburst);
-		        TextView txtTitle = (TextView) v.findViewById(R.id.info_window_title);
-		        txtTitle.setText("Riley Skate Park");
-		        TextView txtOverallRating = (TextView) v.findViewById(R.id.info_window_OverallRating);
-		        txtOverallRating.setText("10");
-		        TextView txtPoRating = (TextView) v.findViewById(R.id.info_window_txtPoRating);
-		        txtPoRating.setText("5");
-		        TextView txtDiffRating = (TextView)  v.findViewById(R.id.info_window_diffRating);
-		        txtDiffRating.setText("7");
-		        TextView txtDistance = (TextView) v.findViewById(R.id.info_window_distance);
-		        txtDistance.setText("4.00");
-				*//*
-
-				// Returning the view containing InfoWindow contents
-				return v;
-				*/
 				return null;
 			}
 

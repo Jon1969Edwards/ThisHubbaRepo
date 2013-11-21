@@ -365,16 +365,7 @@ public class AddLocation extends Activity {
 
 		});
 	}
-	
-	// NEW
-	
-	/* TODO UNCOMMENT
-	private void handleSmallCameraPhoto(Intent intent) {
-	    Bundle extras = intent.getExtras();
-	    mImageBitmap = (Bitmap) extras.get("data");
-	    mImageView.setImageBitmap(mImageBitmap);
-	}
-	*/
+	/*
 	private void dispatchTakePictureIntent(final int actionCode) throws IOException {    
 	 // create Intent to take a picture and return control to the calling application
 	    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -389,12 +380,13 @@ public class AddLocation extends Activity {
 	    File f = createImageFile();
 	    //intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
 	}
+	*/
 	
-	/** Create a file Uri for saving an image or video */
+	/** Create a file Uri for saving an image or video *//*
 	private static Uri getOutputMediaFileUri(int type){
 	      return Uri.fromFile(getOutputMediaFile(type));
 	}
-	
+	*/
 	/** Create a File for saving an image or video */
 	@SuppressLint("SimpleDateFormat")
 	private static File getOutputMediaFile(int type){
