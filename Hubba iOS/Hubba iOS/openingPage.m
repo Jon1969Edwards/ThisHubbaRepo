@@ -7,6 +7,7 @@
 //
 
 #import "openingPage.h"
+#import "placeView.h"
 
 @interface openingPage ()
 
@@ -29,13 +30,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+  [loginBut setHidden:NO];
+  [signupBut setHidden:NO];
   
   CAGradientLayer *gradient = [CAGradientLayer layer];
   [gradient setFrame:login.frame];
-  [gradient setColors:[NSArray arrayWithObjects:(id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, nil]];
+  [gradient setColors:[NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, nil]];
   CAGradientLayer *gradient2 = [CAGradientLayer layer];
   [gradient2 setFrame:signup.frame];
-  [gradient2 setColors:[NSArray arrayWithObjects:(id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, nil]];
+  [gradient2 setColors:[NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, nil]];
   [loginBut.layer insertSublayer:gradient atIndex:0];
   [signupBut.layer insertSublayer:gradient2 atIndex:0];
   [loginBut.layer setBorderColor: [UIColor blackColor].CGColor];
@@ -84,6 +87,11 @@
     [loginBut setCenter:CGPointMake(self.view.center.x, self.view.center.y-35)];
   }
 
+}
+
+-(IBAction) go:(id) sender{
+  placeView *newVC = [[placeView alloc] init];
+  [self.navigationController pushViewController:newVC animated:YES];
 }
 
 @end

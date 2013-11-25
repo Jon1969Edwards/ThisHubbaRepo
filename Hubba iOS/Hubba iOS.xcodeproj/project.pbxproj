@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0402E7051842A685004AFDBF /* openingPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0402E7041842A685004AFDBF /* openingPage.xib */; };
+		0402E7091842A904004AFDBF /* placeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0402E7071842A904004AFDBF /* placeView.m */; };
+		0402E70A1842A904004AFDBF /* placeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0402E7081842A904004AFDBF /* placeView.xib */; };
 		04392567182C1A1C00D37F06 /* openingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04392565182C1A1C00D37F06 /* openingPage.m */; };
-		0463B9B3183532380092D696 /* main_iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0463B9B2183532380092D696 /* main_iphone.storyboard */; };
 		04910DC11821CF8100719010 /* mapPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04910DBF1821CF8100719010 /* mapPage.m */; };
 		04BD5818182093270014D419 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5817182093270014D419 /* Foundation.framework */; };
 		04BD581A182093270014D419 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5819182093270014D419 /* CoreGraphics.framework */; };
@@ -36,9 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0402E7041842A685004AFDBF /* openingPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = openingPage.xib; sourceTree = "<group>"; };
+		0402E7061842A904004AFDBF /* placeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = placeView.h; sourceTree = "<group>"; };
+		0402E7071842A904004AFDBF /* placeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = placeView.m; sourceTree = "<group>"; };
+		0402E7081842A904004AFDBF /* placeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = placeView.xib; sourceTree = "<group>"; };
 		04392564182C1A1C00D37F06 /* openingPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openingPage.h; sourceTree = "<group>"; };
 		04392565182C1A1C00D37F06 /* openingPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openingPage.m; sourceTree = "<group>"; };
-		0463B9B2183532380092D696 /* main_iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main_iphone.storyboard; sourceTree = "<group>"; };
 		04910DBE1821CF8100719010 /* mapPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapPage.h; sourceTree = "<group>"; };
 		04910DBF1821CF8100719010 /* mapPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapPage.m; sourceTree = "<group>"; };
 		04BD5814182093270014D419 /* Hubba iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hubba iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +128,7 @@
 				04BD5826182093270014D419 /* AppDelegate.h */,
 				04BD5827182093270014D419 /* AppDelegate.m */,
 				04BD584C182093650014D419 /* controllers */,
-				04BD584D182093750014D419 /* storyboard */,
+				04BD584D182093750014D419 /* xib */,
 				04BD582F182093270014D419 /* Images.xcassets */,
 				04BD581E182093270014D419 /* Supporting Files */,
 			);
@@ -168,16 +173,19 @@
 				04BD582D182093270014D419 /* loginPage.m */,
 				04910DBE1821CF8100719010 /* mapPage.h */,
 				04910DBF1821CF8100719010 /* mapPage.m */,
+				0402E7061842A904004AFDBF /* placeView.h */,
+				0402E7071842A904004AFDBF /* placeView.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
 		};
-		04BD584D182093750014D419 /* storyboard */ = {
+		04BD584D182093750014D419 /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				0463B9B2183532380092D696 /* main_iphone.storyboard */,
+				0402E7041842A685004AFDBF /* openingPage.xib */,
+				0402E7081842A904004AFDBF /* placeView.xib */,
 			);
-			name = storyboard;
+			name = xib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +264,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0463B9B3183532380092D696 /* main_iphone.storyboard in Resources */,
+				0402E7051842A685004AFDBF /* openingPage.xib in Resources */,
 				04BD5830182093270014D419 /* Images.xcassets in Resources */,
+				0402E70A1842A904004AFDBF /* placeView.xib in Resources */,
 				04BD5822182093270014D419 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0402E7091842A904004AFDBF /* placeView.m in Sources */,
 				04392567182C1A1C00D37F06 /* openingPage.m in Sources */,
 				04BD582E182093270014D419 /* loginPage.m in Sources */,
 				04BD5828182093270014D419 /* AppDelegate.m in Sources */,

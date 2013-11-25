@@ -16,5 +16,6 @@
 @property (nonatomic, strong) IBOutlet UIButton *login;
 @property (nonatomic, strong) IBOutlet UIButton *signup;
 
+-(IBAction) go:(id) sender;
 
 @end
