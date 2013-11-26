@@ -8,6 +8,8 @@
 
 #import "openingPage.h"
 #import "placeView.h"
+#import "mapPage.h"
+#import "LoginSignup.h"
 
 @interface openingPage ()
 
@@ -41,8 +43,8 @@
   [gradient2 setColors:[NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, nil]];
   [loginBut.layer insertSublayer:gradient atIndex:0];
   [signupBut.layer insertSublayer:gradient2 atIndex:0];
-  [loginBut.layer setBorderColor: [UIColor blackColor].CGColor];
-  [signupBut.layer setBorderColor: [UIColor blackColor].CGColor];
+  [loginBut.layer setBorderColor: [UIColor darkGrayColor].CGColor];
+  [signupBut.layer setBorderColor: [UIColor darkGrayColor].CGColor];
   [loginBut.layer setBorderWidth:1];
   [signupBut.layer setBorderWidth:1];
   
@@ -89,9 +91,14 @@
 
 }
 
--(IBAction) go:(id) sender{
-  placeView *newVC = [[placeView alloc] init];
+-(IBAction) login:(id) sender{
+  LoginSignup *newVC = [[LoginSignup alloc] init];
+  [newVC setTypePage:NO];
   [self.navigationController pushViewController:newVC animated:YES];
 }
-
+-(IBAction) signup:(id) sender{
+  LoginSignup *newVC = [[LoginSignup alloc] init];
+  [newVC setTypePage:YES];
+  [self.navigationController pushViewController:newVC animated:YES];
+}
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Constant.h"
+#import "Cell.h"
 
 @interface placeView : UIViewController{
   IBOutlet UIView *but1;
@@ -17,8 +18,17 @@
   
   IBOutlet UIButton *favorites;
   
-  IBOutlet UICollectionView *picList;
-
+  NSArray *objects;
 }
+
+@property (retain, nonatomic) IBOutlet UIImageView *placeImage;
+@property (retain, nonatomic) IBOutlet UILabel *placeName;
+@property (retain, nonatomic) IBOutlet UILabel *bustLevel;
+@property (retain, nonatomic) IBOutlet UILabel *diffLevel;
+@property (retain, nonatomic) IBOutlet UICollectionView *picList;
+
+@property (retain, nonatomic) NSData *imgData;
+
+- (IBAction)addImage:(id)sender;
 
 @end

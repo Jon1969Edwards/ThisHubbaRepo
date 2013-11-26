@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="mapPage">
+            <connections>
+                <outlet property="AddLocation" destination="ZzP-VB-bO2" id="s93-G5-HvE"/>
+                <outlet property="SearchBar" destination="TRS-lD-0vZ" id="1Mg-jF-GuP"/>
+                <outlet property="ShowAll" destination="zfL-TN-PRQ" id="3LU-mA-OOy"/>
+                <outlet property="TableView" destination="Az5-Nc-MrV" id="XWY-8W-6bm"/>
+                <outlet property="mapView" destination="r1W-JG-mmu" id="chU-RE-afV"/>
+                <outlet property="tabBar" destination="Vo6-JN-2Ui" id="UI1-bH-xFL"/>
+                <outlet property="view" destination="1" id="S20-nR-PJn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTI-Xz-TCM">
+                    <rect key="frame" x="0.0" y="70" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="TRS-lD-0vZ" userLabel="search bar">
+                            <rect key="frame" x="30" y="0.0" width="234" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="N4f-5x-JT0"/>
+                            </connections>
+                        </searchBar>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZzP-VB-bO2" userLabel="addLoc">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <state key="normal" title="+">
+                                <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfL-TN-PRQ" userLabel="show all">
+                            <rect key="frame" x="264" y="0.0" width="56" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="13"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Show All ">
+                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="showAllButton:" destination="-1" eventType="touchUpInside" id="x1f-3E-QeJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="zfL-TN-PRQ" secondAttribute="trailing" id="058-x1-Rdd"/>
+                        <constraint firstAttribute="bottom" secondItem="ZzP-VB-bO2" secondAttribute="bottom" id="1I3-fL-PR4"/>
+                        <constraint firstItem="TRS-lD-0vZ" firstAttribute="leading" secondItem="ZzP-VB-bO2" secondAttribute="trailing" id="4IP-AF-pTm"/>
+                        <constraint firstItem="TRS-lD-0vZ" firstAttribute="top" secondItem="zTI-Xz-TCM" secondAttribute="top" id="6NG-P0-Uey"/>
+                        <constraint firstAttribute="bottom" secondItem="zfL-TN-PRQ" secondAttribute="bottom" id="BSX-bp-kqG"/>
+                        <constraint firstItem="zfL-TN-PRQ" firstAttribute="leading" secondItem="TRS-lD-0vZ" secondAttribute="trailing" id="CZd-v5-s2v"/>
+                        <constraint firstItem="ZzP-VB-bO2" firstAttribute="leading" secondItem="zTI-Xz-TCM" secondAttribute="leading" id="Sku-g7-FwL"/>
+                        <constraint firstAttribute="bottom" secondItem="TRS-lD-0vZ" secondAttribute="bottom" id="TVT-HS-8hA"/>
+                        <constraint firstItem="TRS-lD-0vZ" firstAttribute="leading" secondItem="ZzP-VB-bO2" secondAttribute="trailing" id="XNo-BO-sCe"/>
+                        <constraint firstItem="zfL-TN-PRQ" firstAttribute="leading" secondItem="TRS-lD-0vZ" secondAttribute="trailing" id="hc5-AO-0Gs"/>
+                        <constraint firstItem="ZzP-VB-bO2" firstAttribute="top" secondItem="zTI-Xz-TCM" secondAttribute="top" id="iOG-iR-PoF"/>
+                        <constraint firstItem="zfL-TN-PRQ" firstAttribute="top" secondItem="zTI-Xz-TCM" secondAttribute="top" id="wv6-Y9-6rf"/>
+                    </constraints>
+                </view>
+                <tabBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-JN-2Ui">
+                    <rect key="frame" x="0.0" y="21" width="320" height="49"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <tabBarItem tag="1" title="Map" image="103-map.png" id="2ne-BI-DY0"/>
+                        <tabBarItem tag="2" title="Spot List" image="179-notepad.png" id="fwI-bf-VIf"/>
+                        <tabBarItem tag="3" title="My Spots" image="29-heart.png" id="jo9-F6-L2u"/>
+                    </items>
+                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="yRd-fS-cif"/>
+                    </connections>
+                </tabBar>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Az5-Nc-MrV" userLabel="Table View">
+                    <rect key="frame" x="0.0" y="112" width="320" height="456"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="BZw-g8-ABX"/>
+                        <outlet property="delegate" destination="-1" id="88F-bw-1YZ"/>
+                    </connections>
+                </tableView>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r1W-JG-mmu">
+                    <rect key="frame" x="0.0" y="112" width="320" height="456"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </mapView>
+            </subviews>
+            <color key="backgroundColor" red="0.043137254901960784" green="0.043137254901960784" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Vo6-JN-2Ui" secondAttribute="trailing" id="0Yf-DB-Zxy"/>
+                <constraint firstAttribute="trailing" secondItem="r1W-JG-mmu" secondAttribute="trailing" id="4Ya-Qy-UHM"/>
+                <constraint firstItem="zTI-Xz-TCM" firstAttribute="top" secondItem="Vo6-JN-2Ui" secondAttribute="bottom" id="84i-UN-faw"/>
+                <constraint firstItem="zTI-Xz-TCM" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="D4m-UN-Dok"/>
+                <constraint firstItem="Vo6-JN-2Ui" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="DTQ-OS-Fvb"/>
+                <constraint firstItem="Az5-Nc-MrV" firstAttribute="top" secondItem="Vo6-JN-2Ui" secondAttribute="bottom" constant="42" id="FOc-jc-k6U"/>
+                <constraint firstAttribute="trailing" secondItem="Az5-Nc-MrV" secondAttribute="trailing" id="NVj-6f-hEG"/>
+                <constraint firstAttribute="bottom" secondItem="r1W-JG-mmu" secondAttribute="bottom" id="RBb-R0-NHE"/>
+                <constraint firstItem="r1W-JG-mmu" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="SsH-xx-BLD"/>
+                <constraint firstAttribute="bottom" secondItem="Az5-Nc-MrV" secondAttribute="bottom" id="UUx-77-Nez"/>
+                <constraint firstItem="r1W-JG-mmu" firstAttribute="top" secondItem="Vo6-JN-2Ui" secondAttribute="bottom" constant="42" id="f6Q-Gm-n0t"/>
+                <constraint firstItem="zTI-Xz-TCM" firstAttribute="top" secondItem="Vo6-JN-2Ui" secondAttribute="bottom" id="kLX-pg-3Hc"/>
+                <constraint firstItem="Vo6-JN-2Ui" firstAttribute="top" secondItem="1" secondAttribute="top" constant="21" id="ubc-Oi-Wj1"/>
+                <constraint firstAttribute="trailing" secondItem="zTI-Xz-TCM" secondAttribute="trailing" id="uxY-hR-7QA"/>
+                <constraint firstItem="Az5-Nc-MrV" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="v5b-Xa-axb"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="103-map.png" width="26" height="21"/>
+        <image name="179-notepad.png" width="22" height="28"/>
+        <image name="29-heart.png" width="24" height="21"/>
+    </resources>
+</document>

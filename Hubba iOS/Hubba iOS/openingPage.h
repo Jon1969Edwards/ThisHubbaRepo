@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Constant.h"
 
+
 @interface openingPage : UIViewController
 
 @property (nonatomic, strong) IBOutlet UIView *loginBut;
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *login;
 @property (nonatomic, strong) IBOutlet UIButton *signup;
 
--(IBAction) go:(id) sender;
+-(IBAction) login:(id) sender;
+-(IBAction) signup:(id) sender;
 
 @end

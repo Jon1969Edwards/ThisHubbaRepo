@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface mapPage : UIViewController
+  
+  @property (nonatomic, strong) IBOutlet UITabBar *tabBar;
+  
+  // MY SPOTS and SPOT LIST items
+  @property (nonatomic, strong) IBOutlet UIButton *ShowAll;
+  @property (nonatomic, strong) IBOutlet UISearchBar *SearchBar;
+  @property (nonatomic, strong) IBOutlet UITableView *TableView;
+  @property (nonatomic, strong) IBOutlet UIButton *AddLocation;
+  
+  // MAP item
+  @property (nonatomic, strong) IBOutlet MKMapView *mapView;
+
+
+-(IBAction)showAllButton:(id)sender;
+
 
 @end
