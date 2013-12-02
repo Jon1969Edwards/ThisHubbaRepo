@@ -26,13 +26,191 @@
   Cell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"MY_CELL" forIndexPath:indexPath];
   
   if(cell == nil) NSLog(@"%li", (long)indexPath.row);
-
+  [cell setBackgroundColor:self.view.backgroundColor];
   [cell setImg:[UIImage imageNamed:[objects objectAtIndex:indexPath.row]]];
   return cell;
 }
+-(UIImage *)scaleImage:(UIImageView *)image toSize:(CGSize)newSize {
+  
+  float width = newSize.width;
+  float height = newSize.height;
+  
+  UIGraphicsBeginImageContext(newSize);
+  CGRect rect = CGRectMake(0, 0, width, height);
+  
+  float widthRatio = image.image.size.width / width;
+  float heightRatio = image.image.size.height / height;
+  float divisor = widthRatio > heightRatio ? widthRatio : heightRatio;
+  
+  width = image.image.size.width / divisor;
+  height = image.image.size.height / divisor;
+  
+  rect.size.width  = width;
+  rect.size.height = height;
+  
+  if(height < width)
+    rect.origin.y = height / 3;
+  [image.image drawInRect: rect];
+  
+  UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  return smallImage;
+}
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
   NSLog(@"Item at: %li", (long)indexPath.row);
+  Cell *cell = (Cell *)[collectionView cellForItemAtIndexPath:indexPath];
+  
+  self.fullScreenImage = [[UIImageView alloc] initWithImage:cell.pic.image];
+  [self.fullScreenImage setContentMode:UIViewContentModeScaleAspectFit];
+  [self.fullScreenImage setFrame:[self.view convertRect:cell.pic.frame
+                                             fromView: cell.pic.superview]];
+  origFrame = self.fullScreenImage.frame;
+  [self.fullScreenImage setUserInteractionEnabled:YES];
+  [self.fullScreenImage setClipsToBounds:YES];
+  
+  objc_setAssociatedObject( self.fullScreenImage,
+                           "original_frame",
+                           [NSValue valueWithCGRect: self.fullScreenImage.frame],
+                           OBJC_ASSOCIATION_RETAIN);
+  
+  [UIView transitionWithView: self.view
+                    duration: 0.25
+                     options: UIViewAnimationOptionAllowAnimatedContent
+                  animations:^{
+                    
+                    [self.view addSubview: self.fullScreenImage];
+                    [self.fullScreenImage setFrame:self.view.bounds];
+                    [self.fullScreenImage setBackgroundColor:[UIColor blackColor]];
+                  } completion:^(BOOL finished) {
+                    
+                    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(shrink)];
+                    UISwipeGestureRecognizer *left = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(left)
+                                                    ];
+                    UISwipeGestureRecognizer *right = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(right)
+                                                      ];
+                    [left setDirection:UISwipeGestureRecognizerDirectionLeft];
+                    [right setDirection:UISwipeGestureRecognizerDirectionRight];
+                    
+                    [self.fullScreenImage addGestureRecognizer: left];
+                    [self.fullScreenImage addGestureRecognizer: right];
+                    [self.fullScreenImage addGestureRecognizer: tgr];
+                    rowShowing = indexPath.row;
+                    
+                  }];
 }
+
+// ----------------------------------------------------------------
+
+
+
+// ----------------------------------------------------------------
+// FUNCTIONS FOR FULL SCREEN IMAGE
+-(void)shrink{
+  [UIView transitionWithView: self.view
+                    duration: 0.25
+                     options: UIViewAnimationOptionAllowAnimatedContent
+                  animations:^{
+                    [self.fullScreenImage setBackgroundColor:[UIColor clearColor]];
+                    [self.fullScreenImage setFrame:origFrame];
+                  } completion:^(BOOL finished) {
+                    [self.fullScreenImage removeFromSuperview];
+                  }];
+}
+-(void)left{
+  if( rowShowing+1 < [objects count] ){
+    UIImage *img = [UIImage imageNamed:[objects objectAtIndex:++rowShowing]];
+    [self.picList scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:rowShowing inSection:0]
+                         atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    UIImageView *newView = [[UIImageView alloc] initWithImage:img];
+    [newView setContentMode:UIViewContentModeScaleAspectFit];
+    [newView setFrame:self.fullScreenImage.frame];
+    [newView setCenter:CGPointMake(newView.center.x+320, newView.center.y)];
+    [newView setUserInteractionEnabled:YES];
+    [newView setClipsToBounds:YES];
+    [newView setBackgroundColor:[UIColor blackColor]];
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(shrink)];
+    UISwipeGestureRecognizer *left = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                               action:@selector(left)];
+    UISwipeGestureRecognizer *right = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(right)];
+    
+    [left setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [right setDirection:UISwipeGestureRecognizerDirectionRight];
+    
+    [newView addGestureRecognizer: left];
+    [newView addGestureRecognizer: right];
+    [newView addGestureRecognizer: tgr];
+    
+    [UIView transitionWithView: self.view
+                      duration: 0.25
+                       options: UIViewAnimationOptionAllowAnimatedContent
+                    animations:^{
+                      [self.view addSubview:newView];
+                      [self.fullScreenImage setCenter:CGPointMake(self.fullScreenImage.center.x-320, self.fullScreenImage.center.y)];
+                      [newView setCenter:CGPointMake(newView.center.x-320, newView.center.y)];
+                      
+                    } completion:^(BOOL finished) {
+                      [self.fullScreenImage removeFromSuperview];
+                      self.fullScreenImage = newView;
+
+                      Cell *cell = (Cell *)[self.picList cellForItemAtIndexPath:[NSIndexPath indexPathForRow:rowShowing inSection:0]];
+                      origFrame = [self.view convertRect:cell.pic.frame
+                                    fromView: cell.pic.superview];
+                    }];
+    
+  } else return;
+}
+-(void)right{
+  if(rowShowing){
+    UIImage *img = [UIImage imageNamed:[objects objectAtIndex:--rowShowing]];
+    [self.picList scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:rowShowing inSection:0]
+                         atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    UIImageView *newView = [[UIImageView alloc] initWithImage:img];
+    [newView setContentMode:UIViewContentModeScaleAspectFit];
+    [newView setFrame:self.fullScreenImage.frame];
+    [newView setCenter:CGPointMake(newView.center.x-320, newView.center.y)];
+    [newView setUserInteractionEnabled:YES];
+    [newView setClipsToBounds:YES];
+    [newView setBackgroundColor:[UIColor blackColor]];
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(shrink)];
+    UISwipeGestureRecognizer *left = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                               action:@selector(left)];
+    UISwipeGestureRecognizer *right = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(right)];
+    
+    [left setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [right setDirection:UISwipeGestureRecognizerDirectionRight];
+    
+    [newView addGestureRecognizer: left];
+    [newView addGestureRecognizer: right];
+    [newView addGestureRecognizer: tgr];
+    
+    [UIView transitionWithView: self.view
+                      duration: 0.25
+                       options: UIViewAnimationOptionAllowAnimatedContent
+                    animations:^{
+                      [self.view addSubview:newView];
+                      [self.fullScreenImage setCenter:CGPointMake(self.fullScreenImage.center.x+320, self.fullScreenImage.center.y)];
+                      [newView setCenter:CGPointMake(newView.center.x+320, newView.center.y)];
+                      
+                    } completion:^(BOOL finished) {
+                      [self.fullScreenImage removeFromSuperview];
+                      self.fullScreenImage = newView;
+                      
+                      Cell *cell = (Cell *)[self.picList cellForItemAtIndexPath:[NSIndexPath indexPathForRow:rowShowing inSection:0]];
+                      origFrame = [self.view convertRect:cell.pic.frame
+                                                fromView: cell.pic.superview];
+                    }];
+    
+  } else return;
+}
+
 // ----------------------------------------------------------------
 
 
@@ -123,6 +301,10 @@
     CAGradientLayer *gradient = [CAGradientLayer layer];
     [gradient setFrame:CGRectMake(0, 5, 104, 40)];
     [gradient setColors:[NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, nil]];
+    [but0.layer insertSublayer:gradient atIndex:0];
+    gradient = [CAGradientLayer layer];
+    [gradient setFrame:CGRectMake(0, 5, 104, 40)];
+    [gradient setColors:[NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, nil]];
     [but1.layer insertSublayer:gradient atIndex:0];
     gradient = [CAGradientLayer layer];
     [gradient setFrame:CGRectMake(0, 5, 104, 40)];
@@ -136,13 +318,14 @@
     [gradient setFrame:CGRectMake(0, 0, 280, 40)];
     [gradient setColors:[NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, nil]];
     [but4.layer insertSublayer:gradient atIndex:0];
-  but1.layer.borderWidth = but2.layer.borderWidth = but3.layer.borderWidth = but4.layer.borderWidth = 1;
-  but1.layer.borderColor = but2.layer.borderColor = but3.layer.borderColor = but4.layer.borderColor = [UIColor darkGrayColor].CGColor;
+  but0.layer.borderWidth = but1.layer.borderWidth = but2.layer.borderWidth = but3.layer.borderWidth = but4.layer.borderWidth = 1;
+  but0.layer.borderColor = but1.layer.borderColor = but2.layer.borderColor = but3.layer.borderColor = but4.layer.borderColor = [UIColor darkGrayColor].CGColor;
   
   [favorites setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
   [favorites.titleLabel setTextAlignment:NSTextAlignmentCenter];
+  [viewonmap.titleLabel setTextAlignment:NSTextAlignmentCenter];
   
-  objects = [[NSArray alloc] initWithObjects:@"IMG_2531.png",@"IMG_2533.png",@"IMG_2535.png",
+  objects = [[NSArray alloc] initWithObjects:@"sc.png",@"IMG_2531.png",@"IMG_2533.png",@"IMG_2535.png",
              @"img.png",@"img2.png", @"IMG_2531.png",@"IMG_2533.png",@"IMG_2535.png",
              @"img.png",@"img2.png",nil];
   
@@ -175,5 +358,9 @@
 -(void)goBack:(UIPanGestureRecognizer *)sender{
   [self.navigationController popViewControllerAnimated:YES];
 }
+- (IBAction)done:(id)sender{
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 @end

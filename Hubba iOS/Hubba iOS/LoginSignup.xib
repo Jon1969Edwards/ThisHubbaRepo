@@ -13,6 +13,13 @@
                 <outlet property="moveBackward" destination="czD-mD-oST" id="0HR-jz-J49"/>
                 <outlet property="moveForward" destination="FNy-he-apH" id="1Q0-xQ-1Ri"/>
                 <outlet property="rememberInfo" destination="5Ve-mu-4pm" id="beU-d1-ec9"/>
+                <outlet property="signUpInfoView" destination="Sht-po-fCV" id="8Qv-lo-asN"/>
+                <outlet property="signupEmail" destination="c55-EN-ske" id="h7C-f1-QOa"/>
+                <outlet property="signupName" destination="FOn-OW-5VE" id="qox-Fy-3zF"/>
+                <outlet property="signupPass" destination="cjd-Jg-0e4" id="FA5-lc-baZ"/>
+                <outlet property="signupPass2" destination="bSb-Mc-JGq" id="Jqp-nJ-LKC"/>
+                <outlet property="signupUsername" destination="koQ-0h-ldr" id="cds-Sd-r1a"/>
+                <outlet property="toggleInfoView" destination="bjR-28-4Mt" id="gSM-Et-YQ6"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -94,14 +101,14 @@
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="PrS-Bz-GvT"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8i9-HD-9tZ">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8i9-HD-9tZ" userLabel="loginInfoView">
                     <rect key="frame" x="53" y="325" width="214" height="87"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6xS-oY-uvZ" userLabel="loginEmail">
                             <rect key="frame" x="0.0" y="12" width="214" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
@@ -112,10 +119,10 @@
                         <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CaA-w5-KX4" userLabel="loginPass">
                             <rect key="frame" x="0.0" y="50" width="214" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="dxf-dJ-aPA"/>
                             </connections>
@@ -127,9 +134,96 @@
                         <constraint firstAttribute="height" constant="87" id="nHu-97-RpB"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sht-po-fCV" userLabel="signupInfoView">
+                    <rect key="frame" x="53" y="242" width="214" height="170"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FOn-OW-5VE" userLabel="signinName">
+                            <rect key="frame" x="0.0" y="0.0" width="214" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="x8O-ho-cQ2"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="koQ-0h-ldr" userLabel="signinUsername">
+                            <rect key="frame" x="0.0" y="33" width="214" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="4Dd-rd-YXC"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c55-EN-ske" userLabel="signinEmail">
+                            <rect key="frame" x="0.0" y="66" width="214" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="3p1-Fb-T1U"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cjd-Jg-0e4" userLabel="signinPass">
+                            <rect key="frame" x="0.0" y="99" width="214" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="tYv-OM-lLY"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSb-Mc-JGq" userLabel="signinPass2">
+                            <rect key="frame" x="0.0" y="132" width="214" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="KEj-vj-0mQ"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="cjd-Jg-0e4" secondAttribute="trailing" id="0Kh-Pe-K26"/>
+                        <constraint firstItem="FOn-OW-5VE" firstAttribute="top" secondItem="Sht-po-fCV" secondAttribute="top" id="10Y-3s-CGm"/>
+                        <constraint firstAttribute="width" constant="214" id="13k-D7-GWf"/>
+                        <constraint firstAttribute="trailing" secondItem="koQ-0h-ldr" secondAttribute="trailing" id="1ci-2N-4Bn"/>
+                        <constraint firstItem="koQ-0h-ldr" firstAttribute="leading" secondItem="Sht-po-fCV" secondAttribute="leading" id="Bfp-x7-gvA"/>
+                        <constraint firstItem="cjd-Jg-0e4" firstAttribute="leading" secondItem="Sht-po-fCV" secondAttribute="leading" id="D6H-us-QfR"/>
+                        <constraint firstItem="bSb-Mc-JGq" firstAttribute="top" secondItem="cjd-Jg-0e4" secondAttribute="bottom" constant="3" id="KEl-RR-h5I"/>
+                        <constraint firstAttribute="bottom" secondItem="bSb-Mc-JGq" secondAttribute="bottom" constant="8" id="Loc-xh-mIZ"/>
+                        <constraint firstAttribute="trailing" secondItem="c55-EN-ske" secondAttribute="trailing" id="Meh-y4-bma"/>
+                        <constraint firstItem="cjd-Jg-0e4" firstAttribute="top" secondItem="c55-EN-ske" secondAttribute="bottom" constant="3" id="Mu0-Mv-1RY"/>
+                        <constraint firstItem="c55-EN-ske" firstAttribute="top" secondItem="koQ-0h-ldr" secondAttribute="bottom" constant="3" id="NAs-2P-t47"/>
+                        <constraint firstAttribute="trailing" secondItem="bSb-Mc-JGq" secondAttribute="trailing" id="VZ0-dj-NjJ"/>
+                        <constraint firstItem="koQ-0h-ldr" firstAttribute="top" secondItem="FOn-OW-5VE" secondAttribute="bottom" constant="3" id="Ztl-t1-A5l"/>
+                        <constraint firstItem="koQ-0h-ldr" firstAttribute="top" secondItem="FOn-OW-5VE" secondAttribute="bottom" constant="3" id="bWN-Bd-mkq"/>
+                        <constraint firstItem="c55-EN-ske" firstAttribute="top" secondItem="koQ-0h-ldr" secondAttribute="bottom" constant="3" id="cZQ-EZ-yQd"/>
+                        <constraint firstItem="bSb-Mc-JGq" firstAttribute="leading" secondItem="Sht-po-fCV" secondAttribute="leading" id="dF2-m9-cqO"/>
+                        <constraint firstItem="cjd-Jg-0e4" firstAttribute="top" secondItem="c55-EN-ske" secondAttribute="bottom" constant="3" id="gIg-fa-NMB"/>
+                        <constraint firstItem="FOn-OW-5VE" firstAttribute="leading" secondItem="Sht-po-fCV" secondAttribute="leading" id="hV6-vI-g62"/>
+                        <constraint firstItem="bSb-Mc-JGq" firstAttribute="top" secondItem="cjd-Jg-0e4" secondAttribute="bottom" constant="3" id="hfL-ej-UYj"/>
+                        <constraint firstAttribute="trailing" secondItem="FOn-OW-5VE" secondAttribute="trailing" id="iMO-ys-fcl"/>
+                        <constraint firstAttribute="height" constant="170" id="j5I-BK-wUy"/>
+                        <constraint firstItem="c55-EN-ske" firstAttribute="leading" secondItem="Sht-po-fCV" secondAttribute="leading" id="rp9-Tn-xqm"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="Sht-po-fCV" secondAttribute="centerX" id="3lu-Bh-nhU"/>
                 <constraint firstAttribute="centerX" secondItem="bjR-28-4Mt" secondAttribute="centerX" id="62z-Ni-9n9"/>
                 <constraint firstAttribute="bottom" secondItem="1NO-AM-lGL" secondAttribute="bottom" constant="48" id="6EH-VE-HLd"/>
                 <constraint firstItem="czD-mD-oST" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="10" id="B8l-HP-b6R"/>
@@ -139,6 +233,7 @@
                 <constraint firstAttribute="centerX" secondItem="8i9-HD-9tZ" secondAttribute="centerX" id="eh7-IN-bCM"/>
                 <constraint firstAttribute="centerX" secondItem="1NO-AM-lGL" secondAttribute="centerX" id="h7j-72-Hjo"/>
                 <constraint firstItem="czD-mD-oST" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="hRH-Oq-old"/>
+                <constraint firstItem="bjR-28-4Mt" firstAttribute="top" secondItem="Sht-po-fCV" secondAttribute="bottom" constant="8" id="nBz-fv-zad"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

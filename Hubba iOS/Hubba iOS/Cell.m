@@ -16,6 +16,7 @@
   if (self) {
     [self.layer setBorderWidth:2];
     [self.layer setBorderColor:GRAY2.CGColor];
+    [self.layer setCornerRadius:3];
     
     self.pic = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
     [self.pic setBackgroundColor:[UIColor clearColor]];

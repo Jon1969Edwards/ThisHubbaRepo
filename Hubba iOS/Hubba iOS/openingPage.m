@@ -61,13 +61,6 @@
     [signupBut setCenter:CGPointMake(self.view.center.x, self.view.center.y+35)];
     [loginBut setCenter:CGPointMake(self.view.center.x, self.view.center.y-35)];
   }
- 
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(orientationChanged)
-                                               name:UIDeviceOrientationDidChangeNotification
-                                             object:nil];
-  
-  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,15 +69,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(orientationChanged)
+                                               name:UIDeviceOrientationDidChangeNotification
+                                             object:nil];
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:UIDeviceOrientationDidChangeNotification
+                                                object:nil];
+}
+
 -(void)orientationChanged{
   UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
   if( UIInterfaceOrientationIsPortrait(orientation)){
-    NSLog(@"Vertical");
     [signupBut setCenter:CGPointMake(self.view.center.x, DEVICEHEIGHT-75)];
     [loginBut setCenter:CGPointMake(self.view.center.x, DEVICEHEIGHT-145)];
   }
   else{
-    NSLog(@"Horizontal");
     [signupBut setCenter:CGPointMake(self.view.center.x, self.view.center.y+35)];
     [loginBut setCenter:CGPointMake(self.view.center.x, self.view.center.y-35)];
   }

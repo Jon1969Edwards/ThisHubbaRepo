@@ -7,10 +7,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="mapPage">
             <connections>
                 <outlet property="AddLocation" destination="ZzP-VB-bO2" id="s93-G5-HvE"/>
+                <outlet property="Logout" destination="KGI-wp-hnd" id="zoP-uZ-zba"/>
                 <outlet property="SearchBar" destination="TRS-lD-0vZ" id="1Mg-jF-GuP"/>
                 <outlet property="ShowAll" destination="zfL-TN-PRQ" id="3LU-mA-OOy"/>
                 <outlet property="TableView" destination="Az5-Nc-MrV" id="XWY-8W-6bm"/>
                 <outlet property="mapView" destination="r1W-JG-mmu" id="chU-RE-afV"/>
+                <outlet property="settingsInfoView" destination="8cS-Vi-Smq" id="uKI-7Q-zfh"/>
                 <outlet property="tabBar" destination="Vo6-JN-2Ui" id="UI1-bH-xFL"/>
                 <outlet property="view" destination="1" id="S20-nR-PJn"/>
             </connections>
@@ -54,7 +56,7 @@
                             <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="13"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Show All ">
-                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="selected">
@@ -90,14 +92,15 @@
                         <tabBarItem tag="1" title="Map" image="103-map.png" id="2ne-BI-DY0"/>
                         <tabBarItem tag="2" title="Spot List" image="179-notepad.png" id="fwI-bf-VIf"/>
                         <tabBarItem tag="3" title="My Spots" image="29-heart.png" id="jo9-F6-L2u"/>
+                        <tabBarItem tag="4" title="Settings" image="settings.png" id="dx4-B3-kIk"/>
                     </items>
-                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="barTintColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="yRd-fS-cif"/>
                     </connections>
                 </tabBar>
-                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Az5-Nc-MrV" userLabel="Table View">
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Az5-Nc-MrV" userLabel="Table View">
                     <rect key="frame" x="0.0" y="112" width="320" height="456"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -111,6 +114,26 @@
                     <rect key="frame" x="0.0" y="112" width="320" height="456"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </mapView>
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cS-Vi-Smq">
+                    <rect key="frame" x="0.0" y="72" width="322" height="496"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGI-wp-hnd">
+                            <rect key="frame" x="36" y="436" width="250" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.82860331629999995" green="0.161999539" blue="0.19446755160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="20"/>
+                            <state key="normal" title="Logout">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="logout:" destination="-1" eventType="touchUpInside" id="KS6-ze-jfO"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.043137254901960784" green="0.043137254901960784" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -135,8 +158,9 @@
         </view>
     </objects>
     <resources>
-        <image name="103-map.png" width="26" height="21"/>
+        <image name="103-map.png" width="30" height="30"/>
         <image name="179-notepad.png" width="22" height="28"/>
         <image name="29-heart.png" width="24" height="21"/>
+        <image name="settings.png" width="30" height="30"/>
     </resources>
 </document>

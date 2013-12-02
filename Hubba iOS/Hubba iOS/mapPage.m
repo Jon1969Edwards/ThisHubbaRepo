@@ -13,7 +13,7 @@
 @end
 
 @implementation mapPage
-@synthesize SearchBar, AddLocation, ShowAll, tabBar, mapView, TableView;
+@synthesize SearchBar, AddLocation, ShowAll, tabBar, mapView, TableView, settingsInfoView;
 
 // ----------------------------------------------------------------
 // table view required delegate methods
@@ -28,6 +28,13 @@
   }
   return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  placeView *newVC = [[placeView alloc] init];
+  [self.navigationController pushViewController:newVC animated:YES];
+  
+}
 // ----------------------------------------------------------------
 
 
@@ -37,9 +44,10 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
   NSLog(@"tab selected: %@, %li", item.title, (long)item.tag);
-  if(item.tag == 1) [TableView setHidden:YES], [mapView setHidden:NO];
-  else [TableView setHidden:NO], [mapView setHidden:YES];
-  
+  if(item.tag == 1) [TableView setHidden:YES], [mapView setHidden:NO], [settingsInfoView setHidden:YES];
+  else if(item.tag == 4) [TableView setHidden:YES], [mapView setHidden:YES], [settingsInfoView setHidden:NO];
+  else [TableView setHidden:NO], [mapView setHidden:YES], [settingsInfoView setHidden:YES];
+  [TableView reloadData];
 }
 // ----------------------------------------------------------------
 
@@ -64,9 +72,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-  [ShowAll setSelected:YES];
   [tabBar setSelectedItem:[tabBar.items objectAtIndex:0]];
   [AddLocation.titleLabel setTextAlignment:NSTextAlignmentRight];
+  [mapView setMapType:MKMapTypeSatellite];
+  
+  [self.Logout.layer setBorderWidth:1];
+  [self.Logout.layer setBorderColor:[UIColor whiteColor].CGColor];
+  [self.Logout.layer setCornerRadius:6];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,8 +87,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+  [searchBar resignFirstResponder];
+  [TableView reloadData];
+  [mapView reloadInputViews];
+}
 
 -(IBAction)showAllButton:(id)sender{
-  [ShowAll setSelected: !ShowAll.selected];
+  [self.SearchBar setText:@""];
+  [self.view endEditing:YES];
+  [SearchBar resignFirstResponder];
+  [TableView reloadData];
+  [mapView reloadInputViews];
+}
+-(IBAction)logout:(id)sender{
+  [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end

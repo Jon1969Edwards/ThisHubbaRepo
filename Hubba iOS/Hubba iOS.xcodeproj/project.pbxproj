@@ -28,6 +28,9 @@
 		04AEB2981843ED2E00E4CD98 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04AEB2971843ED2E00E4CD98 /* CoreImage.framework */; };
 		04AEB29E184472CC00E4CD98 /* LoginSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEB29C184472CC00E4CD98 /* LoginSignup.m */; };
 		04AEB29F184472CC00E4CD98 /* LoginSignup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AEB29D184472CC00E4CD98 /* LoginSignup.xib */; };
+		04AEB2A21844DFF600E4CD98 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEB2A11844DFF600E4CD98 /* ErrorHandler.m */; };
+		04AEB2AC18455C4800E4CD98 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AEB2AB18455C4800E4CD98 /* settings.png */; };
+		04AEB2AE184653F800E4CD98 /* sc.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AEB2AD184653F800E4CD98 /* sc.png */; };
 		04BD5818182093270014D419 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5817182093270014D419 /* Foundation.framework */; };
 		04BD581A182093270014D419 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD5819182093270014D419 /* CoreGraphics.framework */; };
 		04BD581C182093270014D419 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD581B182093270014D419 /* UIKit.framework */; };
@@ -40,6 +43,7 @@
 		04BD5839182093270014D419 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD581B182093270014D419 /* UIKit.framework */; };
 		04BD5841182093270014D419 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04BD583F182093270014D419 /* InfoPlist.strings */; };
 		04BD5843182093270014D419 /* Hubba_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD5842182093270014D419 /* Hubba_iOSTests.m */; };
+		1A3E9E9FA8BC4453BCF5C7ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC2DB1A9270407B8020D504 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,10 @@
 		04AEB29B184472CC00E4CD98 /* LoginSignup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSignup.h; sourceTree = "<group>"; };
 		04AEB29C184472CC00E4CD98 /* LoginSignup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSignup.m; sourceTree = "<group>"; };
 		04AEB29D184472CC00E4CD98 /* LoginSignup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginSignup.xib; sourceTree = "<group>"; };
+		04AEB2A01844DFF600E4CD98 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHandler.h; sourceTree = "<group>"; };
+		04AEB2A11844DFF600E4CD98 /* ErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorHandler.m; sourceTree = "<group>"; };
+		04AEB2AB18455C4800E4CD98 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		04AEB2AD184653F800E4CD98 /* sc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sc.png; sourceTree = "<group>"; };
 		04BD5814182093270014D419 /* Hubba iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hubba iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BD5817182093270014D419 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04BD5819182093270014D419 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,6 +105,8 @@
 		04BD5840182093270014D419 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04BD5842182093270014D419 /* Hubba_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hubba_iOSTests.m; sourceTree = "<group>"; };
 		04BD58501820942C0014D419 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		35B78AEC29B8423B842E0855 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		5DC2DB1A9270407B8020D504 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +120,7 @@
 				04BD5818182093270014D419 /* Foundation.framework in Frameworks */,
 				0402E7131843B3AD004AFDBF /* MapKit.framework in Frameworks */,
 				04BD581C182093270014D419 /* UIKit.framework in Frameworks */,
+				1A3E9E9FA8BC4453BCF5C7ED /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,8 +142,10 @@
 			children = (
 				04AEB2881843E0CD00E4CD98 /* IMG_2531.png */,
 				04AEB2891843E0CD00E4CD98 /* IMG_2533.png */,
+				04AEB2AD184653F800E4CD98 /* sc.png */,
 				04AEB28A1843E0CD00E4CD98 /* IMG_2535.png */,
 				04AEB28B1843E0CD00E4CD98 /* img.png */,
+				04AEB2AB18455C4800E4CD98 /* settings.png */,
 				04AEB28C1843E0CD00E4CD98 /* img2.png */,
 				0402E7181843C0D5004AFDBF /* 179-notepad.png */,
 				0402E7161843C0AF004AFDBF /* 29-heart.png */,
@@ -148,6 +161,7 @@
 				04BD583C182093270014D419 /* Hubba iOSTests */,
 				04BD5816182093270014D419 /* Frameworks */,
 				04BD5815182093270014D419 /* Products */,
+				35B78AEC29B8423B842E0855 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +185,7 @@
 				04BD5819182093270014D419 /* CoreGraphics.framework */,
 				04BD581B182093270014D419 /* UIKit.framework */,
 				04BD5836182093270014D419 /* XCTest.framework */,
+				5DC2DB1A9270407B8020D504 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -181,6 +196,8 @@
 				04BD58501820942C0014D419 /* Constant.h */,
 				04BD5826182093270014D419 /* AppDelegate.h */,
 				04BD5827182093270014D419 /* AppDelegate.m */,
+				04AEB2A01844DFF600E4CD98 /* ErrorHandler.h */,
+				04AEB2A11844DFF600E4CD98 /* ErrorHandler.m */,
 				04AEB2921843E59900E4CD98 /* Cell.h */,
 				04AEB2931843E59900E4CD98 /* Cell.m */,
 				04BD584C182093650014D419 /* controllers */,
@@ -255,9 +272,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04BD5846182093270014D419 /* Build configuration list for PBXNativeTarget "Hubba iOS" */;
 			buildPhases = (
+				9290A1F98CB24F0194D35BD8 /* Check Pods Manifest.lock */,
 				04BD5810182093270014D419 /* Sources */,
 				04BD5811182093270014D419 /* Frameworks */,
 				04BD5812182093270014D419 /* Resources */,
+				F2218E7EC48A4E61BA9538EE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -327,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AEB2AC18455C4800E4CD98 /* settings.png in Resources */,
 				0402E70C1843A79A004AFDBF /* mapPage.xib in Resources */,
 				0402E7151843C089004AFDBF /* 103-map.png in Resources */,
 				04AEB28E1843E0CD00E4CD98 /* IMG_2533.png in Resources */,
@@ -339,6 +359,7 @@
 				04BD5830182093270014D419 /* Images.xcassets in Resources */,
 				0402E70A1842A904004AFDBF /* placeView.xib in Resources */,
 				04AEB29F184472CC00E4CD98 /* LoginSignup.xib in Resources */,
+				04AEB2AE184653F800E4CD98 /* sc.png in Resources */,
 				04AEB28F1843E0CD00E4CD98 /* IMG_2535.png in Resources */,
 				04BD5822182093270014D419 /* InfoPlist.strings in Resources */,
 				04AEB2911843E0CD00E4CD98 /* img2.png in Resources */,
@@ -355,12 +376,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9290A1F98CB24F0194D35BD8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F2218E7EC48A4E61BA9538EE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04BD5810182093270014D419 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0402E7091842A904004AFDBF /* placeView.m in Sources */,
+				04AEB2A21844DFF600E4CD98 /* ErrorHandler.m in Sources */,
 				04392567182C1A1C00D37F06 /* openingPage.m in Sources */,
 				04BD5828182093270014D419 /* AppDelegate.m in Sources */,
 				04BD5824182093270014D419 /* main.m in Sources */,
@@ -482,7 +537,9 @@
 		};
 		04BD5847182093270014D419 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35B78AEC29B8423B842E0855 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -498,7 +555,9 @@
 		};
 		04BD5848182093270014D419 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35B78AEC29B8423B842E0855 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
