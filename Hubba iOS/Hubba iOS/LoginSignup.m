@@ -172,6 +172,7 @@
         [defaults setObject:NULL forKey:@"email"];
         [defaults setObject:NULL forKey:@"pass"];
       }
+      [defaults setObject:@"1" forKey:@"sortBy"];
       [defaults synchronize];
       
       mapPage *newVC = [[mapPage alloc] init];

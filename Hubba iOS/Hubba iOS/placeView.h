@@ -6,6 +6,13 @@
 //  Copyright (c) 2013 eecs499. All rights reserved.
 //
 
+
+@protocol senddataProtocol <NSObject>
+
+-(void)sendDataBack:(NSArray *)array; //I am thinking my data is NSArray , you can use another object for store your information.
+
+@end
+
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import "Constant.h"
@@ -26,6 +33,9 @@
   int rowShowing;
 }
 
+// delegate to pass back location to view on map
+@property(nonatomic,assign)id delegate;
+
 @property (retain, nonatomic) IBOutlet UIImageView *placeImage;
 @property (retain, nonatomic) IBOutlet UILabel *placeName;
 @property (retain, nonatomic) IBOutlet UILabel *bustLevel;
@@ -37,6 +47,7 @@
 
 - (IBAction)addImage:(id)sender;
 - (IBAction)done:(id)sender;
+- (IBAction)viewOnMap:(id)sender;
 
 -(UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize;
 

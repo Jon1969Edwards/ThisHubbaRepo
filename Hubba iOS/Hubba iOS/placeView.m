@@ -298,6 +298,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
   
+    [self.placeImage setImage:[UIImage imageNamed:@"default"]];
+  
     CAGradientLayer *gradient = [CAGradientLayer layer];
     [gradient setFrame:CGRectMake(0, 5, 104, 40)];
     [gradient setColors:[NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, nil]];
@@ -325,9 +327,7 @@
   [favorites.titleLabel setTextAlignment:NSTextAlignmentCenter];
   [viewonmap.titleLabel setTextAlignment:NSTextAlignmentCenter];
   
-  objects = [[NSArray alloc] initWithObjects:@"sc.png",@"IMG_2531.png",@"IMG_2533.png",@"IMG_2535.png",
-             @"img.png",@"img2.png", @"IMG_2531.png",@"IMG_2533.png",@"IMG_2535.png",
-             @"img.png",@"img2.png",nil];
+  objects = [[NSArray alloc] initWithObjects:@"01.jpg", @"02.jpg", @"03.jpg", @"04.jpg", @"05.jpg", @"06.jpg", @"07.jpg", @"08.jpg", @"09.jpg", @"10.jpg", nil];
   
   [self.picList.layer setBorderWidth:2];
   [self.picList.layer setBorderColor:[UIColor darkGrayColor].CGColor];
@@ -359,6 +359,13 @@
   [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)done:(id)sender{
+  [self popController];
+}
+- (IBAction)viewOnMap:(id)sender{
+  [self.delegate sendDataBack:[NSArray arrayWithObjects:@"42.2814", @"-83.7483", nil]];
+  [self popController];
+}
+-(void) popController{
   [self.navigationController popViewControllerAnimated:YES];
 }
 
