@@ -13,6 +13,7 @@
                 <outlet property="but3" destination="T4g-N6-y7C" id="lNn-gh-SIM"/>
                 <outlet property="but4" destination="cW8-In-9hf" id="gKD-QY-tVC"/>
                 <outlet property="diffLevel" destination="wWY-bS-xHk" id="P2v-Tf-4f7"/>
+                <outlet property="dist" destination="oEp-Pv-6EN" id="Rgv-xo-I8u"/>
                 <outlet property="favorites" destination="hCg-3p-QLv" id="LeG-dz-bZo"/>
                 <outlet property="picList" destination="1Rh-23-uW4" id="1Xt-wz-u2y"/>
                 <outlet property="placeImage" destination="xwN-Ur-fXn" id="bEe-uc-V4p"/>

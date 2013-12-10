@@ -33,14 +33,20 @@
   int rowShowing;
 }
 
+@property (nonatomic) UILabel *helpName;
+@property (nonatomic) UILabel *helpDist;
+@property (nonatomic) UILabel *helpDiff;
+@property (nonatomic) UILabel *helpBust;
+
 // delegate to pass back location to view on map
 @property(nonatomic,assign)id delegate;
 
 @property (retain, nonatomic) IBOutlet UIImageView *placeImage;
-@property (retain, nonatomic) IBOutlet UILabel *placeName;
-@property (retain, nonatomic) IBOutlet UILabel *bustLevel;
-@property (retain, nonatomic) IBOutlet UILabel *diffLevel;
-@property (retain, nonatomic) IBOutlet UICollectionView *picList;
+@property (nonatomic) IBOutlet UILabel *placeName;
+@property (nonatomic) IBOutlet UILabel *bustLevel;
+@property (nonatomic) IBOutlet UILabel *diffLevel;
+@property (nonatomic) IBOutlet UILabel *dist;
+@property (nonatomic) IBOutlet UICollectionView *picList;
 
 @property (retain, nonatomic) NSData *imgData;
 @property (retain, nonatomic) UIImageView *fullScreenImage;

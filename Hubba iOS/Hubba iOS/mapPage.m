@@ -68,16 +68,35 @@
   return [self.locationListTrimmed count];
 }
 -(UITableViewCell *)tableView:tv cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  
+  NSLog(@"HERE");
   TableCell *cell = [tv dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
+  NSLog(@"HERE2 %i", [self.locationListTrimmed count]);
 
   [cell.name setText: [self.locationListTrimmed objectAtIndex:indexPath.row]];
+  
+  [cell.name setTag:1];
+  [cell.dist setTag:2];
+  [cell.diff setTag:3];
+  [cell.bust setTag:4];
+  NSLog(@"HERE3");
+
   return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  [self.view endEditing:YES];
+  UITableViewCell *cell = [TableView cellForRowAtIndexPath:indexPath];
   placeView *newVC = [[placeView alloc] init];
   newVC.delegate = self;
+  UILabel *help = (UILabel *)[cell viewWithTag:1];
+  [newVC setHelpName: help ];
+  help = (UILabel *)[cell viewWithTag:2];
+  [newVC setHelpDist: help];
+  help = (UILabel *)[cell viewWithTag:3];
+  [newVC setHelpDiff: help];
+  help = (UILabel *)[cell viewWithTag:4];
+  [newVC setHelpBust: help];
+  NSLog(@"%@", help.text);
   [self.navigationController pushViewController:newVC animated:YES];
   
 }
@@ -89,6 +108,7 @@
 // tabbar delegate methods
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
+  [self.view endEditing:YES];
   [self selectItemTab:item];
 }
 -(void)selectItemTab:(UITabBarItem *)item{
@@ -109,33 +129,33 @@
   // only show the status bar's cancel button while in edit mode
   [self.SearchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
   // flush the previous search content
-  [self.locationListTrimmed removeAllObjects];
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
   [searchBar resignFirstResponder];
-  [self reloadTable];
 }
-
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
   [self.locationListTrimmed removeAllObjects];// remove all data that belongs to previous search
   if([searchText isEqualToString:@""]||searchText==nil){
-    for(NSString *p in self.locationList) [self.locationListTrimmed addObject:p];
+    [self.locationListTrimmed addObjectsFromArray:self.locationList];
     [self sortSource];
     [self reloadTable];
+    NSLog(@"MADE IT HERE  %i", self.locationListTrimmed.count);
+
     return;
   }
-  NSString *lower = [searchText lowercaseString];
-  for(NSString *obj in self.locationList)
-  {
-//    NSString *name = [obj[@"name"] lowercaseString];
-    NSRange r = [[obj lowercaseString] rangeOfString:lower];
-    if(r.location != NSNotFound){
-      [self.locationListTrimmed addObject:obj];
+  else{
+    NSString *lower = [searchText lowercaseString];
+    for(NSString *obj in self.locationList)
+    {
+      NSRange r = [[obj lowercaseString] rangeOfString:lower];
+      if(r.location != NSNotFound){
+        [self.locationListTrimmed addObject:obj];
+      }
     }
+    [self sortSource];
+    [self reloadTable];
   }
-  [self sortSource];
-  [self reloadTable];
 }
 -(void) sortSource{
   
@@ -195,7 +215,8 @@
   [self.SearchBar setText:@""];
   [self.view endEditing:YES];
   [SearchBar resignFirstResponder];
-  for(NSString *p in self.locationList) [self.locationListTrimmed addObject:p];
+  [self.locationListTrimmed removeAllObjects];
+  [self.locationListTrimmed addObjectsFromArray:self.locationList];
   [self reloadTable];
 }
 -(IBAction)logout:(id)sender{

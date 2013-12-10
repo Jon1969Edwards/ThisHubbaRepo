@@ -13,6 +13,7 @@
 @end
 
 @implementation placeView
+@synthesize dist, bustLevel, diffLevel, placeName;
 
 // ----------------------------------------------------------------
 // UICollectionView Stuff
@@ -297,6 +298,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+  [self.placeName setText: self.helpName.text];
+  [self.dist setText: self.helpDist.text];
+  [self.diffLevel setText: self.helpDiff.text];
+  [self.bustLevel setText: self.helpBust.text];
   
     [self.placeImage setImage:[UIImage imageNamed:@"default"]];
   
