@@ -68,6 +68,8 @@
 	    android:numColumns="auto_fit"
 	    android:verticalSpacing="10dp"
 	    android:paddingTop="10dp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
 	    android:horizontalSpacing="10dp"
 	    android:stretchMode="columnWidth"
 	    android:scaleType="centerCrop"

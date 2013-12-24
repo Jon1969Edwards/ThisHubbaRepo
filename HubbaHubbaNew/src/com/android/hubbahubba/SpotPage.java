@@ -50,7 +50,7 @@ public class SpotPage extends Activity {
 
 	HubbaDBAdapter dbHelper;
 	int keyValue;
-	Cursor c;
+	Cursor c = null;
 
 	TextView mRating, mLevel, mDifficulty, mTitle, mDist, mComments, mType;
 	ImageView mImage;
@@ -78,205 +78,122 @@ public class SpotPage extends Activity {
 			keyValue = showData.getInt("keyid");			 //TODO this crashes the view spot page from the map
 		}
 		
-			
-		
-			// initialize everything now
-			mTitle = (TextView) findViewById(R.id.txtTitle);
-			mRating = (TextView) findViewById(R.id.txtOverallRating);
-			mLevel = (TextView) findViewById(R.id.txtPoRating);
-			mDist = (TextView) findViewById(R.id.txtDistance);
-			mDifficulty = (TextView) findViewById(R.id.txtDiffRating);
-			mImage = (ImageView) findViewById(R.id.imgThumbnail);
-	
-			dbHelper = new HubbaDBAdapter(this);
-			dbHelper.open();
-			
+		// initialize everything now
+		mTitle = (TextView) findViewById(R.id.txtTitle);
+		mRating = (TextView) findViewById(R.id.txtOverallRating);
+		mLevel = (TextView) findViewById(R.id.txtPoRating);
+		mDist = (TextView) findViewById(R.id.txtDistance);
+		mDifficulty = (TextView) findViewById(R.id.txtDiffRating);
+		mImage = (ImageView) findViewById(R.id.imgThumbnail);
 
-		
+		dbHelper = new HubbaDBAdapter(this);
+		dbHelper.open();
 		c = dbHelper.queryAll(keyValue);
+		try{
+			if (c.moveToFirst()) {
+		        do {
+		            mTitle.setText(c.getString(1));
+		            //mType.setText(c.getString(2));
+			        mRating.setText(c.getString(5));
+			        mDifficulty.setText(c.getString(6));
+			        mLevel.setText(c.getString(7));
+			        //mComments.setText(c.getString(8));
+			        
+			        //now extract the image path
+			        mImagePath = c.getString(9);
+			        
+			        if(mImagePath != null ) {
+			        	//imageViewUri = Uri.parse(mImagePath);
+			        	
+			        	// Convert the dp value for xml to pixels (casted to int from float)
+			    	    int size = Image.convertDpToPixel(80, context);
+			    	    
+			    	    // use picasso to load the image into view
+			    	    Picasso.with(context)
+			    	    	   //.load(mImagePath)
+			    	    	   .load(R.drawable.gettinthere)
+			    	    	   .centerCrop()
+			    	    	   .resize(size, size)
+			    	    	   //.placeholder(R.drawable.ic_empty)
+			    	    	   .into(mImage);
+			    	    
+			        	//mImage.setImageURI(imageViewUri);
+			        }
+			    } while (c.moveToNext());
+			}
+		}
+		finally {
+	        // this gets called even if there is an exception somewhere above
+	        if(c != null)
+            c.close();
+		 }
+	  
+		// create buttons
+		Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
+		Button uploadPhotosButton = (Button) findViewById(R.id.uploadPhotoButton);
+		Button commentsButton = (Button) findViewById(R.id.commentsButton);
+		Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
+
+		viewMapButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
+				startActivity(intent);
+			}
+
+		});
 		
-		  if (c.moveToFirst()) {
-	            do {
-	                mTitle.setText(c.getString(1));
-	                //mType.setText(c.getString(2));
-	                mRating.setText(c.getString(5));
-	                mDifficulty.setText(c.getString(6));
-	                mLevel.setText(c.getString(7));
-	                //mComments.setText(c.getString(8));
-	                
-	                //now extract the image path
-	                mImagePath = c.getString(9);
-	                
-	                if(mImagePath != null ) {
-	                	//imageViewUri = Uri.parse(mImagePath);
-	                	
-	                	// Convert the dp value for xml to pixels (casted to int from float)
-	            	    int size = Image.convertDpToPixel(80, context);
-	            	    
-	            	    // use picasso to load the image into view
-	            	    Picasso.with(context)
-	            	    	   //.load(mImagePath)
-	            	    	   .load(R.drawable.gettinthere)
-	            	    	   .centerCrop()
-	            	    	   .resize(size, size)
-	            	    	   //.placeholder(R.drawable.ic_empty)
-	            	    	   .into(mImage);
-	            	    
-	                	//mImage.setImageURI(imageViewUri);
-	                }
-	                
-	                
-	            } while (c.moveToNext());
-	        }
-		  
-			// create buttons
-			Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
-			Button uploadPhotosButton = (Button) findViewById(R.id.uploadPhotoButton);
-			Button commentsButton = (Button) findViewById(R.id.commentsButton);
-			Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
-			//Button takePhotoButton = (Button) findViewById(R.id.takePhotoButton);
-			/*
-			takePhotoButton.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					//TODO take picture
-					Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-					 
-					// TAKE PICTURE
-					try {
-						dispatchTakePictureIntent(TAKE_PHOTO);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					// SAVE TO FILE
-					File f = null;
-					
-					try {
-						f = createImageFile();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					if(f != null){
-						intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-					}
-					else{
-						//TODO output error message
-					}
-					
-					//TODO ADD TO DO
-					
-					// FOR VIEWING THE PHOTO
-					// handleSmallCameraPhoto(takePictureIntent);
-					
-					/*
-					File storageDir = new File(
-						    Environment.getExternalStoragePublicDirectory(
-						        Environment.DIRECTORY_PICTURES
-						    ), 
-						    getAlbumName()
-						);   
-					
-					*/
-				/*}
+		uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent intent = new Intent(SpotPage.this, UploadImage.class);
+				startActivity(intent);
+			}
+		});
+		
+		
+		
+		favoritesButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
+				startActivity(intent);
+			}
 
-			});
-			*/
-			viewMapButton.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
-					startActivity(intent);
-				}
+		});
 
-			});
-			/* 
-			 * TODO: DELETE THIS IF YOU WANT TO HAVE 1 PHOTO INTENT
-			 * -------- GO TO PICK PHOTO INTENT --------
-			 
-			uploadPhotosButton.setOnTouchListener(new OnTouchListener() {
+		commentsButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent intent = new Intent(SpotPage.this,ListViewComments.class);
+				startActivity(intent);
+			}
 
-				// @Override
-				public boolean onTouch(View v, MotionEvent event) {
+		});
+		
+		
+		GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
+		gridview.setAdapter(new GridAdapter(this));
+		
+		// TODO: call getThumbnail from the Image class on the gridview's position
+		gridview.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View v,
+					int position, long id) {
 
-					Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-					photoPickerIntent.setType("image/*");
-					startActivityForResult(photoPickerIntent, SELECT_PHOTO); 
-					
-					return true;
-				}
-				
-			});
-			*/
-			
-			uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					Intent intent = new Intent(SpotPage.this, UploadImage.class);
-					startActivity(intent);
-				}
-			});
-			
-			
-			
-			favoritesButton.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
-					startActivity(intent);
-				}
-
-			});
-
-			commentsButton.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					Intent intent = new Intent(SpotPage.this,ListViewComments.class);
-					startActivity(intent);
-				}
-
-			});
-			
-			
-			GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
-			gridview.setAdapter(new GridAdapter(this));
-			
-			// TODO: call getThumbnail from the Image class on the gridview's position
-			gridview.setOnItemClickListener(new OnItemClickListener() {
-				public void onItemClick(AdapterView<?> parent, View v,
-						int position, long id) {
-
-					Intent intent = new Intent(SpotPage.this, ViewImage.class);
-					//int imageID = (Integer)parent.getAdapter().getItem(position);
-					int imageID = mThumbIds[position];
-					intent.putExtra("imageName", imageID);
-					startActivity(intent);
-				}
-			});
-			
-			/*
-			//TO AVOID SCROLLING LAGS
-			boolean pauseOnScroll = false; // or true
-			boolean pauseOnFling = true; // or false
-			PauseOnScrollListener listener = new PauseOnScrollListener(imageLoader, pauseOnScroll, pauseOnFling);
-			gridview.setOnScrollListener(listener);
-			*/
+				Intent intent = new Intent(SpotPage.this, ViewImage.class);
+				//int imageID = (Integer)parent.getAdapter().getItem(position);
+				int imageID = mThumbIds[position];
+				intent.putExtra("imageName", imageID);
+				startActivity(intent);
+			}
+		});
+		
+		/*
+		//TO AVOID SCROLLING LAGS
+		boolean pauseOnScroll = false; // or true
+		boolean pauseOnFling = true; // or false
+		PauseOnScrollListener listener = new PauseOnScrollListener(imageLoader, pauseOnScroll, pauseOnFling);
+		gridview.setOnScrollListener(listener);
+		*/
 			
 	}
 
-	/*
-	private void dispatchTakePictureIntent(final int actionCode) throws IOException {    
-	 // create Intent to take a picture and return control to the calling application
-	    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-	    fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
-	    intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-
-	    // start the image capture Intent
-	    startActivityForResult(intent, actionCode);
-	    
-	    File f = createImageFile();
-	    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-
-	}
-	*/
 	/** Create a file Uri for saving an image or video *//*
 	private static Uri getOutputMediaFileUri(int type){
 	      return Uri.fromFile(getOutputMediaFile(type));
@@ -365,6 +282,7 @@ public class SpotPage extends Activity {
 		// TODO Auto-generated method stub
 		//imageLoader.destroy();
 		super.onDestroy();
+		dbHelper.close();
 	}
 	
 	// references to our images

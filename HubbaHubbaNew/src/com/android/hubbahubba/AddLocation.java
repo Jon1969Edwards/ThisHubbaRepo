@@ -53,7 +53,6 @@ public class AddLocation extends Activity {
 	Bitmap spotImage;
 	Bitmap mImageBitmap;
 	ImageView mImageView;
-	private Uri fileUri;
     private static final int SELECT_PHOTO = 1;
     private static final int TAKE_PHOTO = 2;
     public static final int MEDIA_TYPE_IMAGE = 3;
@@ -102,7 +101,6 @@ public class AddLocation extends Activity {
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
 			
-			List<Address> list;
 			Address address;
 			
 			// GET ADDRESS FROM THE LATATUDE AND LONGITUDE
@@ -215,19 +213,6 @@ public class AddLocation extends Activity {
 				else{
 					//TODO output error message
 				}
-				
-				// TODO UNCOMMENT: FOR VIEWING THE PHOTO
-				//handleSmallCameraPhoto(takePictureIntent);
-				
-				/*
-				File storageDir = new File(
-					    Environment.getExternalStoragePublicDirectory(
-					        Environment.DIRECTORY_PICTURES
-					    ), 
-					    getAlbumName()
-					);   
-				
-				*/
 			}
 
 		});
@@ -365,28 +350,7 @@ public class AddLocation extends Activity {
 
 		});
 	}
-	/*
-	private void dispatchTakePictureIntent(final int actionCode) throws IOException {    
-	 // create Intent to take a picture and return control to the calling application
-	    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-	    fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
-	    intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-	    intent.setType("image/*");
-	    
-	    // start the image capture Intent
-	    startActivityForResult(intent, actionCode);
-	    
-	    File f = createImageFile();
-	    //intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-	}
-	*/
 	
-	/** Create a file Uri for saving an image or video *//*
-	private static Uri getOutputMediaFileUri(int type){
-	      return Uri.fromFile(getOutputMediaFile(type));
-	}
-	*/
 	/** Create a File for saving an image or video */
 	@SuppressLint("SimpleDateFormat")
 	private static File getOutputMediaFile(int type){

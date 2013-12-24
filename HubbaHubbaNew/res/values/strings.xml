@@ -59,24 +59,26 @@
 	<!-- Array of Types of Spots -->
 	
 	<string-array name="spotTypes">
-        <item>Hubba</item>
-        <item>Miniramp</item>
-        <item>Handrail</item>
-        <item>Flat Rail</item>
-        <item>Ledge(s)</item>
-        <item>Transition</item>
-        <item>Gap</item>
+        <item>Hubbas</item>
+        <item>Miniramps</item>
+        <item>Handrails</item>
+        <item>Flat Rails</item>
+        <item>Ledges</item>
+        <item>Transitions</item>
+        <item>Gaps</item>
         <item>Stairs</item>
-        <item>Skate Park</item>
-        <item>Bank</item>
-        <item>Pool</item>
+        <item>Skate Parks</item>
+        <item>Banks</item>
+        <item>Pools</item>
         <item>Other</item>
     </string-array>
+    
     <string name="spinnerPrompt">Spot Type</string>
+    
     <string-array name="showSpotTypes">
         <item>Show All</item>
         <item>Hubbas</item>
-        <item>Miniramp</item>
+        <item>Miniramps</item>
         <item>Handrails</item>
         <item>Flat Rails</item>
         <item>Ledges</item>

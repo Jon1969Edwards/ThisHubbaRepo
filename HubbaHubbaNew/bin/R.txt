@@ -377,7 +377,6 @@ int id commentBlock 0x7f04007b
 int id comments 0x7f04007a
 int id commentsButton 0x7f04004b
 int id continueButton 0x7f040058
-int id cust_view 0x7f0400a9
 int id dangerLevel 0x7f040064
 int id difficulty 0x7f040059
 int id disableHome 0x7f04000d
@@ -460,6 +459,7 @@ int id tenButtonDanger 0x7f04006e
 int id tenButtonDiff 0x7f040063
 int id tenButtonOverall 0x7f040079
 int id terrain 0x7f040003
+int id text1 0x7f0400a9
 int id threeButtonDanger 0x7f040067
 int id threeButtonDiff 0x7f04005c
 int id threeButtonOverall 0x7f040072

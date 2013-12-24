@@ -1162,7 +1162,6 @@ containing a value of this type.
         public static final int comments=0x7f04007a;
         public static final int commentsButton=0x7f04004b;
         public static final int continueButton=0x7f040058;
-        public static final int cust_view=0x7f0400a9;
         public static final int dangerLevel=0x7f040064;
         public static final int difficulty=0x7f040059;
         public static final int disableHome=0x7f04000d;
@@ -1245,6 +1244,7 @@ containing a value of this type.
         public static final int tenButtonDiff=0x7f040063;
         public static final int tenButtonOverall=0x7f040079;
         public static final int terrain=0x7f040003;
+        public static final int text1=0x7f0400a9;
         public static final int threeButtonDanger=0x7f040067;
         public static final int threeButtonDiff=0x7f04005c;
         public static final int threeButtonOverall=0x7f040072;
