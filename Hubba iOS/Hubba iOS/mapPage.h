@@ -13,7 +13,7 @@
 
 @interface mapPage : UIViewController
 
-  @property (nonatomic, strong) NSArray *locationList;
+  @property (nonatomic, strong) NSMutableArray *locationList;
   @property (nonatomic, strong) NSMutableArray *locationListTrimmed;
 
 

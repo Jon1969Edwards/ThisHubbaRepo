@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  
+  [self.view setBackgroundColor:[UIColor clearColor]];
   
   // page customization based on type
   if( self.typePage ){
@@ -107,6 +107,22 @@
   [swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
   [self.view addGestureRecognizer:swipeDown];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+  UIImageView  *bg = [ [ UIImageView alloc ] initWithImage: [ UIImage imageNamed: @"bg.jpg" ] ];
+  bg.frame = self.view.bounds;
+  bg.contentMode = UIViewContentModeScaleAspectFill;
+  [ self.view insertSubview:bg atIndex:0];
+  
+  UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(endEditing)];
+  [bg addGestureRecognizer:singleFingerTap];
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+}
+
 -(void) viewDidDisappear:(BOOL)animated{
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                   name:UIDeviceOrientationDidChangeNotification
@@ -200,6 +216,7 @@
 }
 
 -(IBAction)back:(id)sender{
+  [[self.view.subviews objectAtIndex:0] removeFromSuperview];
   [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -210,39 +227,20 @@
   
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-//  NSLog(@"BEGIN... %li", textField.tag);
-//  if( self.raised ){
-//    [UIView animateWithDuration:0.2 animations:^{
-//      if( textField.tag <= 2 || textField.tag >= 5 ){
-//        [self.logInInfoView setCenter:CGPointMake(self.logInInfoView.center.x, self.logInInfoView.center.y-60)];
-//        [self.signUpInfoView setCenter:CGPointMake(self.signUpInfoView.center.x, self.signUpInfoView.center.y-60)];
-//        [self.buttonBack setCenter:CGPointMake(self.buttonBack.center.x, self.buttonBack.center.y-60)];
-//        [self.toggleInfoView setCenter:CGPointMake(self.toggleInfoView.center.x, self.toggleInfoView.center.y-60)];
-//        [self setRaised:YES];
-//      }
-//      else [self setRaised:NO];
-//    }];
-//    [self setEditing:YES];
-//  }
+  [UIView animateWithDuration:0.25 animations:^{
+    [self.view setFrame:CGRectMake(0,-80,self.view.frame.size.width, self.view.frame.size.height)];
+  }];
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField{
 
 }
-//-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-//  UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-//  if( UIInterfaceOrientationIsPortrait(orientation)){
-//    if(( textField.tag <=2 || textField.tag >= 5 ) && (self.buttonBack.center.y == 327)){
-//      
-//    }
-//  }
-//  else{
-//    
-//  }
-//}
+
 
 
 -(void)endEditing{
+  [UIView animateWithDuration:0.25 animations:^{
+    [self.view setFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
+  }];
   [self.view endEditing:YES];
-  [self setRaised:NO];
 }
 @end

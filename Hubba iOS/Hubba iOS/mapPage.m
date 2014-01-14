@@ -68,9 +68,7 @@
   return [self.locationListTrimmed count];
 }
 -(UITableViewCell *)tableView:tv cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  NSLog(@"HERE");
   TableCell *cell = [tv dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
-  NSLog(@"HERE2 %i", [self.locationListTrimmed count]);
 
   [cell.name setText: [self.locationListTrimmed objectAtIndex:indexPath.row]];
   
@@ -78,7 +76,6 @@
   [cell.dist setTag:2];
   [cell.diff setTag:3];
   [cell.bust setTag:4];
-  NSLog(@"HERE3");
 
   return cell;
 }
@@ -140,7 +137,6 @@
     [self.locationListTrimmed addObjectsFromArray:self.locationList];
     [self sortSource];
     [self reloadTable];
-    NSLog(@"MADE IT HERE  %i", self.locationListTrimmed.count);
 
     return;
   }
@@ -158,7 +154,23 @@
   }
 }
 -(void) sortSource{
-  
+  if( [self.sortBy selectedSegmentIndex] == 0 ){
+    NSLog(@"Sort by name");
+    NSMutableArray *tmp = [[NSMutableArray alloc] init];
+    [tmp addObjectsFromArray:[self.locationListTrimmed sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    [self.locationListTrimmed removeAllObjects];
+    [self.locationListTrimmed addObjectsFromArray:tmp];
+    
+    [tmp removeAllObjects];
+    [tmp addObjectsFromArray:[self.locationList sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    [self.locationList removeAllObjects];
+    [self.locationList addObjectsFromArray:tmp];
+    
+    [self.TableView reloadData];
+  }
+  else{
+
+  }
 }
 // ----------------------------------------------------------------
 
@@ -176,6 +188,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+  
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
   self.defaults = [NSUserDefaults standardUserDefaults];
   if([self.defaults objectForKey:@"sortBy"] == NULL) [self.sortBy setSelectedSegmentIndex:0];
@@ -198,11 +212,11 @@
   
   [TableView registerClass:[TableCell class] forCellReuseIdentifier:@"CELL"];
   
-  self.locationList = [[NSArray alloc] initWithObjects:@"Jack Park", @"Jack SkatePark", @"MotorCity", @"CoolPark", nil];
+  self.locationList = [[NSMutableArray alloc] initWithObjects:@"Jack Park", @"Jack SkatePark", @"MotorCity", @"CoolPark", nil];
   self.locationListTrimmed = [[NSMutableArray alloc] init];
   
   for(NSString *s in self.locationList) [self.locationListTrimmed addObject:s];
-  [self reloadTable];
+  [self sortSource];
 }
 
 - (void)didReceiveMemoryWarning
@@ -224,6 +238,7 @@
 }
 -(IBAction)setSortItem:(id)sender{
   NSLog(@"sort by: %i", self.sortBy.selectedSegmentIndex);
+  [self sortSource];
   [self.defaults setObject:[NSString stringWithFormat:@"%i", self.sortBy.selectedSegmentIndex+1] forKey:@"sortBy"];
   [self.defaults synchronize];
 }

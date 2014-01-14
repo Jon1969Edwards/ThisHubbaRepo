@@ -35,6 +35,9 @@
   [loginBut setHidden:NO];
   [signupBut setHidden:NO];
   
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+
+  
   CAGradientLayer *gradient = [CAGradientLayer layer];
   [gradient setFrame:login.frame];
   [gradient setColors:[NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)GRAY2.CGColor, (id)[UIColor blackColor].CGColor, nil]];
@@ -49,7 +52,7 @@
   [signupBut.layer setBorderWidth:1];
   
   
-  [self.view setBackgroundColor:GRAY2];
+  [self.view setBackgroundColor:[UIColor clearColor]];
 
   if( self.view.frame.size.width == 320 ){
     NSLog(@"Vertical");
@@ -70,30 +73,15 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(orientationChanged)
-                                               name:UIDeviceOrientationDidChangeNotification
-                                             object:nil];
+  [loginBut setHidden:NO];
+  [signupBut setHidden:NO];
 }
 
 -(void) viewWillDisappear:(BOOL)animated{
-  [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:UIDeviceOrientationDidChangeNotification
-                                                object:nil];
+  [loginBut setHidden:YES];
+  [signupBut setHidden:YES];
 }
 
--(void)orientationChanged{
-  UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-  if( UIInterfaceOrientationIsPortrait(orientation)){
-    [signupBut setCenter:CGPointMake(self.view.center.x, DEVICEHEIGHT-75)];
-    [loginBut setCenter:CGPointMake(self.view.center.x, DEVICEHEIGHT-145)];
-  }
-  else{
-    [signupBut setCenter:CGPointMake(self.view.center.x, self.view.center.y+35)];
-    [loginBut setCenter:CGPointMake(self.view.center.x, self.view.center.y-35)];
-  }
-
-}
 
 -(IBAction) login:(id) sender{
   LoginSignup *newVC = [[LoginSignup alloc] init];

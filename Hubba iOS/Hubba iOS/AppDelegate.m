@@ -17,7 +17,7 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   // light status bar.
-  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
   
   // sets up title screens to open.
   openingPage *titleScreen = [[openingPage alloc] initWithNibName:@"openingPage" bundle:nil];
@@ -25,6 +25,12 @@
   [self.window setRootViewController:masterNav];
   [masterNav setNavigationBarHidden:YES];
   [self.window makeKeyAndVisible];
+  
+  UIImageView  *bg = [ [ UIImageView alloc ] initWithImage: [ UIImage imageNamed: @"bg.jpg" ] ];
+  bg.frame = self.window.bounds;
+  bg.contentMode = UIViewContentModeScaleAspectFill;
+  [ self.window addSubview: bg ];
+  [ self.window sendSubviewToBack: bg ];
   return YES;
 }
 							
