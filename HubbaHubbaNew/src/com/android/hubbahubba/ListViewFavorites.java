@@ -24,7 +24,8 @@ import com.actionbarsherlock.app.SherlockFragment;
 public class ListViewFavorites extends SherlockFragment {
 
 	private HubbaDBAdapter dbHelper;
-	private SimpleCursorAdapter dataAdapter;
+	//private SimpleCursorAdapter dataAdapter;
+	private HubbaCursorAdapter dataAdapter;
 	private ListView listView;
 	private View rootView;
 
@@ -79,8 +80,7 @@ public class ListViewFavorites extends SherlockFragment {
 
 		// create the adapter using the cursor pointing to the desired data
 		// as well as the layout information
-		dataAdapter = new SimpleCursorAdapter(getActivity().getApplicationContext(), R.layout.item_row,
-				cursor, columns, to, 0);
+		dataAdapter = new HubbaCursorAdapter(getActivity().getApplicationContext(), cursor);
 
 		listView = (ListView) rootView.findViewById(R.id.listView);
 		// Assign adapter to ListView

@@ -56,8 +56,13 @@ public class ListViewHubba extends SherlockFragment {
 		// Clean all data
 		//dbHelper.deleteAllSpots();
 		// Add some data
-		//dbHelper.insertSomeSpots();
-
+		/*
+		dbHelper = new HubbaDBAdapter(context);
+		dbHelper.open();
+		dbHelper.insertSomeSpots();
+		dbHelper.close();
+		*/
+		
 		// Generate ListView from SQLite Database
 		displayListView();
 		return rootView;

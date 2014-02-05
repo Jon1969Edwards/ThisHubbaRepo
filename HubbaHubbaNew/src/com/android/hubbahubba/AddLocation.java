@@ -275,7 +275,7 @@ public class AddLocation extends Activity {
 					intent.putExtra("spotCity", mCity );
 					intent.putExtra("mSelectedImage", mSelectedImage.toString());
 					
-					text = mSelectedImage.toString();
+					text = "Image from: " + mSelectedImage.toString();
 					Toast toaster = Toast.makeText(context, text, duration);
 					toaster.show();
 					
@@ -283,21 +283,9 @@ public class AddLocation extends Activity {
 					
 					if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites") || FromPage.equals("ViewMap")){
 						
-						List<Address> address = null; //= new Address(Locale.ENGLISH);
-						try {
-							address = new Geocoder(getApplicationContext()).getFromLocationName("address here", 1);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							text = "IOE";
-
-							Toast toast = Toast.makeText(context, text, duration);
-							toast.show();
-							e.printStackTrace();
-						}
-						
+						List<Address> address = null; //= new Address(Locale.ENGLISH);						
 						//address.setAddressLine(0, mAddress);
 						//address.setAddressLine(1, mCity);
-						
 						try {
 							address = new Geocoder(getApplicationContext()).getFromLocationName(mAddress + ' ' + mCity, 1);
 						} catch (IOException e) {
@@ -495,10 +483,4 @@ public class AddLocation extends Activity {
 	    mCurrentPhotoPath = image.getAbsolutePath();
 	    return image;
 	}
-
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	// getMenuInflater().inflate(R.menu.activity_sign_up, menu);
-	// return true;
-	// }
 }

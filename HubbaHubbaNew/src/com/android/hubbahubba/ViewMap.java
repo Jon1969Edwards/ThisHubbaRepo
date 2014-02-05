@@ -377,14 +377,6 @@ public class ViewMap extends SherlockFragment {
         }
     }
 	
-	/*
-	@Override
-	public void onStop() {
-	     super.onStop();
-	     dbHelper.close();
-	}
-	*/
-	
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
