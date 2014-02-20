@@ -38,6 +38,8 @@ public class AddLocation extends Activity {
 	EditText spotTitle, spotAddress, spotCity;
 	Spinner typeSpinner;
 	String LatLong;
+	String latitude;
+	String longitude;
 	String FromPage;
 	String addressList[] = new String[10];
 	double selectedLat;
@@ -93,8 +95,8 @@ public class AddLocation extends Activity {
 			//LatLong = LatLong.substring(1, LatLong.length() - 1);
 			
 			String[] separated = LatLong.split(",");
-			String latitude = separated[0];
-			String longitude = separated[1];
+			latitude = separated[0];
+			longitude = separated[1];
 			
 			text = latitude + "   " + longitude;
 			
@@ -281,7 +283,7 @@ public class AddLocation extends Activity {
 					
 					FromPage = getIntent().getStringExtra("FromPage");
 					
-					if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites") || FromPage.equals("ViewMap")){
+					if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites")){
 						
 						List<Address> address = null; //= new Address(Locale.ENGLISH);						
 						//address.setAddressLine(0, mAddress);
@@ -318,21 +320,56 @@ public class AddLocation extends Activity {
 						else{
 							// TODO Better err message
 							text = "Incorrect Address";
-
+							
 							Toast toast = Toast.makeText(context, text, duration);
 							toast.show();
 						}
 					}
+					else if(FromPage.equals("ViewMap")){
+						selectedLat = Double.parseDouble(latitude);
+					    selectedLng = Double.parseDouble(longitude);
+					    
+					    intent.putExtra("Lat", selectedLat);
+						intent.putExtra("Lng", selectedLng);
+						
+						
+						List<Address> address = null; //= new Address(Locale.ENGLISH);						
+						//address.setAddressLine(0, mAddress);
+						//address.setAddressLine(1, mCity);
+						try {
+							address = new Geocoder(getApplicationContext()).getFromLocationName(mAddress + ' ' + mCity, 1);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						if(address.size() == 0){
+							text = "Please Enter a Valid Address";
+							Toast toast = Toast.makeText(context, text, duration);
+							toast.show();
+						}
+						else if(address.get(0).hasLatitude() && address.get(0).hasLongitude()){
+						    String lat = Double.toString(selectedLat);
+						    String lng = Double.toString(selectedLng);
+						    text = "IT WORKED FROM MAP " + lat + " " + lng;
+						    Toast toast = Toast.makeText(context, text, duration);
+							toast.show();
+						}
+						else{
+							// TODO Better err message
+							text = "Incorrect Address";
+							Toast toast = Toast.makeText(context, text, duration);
+							toast.show();
+						}
+						
+						selectedLat = Double.parseDouble(latitude);
+					    selectedLng = Double.parseDouble(longitude);
+					    
+					    intent.putExtra("Lat", selectedLat);
+						intent.putExtra("Lng", selectedLng);
+						
+						startActivity(intent);
+					}
 				}
-				/*
-			else{
-				// TODO better error message
-				text = "You came from an illegal page, try again!";
-
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
-			}
-			*/
 		}
 
 

@@ -232,23 +232,35 @@ public class ViewMap extends SherlockFragment {
         				Cursor cur = dbHelper.fetchSpotByLatLong(Lat, Lng);
         				try{
         					cur = dbHelper.fetchSpotByLatLong(Lat, Lng);
-        					/*
+        					
         					int clickId = Integer.valueOf(cur.getString(cur
         							.getColumnIndexOrThrow("_id")));
         	
         					Toast toast = Toast.makeText(getActivity().getApplicationContext(), "ID: " + String.valueOf(clickId), Toast.LENGTH_SHORT);
         					toast.show();
-        					*/ 
         					
         					Bundle bundleData = new Bundle();
         					bundleData.putInt("keyid", 29);
         					Intent intent = new Intent(getActivity().getApplicationContext(),
         							SpotPage.class);
+        					
         					intent.putExtras(bundleData);
         					startActivity(intent);		
         					dbHelper.close();
         					//cur.close();
-        				} finally {
+        				} 
+        				catch(Exception e){
+        					Toast.makeText(getActivity().getApplicationContext(), "Nothing stored in the DB here...", Toast.LENGTH_LONG).show();
+        					
+        					Bundle bundleData = new Bundle();
+        					bundleData.putInt("keyid", 29);
+        					Intent intent = new Intent(getActivity().getApplicationContext(),
+        							SpotPage.class);
+        					
+        					intent.putExtras(bundleData);
+        					startActivity(intent);		
+        					dbHelper.close();
+        				} finally { 
         				    // this gets called even if there is an exception somewhere above
         				    if(cur != null)
         				        cur.close();
@@ -354,6 +366,26 @@ public class ViewMap extends SherlockFragment {
         							//toast.show();
         						} while (cur.moveToNext());
         					}
+        				    else{
+        				    	Toast.makeText(getActivity().getApplicationContext(), "Sorry DB is broken", Toast.LENGTH_LONG).show();
+        				    	
+        				    	txtTitle.setText("oops"); //name
+    							txtOverallRating.setText("0"); //rating
+    							txtDiffRating.setText("0"); //difficulty
+    							txtPoRating.setText("0"); //police level
+    							//String mImagePath = cur.getString(9); //image URI
+    	
+								// Convert the dp value for xml to pixels (casted to int from float)
+								int size = Image.convertDpToPixel(80, context);
+								
+								// Use picasso to load the image into view
+								Picasso.with(context)
+									   .load(R.drawable.gettinthere)
+									   .centerCrop()
+									   .resize(size, size)
+									   .placeholder(R.drawable.gettinthere)
+									   .into(imgThumbnail);
+        				    }
         			    }finally {
         			        // this gets called even if there is an exception somewhere above
         			        if(cur != null)

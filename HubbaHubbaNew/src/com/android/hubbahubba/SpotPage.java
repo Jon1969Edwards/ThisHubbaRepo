@@ -49,7 +49,7 @@ public class SpotPage extends Activity {
 	//private static final String TEST_FILE_NAME = "Universal Image Loader @#&=+-_.,!()~'%20.png";
 
 	HubbaDBAdapter dbHelper;
-	int keyValue;
+	int keyValue = -1;
 	Cursor c = null;
 
 	TextView mRating, mLevel, mDifficulty, mTitle, mDist, mComments, mType;
@@ -76,6 +76,8 @@ public class SpotPage extends Activity {
 			
 			Bundle showData = getIntent().getExtras();
 			keyValue = showData.getInt("keyid");			 //TODO this crashes the view spot page from the map
+			
+			Toast.makeText(this, "KeyValue is: " + keyValue, Toast.LENGTH_LONG).show();
 		}
 		
 		// initialize everything now
@@ -102,24 +104,48 @@ public class SpotPage extends Activity {
 			        //now extract the image path
 			        mImagePath = c.getString(9);
 			        
+			        Toast.makeText(this, "Image path:\n" +
+		                     mImagePath, Toast.LENGTH_LONG).show();
+			        
+		        	// Convert the dp value for xml to pixels (casted to int from float)
+			        int size = Image.convertDpToPixel(80, context);
+			        // TODO: add if back in but since no db leave out for now
 			        if(mImagePath != null ) {
-			        	//imageViewUri = Uri.parse(mImagePath);
-			        	
-			        	// Convert the dp value for xml to pixels (casted to int from float)
-			    	    int size = Image.convertDpToPixel(80, context);
-			    	    
 			    	    // use picasso to load the image into view
 			    	    Picasso.with(context)
-			    	    	   //.load(mImagePath)
-			    	    	   .load(R.drawable.gettinthere)
+			    	    	   .load(mImagePath)
 			    	    	   .centerCrop()
 			    	    	   .resize(size, size)
-			    	    	   //.placeholder(R.drawable.ic_empty)
+			    	    	   .placeholder(R.drawable.gettinthere)
 			    	    	   .into(mImage);
 			    	    
-			        	//mImage.setImageURI(imageViewUri);
+			        }
+			        else{
+			        	Picasso.with(context)
+		    	    	   .load(R.drawable.gettinthere)
+		    	    	   .centerCrop()
+		    	    	   .resize(size, size)
+		    	    	   .placeholder(R.drawable.ic_empty)
+		    	    	   .into(mImage);
 			        }
 			    } while (c.moveToNext());
+			}
+			else{
+				mTitle.setText("oops");
+		        mRating.setText("0");
+		        mDifficulty.setText("0");
+		        mLevel.setText("0");
+		        
+	    	    int size = Image.convertDpToPixel(80, context);
+	    	    
+	    	    // use picasso to load the image into view
+	    	    Picasso.with(context)
+	    	    	   .load(R.drawable.gettinthere)
+	    	    	   .centerCrop()
+	    	    	   .resize(size, size)
+	    	    	   .placeholder(R.drawable.ic_empty)
+	    	    	   .into(mImage);
+	    	    
 			}
 		}
 		finally {
