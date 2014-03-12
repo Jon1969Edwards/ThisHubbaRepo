@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"   
         android:layout_height="wrap_content"   
         android:id="@+id/imgThumbnail" 
-        android:src="@drawable/tony_hawk"  
         android:layout_alignParentLeft="true"  
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"

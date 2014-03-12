@@ -104,16 +104,18 @@ public class SpotPage extends Activity {
 			        //now extract the image path
 			        mImagePath = c.getString(9);
 			        
-			        Toast.makeText(this, "Image path:\n" +
-		                     mImagePath, Toast.LENGTH_LONG).show();
-			        
 		        	// Convert the dp value for xml to pixels (casted to int from float)
-			        int size = Image.convertDpToPixel(80, context);
+			        int size = Image.convertDpToPixel(85, context);
+			        
+			        // Toast.makeText(this, "Image path:\n" +
+		            //         mImagePath + "with size: " + size, Toast.LENGTH_LONG).show();
+			        
 			        // TODO: add if back in but since no db leave out for now
 			        if(mImagePath != null ) {
 			    	    // use picasso to load the image into view
 			    	    Picasso.with(context)
-			    	    	   .load(mImagePath)
+			    	    	   //.load(mImagePath)
+			    	    	   .load(R.drawable.gettinthere)
 			    	    	   .centerCrop()
 			    	    	   .resize(size, size)
 			    	    	   .placeholder(R.drawable.gettinthere)
@@ -136,7 +138,10 @@ public class SpotPage extends Activity {
 		        mDifficulty.setText("0");
 		        mLevel.setText("0");
 		        
-	    	    int size = Image.convertDpToPixel(80, context);
+	    	    int size = Image.convertDpToPixel(100, context);
+	    	    
+	    	   // Toast.makeText(this, "Size:\n" +
+	           //          size, Toast.LENGTH_LONG).show();
 	    	    
 	    	    // use picasso to load the image into view
 	    	    Picasso.with(context)
@@ -158,7 +163,7 @@ public class SpotPage extends Activity {
 		Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
 		Button uploadPhotosButton = (Button) findViewById(R.id.uploadPhotoButton);
 		Button commentsButton = (Button) findViewById(R.id.commentsButton);
-		Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
+		//Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
 
 		viewMapButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -176,7 +181,7 @@ public class SpotPage extends Activity {
 		});
 		
 		
-		
+		/*
 		favoritesButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
@@ -184,7 +189,7 @@ public class SpotPage extends Activity {
 			}
 
 		});
-
+		 */
 		commentsButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent intent = new Intent(SpotPage.this,ListViewComments.class);

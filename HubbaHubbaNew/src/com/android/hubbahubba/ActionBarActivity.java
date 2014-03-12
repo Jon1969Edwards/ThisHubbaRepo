@@ -31,7 +31,7 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         bar.addTab(bar.newTab().setText("Map").setTabListener(this));
         bar.addTab(bar.newTab().setText("Spot List").setTabListener(this));
-        bar.addTab(bar.newTab().setText("My Spots").setTabListener(this));   
+        //bar.addTab(bar.newTab().setText("My Spots").setTabListener(this));   
         
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); 
     }

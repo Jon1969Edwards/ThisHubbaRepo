@@ -23,6 +23,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -84,9 +85,12 @@ public class AddLocation extends Activity {
 		spotTitle = (EditText) findViewById(R.id.spotTitle);
 		spotAddress = (EditText) findViewById(R.id.address);
 		spotCity = (EditText) findViewById(R.id.cityStateZip);
-		typeSpinner = (Spinner) findViewById(R.id.spotTypeSpinner);
 		takePhotoButton = (ImageButton) findViewById(R.id.takePhotoButton);
 		uploadPhotoButton = (ImageButton) findViewById(R.id.uploadPhotoButton);
+		
+		typeSpinner = (Spinner) findViewById(R.id.spotTypeSpinner);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_row, R.id.text1, getResources().getStringArray(R.array.showSpotTypes));
+		typeSpinner.setAdapter(adapter);
 		
 		// why does this not work?
 		if(FromPage.equals("ViewMap")){
@@ -98,13 +102,9 @@ public class AddLocation extends Activity {
 			latitude = separated[0];
 			longitude = separated[1];
 			
-			text = latitude + "   " + longitude;
-			
-			Toast toast = Toast.makeText(context, text, duration);
-			toast.show();
+			//Toast.makeText(context, latitude + "   " + longitude, duration).show();
 			
 			Address address;
-			
 			// GET ADDRESS FROM THE LATATUDE AND LONGITUDE
 			Geocoder geocoder = new Geocoder(this, Locale.ENGLISH);
 			try {
@@ -277,9 +277,9 @@ public class AddLocation extends Activity {
 					intent.putExtra("spotCity", mCity );
 					intent.putExtra("mSelectedImage", mSelectedImage.toString());
 					
-					text = "Image from: " + mSelectedImage.toString();
-					Toast toaster = Toast.makeText(context, text, duration);
-					toaster.show();
+//					text = "Image from: " + mSelectedImage.toString();
+//					Toast toaster = Toast.makeText(context, text, duration);
+//					toaster.show();
 					
 					FromPage = getIntent().getStringExtra("FromPage");
 					
@@ -312,8 +312,8 @@ public class AddLocation extends Activity {
 						    intent.putExtra("Lat", selectedLat);
 							intent.putExtra("Lng", selectedLng);
 
-							Toast toast = Toast.makeText(context, text, duration);
-							toast.show();
+//							Toast toast = Toast.makeText(context, text, duration);
+//							toast.show();
 							
 							startActivity(intent);
 						}
@@ -351,8 +351,8 @@ public class AddLocation extends Activity {
 						    String lat = Double.toString(selectedLat);
 						    String lng = Double.toString(selectedLng);
 						    text = "IT WORKED FROM MAP " + lat + " " + lng;
-						    Toast toast = Toast.makeText(context, text, duration);
-							toast.show();
+//						    Toast toast = Toast.makeText(context, text, duration);
+//							toast.show();
 						}
 						else{
 							// TODO Better err message

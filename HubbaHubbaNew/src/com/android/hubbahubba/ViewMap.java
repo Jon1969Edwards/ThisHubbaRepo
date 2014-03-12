@@ -342,8 +342,8 @@ public class ViewMap extends SherlockFragment {
         								Uri imageViewUri = Uri.fromFile(new File(mImagePath));
         								//File f = new File(mImagePath);
         								
-        								Toast toast = Toast.makeText(context, "URI: " + imageViewUri + " path: " + mImagePath, Toast.LENGTH_LONG);
-        								toast.show();
+        								//Toast toast = Toast.makeText(context, "URI: " + imageViewUri + " path: " + mImagePath, Toast.LENGTH_LONG);
+        								//toast.show();
         								
         								// Use picasso to load the image into view
         								Picasso.with(context)
