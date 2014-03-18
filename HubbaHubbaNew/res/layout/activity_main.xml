@@ -4,14 +4,15 @@
     android:layout_height="fill_parent"
     android:background="@drawable/hubba_background_img"
     android:orientation="vertical" >
-
-    <com.facebook.widget.LoginButton
+    
+	<com.facebook.widget.LoginButton
         android:id="@+id/authButton"
         android:layout_width="250dp"
-        android:layout_height="55dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp" />
-
+        android:layout_height="51dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp" />
+	
     <Button
         android:id="@+id/logInButton"
         android:layout_width="250dp"

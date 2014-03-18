@@ -46,8 +46,8 @@ public class MainFragment extends Fragment {
 	            }   
 	        }); 
 	        Request.executeBatchAsync(request);
-	        Toast.makeText(getActivity().getApplicationContext(), "access token: " + access_token, Toast.LENGTH_SHORT).show();
-	        Toast.makeText(getActivity().getApplicationContext(), "User_id: " + user_ID, Toast.LENGTH_SHORT).show();
+	        //Toast.makeText(getActivity().getApplicationContext(), "access token: " + access_token, Toast.LENGTH_SHORT).show();
+	        //Toast.makeText(getActivity().getApplicationContext(), "User_id: " + user_ID, Toast.LENGTH_SHORT).show();
 		} else if (state.isClosed()) {
 			Log.i(TAG, "Logged out...");
 			access_token = null;
@@ -122,6 +122,7 @@ public class MainFragment extends Fragment {
 		// may not be triggered. Trigger it if it's open/closed.
 		Session session = Session.getActiveSession();
 		if (session != null && (session.isOpened() || session.isClosed())) {
+			//Toast.makeText(getActivity().getApplicationContext(), "Resumed", Toast.LENGTH_SHORT).show();
 			onSessionStateChange(session, session.getState(), null);
 		}
 
