@@ -26,17 +26,16 @@ public class MainFragment extends Fragment {
 	private UiLifecycleHelper uiHelper;
 	private String access_token;
 	private String user_ID;
-	private Session sesh;
 	private void onSessionStateChange(Session session, SessionState state,
 			Exception exception) {
 		if (state.isOpened()) {
 			Log.i(TAG, "Logged in...");
 			access_token = session.getAccessToken();
+			final Session sesh = Session.getActiveSession();
 			Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
 	            @Override
 	            public void onCompleted(GraphUser user, Response response) {
 	                // If the response is successful
-	            	sesh = Session.getActiveSession();
 	                if (sesh == Session.getActiveSession()) {
 	                    if (user != null) {
 	                        user_ID = user.getId();//user id
