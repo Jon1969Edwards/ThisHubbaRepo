@@ -77,7 +77,7 @@ public class SpotPage extends Activity {
 			Bundle showData = getIntent().getExtras();
 			keyValue = showData.getInt("keyid");			 //TODO this crashes the view spot page from the map
 			
-			Toast.makeText(this, "KeyValue is: " + keyValue, Toast.LENGTH_LONG).show();
+			//Toast.makeText(this, "KeyValue is: " + keyValue, Toast.LENGTH_LONG).show();
 		}
 		
 		// initialize everything now
@@ -133,7 +133,7 @@ public class SpotPage extends Activity {
 			    } while (c.moveToNext());
 			}
 			else{
-				mTitle.setText("oops");
+				mTitle.setText("Riley");
 		        mRating.setText("0");
 		        mDifficulty.setText("0");
 		        mLevel.setText("0");

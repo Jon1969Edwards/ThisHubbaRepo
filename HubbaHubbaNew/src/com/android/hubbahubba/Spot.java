@@ -1,5 +1,10 @@
 package com.android.hubbahubba;
 
+import com.google.android.gms.maps.GoogleMap;
+
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+
 
 public class Spot {
 	
@@ -229,8 +234,15 @@ public class Spot {
 		return null;
 	}
 	
-	public static Spot[] getAllSpots(){
+	public static void getSpotByID(GoogleMap map, String id, Context c){
+		// TODO
+		new GetSpotInfoTask(map, c).execute("http://35.2.230.99:5000/spots/" + id);
+	}
+	
+	public static Spot[] getAllSpots(GoogleMap map, Context c){
 		// TODO - Get all Spots
+		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
+		new PopulateMapTask(map, c).execute("http://35.2.230.99:5000/spots");
 		return null;
 	}
 }

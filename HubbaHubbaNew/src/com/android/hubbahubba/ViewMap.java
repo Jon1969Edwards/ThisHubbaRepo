@@ -125,26 +125,29 @@ public class ViewMap extends SherlockFragment {
                 mUiSettings.setMyLocationButtonEnabled(true);
                 mUiSettings.setZoomControlsEnabled(false);
                 
-                final LatLng Riley = new LatLng(42.4409000, -83.3978000 );
+                final LatLng Center = new LatLng(42.4409010, -83.3978000 );
+                final LatLng Riley = new LatLng(45.4409010, -83.3978000 );
                 Marker riley = mMap.addMarker(new MarkerOptions()
                                           .position(Riley)
                                           .title("Riley Skate Park")
                                           .snippet("Skatepark")
                                           .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-                
+                 
         	     // Construct a CameraPosition focusing on Mountain View and animate the camera to that position.
         	     CameraPosition cameraPosition = new CameraPosition.Builder()
-        	         .target(Riley)      // Sets the center of the map to Mountain View
+        	         .target(Center)      // Sets the center of the map to Mountain View
         	         .zoom(17)                   // Sets the zoom
         	         .bearing(0)                // Sets the orientation of the camera to north
         	         .tilt(30)                   // Sets the tilt of the camera to 30 degrees
         	         .build();                   // Creates a CameraPosition from the builder
         	     mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
+				 
+                
         	     // TODO JIMMY: If you could write a function that will give me one lat and lng at a time (looping through all)
         	     //	so I can add a marker to the map from the latitude and longitude for all of the spots in the db
         		 
         		 //========NEW CODE========//
+        	     /*
         		 dbHelper = new HubbaDBAdapter(context);
         		 dbHelper.open();
         		 Cursor c = dbHelper.fetchAllSpots();
@@ -173,7 +176,9 @@ public class ViewMap extends SherlockFragment {
         		 }
         		 dbHelper.close();
         		 //=======END OF NEW CODE======//
-        		 
+        		 */
+        	     
+        	     Spot.getAllSpots(mMap, getActivity().getApplicationContext());
         	     
         	     //NEW STUFF
         	     mMap.setOnMapLongClickListener(new OnMapLongClickListener() {
@@ -250,7 +255,7 @@ public class ViewMap extends SherlockFragment {
         					//cur.close();
         				} 
         				catch(Exception e){
-        					Toast.makeText(getActivity().getApplicationContext(), "Nothing stored in the DB here...", Toast.LENGTH_LONG).show();
+        					//Toast.makeText(getActivity().getApplicationContext(), "Nothing stored in the DB here...", Toast.LENGTH_LONG).show();
         					
         					Bundle bundleData = new Bundle();
         					bundleData.putInt("keyid", 29);
@@ -367,9 +372,14 @@ public class ViewMap extends SherlockFragment {
         						} while (cur.moveToNext());
         					}
         				    else{
-        				    	Toast.makeText(getActivity().getApplicationContext(), "Sorry DB is broken", Toast.LENGTH_LONG).show();
+        				    	Toast.makeText(getActivity().getApplicationContext(), "Using new DB", Toast.LENGTH_LONG).show();
         				    	
-        				    	txtTitle.setText("oops"); //name
+        				    	String spot_id = arg0.getSnippet();
+        				    	String spot_title = arg0.getTitle();
+        				    	
+        				    	// CHECK db /spots/spot_id
+        				    	
+        				    	txtTitle.setText(spot_title); //name
     							txtOverallRating.setText("0"); //rating
     							txtDiffRating.setText("0"); //difficulty
     							txtPoRating.setText("0"); //police level

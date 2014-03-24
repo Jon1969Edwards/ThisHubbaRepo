@@ -39,15 +39,39 @@ public class MainFragment extends Fragment {
 	                if (sesh == Session.getActiveSession()) {
 	                    if (user != null) {
 	                        user_ID = user.getId();//user id
-	                        //profileName = user.getName();//user's profile name
+	                        //Intent i = new Intent(getActivity(), ActionBarActivity.class);
+	                        //startActivity(i);
+	                        /* print shit
+	                        Toast.makeText(getActivity().getApplicationContext(),
+	                        		"access token: " + access_token, Toast.LENGTH_SHORT).show();
+	            	        Toast.makeText(getActivity().getApplicationContext(),
+	            	        		"User_id: " + user_ID, Toast.LENGTH_SHORT).show();
+	            	        */
+	                        
+	            	        // TODO -- get the expire stuff
+	            	        // graph api explorer
+	            	        // username == ukey
+	            	        // password == akey
+	            	        	// all api calls (other than login) will need this stuff
+	            	        // post to /spots to add a spot
+	            	        	// name, lat, long are the fields that need to be put in
+	            	        // will need local storage for the ukey, akey, user_id, and access_token
+	            	        // look into shared preferences with keystoring 
+	            	        	// write to when we have to refresh the key
+	            	        // know when to refresh by given expire time (for api and fb)
+	            	        
+	            	        // For monday, would like to have the map and list view
+	            	        // be populated from the api
+	            	        
+	            	        // to enable, under class definition uncomment requireauth
+	            	        
+	                        //profileName = user.getName();	//user's profile name
 	                        //userNameView.setText(user.getName());
 	                    }   
 	                }   
 	            }   
 	        }); 
 	        Request.executeBatchAsync(request);
-	        //Toast.makeText(getActivity().getApplicationContext(), "access token: " + access_token, Toast.LENGTH_SHORT).show();
-	        //Toast.makeText(getActivity().getApplicationContext(), "User_id: " + user_ID, Toast.LENGTH_SHORT).show();
 		} else if (state.isClosed()) {
 			Log.i(TAG, "Logged out...");
 			access_token = null;
