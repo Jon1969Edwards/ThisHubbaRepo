@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -102,7 +101,12 @@ public class MainFragment extends Fragment {
 		Button logInButton = (Button) rootView.findViewById(R.id.logInButton);
 		Button signUpButton = (Button) rootView.findViewById(R.id.signUpButton);
 		// Button viewMapButton = (Button)findViewById(R.id.viewMapButton);
-
+		
+		
+		// TODO: delete this eventually
+		//signUpButton.setVisibility(View.GONE);
+		//logInButton.setVisibility(View.GONE);
+		
 		LoginButton authButton = (LoginButton) rootView.findViewById(R.id.authButton);
 		authButton.setPublishPermissions(Arrays.asList("publish_actions"));
 		authButton.setFragment(this);

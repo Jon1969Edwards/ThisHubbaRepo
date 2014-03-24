@@ -133,7 +133,16 @@ public class SpotPage extends Activity {
 			    } while (c.moveToNext());
 			}
 			else{
-				mTitle.setText("Riley");
+				Bundle showData = getIntent().getExtras();
+				String spot_id = showData.getString("spot_id");	
+				
+				Toast.makeText(this, "spot id:\n" +
+				                     spot_id, Toast.LENGTH_LONG).show();
+				
+				// for now just sets the title
+				Spot.getSpotInfoByID(this, spot_id, context);
+				
+				mTitle.setText("oops");
 		        mRating.setText("0");
 		        mDifficulty.setText("0");
 		        mLevel.setText("0");

@@ -10,29 +10,25 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 // TODO: For async tasks but currently unused
 public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 	
 	private Context context;
-	private GoogleMap map;
+	private Activity activity;
 	
 	//in constructor:
-	public GetSpotInfoTask(GoogleMap map, Context context){
+	public GetSpotInfoTask(Activity activity, Context context){
 	        this.context = context;
-	        this.map = map;
+	        this.activity = activity;
 	}
 
     @Override
@@ -69,30 +65,18 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
         
         try {
         	// convert to json and get spot entries
-			JSONObject jObject = new JSONObject(result);
-			JSONArray spotsArray = jObject.getJSONArray("spots");
+			JSONObject spot = new JSONObject(result);
 			
-			for (int i=0; i < spotsArray.length(); i++)
-			{
-			    try {
-			        JSONObject spot = spotsArray.getJSONObject(i);
-			        // Pulling items from the array
-			        String id = spot.getString("id");
-					String name = spot.getString("name");
-					double lat = Double.parseDouble(spot.getString("lat"));
-					double lon = Double.parseDouble(spot.getString("lon"));
-					
-					// Add spots to map
-					this.map.addMarker(new MarkerOptions()
-    			                                  .position(new LatLng(lat, lon))
-    			                                  .title(name)
-    			                                  .snippet(id)
-    			                                  .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-					
-			    } catch (JSONException e) {
-			    	Toast.makeText(context, "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();
-			    }
-			}
+		    try {
+		        // Pulling items from the array
+				String name = spot.getString("name");
+				Toast.makeText(context, "Name = " + name, Toast.LENGTH_LONG).show();
+				
+				TextView Title = (TextView) activity.findViewById(R.id.txtTitle);
+				Title.setText(name);
+		    } catch (JSONException e) {
+		    	Toast.makeText(context, "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();
+		    }
 			
 			//Toast.makeText(context, "Name:\n" +
 	        //         name, Toast.LENGTH_LONG).show();

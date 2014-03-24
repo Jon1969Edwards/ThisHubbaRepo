@@ -259,6 +259,8 @@ public class ViewMap extends SherlockFragment {
         					
         					Bundle bundleData = new Bundle();
         					bundleData.putInt("keyid", 29);
+        					bundleData.putString("spot_id", marker.getSnippet());
+        					
         					Intent intent = new Intent(getActivity().getApplicationContext(),
         							SpotPage.class);
         					
@@ -282,7 +284,6 @@ public class ViewMap extends SherlockFragment {
         			@Override
         			public View getInfoWindow(Marker arg0) {	
         				String LatLong = arg0.getPosition().toString();
-        				//mMarkerMap.put(addSpot.getPosition(), TYPE_NEW);
         				LatLong = LatLong.substring(10, LatLong.length() - 1);
 
         				String[] separated = LatLong.split(",");

@@ -1,9 +1,9 @@
 package com.android.hubbahubba;
 
-import com.google.android.gms.maps.GoogleMap;
-
+import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
+
+import com.google.android.gms.maps.GoogleMap;
 
 
 public class Spot {
@@ -234,9 +234,9 @@ public class Spot {
 		return null;
 	}
 	
-	public static void getSpotByID(GoogleMap map, String id, Context c){
+	public static void getSpotInfoByID(Activity activity, String id, Context c){
 		// TODO
-		new GetSpotInfoTask(map, c).execute("http://35.2.230.99:5000/spots/" + id);
+		new GetSpotInfoTask(activity, c).execute("http://35.2.230.99:5000/spots/" + id);
 	}
 	
 	public static Spot[] getAllSpots(GoogleMap map, Context c){
