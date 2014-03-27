@@ -28,7 +28,8 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
     protected String doInBackground(String... params)   
     {           
         BufferedReader inBuffer = null;
-        String url = "http://35.2.227.254:5000/spots";
+        //String url = "http://35.2.227.254:5000/spots";
+        String url = params[0];
         String result = "fail";
         try {
         	/*
@@ -39,9 +40,9 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
         	HttpClient httpClient = new DefaultHttpClient();
             HttpPost request = new HttpPost(url);
             List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-            postParameters.add(new BasicNameValuePair("name", params[0]));
-            postParameters.add(new BasicNameValuePair("lat", params[1]));
-            postParameters.add(new BasicNameValuePair("lon", params[2]));
+            postParameters.add(new BasicNameValuePair("name", params[1]));
+            postParameters.add(new BasicNameValuePair("lat", params[2]));
+            postParameters.add(new BasicNameValuePair("lon", params[3]));
 
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(
                     postParameters);

@@ -747,8 +747,10 @@ public class AddSpot extends Activity {
 				dbHelper.createSpot(stringName, stringType, doubleLat,
 						doubleLong, intRate, intDiff, intLevel, stringComments, selectedImagePath);
 				*/
+				String lat = Double.toString(doubleLat);
+				String lon = Double.toString(doubleLong);
 				
-				new AddSpotTask(getApplicationContext()).execute(new String[] {stringName,Double.toString(doubleLat),Double.toString(doubleLong)}); 
+				Spot.addSpotByLatLon(getApplicationContext(), stringName, lat, lon);
 				// dbHelper.close();
 				//finish();
 				

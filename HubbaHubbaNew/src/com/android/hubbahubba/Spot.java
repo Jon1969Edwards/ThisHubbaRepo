@@ -234,15 +234,18 @@ public class Spot {
 		return null;
 	}
 	
+	public static void addSpotByLatLon(Context context, String name, String lat, String lon){
+		String url = "http://10.0.0.44:5000/spots/";
+		new AddSpotTask(context).execute(new String[] {url, name, lat, lon}); 
+	}
+	
 	public static void getSpotInfoByID(Activity activity, String id, Context c){
-		// TODO
-		new GetSpotInfoTask(activity, c).execute("http://35.2.227.254:5000/spots/" + id);
+		new GetSpotInfoTask(activity, c).execute("http://10.0.0.44:5000/spots/" + id);
 	}
 	
 	public static Spot[] getAllSpots(GoogleMap map, Context c){
-		// TODO - Get all Spots
 		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
-		new PopulateMapTask(map, c).execute("http://35.2.227.254:5000/spots");
+		new PopulateMapTask(map, c).execute("http://10.0.0.44:5000/spots");
 		return null;
 	}
 }
