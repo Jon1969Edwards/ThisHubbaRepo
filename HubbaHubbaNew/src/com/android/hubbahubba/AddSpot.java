@@ -743,8 +743,12 @@ public class AddSpot extends Activity {
 				stringComments = mComment.getText().toString();
 				selectedImagePath = getRealPathFromUri(mSelectedImage);
 
+				/*
 				dbHelper.createSpot(stringName, stringType, doubleLat,
 						doubleLong, intRate, intDiff, intLevel, stringComments, selectedImagePath);
+				*/
+				
+				new AddSpotTask(getApplicationContext()).execute(new String[] {stringName,Double.toString(doubleLat),Double.toString(doubleLong)}); 
 				// dbHelper.close();
 				//finish();
 				

@@ -236,13 +236,13 @@ public class Spot {
 	
 	public static void getSpotInfoByID(Activity activity, String id, Context c){
 		// TODO
-		new GetSpotInfoTask(activity, c).execute("http://35.2.230.99:5000/spots/" + id);
+		new GetSpotInfoTask(activity, c).execute("http://35.2.227.254:5000/spots/" + id);
 	}
 	
 	public static Spot[] getAllSpots(GoogleMap map, Context c){
 		// TODO - Get all Spots
 		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
-		new PopulateMapTask(map, c).execute("http://35.2.230.99:5000/spots");
+		new PopulateMapTask(map, c).execute("http://35.2.227.254:5000/spots");
 		return null;
 	}
 }
