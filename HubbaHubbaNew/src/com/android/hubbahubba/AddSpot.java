@@ -29,7 +29,7 @@ public class AddSpot extends Activity {
 	int diffClicked = 0;
 	int overallClicked = 0;
 	int poClicked = 0;
-	HubbaDBAdapter dbHelper;
+	//HubbaDBAdapter dbHelper;
 	String mTitle, mType;
 	EditText mComment;
 	Uri mSelectedImage = Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);;
@@ -709,8 +709,8 @@ public class AddSpot extends Activity {
 			}
 		});
 	
-		dbHelper = new HubbaDBAdapter(this);
-		dbHelper.open();
+		//dbHelper = new HubbaDBAdapter(this);
+		//dbHelper.open();
 
 		// by pressing submit, you insert comment into DB
 		Button addSpotButton = (Button) findViewById(R.id.addSpotButton);
@@ -779,7 +779,7 @@ public class AddSpot extends Activity {
 	
 	@Override
 	protected void onDestroy() {
-		dbHelper.close();
+		//dbHelper.close();
 		super.onDestroy();
 	}
 
