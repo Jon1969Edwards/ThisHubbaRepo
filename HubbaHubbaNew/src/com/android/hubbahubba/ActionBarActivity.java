@@ -95,6 +95,7 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
 	}
 
 	public void onPageSelected(int position) {
+		position = position % getSupportActionBar().getNavigationItemCount();
 		getSupportActionBar().setSelectedNavigationItem(position);
 	}
 
