@@ -77,8 +77,20 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
 			    try {
 			        JSONObject spot = spotsArray.getJSONObject(i);
 			        // Pulling items from the array
-			        String id = spot.getString("id");
-					String name = spot.getString("name");
+			        String snippit = "";
+			        String name = spot.getString("name");
+					String id = spot.getString("id");
+					snippit += (id + ",");
+					String overall = spot.getString("overall");
+					snippit += (overall + ",");
+					String difficulty = spot.getString("difficulty");
+					snippit += (difficulty + ",");
+					String bust = spot.getString("bust");
+					snippit += (bust + ",");
+					String type = spot.getString("type");
+					snippit += (type + ",");
+					Toast.makeText(context, snippit, Toast.LENGTH_LONG).show();
+					
 					double lat = Double.parseDouble(spot.getString("lat"));
 					double lon = Double.parseDouble(spot.getString("lon"));
 					
@@ -86,11 +98,11 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
 					this.map.addMarker(new MarkerOptions()
     			                                  .position(new LatLng(lat, lon))
     			                                  .title(name)
-    			                                  .snippet(id)
-    			                                  .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+    			                                  .snippet(snippit)
+    			                                  .icon(BitmapDescriptorFactory.fromResource(R.drawable.hubba_marker_red)));
 					
 			    } catch (JSONException e) {
-			    	Toast.makeText(context, "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();
+			    	Toast.makeText(context, "OOPS, JSON PROBLEM from map", Toast.LENGTH_LONG).show();
 			    }
 			}
 			

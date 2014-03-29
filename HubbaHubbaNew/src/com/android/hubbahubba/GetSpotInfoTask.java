@@ -71,9 +71,26 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 		        // Pulling items from the array
 				String name = spot.getString("name");
 				String id = spot.getString("id");
-				Toast.makeText(context, "Name = " + name + " and id = " + id, Toast.LENGTH_LONG).show();
+				String overall = spot.getString("overall");
+				String difficulty = spot.getString("difficulty");
+				String bust = spot.getString("bust");
+				String type = spot.getString("type");
+				String distance = "11.1 mi";
+				Toast.makeText(context, "Name = " + name + ", id = " + id + " overall = " + overall
+						+ " bust = " + bust + " diff = " + difficulty + " type = " + type, Toast.LENGTH_LONG).show();
 				
+				// get views
 				TextView Title = (TextView) activity.findViewById(R.id.txtTitle);
+				TextView Difficulty = (TextView) activity.findViewById(R.id.txtDiffRating);
+				TextView Overall = (TextView) activity.findViewById(R.id.txtOverallRating);
+				TextView Bust = (TextView) activity.findViewById(R.id.txtPoRating);
+				TextView Distance = (TextView) activity.findViewById(R.id.txtDistance);
+				
+				// set texts
+				Overall.setText(overall);
+				Bust.setText(bust);
+				Difficulty.setText(difficulty);
+				Distance.setText(distance);
 				Title.setText(name);
 		    } catch (JSONException e) {
 		    	Toast.makeText(context, "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();

@@ -187,22 +187,25 @@ public class ViewMap extends SherlockFragment {
 
 					@Override
 					public void onInfoWindowClick(Marker marker) {
-
+						/*
 						String LatLong = marker.getPosition().toString();
 						LatLong = LatLong.substring(10, LatLong.length() - 1);
 
 						String[] separated = LatLong.split(",");
 						String latitude = separated[0];
 						String longitude = separated[1];
-
-						// This produces the latitude and longitude from the
-						// spot
-						double Lat = Double.parseDouble(latitude);
-						double Lng = Double.parseDouble(longitude);
+						*/
 
 						Bundle bundleData = new Bundle();
+						
+						// TODO delete this
 						bundleData.putInt("keyid", 29);
-						bundleData.putString("spot_id", marker.getSnippet());
+						
+						// get spot id
+						String[] snip = marker.getSnippet().split(",");
+						String id = snip[0];
+						
+						bundleData.putString("spot_id", id);
 
 						Intent intent = new Intent(getActivity()
 								.getApplicationContext(), SpotPage.class);
@@ -252,77 +255,25 @@ public class ViewMap extends SherlockFragment {
 						TextView txtDistance = (TextView) v
 								.findViewById(R.id.info_window_distance);
 
-						/*
-						 * int duration = Toast.LENGTH_LONG;
-						 * 
-						 * Toast toaster = Toast.makeText(context, "Name: ",
-						 * duration); toaster.show();
-						 */
-
-						String lat = Double.toString(Lat);
-						String lng = Double.toString(Lng);
-						/*
-						 * text = lat + " " + lng;
-						 * 
-						 * Toast toasted = Toast.makeText(context, text,
-						 * duration); toasted.show();
-						 */
-
-						// txtTitle.setText(cur.getString(1)); //name
-						// txtOverallRating.setText(cur.getString(5)); //rating
-						// txtDiffRating.setText(cur.getString(6)); //difficulty
-						// txtPoRating.setText(cur.getString(7)); //police level
-						// String mImagePath = cur.getString(9); //image URI
-
-						/*
-						 * if(mImagePath != null ) { //Uri imageViewUri =
-						 * Uri.parse(mImagePath); //parse URI
-						 * 
-						 * // Convert the dp value for xml to pixels (casted to
-						 * int from float) int size = Image.convertDpToPixel(80,
-						 * context);
-						 * 
-						 * Uri imageViewUri = Uri.fromFile(new
-						 * File(mImagePath)); //File f = new File(mImagePath);
-						 * 
-						 * //Toast toast = Toast.makeText(context, "URI: " +
-						 * imageViewUri + " path: " + mImagePath,
-						 * Toast.LENGTH_LONG); //toast.show();
-						 * 
-						 * // Use picasso to load the image into view
-						 * Picasso.with(context) .load(imageViewUri)
-						 * .centerCrop() .resize(size, size)
-						 * .placeholder(R.drawable.gettinthere)
-						 * .into(imgThumbnail);
-						 * 
-						 * //imgThumbnail.setImageURI(imageViewUri); //set Image
-						 * via parsed URI }
-						 */
-						/*
-						 * Toast toast = Toast.makeText(context, "Name: " +
-						 * cur.getString(1) + "Overall Rating: " +
-						 * cur.getString(5), duration); toast.show();
-						 */
-
-						// int duration = Toast.LENGTH_LONG;
-
-						// Toast toast = Toast.makeText(context, "Name: " +
-						// cur.getString(1), duration);
-						// toast.show();
-
 						// TODO: WAS AN ELSE
 						Toast.makeText(getActivity().getApplicationContext(),
 								"Using new DB", Toast.LENGTH_LONG).show();
-
-						String spot_id = arg0.getSnippet();
+						
+						// Get spot info
 						String spot_title = arg0.getTitle();
 
-						// CHECK db /spots/spot_id
+						// parse snippit
+						String[] snip = arg0.getSnippet().split(",");
+						String overall = snip[1];
+						String difficulty = snip[2];
+						String bust = snip[3];
+						//String type = snip[4];
 
 						txtTitle.setText(spot_title); // name
-						txtOverallRating.setText("0"); // rating
-						txtDiffRating.setText("0"); // difficulty
-						txtPoRating.setText("0"); // police level
+						txtOverallRating.setText(overall); // rating
+						txtDiffRating.setText(difficulty); // difficulty
+						txtPoRating.setText(bust); // police level
+						txtDistance.setText("1.11 mi");
 						// String mImagePath = cur.getString(9); //image URI
 
 						// Convert the dp value for xml to pixels (casted to int

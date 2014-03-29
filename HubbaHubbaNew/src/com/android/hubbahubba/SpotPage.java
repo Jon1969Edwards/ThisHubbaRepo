@@ -136,7 +136,7 @@ public class SpotPage extends Activity {
 			// for now just sets the title
 			Spot.getSpotInfoByID(this, spot_id, context);
 			
-    	    int size = Image.convertDpToPixel(100, context);
+    	    int size = Image.convertDpToPixel(90, context);
     	    
     	    // Toast.makeText(this, "Size:\n" +
             //          size, Toast.LENGTH_LONG).show();

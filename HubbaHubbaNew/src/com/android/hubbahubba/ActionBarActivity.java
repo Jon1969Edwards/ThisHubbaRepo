@@ -2,6 +2,7 @@ package com.android.hubbahubba;
 
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,11 +28,25 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
         mViewPager = (ViewPager)findViewById(R.id.pager);
         mViewPager.setAdapter(new MyPagerAdapter(this, getSupportFragmentManager()));
         
+        // Get Actionbar
         ActionBar bar = getSupportActionBar();
+        
+        // set color to black
+        bar.setStackedBackgroundDrawable(new ColorDrawable(android.graphics.Color.BLACK));
+        
+        // Get tabs
+        ActionBar.Tab mapTab = bar.newTab().setText("Map").setTabListener(this);
+        ActionBar.Tab listTab = bar.newTab().setText("Spot List").setTabListener(this);
+        
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        bar.addTab(bar.newTab().setText("Map").setTabListener(this));
-        bar.addTab(bar.newTab().setText("Spot List").setTabListener(this));
-        //bar.addTab(bar.newTab().setText("My Spots").setTabListener(this));   
+        bar.addTab(mapTab);
+        bar.addTab(listTab);
+        //bar.addTab(bar.newTab().setText("My Spots").setTabListener(this));
+        
+        // set options for action bar
+        bar.setDisplayShowTitleEnabled(false);
+        bar.setDisplayUseLogoEnabled(false);
+        bar.setDisplayShowHomeEnabled(false);
         
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); 
     }

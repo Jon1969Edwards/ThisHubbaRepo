@@ -116,13 +116,11 @@
 	<string name="show">Show...</string>
 	<string name="titleOfSpot">Spot Title Here</string>
 	<string name="txtPolice">Bust Level</string>
-	<string name="txtDiff">Difficulty Level</string>
+	<string name="txtDiff">Difficulty</string>
 	
 	<string name="uploadPhoto">Upload</string>
 	<string name="favorites">Favorites</string>
 	<string name="txtOverall">Overall</string>
-	
-	<string name="miles">10 mi</string>
 	
 	<string name="search">Search</string>
 	<string name="layers">Layers</string>

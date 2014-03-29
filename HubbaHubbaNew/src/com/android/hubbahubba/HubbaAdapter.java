@@ -75,7 +75,7 @@ public class HubbaAdapter extends BaseAdapter /*implements Filterable*/ {
             vh.txtTitle.setText(spot.get("name"));
             vh.txtOverallRating.setText(spot.get("overall"));
             vh.txtPoRating.setText(spot.get("bust"));
-            vh.txtDiffRating.setText(spot.get("diff"));
+            vh.txtDiffRating.setText(spot.get("difficulty"));
             vh.txtDistance.setText(spot.get("distance"));
             vh.spot_id.setText(spot.get("id"));
             

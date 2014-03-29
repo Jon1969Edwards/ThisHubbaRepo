@@ -20,8 +20,8 @@
 	<uses-permission android:name="com.android.hubbahubba.permission.MAPS_RECEIVE"/>
 	<!-- Copied from Google Maps Library/AndroidManifest.xml. -->
 	<uses-sdk
-	  android:minSdkVersion="8"
-	  android:targetSdkVersion="16"/>
+	  android:minSdkVersion="11"
+	  android:targetSdkVersion="17"/>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
@@ -36,7 +36,7 @@
 	  android:required="true"/>
 
     <application
-        android:icon="@drawable/icon_hubba"
+        android:icon="@drawable/hubba_icon_red"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         
@@ -68,7 +68,8 @@
         </activity>
         <activity
             android:name=".ViewMap"
-            android:label="@string/viewMap" >
+            android:label="@string/viewMap"
+            android:theme="@style/AppTheme" >
         </activity>
         <activity
             android:name=".UploadImage"
@@ -91,8 +92,9 @@
         </activity>
         <activity
             android:name=".AddLocation"
-            android:theme="@style/AppTheme"
+            android:theme="@style/Theme.Sherlock.Light.NoActionBar"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateHidden"
             android:label="@string/addLocation" >
         </activity>
         <activity
@@ -101,7 +103,8 @@
         </activity>
         <activity
             android:name=".AddSpot"
-            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:theme="@style/Theme.Sherlock.Light.NoActionBar"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateHidden"
             android:label="@string/addSpot" >
         </activity>
@@ -116,7 +119,8 @@
         </activity>
         <activity
             android:name=".ActionBarActivity"
-            android:label="@string/title_activity_action_bar" >
+            android:label="@string/title_activity_action_bar"
+            android:theme="@style/AppTheme">
         </activity>
         <activity
            android:name=".EditActivity"

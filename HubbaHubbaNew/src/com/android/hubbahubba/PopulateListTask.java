@@ -86,25 +86,32 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
 				String name = spot.getString("name");
 				String lat = spot.getString("lat");
 				String lon = spot.getString("lon");
-				
-				Toast.makeText(context, "ID == " + id, Toast.LENGTH_LONG).show();
+				String difficulty = spot.getString("difficulty");
+				String overall = spot.getString("overall");
+				String bust = spot.getString("bust");
+				String type = spot.getString("type");
 				
 				// TODO: GET THESE FROM THE DB
-				String overall = "10";//spot.getString("overall");
-				String diff = "9";//spot.getString("diff");
-				String bust = "8";//spot.getString("bust");
+				//String overall = "10";//spot.getString("overall");
+				//String difficulty = "9";//spot.getString("diff");
+				//String bust = "8";//spot.getString("bust");
 				String distance = "10.0 mi";
-				String type = "Hubba";
+				//String type = "Hubba";
 
                 spotMap.put("id",  id);
                 spotMap.put("name", name);
                 spotMap.put("lat", lat);
                 spotMap.put("lon",  lon);
                 spotMap.put("overall", overall);
-                spotMap.put("diff", diff);
+                spotMap.put("difficulty", difficulty);
                 spotMap.put("bust", bust);
                 spotMap.put("distance", distance);
-                spotMap.put("type", type);
+                if(type!= null){
+                	spotMap.put("type", type);
+                }
+                else{
+                	spotMap.put("type", "hubba");
+                }
                 
                 SpotsArray.add(spotMap);            
             }       
