@@ -8,8 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +15,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
@@ -74,11 +72,18 @@ public class ListViewHubba extends SherlockFragment {
 		
 			public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
 				Bundle bundleData = new Bundle();
+				HashMap<String, String> spot = SpotsArray.get(position);
 				
-				bundleData.putInt("keyid", 29);
+				//bundleData.putInt("keyid", 29);
+				//TextView SpotID = (TextView) rootView.findViewById(R.id.spot_id);
+				
+				String spot_id = spot.get("id");
+				
+				bundleData.putString("spot_id", spot_id);
 				
 				Intent intent = new Intent(getActivity().getApplicationContext(),
 						SpotPage.class);
+				
 				intent.putExtras(bundleData);
 				startActivity(intent);
 			}

@@ -69,16 +69,6 @@ public class SpotPage extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.spot_page_layout);
-
-		// find the intent keyid passed through the intent.
-		// this is used in the DB Query
-		if(getIntent().getExtras() != null){
-			
-			Bundle showData = getIntent().getExtras();
-			keyValue = showData.getInt("keyid");			 //TODO this crashes the view spot page from the map
-			
-			//Toast.makeText(this, "KeyValue is: " + keyValue, Toast.LENGTH_LONG).show();
-		}
 		
 		// initialize everything now
 		mTitle = (TextView) findViewById(R.id.txtTitle);
@@ -92,7 +82,8 @@ public class SpotPage extends Activity {
 		dbHelper.open();
 		c = dbHelper.queryAll(keyValue);
 		try{
-			if (c.moveToFirst()) {
+			/*if (c.moveToFirst()) {
+				
 		        do {
 		            mTitle.setText(c.getString(1));
 		            //mType.setText(c.getString(2));
@@ -130,37 +121,35 @@ public class SpotPage extends Activity {
 		    	    	   .placeholder(R.drawable.ic_empty)
 		    	    	   .into(mImage);
 			        }
-			    } while (c.moveToNext());
+			    }
+			    while (c.moveToNext());
 			}
 			else{
-				Bundle showData = getIntent().getExtras();
-				String spot_id = showData.getString("spot_id");	
-				
-				Toast.makeText(this, "spot id:\n" +
-				                     spot_id, Toast.LENGTH_LONG).show();
-				
-				// for now just sets the title
-				Spot.getSpotInfoByID(this, spot_id, context);
-				
-				mTitle.setText("oops");
-		        mRating.setText("0");
-		        mDifficulty.setText("0");
-		        mLevel.setText("0");
-		        
-	    	    int size = Image.convertDpToPixel(100, context);
+				*/
+			
+			Bundle showData = getIntent().getExtras();
+			String spot_id = showData.getString("spot_id");	
+			
+			Toast.makeText(this, "spot id:\n" +
+			                     spot_id, Toast.LENGTH_LONG).show();
+			
+			// for now just sets the title
+			Spot.getSpotInfoByID(this, spot_id, context);
+			
+    	    int size = Image.convertDpToPixel(100, context);
+    	    
+    	    // Toast.makeText(this, "Size:\n" +
+            //          size, Toast.LENGTH_LONG).show();
+    	    
+    	    // use picasso to load the image into view
+    	    Picasso.with(context)
+    	    	   .load(R.drawable.gettinthere)
+    	    	   .centerCrop()
+    	    	   .resize(size, size)
+    	    	   .placeholder(R.drawable.ic_empty)
+    	    	   .into(mImage);
 	    	    
-	    	   // Toast.makeText(this, "Size:\n" +
-	           //          size, Toast.LENGTH_LONG).show();
-	    	    
-	    	    // use picasso to load the image into view
-	    	    Picasso.with(context)
-	    	    	   .load(R.drawable.gettinthere)
-	    	    	   .centerCrop()
-	    	    	   .resize(size, size)
-	    	    	   .placeholder(R.drawable.ic_empty)
-	    	    	   .into(mImage);
-	    	    
-			}
+			//}
 		}
 		finally {
 	        // this gets called even if there is an exception somewhere above

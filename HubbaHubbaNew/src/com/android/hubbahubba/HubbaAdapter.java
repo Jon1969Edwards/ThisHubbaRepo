@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -34,6 +33,7 @@ public class HubbaAdapter extends BaseAdapter /*implements Filterable*/ {
         TextView txtPoRating;
         TextView txtDiffRating;
         TextView txtDistance;
+        TextView spot_id;
 	}
 
 	//public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -57,6 +57,7 @@ public class HubbaAdapter extends BaseAdapter /*implements Filterable*/ {
             vh.txtPoRating = (TextView) v.findViewById(R.id.txtPoRating);
             vh.txtDiffRating = (TextView) v.findViewById(R.id.txtDiffRating);
             vh.txtDistance = (TextView) v.findViewById(R.id.txtDistance);
+            vh.spot_id = (TextView) v.findViewById(R.id.spot_id);
             
             // Convert the dp value for xml to pixels (casted to int from float)
     	    int size = Image.convertDpToPixel(80, context);
@@ -76,6 +77,8 @@ public class HubbaAdapter extends BaseAdapter /*implements Filterable*/ {
             vh.txtPoRating.setText(spot.get("bust"));
             vh.txtDiffRating.setText(spot.get("diff"));
             vh.txtDistance.setText(spot.get("distance"));
+            vh.spot_id.setText(spot.get("id"));
+            
             
             v.setTag(vh);
         } else {

@@ -87,6 +87,8 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
 				String lat = spot.getString("lat");
 				String lon = spot.getString("lon");
 				
+				Toast.makeText(context, "ID == " + id, Toast.LENGTH_LONG).show();
+				
 				// TODO: GET THESE FROM THE DB
 				String overall = "10";//spot.getString("overall");
 				String diff = "9";//spot.getString("diff");

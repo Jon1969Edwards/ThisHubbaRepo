@@ -70,7 +70,8 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 		    try {
 		        // Pulling items from the array
 				String name = spot.getString("name");
-				Toast.makeText(context, "Name = " + name, Toast.LENGTH_LONG).show();
+				String id = spot.getString("id");
+				Toast.makeText(context, "Name = " + name + " and id = " + id, Toast.LENGTH_LONG).show();
 				
 				TextView Title = (TextView) activity.findViewById(R.id.txtTitle);
 				Title.setText(name);
@@ -83,12 +84,12 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			Toast.makeText(context, "OOPS, JSON PROBLEM", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "OOPS, JSON PROBLEM IN SPOT", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
         //Do anything with response..
-        Toast.makeText(context, "response:\n" +
-                 result, Toast.LENGTH_LONG).show();
+       // Toast.makeText(context, "response:\n" +
+        //         result, Toast.LENGTH_LONG).show();
         
         
     }
