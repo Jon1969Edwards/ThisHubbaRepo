@@ -1299,7 +1299,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int AddSpot=0x7f04003a;
-        public static final int CheckBox=0x7f0400c0;
+        public static final int CheckBox=0x7f0400c2;
         public static final int ConfirmPassword=0x7f040047;
         public static final int DiffRatings=0x7f04009d;
         public static final int KCheckBox=0x7f040049;
@@ -1350,7 +1350,7 @@ containing a value of this type.
         public static final int abs__title=0x7f040021;
         public static final int abs__titleDivider=0x7f040022;
         public static final int abs__up=0x7f040011;
-        public static final int addCommentButton=0x7f0400c5;
+        public static final int addCommentButton=0x7f0400c7;
         public static final int addSpotButton=0x7f04007f;
         public static final int address=0x7f040057;
         public static final int authButton=0x7f040040;
@@ -1380,7 +1380,7 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_login_button=0x7f040094;
         public static final int com_facebook_usersettingsfragment_logo_image=0x7f040092;
         public static final int com_facebook_usersettingsfragment_profile_name=0x7f040093;
-        public static final int comment=0x7f0400c4;
+        public static final int comment=0x7f0400c6;
         public static final int commentBlock=0x7f04007e;
         public static final int comments=0x7f04007d;
         public static final int commentsButton=0x7f04004e;
@@ -1420,15 +1420,17 @@ containing a value of this type.
         public static final int info_window_txtPoRating=0x7f0400b8;
         public static final int info_window_txtPolice=0x7f0400b7;
         public static final int large=0x7f040002;
+        public static final int lat=0x7f0400bf;
         public static final int listMode=0x7f040008;
         public static final int listView=0x7f04003d;
-        public static final int listViewComments=0x7f0400c3;
+        public static final int listViewComments=0x7f0400c5;
         public static final int listViewFavorites=0x7f04003f;
         public static final int locateOnMap=0x7f040055;
         public static final int logInButton=0x7f040041;
+        public static final int lon=0x7f0400c0;
         public static final int map=0x7f040053;
         public static final int map_container=0x7f040052;
-        public static final int menu_settings=0x7f0400c9;
+        public static final int menu_settings=0x7f0400cb;
         public static final int name=0x7f040043;
         public static final int nineButtonDanger=0x7f040070;
         public static final int nineButtonDiff=0x7f040065;
@@ -1439,12 +1441,12 @@ containing a value of this type.
         public static final int oneButtonDiff=0x7f04005d;
         public static final int oneButtonOverall=0x7f040073;
         public static final int pager=0x7f040039;
-        public static final int password=0x7f0400bf;
+        public static final int password=0x7f0400c1;
         public static final int photog_text=0x7f0400b1;
         public static final int picker_subtitle=0x7f04008f;
         public static final int ratings=0x7f040096;
         public static final int relativeLayout1=0x7f040095;
-        public static final int rider=0x7f0400c7;
+        public static final int rider=0x7f0400c9;
         public static final int rider_text=0x7f0400b0;
         public static final int rowView=0x7f04004b;
         public static final int satellite=0x7f040004;
@@ -1470,7 +1472,7 @@ containing a value of this type.
         public static final int tenButtonDiff=0x7f040066;
         public static final int tenButtonOverall=0x7f04007c;
         public static final int terrain=0x7f040005;
-        public static final int text1=0x7f0400c1;
+        public static final int text1=0x7f0400c3;
         public static final int threeButtonDanger=0x7f04006a;
         public static final int threeButtonDiff=0x7f04005f;
         public static final int threeButtonOverall=0x7f040075;
@@ -1491,12 +1493,12 @@ containing a value of this type.
         public static final int txtPoRating=0x7f04009c;
         public static final int txtPolice=0x7f04009b;
         public static final int txtTitle=0x7f0400bc;
-        public static final int txtType=0x7f0400c2;
+        public static final int txtType=0x7f0400c4;
         public static final int txtUsername=0x7f040097;
-        public static final int uploadButton=0x7f0400c8;
+        public static final int uploadButton=0x7f0400ca;
         public static final int uploadPhotoButton=0x7f040051;
         public static final int useLogo=0x7f04000a;
-        public static final int user=0x7f0400c6;
+        public static final int user=0x7f0400c8;
         public static final int username=0x7f040045;
         public static final int viewMapButton=0x7f04004d;
         public static final int wrap_content=0x7f040007;

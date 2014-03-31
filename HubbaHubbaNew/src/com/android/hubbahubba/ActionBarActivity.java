@@ -88,6 +88,13 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
 			switch(position) {
 			case 0:
 				f = new ViewMap();
+				
+				// pass through the bundle holding lat/long
+				// to move the camera (if present)
+				Bundle showData = getIntent().getExtras();
+				if(showData != null){
+					f.setArguments(showData);
+				}
 				break;
 			case 1:
 				//f = new NewListView();

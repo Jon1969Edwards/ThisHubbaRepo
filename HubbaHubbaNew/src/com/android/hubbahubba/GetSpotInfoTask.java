@@ -76,6 +76,8 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 				String bust = spot.getString("bust");
 				String type = spot.getString("type");
 				String distance = "11.1 mi";
+				String lat = spot.getString("lat");
+				String lon = spot.getString("lon");
 				Toast.makeText(context, "Name = " + name + ", id = " + id + " overall = " + overall
 						+ " bust = " + bust + " diff = " + difficulty + " type = " + type, Toast.LENGTH_LONG).show();
 				
@@ -85,6 +87,8 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 				TextView Overall = (TextView) activity.findViewById(R.id.txtOverallRating);
 				TextView Bust = (TextView) activity.findViewById(R.id.txtPoRating);
 				TextView Distance = (TextView) activity.findViewById(R.id.txtDistance);
+				TextView Lat = (TextView) activity.findViewById(R.id.lat);
+				TextView Lon = (TextView) activity.findViewById(R.id.lon);
 				
 				// set texts
 				Overall.setText(overall);
@@ -92,6 +96,8 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 				Difficulty.setText(difficulty);
 				Distance.setText(distance);
 				Title.setText(name);
+				Lat.setText(lat);
+				Lon.setText(lon);
 		    } catch (JSONException e) {
 		    	Toast.makeText(context, "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();
 		    }

@@ -125,8 +125,8 @@ public class SpotPage extends Activity {
 			Bundle showData = getIntent().getExtras();
 			String spot_id = showData.getString("spot_id");	
 			
-			Toast.makeText(this, "spot id:\n" +
-			                     spot_id, Toast.LENGTH_LONG).show();
+			//Toast.makeText(this, "spot id:\n" +
+			//                     spot_id, Toast.LENGTH_LONG).show();
 			
 			// for now just sets the title
 			Spot.getSpotInfoByID(this, spot_id, context);
@@ -160,7 +160,22 @@ public class SpotPage extends Activity {
 
 		viewMapButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				Bundle bundleData = new Bundle();
+				
+				TextView Lat = (TextView) findViewById(R.id.lat);
+				TextView Lon = (TextView) findViewById(R.id.lon);
+				
+				String lon = (String) Lon.getText();
+				String lat = (String) Lat.getText();
+				
+				Toast.makeText(context, "lat = " + lat + " and lon = " + lon, Toast.LENGTH_LONG).show();
+				
+				bundleData.putString("lat", lat);
+				bundleData.putString("lon", lon);
+				
 				Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
+				
+				intent.putExtras(bundleData);
 				startActivity(intent);
 			}
 

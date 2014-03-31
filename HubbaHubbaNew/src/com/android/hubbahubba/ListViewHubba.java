@@ -17,13 +17,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
 public class ListViewHubba extends SherlockFragment {
 
-	//private SimpleCursorAdapter dataAdapter;
 	private HubbaAdapter dataAdapter;
 	private ListView listView;
 	private View rootView;

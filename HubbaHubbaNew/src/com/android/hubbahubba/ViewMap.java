@@ -119,8 +119,6 @@ public class ViewMap extends SherlockFragment {
 				mUiSettings.setRotateGesturesEnabled(false);
 				mUiSettings.setMyLocationButtonEnabled(true);
 				mUiSettings.setZoomControlsEnabled(false);
-
-				final LatLng Center = new LatLng(42.4409010, -83.3978000);
 				/*
 				 * final LatLng Riley = new LatLng(45.4409010, -83.3978000 );
 				 * Marker riley = mMap.addMarker(new MarkerOptions()
@@ -131,16 +129,45 @@ public class ViewMap extends SherlockFragment {
 				 */
 				// Construct a CameraPosition focusing on Mountain View and
 				// animate the camera to that position.
-				CameraPosition cameraPosition = new CameraPosition.Builder()
-						.target(Center) // Sets the center of the map to
-										// Mountain View
-						.zoom(17) // Sets the zoom
-						.bearing(0) // Sets the orientation of the camera to
-									// north
-						.tilt(30) // Sets the tilt of the camera to 30 degrees
-						.build(); // Creates a CameraPosition from the builder
-				mMap.animateCamera(CameraUpdateFactory
-						.newCameraPosition(cameraPosition));
+				Bundle showData = this.getArguments();
+				if(showData != null){
+					try{
+						String lat = showData.getString("lat");
+						String lon = showData.getString("lon");
+						
+						Double dLat = Double.parseDouble(lat);
+						Double dLon = Double.parseDouble(lon);
+						
+						final LatLng spotLoc = new LatLng(dLat, dLon);
+						CameraPosition cameraPosition = new CameraPosition.Builder()
+								.target(spotLoc) // Sets the center of the map to
+												// Mountain View
+								.zoom(17) // Sets the zoom
+								.bearing(0) // Sets the orientation of the camera to
+											// north
+								.tilt(30) // Sets the tilt of the camera to 30 degrees
+								.build(); // Creates a CameraPosition from the builder
+						mMap.animateCamera(CameraUpdateFactory
+								.newCameraPosition(cameraPosition));
+					}
+					catch(Exception e){
+						e.printStackTrace();
+					}
+				}
+				else{
+					final LatLng Center = new LatLng(42.4409010, -83.3978000);
+					
+					CameraPosition cameraPosition = new CameraPosition.Builder()
+							.target(Center) // Sets the center of the map to
+											// Mountain View
+							.zoom(17) // Sets the zoom
+							.bearing(0) // Sets the orientation of the camera to
+										// north
+							.tilt(30) // Sets the tilt of the camera to 30 degrees
+							.build(); // Creates a CameraPosition from the builder
+					mMap.animateCamera(CameraUpdateFactory
+							.newCameraPosition(cameraPosition));
+				}
 
 				Spot.getAllSpots(mMap, getActivity().getApplicationContext());
 

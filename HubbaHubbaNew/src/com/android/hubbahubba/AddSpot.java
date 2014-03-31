@@ -29,7 +29,6 @@ public class AddSpot extends Activity {
 	int diffClicked = 0;
 	int overallClicked = 0;
 	int poClicked = 0;
-	//HubbaDBAdapter dbHelper;
 	String mTitle, mType;
 	EditText mComment;
 	Uri mSelectedImage = Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);;
@@ -724,14 +723,6 @@ public class AddSpot extends Activity {
 				double doubleLat, doubleLong;
 				int intRate, intDiff, intLevel;
 
-				//retrieve bitmap image and convert it to byte[] to store in db
-				/*
-				Bitmap bitmap = ((BitmapDrawable)mImage.getDrawable()).getBitmap();
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
-				byte[] bArray = bos.toByteArray();
-				*/
-
 				//retrieve everything else to store in db
 				stringName = mTitle;
 				stringType = mType;
@@ -741,27 +732,21 @@ public class AddSpot extends Activity {
 				intDiff = diffClicked;
 				intLevel = poClicked;
 				stringComments = mComment.getText().toString();
-				selectedImagePath = getRealPathFromUri(mSelectedImage);
+				
+				if(mSelectedImage != null){
+					selectedImagePath = getRealPathFromUri(mSelectedImage);
+				}
 
-				/*
-				dbHelper.createSpot(stringName, stringType, doubleLat,
-						doubleLong, intRate, intDiff, intLevel, stringComments, selectedImagePath);
-				*/
 				String lat = Double.toString(doubleLat);
 				String lon = Double.toString(doubleLong);
 				String type = "test";
 				
 				Spot.addSpotByLatLon(getApplicationContext(), stringName, lat, lon, type);
-				// dbHelper.close();
-				//finish();
-				
 				
 				//now return to listview
 				Intent intent = new Intent(AddSpot.this, ActionBarActivity.class);
 				setResult(Activity.RESULT_OK, intent);
 				startActivity(intent);
-				
-				//return true;
 			}
 
 		});
@@ -783,5 +768,5 @@ public class AddSpot extends Activity {
 		//dbHelper.close();
 		super.onDestroy();
 	}
-
 }
+
