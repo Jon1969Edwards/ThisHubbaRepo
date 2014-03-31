@@ -749,8 +749,9 @@ public class AddSpot extends Activity {
 				*/
 				String lat = Double.toString(doubleLat);
 				String lon = Double.toString(doubleLong);
+				String type = "test";
 				
-				Spot.addSpotByLatLon(getApplicationContext(), stringName, lat, lon);
+				Spot.addSpotByLatLon(getApplicationContext(), stringName, lat, lon, type);
 				// dbHelper.close();
 				//finish();
 				

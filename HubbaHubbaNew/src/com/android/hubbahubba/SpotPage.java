@@ -26,11 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-//import com.android.hubbahubba.ListViewFavorites.ListViewItem;
-
-//import com.nostra13.universalimageloader.core.ImageLoader;
-//import com.nostra13.universalimageloader.core.assist.PauseOnScrollListener;
-//import com.nostra13.universalimageloader.utils.L;
 
 public class SpotPage extends Activity {
 	

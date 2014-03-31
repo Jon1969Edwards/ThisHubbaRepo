@@ -19,6 +19,10 @@ import android.widget.Toast;
 public class AddSpotTask extends AsyncTask<String, Void, String> 
 {       
 	private Context context;
+	private String name;
+	private String lat;
+	private String lon;
+	private String type;
 	//in constructor:
 	public AddSpotTask(Context context){
 	        this.context = context;
@@ -32,17 +36,20 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
         String url = params[0];
         String result = "fail";
         try {
-        	/*
-        	Toast.makeText(context, "name = " + params[0], Toast.LENGTH_SHORT).show();
-        	Toast.makeText(context, "lat = " + params[1], Toast.LENGTH_SHORT).show();
-        	Toast.makeText(context, "lon = " + params[2], Toast.LENGTH_SHORT).show();
-        	*/
+        	
+        	// Get info from params
+        	name = params[1];
+        	lat = params[2];
+        	lon = params[3];
+        	type = params[4];
+        	
         	HttpClient httpClient = new DefaultHttpClient();
             HttpPost request = new HttpPost(url);
             List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-            postParameters.add(new BasicNameValuePair("name", params[1]));
-            postParameters.add(new BasicNameValuePair("lat", params[2]));
-            postParameters.add(new BasicNameValuePair("lon", params[3]));
+            postParameters.add(new BasicNameValuePair("name", name));
+            postParameters.add(new BasicNameValuePair("lat", lat));
+            postParameters.add(new BasicNameValuePair("lon", lon));
+            postParameters.add(new BasicNameValuePair("type", type));
 
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(
                     postParameters);
@@ -69,6 +76,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
     protected void onPostExecute(String response)
     {       
         //textView.setText(page); 
-        Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "name = " + name + " lat = " + lat + " lon = " + lon, Toast.LENGTH_LONG).show();
     }   
 }  
