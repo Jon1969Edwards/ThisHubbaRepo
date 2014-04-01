@@ -77,6 +77,8 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
         try{
         	JSONObject jObject = new JSONObject(result);
 			JSONArray spots = jObject.getJSONArray("spots");
+			
+			//akey, user {ukey}
 
             for(int i = 0; i < spots.length(); i++){                     
                 HashMap<String, String> spotMap = new HashMap<String, String>();    

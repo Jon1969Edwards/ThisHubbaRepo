@@ -89,7 +89,7 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
 					snippit += (bust + ",");
 					String type = spot.getString("type");
 					snippit += (type + ",");
-					Toast.makeText(context, snippit, Toast.LENGTH_LONG).show();
+					//Toast.makeText(context, snippit, Toast.LENGTH_LONG).show();
 					
 					double lat = Double.parseDouble(spot.getString("lat"));
 					double lon = Double.parseDouble(spot.getString("lon"));

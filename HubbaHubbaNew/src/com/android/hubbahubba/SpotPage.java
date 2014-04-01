@@ -156,6 +156,7 @@ public class SpotPage extends Activity {
 		Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
 		Button uploadPhotosButton = (Button) findViewById(R.id.uploadPhotoButton);
 		Button commentsButton = (Button) findViewById(R.id.commentsButton);
+		Button uploadCommentButton = (Button) findViewById(R.id.uploadCommentButton);
 		//Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
 
 		viewMapButton.setOnClickListener(new View.OnClickListener() {
@@ -184,6 +185,13 @@ public class SpotPage extends Activity {
 		uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent intent = new Intent(SpotPage.this, UploadImage.class);
+				startActivity(intent);
+			}
+		});
+		
+		uploadCommentButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent intent = new Intent(SpotPage.this, UploadComment.class);
 				startActivity(intent);
 			}
 		});

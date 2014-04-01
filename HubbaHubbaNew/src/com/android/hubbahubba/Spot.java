@@ -256,39 +256,6 @@ public class Spot {
 		new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type}); 
 	}
 	
-	/*
-	public static void moveCameraToSpot(Context context, GoogleMap map, String name, String lat, String lon){
-		// default to riley
-		double dLat = 42.4409010;
-		double dLon = -83.3978000;
-		
-		// try to convert strings to double
-		try{
-			dLat = Double.parseDouble(lat);
-			dLon = Double.parseDouble(lon);
-		}
-		catch(NumberFormatException e){
-			e.printStackTrace();
-		}
-		
-		final LatLng Center = new LatLng(dLat, dLon);
-		CameraPosition cameraPosition = new CameraPosition.Builder()
-				.target(Center) // Sets the center of the map to
-								// Mountain View
-				.zoom(17) // Sets the zoom
-				.bearing(0) // Sets the orientation of the camera to
-							// north
-				.tilt(30) // Sets the tilt of the camera to 30 degrees
-				.build(); // Creates a CameraPosition from the builder
-		
-		map.animateCamera(CameraUpdateFactory
-				.newCameraPosition(cameraPosition));
-		
-		Toast.makeText(context, "moving camera to:\n (" +
-                lat + ", " + lon + ")", Toast.LENGTH_LONG).show();
-	}
-	*/
-	
 	public static void getSpotInfoByID(Activity activity, String id, Context c){
 		new GetSpotInfoTask(activity, c).execute(IPD + "/spots/" + id);
 	}

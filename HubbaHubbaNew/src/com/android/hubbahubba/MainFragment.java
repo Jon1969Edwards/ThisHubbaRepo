@@ -1,6 +1,7 @@
 package com.android.hubbahubba;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -24,12 +26,12 @@ public class MainFragment extends Fragment {
 	private static final String TAG = "MainFragment";
 	private UiLifecycleHelper uiHelper;
 	private String access_token;
-	private String user_ID;
+	private int expire;
+	private String user_id;
 	private void onSessionStateChange(Session session, SessionState state,
 			Exception exception) {
 		if (state.isOpened()) {
 			Log.i(TAG, "Logged in...");
-			access_token = session.getAccessToken();
 			final Session sesh = Session.getActiveSession();
 			Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
 	            @Override
@@ -37,15 +39,22 @@ public class MainFragment extends Fragment {
 	                // If the response is successful
 	                if (sesh == Session.getActiveSession()) {
 	                    if (user != null) {
-	                        user_ID = user.getId();//user id
+	                        user_id = user.getId();//user id
+	                        access_token = sesh.getAccessToken();//get access token
+	                        Date expire_date = sesh.getExpirationDate(); // get expire date
+	                        expire = (int) (expire_date.getTime() / 1000);
+	                        
 	                        //Intent i = new Intent(getActivity(), ActionBarActivity.class);
 	                        //startActivity(i);
-	                        /* print shit
+	                        
+	                        /*
 	                        Toast.makeText(getActivity().getApplicationContext(),
 	                        		"access token: " + access_token, Toast.LENGTH_SHORT).show();
 	            	        Toast.makeText(getActivity().getApplicationContext(),
-	            	        		"User_id: " + user_ID, Toast.LENGTH_SHORT).show();
+	            	        		"expire: " + expire, Toast.LENGTH_SHORT).show();
 	            	        */
+	                        
+	            	        User.loginToFacebook(getActivity().getApplicationContext(), user_id, access_token, expire);
 	                        
 	            	        // TODO -- get the expire stuff
 	            	        // graph api explorer
@@ -73,8 +82,9 @@ public class MainFragment extends Fragment {
 	        Request.executeBatchAsync(request);
 		} else if (state.isClosed()) {
 			Log.i(TAG, "Logged out...");
-			access_token = null;
-			user_ID = null;
+			access_token = "";
+			user_id = "";
+			expire = 0;
 		}
 	}
 	

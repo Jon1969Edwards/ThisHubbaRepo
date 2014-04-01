@@ -35,8 +35,8 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
         bar.setStackedBackgroundDrawable(new ColorDrawable(android.graphics.Color.BLACK));
         
         // Get tabs
-        ActionBar.Tab mapTab = bar.newTab().setText("Map").setTabListener(this);
-        ActionBar.Tab listTab = bar.newTab().setText("Spot List").setTabListener(this);
+        ActionBar.Tab mapTab = bar.newTab().setIcon(R.drawable.ic_action_map).setTabListener(this);
+        ActionBar.Tab listTab = bar.newTab().setIcon(R.drawable.ic_action_view_as_list).setTabListener(this);
         
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         bar.addTab(mapTab);
