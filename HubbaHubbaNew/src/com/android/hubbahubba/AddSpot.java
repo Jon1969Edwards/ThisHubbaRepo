@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -53,13 +54,10 @@ public class AddSpot extends Activity {
 		// TODO DELETE THIS -- FOR DEBUGGING
 		String lat = Double.toString(mLat);
 	    String lng = Double.toString(mLng);
-	    Context context = getApplicationContext();
-		int duration = Toast.LENGTH_LONG;
 	    
 	    String text = "Passed Through Lat and Long: " + lat + " " + lng;
 	    
-	    Toast toast = Toast.makeText(context, text, duration);
-		toast.show();
+	    Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
 		
 		//get image passed through
 		mSelectedImage = Uri.parse(getIntent().getStringExtra("mSelectedImage"));
@@ -733,9 +731,11 @@ public class AddSpot extends Activity {
 				intLevel = poClicked;
 				stringComments = mComment.getText().toString();
 				
+				/*
 				if(mSelectedImage != null){
 					selectedImagePath = getRealPathFromUri(mSelectedImage);
 				}
+				*/
 
 				String lat = Double.toString(doubleLat);
 				String lon = Double.toString(doubleLong);
@@ -752,7 +752,7 @@ public class AddSpot extends Activity {
 		});
 
 	}
-	
+	/*
 	private String getRealPathFromUri(Uri contentUri) {
 		Context context = getApplicationContext();
 	    String[] proj = { MediaStore.Images.Media.DATA };
@@ -762,7 +762,7 @@ public class AddSpot extends Activity {
 	    cursor.moveToFirst();
 	    return cursor.getString(column_index);
 	}
-	
+	*/
 	@Override
 	protected void onDestroy() {
 		//dbHelper.close();

@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -23,64 +22,55 @@ import com.facebook.widget.LoginButton;
 
 public class MainFragment extends Fragment {
 	// For FaceBook oauth
+	private Session mSession = null;
 	private static final String TAG = "MainFragment";
 	private UiLifecycleHelper uiHelper;
 	private String access_token;
 	private int expire;
 	private String user_id;
+	private Session sesh;
+	
 	private void onSessionStateChange(Session session, SessionState state,
 			Exception exception) {
 		if (state.isOpened()) {
-			Log.i(TAG, "Logged in...");
-			final Session sesh = Session.getActiveSession();
-			Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
-	            @Override
-	            public void onCompleted(GraphUser user, Response response) {
-	                // If the response is successful
-	                if (sesh == Session.getActiveSession()) {
-	                    if (user != null) {
-	                        user_id = user.getId();//user id
-	                        access_token = sesh.getAccessToken();//get access token
-	                        Date expire_date = sesh.getExpirationDate(); // get expire date
-	                        expire = (int) (expire_date.getTime() / 1000);
-	                        
-	                        //Intent i = new Intent(getActivity(), ActionBarActivity.class);
-	                        //startActivity(i);
-	                        
-	                        /*
-	                        Toast.makeText(getActivity().getApplicationContext(),
-	                        		"access token: " + access_token, Toast.LENGTH_SHORT).show();
-	            	        Toast.makeText(getActivity().getApplicationContext(),
-	            	        		"expire: " + expire, Toast.LENGTH_SHORT).show();
-	            	        */
-	                        
-	            	        User.loginToFacebook(getActivity().getApplicationContext(), user_id, access_token, expire);
-	                        
-	            	        // TODO -- get the expire stuff
-	            	        // graph api explorer
-	            	        // username == ukey
-	            	        // password == akey
-	            	        	// all api calls (other than login) will need this stuff
-	            	        // post to /spots to add a spot
-	            	        	// name, lat, long are the fields that need to be put in
-	            	        // will need local storage for the ukey, akey, user_id, and access_token
-	            	        // look into shared preferences with keystoring 
-	            	        	// write to when we have to refresh the key
-	            	        // know when to refresh by given expire time (for api and fb)
-	            	        
-	            	        // For monday, would like to have the map and list view
-	            	        // be populated from the api
-	            	        
-	            	        // to enable, under class definition uncomment requireauth
-	            	        
-	                        //profileName = user.getName();	//user's profile name
-	                        //userNameView.setText(user.getName());
-	                    }   
-	                }   
-	            }   
-	        }); 
-	        Request.executeBatchAsync(request);
-		} else if (state.isClosed()) {
+			if(mSession == null || isSessionChanged(session)){
+				Log.i(TAG, "Logging in...");
+				mSession = session;
+				sesh = Session.getActiveSession();
+				Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
+		            @Override
+		            public void onCompleted(GraphUser user, Response response) {
+		                // If the response is successful
+		                if (sesh == Session.getActiveSession()) {
+		                    if (user != null) {
+		                        user_id = user.getId();//user id
+		                        access_token = sesh.getAccessToken();//get access token
+		                        Date expire_date = sesh.getExpirationDate(); // get expire date
+		                        expire = (int) (expire_date.getTime() / 1000);
+		                        
+		            	        User.loginToFacebook(getActivity().getApplicationContext(), user_id, access_token, expire);
+		                        
+		            	        // TODO -- get the expire stuff
+		            	        // graph api explorer
+		            	        // username == ukey
+		            	        // password == akey
+		            	        	// all api calls (other than login) will need this stuff
+	
+		            	        // to enable, under class definition uncomment requireauth
+		            	        
+		                        //profileName = user.getName();	//user's profile name
+		                        //userNameView.setText(user.getName());
+		                    }   
+		                }   
+		            }
+				});
+				Request.executeBatchAsync(request);
+			}
+			else{
+				Log.i(TAG, "Previously logged in...");
+			}
+		}
+		else if (state.isClosed()) {
 			Log.i(TAG, "Logged out...");
 			access_token = "";
 			user_id = "";
@@ -189,5 +179,24 @@ public class MainFragment extends Fragment {
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		uiHelper.onSaveInstanceState(outState);
+	}
+	
+	private boolean isSessionChanged(Session session) {
+
+	    // Check if session state changed
+	    if (mSession.getState() != session.getState())
+	        return true;
+
+	    // Check if accessToken changed
+	    if (mSession.getAccessToken() != null) {
+	        if (!mSession.getAccessToken().equals(session.getAccessToken()))
+	            return true;
+	    }
+	    else if (mSession.getAccessToken() != null) {
+	        return true;
+	    }
+
+	    // Nothing changed
+	    return false;
 	}
 }

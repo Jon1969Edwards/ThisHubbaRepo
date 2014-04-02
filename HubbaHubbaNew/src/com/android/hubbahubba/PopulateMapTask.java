@@ -15,7 +15,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Base64;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -38,10 +41,22 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
     @Override
     protected String doInBackground(String... uri) {
         HttpClient httpclient = new DefaultHttpClient();
+        HttpGet request = new HttpGet(uri[0]);
         HttpResponse response;
         String responseString = null;
+        
+        // get ukey and akey from shared preferences
+ 		SharedPreferences hubbaprefs = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+        String ukey = hubbaprefs.getString("ukey", "");
+ 		String akey = hubbaprefs.getString("akey", "");
+ 		Log.i("SHITTT", "ukey = " + ukey + " akey = " + akey);
+		//Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
+     	
+		// set header and params
+ 		String source = ukey+":"+akey;
+        request.setHeader("Authorization","Basic " + Base64.encodeToString(source.getBytes(), Base64.URL_SAFE|Base64.NO_WRAP));
         try {
-            response = httpclient.execute(new HttpGet(uri[0]));
+            response = httpclient.execute(request);
             StatusLine statusLine = response.getStatusLine();
             if(statusLine.getStatusCode() == HttpStatus.SC_OK){
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -115,10 +130,6 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
 			e.printStackTrace();
 		}
         //Do anything with response..
-        /*
-        Toast.makeText(context, "response:\n" +
-                 result, Toast.LENGTH_LONG).show();
-        */
-        
+        //Toast.makeText(context, "ukey:" + ukey + "\nakey: " + akey, Toast.LENGTH_LONG).show();
     }
 }

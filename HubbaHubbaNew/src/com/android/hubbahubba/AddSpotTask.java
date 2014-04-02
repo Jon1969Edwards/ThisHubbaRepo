@@ -13,7 +13,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Base64;
 import android.widget.Toast;
 
 public class AddSpotTask extends AsyncTask<String, Void, String> 
@@ -23,6 +25,9 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
 	private String lat;
 	private String lon;
 	private String type;
+	private String ukey;
+	private String akey;
+	
 	//in constructor:
 	public AddSpotTask(Context context){
 	        this.context = context;
@@ -42,9 +47,15 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
         	lat = params[2];
         	lon = params[3];
         	type = params[4];
+        	ukey = params[5];
+        	akey = params[6];
         	
         	HttpClient httpClient = new DefaultHttpClient();
             HttpPost request = new HttpPost(url);
+
+            // set header and params
+            String source = ukey+":"+akey;
+            request.setHeader("Authorization","Basic " + Base64.encodeToString(source.getBytes(), Base64.URL_SAFE|Base64.NO_WRAP));
             List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
             postParameters.add(new BasicNameValuePair("name", name));
             postParameters.add(new BasicNameValuePair("lat", lat));
@@ -55,8 +66,8 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
                     postParameters);
 
             request.setEntity(formEntity);
-             httpClient.execute(request);
-                    result="got it";
+            httpClient.execute(request);
+            result="got it";
 
         } catch(Exception e) {
             // Do something about exceptions

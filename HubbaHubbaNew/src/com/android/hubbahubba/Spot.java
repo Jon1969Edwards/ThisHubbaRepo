@@ -5,13 +5,11 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
 
 
 public class Spot {
@@ -242,27 +240,36 @@ public class Spot {
 		return null;
 	}
 	
-	//private static String IP = "http://10.0.0.44:5000";
+	private static String IP = "http://10.0.0.44:5000";
 	private static String IPD = "http://hubba-api.herokuapp.com";
 	
 	public static void getListOfSpots(ListView listView, HubbaAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> SpotsArray, Context c){
-		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
-		new PopulateListTask(listView, dataAdapter, SpotsArray, c).execute(IPD + "/spots");
+		new PopulateListTask(listView, dataAdapter, SpotsArray, c).execute(IP + "/spots");
 	}
 	
-	public static void addSpotByLatLon(Context context, String name, String lat, String lon, String type){
-		String url = IPD + "/spots";
-		new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type}); 
+	public static void addSpotByLatLon(Context context, String name, String lat,
+			String lon, String type){
+		
+		// get ukey and akey from shared preferences
+		SharedPreferences preferences = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+		
+		String ukey = preferences.getString("ukey", "");
+		String akey = preferences.getString("akey", "");
+		
+		Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
+		
+		String url = IP + "/spots";
+		new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type, ukey, akey}); 
 	}
 	
 	public static void getSpotInfoByID(Activity activity, String id, Context c){
-		new GetSpotInfoTask(activity, c).execute(IPD + "/spots/" + id);
+		new GetSpotInfoTask(activity, c).execute(IP + "/spots/" + id);
 	}
 	
 	public static Spot[] getAllSpots(GoogleMap map, Context c){
 		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
-		new PopulateMapTask(map, c).execute(IPD + "/spots");
+		new PopulateMapTask(map, c).execute(IP + "/spots");
 		return null;
 	}
 }

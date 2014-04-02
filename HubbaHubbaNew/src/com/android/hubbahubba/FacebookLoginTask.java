@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 public class FacebookLoginTask extends AsyncTask<String, Void, String> {
@@ -26,13 +27,9 @@ public class FacebookLoginTask extends AsyncTask<String, Void, String> {
 	private String user_id;
 	private String access_token;
 	private String expire;
-	private SharedPreferences hubbaprefs;
-	private SharedPreferences.Editor prefsEditor;
 
 	public FacebookLoginTask(Context context) {
 		this.context = context;
-		hubbaprefs = context.getSharedPreferences("com.android.hubbahubba.prefs", Context.MODE_PRIVATE);
-		prefsEditor = hubbaprefs.edit();
 	}
 
 	@Override
@@ -86,29 +83,36 @@ public class FacebookLoginTask extends AsyncTask<String, Void, String> {
 		// access_token + " exp = " + expire, Toast.LENGTH_LONG).show();
 		JSONObject resp;
 		JSONObject user;
-		String akey = null;
-		String ukey = null;
+		String akey = "";
+		String ukey = "";
+		SharedPreferences hubbaprefs = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+		SharedPreferences.Editor hubbaprefsEditor = hubbaprefs.edit();
 		try {
 			resp = new JSONObject(response);
 			user = resp.getJSONObject("user");
 
 			akey = resp.getString("akey");
 			ukey = user.getString("ukey");
+			hubbaprefsEditor.clear();
+			hubbaprefsEditor.putString("akey", akey);
+			hubbaprefsEditor.putString("ukey", ukey);
+			hubbaprefsEditor.commit();
 			
-			prefsEditor.putString("akey", akey);
-			prefsEditor.putString("ukey", ukey);
-			
-			prefsEditor.commit();
+			Log.i("MMMM", "ukey = " + hubbaprefs.getString("u", "") + "\nakey = " + hubbaprefs.getString("a", ""));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Toast.makeText(context, "Error with akey/ukey in json, mkay", Toast.LENGTH_LONG).show();
 		}
 
 		// Toast.makeText(context, "user_id = " + user_id + " access_t = " +
 		// access_token + " exp = " + expire, Toast.LENGTH_LONG).show();
 		
 		// Sanity check TODO delete this
-		Toast.makeText(context, "akey = " + hubbaprefs.getString("akey", "") + "\n ukey = " +
-				hubbaprefs.getString("ukey", ""), Toast.LENGTH_LONG).show();
+		ukey = hubbaprefs.getString("ukey", "");
+		akey = hubbaprefs.getString("akey", "");
+		Toast.makeText(context, "FB LOGIN: ukey = " + ukey + "\nakey = " +
+				akey, Toast.LENGTH_LONG).show();
+		Log.i("SHEEE", "ukey = " + hubbaprefs.getString("ukey", "") + "\nakey = " + hubbaprefs.getString("akey", ""));
 	}
 }

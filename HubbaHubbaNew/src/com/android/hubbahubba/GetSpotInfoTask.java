@@ -15,7 +15,9 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Base64;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,8 +38,22 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
         HttpClient httpclient = new DefaultHttpClient();
         HttpResponse response;
         String responseString = null;
+        HttpGet request = new HttpGet(uri[0]);
+        
+        // get ukey and akey from shared preferences
+		SharedPreferences preferences = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+		
+		String ukey = preferences.getString("ukey", "");
+		String akey = preferences.getString("akey", "");
+		
+		//Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
+     	
+		// set header and params
+		// set header and params
+ 		String source = ukey+":"+akey;
+        request.setHeader("Authorization","Basic " + Base64.encodeToString(source.getBytes(), Base64.URL_SAFE|Base64.NO_WRAP));
         try {
-            response = httpclient.execute(new HttpGet(uri[0]));
+            response = httpclient.execute(request);
             StatusLine statusLine = response.getStatusLine();
             if(statusLine.getStatusCode() == HttpStatus.SC_OK){
                 ByteArrayOutputStream out = new ByteArrayOutputStream();

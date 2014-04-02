@@ -29,11 +29,10 @@
         android:layout_width="fill_parent"
         android:textAllCaps="true"
         android:layout_height="wrap_content"
-        android:text="@string/uploadPhoto"
         tools:context=".MainActivity"
         android:textSize="18sp"
-        android:textColor="@drawable/button_color_3"
-        android:background="@drawable/button_background_3"
+	    android:textColor="@drawable/button_color_3"
+	    android:background="@drawable/button_add_new"
         android:layout_alignParentBottom="true" />
     
 	<!-- End List of Comments -->

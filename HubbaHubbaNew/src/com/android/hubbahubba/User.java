@@ -1,7 +1,7 @@
 package com.android.hubbahubba;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 public class User {
 	
@@ -79,11 +79,12 @@ public class User {
 		return null; //or throw exception to send error message
 	}
 	
-	//private static String IP = "http://10.0.0.44:5000";
+	private static String IP = "http://10.0.0.44:5000";
 	private static String IPD = "http://hubba-api.herokuapp.com";
+	public static final String PREFS_FILE = "com.android.hubbahubba.prefs";
 	
 	public static void loginToFacebook(Context context, String user_id, String access_token, int expire){
-		String url = IPD + "/login/facebook";
+		String url = IP + "/login/facebook";
 		String expire_string = Integer.toString(expire);
 		new FacebookLoginTask(context).execute(new String[] {url, user_id, access_token, expire_string}); 
 	}

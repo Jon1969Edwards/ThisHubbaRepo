@@ -74,13 +74,15 @@
         <activity
             android:name=".UploadImage"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="uploadImage" >
+            android:label="uploadImage"
+            android:theme="@style/Theme.Sherlock.Light.NoActionBar">
         </activity>
         <activity
             android:name=".UploadComment"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateHidden"
-            android:label="uploadComment" >
+            android:label="uploadComment"
+            android:theme="@style/Theme.Sherlock.Light.NoActionBar">
         </activity>
         <activity
             android:name=".ListViewHubba"
@@ -101,7 +103,8 @@
         </activity>
         <activity
             android:name=".ListViewComments"
-            android:label="@string/listViewComments" >
+            android:label="@string/listViewComments"
+            android:theme="@style/Theme.Sherlock.Light.NoActionBar">
         </activity>
         <activity
             android:name=".AddSpot"
