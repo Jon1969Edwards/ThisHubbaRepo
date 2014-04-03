@@ -136,13 +136,16 @@ public class ListViewHubba extends SherlockFragment {
 		super.onResume();
 		
 		// populate spots array
-		//SpotsArray = new ArrayList<HashMap<String, String>>();
-		//Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
+		SpotsArray = null;
+		SpotsArray = new ArrayList<HashMap<String, String>>();
+		Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
 	}
 	
 	
 	@Override
 	public void onDestroy(){
 		super.onDestroy();
+		// populate spots array
+		SpotsArray = null;
 	}
 }

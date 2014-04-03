@@ -8,12 +8,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import com.google.android.gms.internal.r;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
@@ -30,12 +34,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class AddLocation extends Activity {
 
 	//declare Strings to pass through to AddSpot activity
 	String mTitle, mType, mAddress, mCity;
 	Button cancelButton, locateOnMapButton, continueButton;
+	ToggleButton sharedButton;
 	EditText spotTitle, spotAddress, spotCity;
 	Spinner typeSpinner;
 	String LatLong;
@@ -56,6 +62,7 @@ public class AddLocation extends Activity {
 	Bitmap spotImage;
 	Bitmap mImageBitmap;
 	ImageView mImageView;
+	ArrayAdapter<String> adapter;
     private static final int SELECT_PHOTO = 1;
     private static final int TAKE_PHOTO = 2;
     public static final int MEDIA_TYPE_IMAGE = 3;
@@ -87,9 +94,11 @@ public class AddLocation extends Activity {
 		spotCity = (EditText) findViewById(R.id.cityStateZip);
 		takePhotoButton = (ImageButton) findViewById(R.id.takePhotoButton);
 		uploadPhotoButton = (ImageButton) findViewById(R.id.uploadPhotoButton);
+		sharedButton = (ToggleButton) findViewById(R.id.sharedButton);
 		
+		// Set spinner style
 		typeSpinner = (Spinner) findViewById(R.id.spotTypeSpinner);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_row, R.id.text1, getResources().getStringArray(R.array.showSpotTypes));
+		adapter = new ArrayAdapter<String>(context, R.layout.spinner_row, R.id.text1, getResources().getStringArray(R.array.spotTypes));
 		typeSpinner.setAdapter(adapter);
 		
 		// why does this not work?
@@ -195,6 +204,21 @@ public class AddLocation extends Activity {
 			
 		});
 		
+		sharedButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				if(sharedButton.isChecked()){
+					sharedButton.setTextColor(Color.RED);
+				}
+				else{
+					sharedButton.setTextColor(Color.parseColor("#008000"));
+				}
+			}
+		});
+		
+		
+		
+		
 		takePhotoButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				//TODO take picture
@@ -269,6 +293,11 @@ public class AddLocation extends Activity {
 					Toast toast = Toast.makeText(context, text, duration);
 					toast.show();
 				}
+				else if(mType.equals("Select Features")){
+					text = "Please select a feature to describe the spot.";
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				}
 				else {
 					Intent intent = new Intent(AddLocation.this, AddSpot.class);
 					intent.putExtra("spotTitle", mTitle);
@@ -277,9 +306,11 @@ public class AddLocation extends Activity {
 					intent.putExtra("spotCity", mCity );
 					intent.putExtra("mSelectedImage", mSelectedImage.toString());
 					
-//					text = "Image from: " + mSelectedImage.toString();
-//					Toast toaster = Toast.makeText(context, text, duration);
-//					toaster.show();
+					//text = "Image from: " + mSelectedImage.toString();
+					//Toast toaster = Toast.makeText(context, text, duration);
+					//toaster.show();
+					
+					Toast.makeText(context, "type = " + mType, duration).show();
 					
 					FromPage = getIntent().getStringExtra("FromPage");
 					

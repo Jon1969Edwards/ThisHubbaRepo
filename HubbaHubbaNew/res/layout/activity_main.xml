@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/hubba_background_img3"
+    android:background="@drawable/hubba_background_img7"
     android:orientation="vertical" >
     
 	<com.facebook.widget.LoginButton
@@ -11,7 +11,7 @@
         android:layout_height="51dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp" />
+        android:layout_marginBottom="60dp" />
 	
     <Button
         android:id="@+id/logInButton"
@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:background="@drawable/button_layout_3"
-        android:text="@string/logIn"
+        android:text="View Map"
         android:textAllCaps="true"
         android:textColor="#FFF"
         android:textSize="22sp" />

@@ -33,7 +33,7 @@
             android:textSize="12sp"
             android:textColor="#FFF"
             android:drawableTop="@drawable/ic_action_map"
-            android:drawablePadding="-5dp" />   
+            android:drawablePadding="-2dp" />   
         <Button
             android:layout_weight="1"
             android:textAllCaps="true"
@@ -45,7 +45,7 @@
             android:textColor="#FFF"
             android:background="@drawable/button_layout"
             android:drawableTop="@drawable/ic_action_copy"
-            android:drawablePadding="-5dp"/>
+            android:drawablePadding="-2dp"/>
         <Button
             android:layout_weight="1"
             android:textAllCaps="true"
@@ -57,7 +57,7 @@
             android:textColor="#FFF"
             android:background="@drawable/button_layout"
             android:drawableTop="@drawable/ic_action_favorite"
-            android:drawablePadding="-5dp"/>
+            android:drawablePadding="-2dp"/>
     </LinearLayout>
     
     <GridView 
@@ -94,7 +94,7 @@
 	        android:textAllCaps="true"
 	        android:layout_height="wrap_content"
 	        android:textSize="18sp"
-	        android:textColor="@drawable/button_color_3"
+	        android:textColor="#FFF"
 	        android:background="@drawable/button_take_photo"/>
 	    
 	    <Button
@@ -105,7 +105,7 @@
 	        android:textAllCaps="true"
 	        android:layout_height="wrap_content"
 	        android:textSize="18sp"
-	        android:textColor="@drawable/button_color_3"
+	        android:textColor="#FFF"
 	        android:background="@drawable/button_add_comment"/>
     </LinearLayout>
 

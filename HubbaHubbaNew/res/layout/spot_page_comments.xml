@@ -24,14 +24,14 @@
    	</RelativeLayout>
    	
     <Button
-        android:id = "@+id/uploadPhotoButton"
+        android:id = "@+id/uploadCommentButton"
         android:paddingTop="10dp"
         android:layout_width="fill_parent"
         android:textAllCaps="true"
         android:layout_height="wrap_content"
         tools:context=".MainActivity"
         android:textSize="18sp"
-	    android:textColor="@drawable/button_color_3"
+	    android:textColor="#FFF"
 	    android:background="@drawable/button_add_new"
         android:layout_alignParentBottom="true" />
     

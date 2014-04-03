@@ -50,7 +50,7 @@ public class HubbaAdapter extends BaseAdapter /*implements Filterable*/ {
             v = inflater.inflate(R.layout.item_row, null);
 
             vh = new ViewHolder();
-            
+            /*
             vh.imgThumbnail = (ImageView) v.findViewById(R.id.imgThumbnail);
             vh.txtTitle = (TextView) v.findViewById(R.id.txtTitle);
             vh.txtOverallRating = (TextView) v.findViewById(R.id.txtOverallRating);
@@ -78,12 +78,40 @@ public class HubbaAdapter extends BaseAdapter /*implements Filterable*/ {
             vh.txtDiffRating.setText(spot.get("difficulty"));
             vh.txtDistance.setText(spot.get("distance"));
             vh.spot_id.setText(spot.get("id"));
-            
+            */
             
             v.setTag(vh);
         } else {
             vh = (ViewHolder) v.getTag();
         }
+	    
+	    vh.imgThumbnail = (ImageView) v.findViewById(R.id.imgThumbnail);
+        vh.txtTitle = (TextView) v.findViewById(R.id.txtTitle);
+        vh.txtOverallRating = (TextView) v.findViewById(R.id.txtOverallRating);
+        vh.txtPoRating = (TextView) v.findViewById(R.id.txtPoRating);
+        vh.txtDiffRating = (TextView) v.findViewById(R.id.txtDiffRating);
+        vh.txtDistance = (TextView) v.findViewById(R.id.txtDistance);
+        vh.spot_id = (TextView) v.findViewById(R.id.spot_id);
+        
+        // Convert the dp value for xml to pixels (casted to int from float)
+	    int size = Image.convertDpToPixel(80, context);
+	    
+	    // Use picasso to load the image into view
+	    // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE
+	    Picasso.with(context)
+	    	   .load(R.drawable.gettinthere)
+	    	   .centerCrop()
+	    	   .resize(size, size)
+	    	   .placeholder(R.drawable.ic_empty)
+	    	   .into(vh.imgThumbnail);
+	    
+	    //vh.imgThumbnail.
+        vh.txtTitle.setText(spot.get("name"));
+        vh.txtOverallRating.setText(spot.get("overall"));
+        vh.txtPoRating.setText(spot.get("bust"));
+        vh.txtDiffRating.setText(spot.get("difficulty"));
+        vh.txtDistance.setText(spot.get("distance"));
+        vh.spot_id.setText(spot.get("id"));
         
         return v;
 	}

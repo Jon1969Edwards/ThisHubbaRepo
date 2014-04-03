@@ -72,13 +72,13 @@
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name=".UploadImage"
+            android:name=".AddImage"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="uploadImage"
             android:theme="@style/Theme.Sherlock.Light.NoActionBar">
         </activity>
         <activity
-            android:name=".UploadComment"
+            android:name=".AddComment"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateHidden"
             android:label="uploadComment"

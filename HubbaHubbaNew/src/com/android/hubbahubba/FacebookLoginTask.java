@@ -98,7 +98,7 @@ public class FacebookLoginTask extends AsyncTask<String, Void, String> {
 			hubbaprefsEditor.putString("ukey", ukey);
 			hubbaprefsEditor.commit();
 			
-			Log.i("MMMM", "ukey = " + hubbaprefs.getString("u", "") + "\nakey = " + hubbaprefs.getString("a", ""));
+			Log.i("MMMM", "ukey = " + hubbaprefs.getString("ukey", "") + "\nakey = " + hubbaprefs.getString("akey", ""));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -76,20 +76,28 @@ public class ViewMap extends SherlockFragment {
 		setUpMapIfNeeded();
 		return rootView;
 	}
-
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
-	/*
-	 * public void onDestroyView() { super.onDestroyView(); dbHelper.close(); //
-	 * Do Not Miss this try { Fragment fragment =
-	 * (getFragmentManager().findFragmentById(R.id.map)); FragmentTransaction ft
-	 * = getActivity().getSupportFragmentManager().beginTransaction();
-	 * ft.remove(fragment); ft.commit(); } catch (Exception e) {
-	 * e.printStackTrace(); } }
-	 */
+	public void onDestroyView() {
+		super.onDestroyView();
+		// Do Not Miss this
+		if(!getActivity().isFinishing()){
+			try {
+				Fragment fragment = (getFragmentManager()
+						.findFragmentById(R.id.map));
+				FragmentTransaction ft = getActivity().getSupportFragmentManager()
+						.beginTransaction();
+				ft.remove(fragment);
+				ft.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	// TODO Possibly delete this
 	@Override
@@ -119,52 +127,49 @@ public class ViewMap extends SherlockFragment {
 				mUiSettings.setRotateGesturesEnabled(false);
 				mUiSettings.setMyLocationButtonEnabled(true);
 				mUiSettings.setZoomControlsEnabled(false);
-				/*
-				 * final LatLng Riley = new LatLng(45.4409010, -83.3978000 );
-				 * Marker riley = mMap.addMarker(new MarkerOptions()
-				 * .position(Riley) .title("Riley Skate Park")
-				 * .snippet("Skatepark")
-				 * .icon(BitmapDescriptorFactory.defaultMarker
-				 * (BitmapDescriptorFactory.HUE_RED)));
-				 */
+
 				// Construct a CameraPosition focusing on Mountain View and
 				// animate the camera to that position.
 				Bundle showData = this.getArguments();
-				if(showData != null){
-					try{
+				if (showData != null) {
+					try {
 						String lat = showData.getString("lat");
 						String lon = showData.getString("lon");
-						
+
 						Double dLat = Double.parseDouble(lat);
 						Double dLon = Double.parseDouble(lon);
-						
+
 						final LatLng spotLoc = new LatLng(dLat, dLon);
 						CameraPosition cameraPosition = new CameraPosition.Builder()
-								.target(spotLoc) // Sets the center of the map to
-												// Mountain View
+								.target(spotLoc) // Sets the center of the map
+													// to
+													// Mountain View
 								.zoom(17) // Sets the zoom
-								.bearing(0) // Sets the orientation of the camera to
+								.bearing(0) // Sets the orientation of the
+											// camera to
 											// north
-								.tilt(30) // Sets the tilt of the camera to 30 degrees
-								.build(); // Creates a CameraPosition from the builder
+								.tilt(30) // Sets the tilt of the camera to 30
+											// degrees
+								.build(); // Creates a CameraPosition from the
+											// builder
 						mMap.animateCamera(CameraUpdateFactory
 								.newCameraPosition(cameraPosition));
-					}
-					catch(Exception e){
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				}
-				else{
+				} else {
 					final LatLng Center = new LatLng(42.4409010, -83.3978000);
-					
+
 					CameraPosition cameraPosition = new CameraPosition.Builder()
 							.target(Center) // Sets the center of the map to
 											// Mountain View
 							.zoom(17) // Sets the zoom
 							.bearing(0) // Sets the orientation of the camera to
 										// north
-							.tilt(30) // Sets the tilt of the camera to 30 degrees
-							.build(); // Creates a CameraPosition from the builder
+							.tilt(30) // Sets the tilt of the camera to 30
+										// degrees
+							.build(); // Creates a CameraPosition from the
+										// builder
 					mMap.animateCamera(CameraUpdateFactory
 							.newCameraPosition(cameraPosition));
 				}
@@ -215,23 +220,24 @@ public class ViewMap extends SherlockFragment {
 					@Override
 					public void onInfoWindowClick(Marker marker) {
 						/*
-						String LatLong = marker.getPosition().toString();
-						LatLong = LatLong.substring(10, LatLong.length() - 1);
-
-						String[] separated = LatLong.split(",");
-						String latitude = separated[0];
-						String longitude = separated[1];
-						*/
+						 * String LatLong = marker.getPosition().toString();
+						 * LatLong = LatLong.substring(10, LatLong.length() -
+						 * 1);
+						 * 
+						 * String[] separated = LatLong.split(","); String
+						 * latitude = separated[0]; String longitude =
+						 * separated[1];
+						 */
 
 						Bundle bundleData = new Bundle();
-						
+
 						// TODO delete this
 						bundleData.putInt("keyid", 29);
-						
+
 						// get spot id
 						String[] snip = marker.getSnippet().split(",");
 						String id = snip[0];
-						
+
 						bundleData.putString("spot_id", id);
 
 						Intent intent = new Intent(getActivity()
@@ -285,7 +291,7 @@ public class ViewMap extends SherlockFragment {
 						// TODO: WAS AN ELSE
 						Toast.makeText(getActivity().getApplicationContext(),
 								"Using new DB", Toast.LENGTH_LONG).show();
-						
+
 						// Get spot info
 						String spot_title = arg0.getTitle();
 
@@ -294,7 +300,7 @@ public class ViewMap extends SherlockFragment {
 						String overall = snip[1];
 						String difficulty = snip[2];
 						String bust = snip[3];
-						//String type = snip[4];
+						// String type = snip[4];
 
 						txtTitle.setText(spot_title); // name
 						txtOverallRating.setText(overall); // rating
@@ -327,22 +333,24 @@ public class ViewMap extends SherlockFragment {
 			}
 		}
 	}
-
+	
+	
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-
-		try {
-			Fragment fragment = (getFragmentManager()
-					.findFragmentById(R.id.map));
-			FragmentTransaction ft = getActivity().getSupportFragmentManager()
-					.beginTransaction();
-			ft.remove(fragment);
-			ft.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
+		// Do Not Miss this
+		if(!getActivity().isFinishing()){
+			try {
+				Fragment fragment = (getFragmentManager()
+						.findFragmentById(R.id.map));
+				FragmentTransaction ft = getActivity().getSupportFragmentManager()
+						.beginTransaction();
+				ft.remove(fragment);
+				ft.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
-
 }

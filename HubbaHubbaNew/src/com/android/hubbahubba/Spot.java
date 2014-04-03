@@ -241,11 +241,17 @@ public class Spot {
 	}
 	
 	private static String IP = "http://10.0.0.44:5000";
+	//private static String IP = "http://35.2.211.107:5000";
 	private static String IPD = "http://hubba-api.herokuapp.com";
 	
 	public static void getListOfSpots(ListView listView, HubbaAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> SpotsArray, Context c){
-		new PopulateListTask(listView, dataAdapter, SpotsArray, c).execute(IP + "/spots");
+		new PopulateListTask(listView, dataAdapter, SpotsArray, c).execute(IPD + "/spots");
+	}
+	
+	public static void getCommentsBySpotID(ListView listView, HubbaCommentAdapter dataAdapter,
+			ArrayList<HashMap<String, String>> CommentsArray, Context c, String spot_id){
+		new PopulateCommentsListTask(listView, dataAdapter, CommentsArray, c).execute(IPD + "/spots/" + spot_id + "/comments");
 	}
 	
 	public static void addSpotByLatLon(Context context, String name, String lat,
@@ -259,17 +265,33 @@ public class Spot {
 		
 		Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
 		
-		String url = IP + "/spots";
+		String url = IPD + "/spots";
 		new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type, ukey, akey}); 
 	}
 	
+	public static void addComment(Context context, String text, String overall, String difficulty, String bust, String spot_id){
+		
+		// get ukey and akey from shared preferences
+		SharedPreferences preferences = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+		
+		// TODO FIGURE OUT HOW TO GET USERNAME FROM FB
+		String uname = "robsmall";
+		String ukey = preferences.getString("ukey", "");
+		String akey = preferences.getString("akey", "");
+		
+		Toast.makeText(context, "spotID = " + spot_id, Toast.LENGTH_LONG).show();
+		
+		String url = IPD + "/spots/" + spot_id + "/comments";
+		new AddCommentTask(context).execute(new String[] {url, uname, text, overall, difficulty, bust, ukey, akey}); 
+	}
+	
 	public static void getSpotInfoByID(Activity activity, String id, Context c){
-		new GetSpotInfoTask(activity, c).execute(IP + "/spots/" + id);
+		new GetSpotInfoTask(activity, c).execute(IPD + "/spots/" + id);
 	}
 	
 	public static Spot[] getAllSpots(GoogleMap map, Context c){
 		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
-		new PopulateMapTask(map, c).execute(IP + "/spots");
+		new PopulateMapTask(map, c).execute(IPD + "/spots");
 		return null;
 	}
 }

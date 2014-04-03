@@ -104,7 +104,7 @@ public class MainFragment extends Fragment {
 		
 		
 		// TODO: delete this eventually
-		//signUpButton.setVisibility(View.GONE);
+		signUpButton.setVisibility(View.INVISIBLE);
 		//logInButton.setVisibility(View.GONE);
 		
 		LoginButton authButton = (LoginButton) rootView.findViewById(R.id.authButton);
@@ -114,7 +114,7 @@ public class MainFragment extends Fragment {
 		// log in button opens up logIn activity
 		logInButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Intent intent = new Intent(getActivity(), LogIn.class);
+				Intent intent = new Intent(getActivity(), ActionBarActivity.class/*LogIn.class*/);
 				startActivity(intent);
 			}
 

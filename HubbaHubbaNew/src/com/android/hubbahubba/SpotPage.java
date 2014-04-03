@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -53,6 +54,7 @@ public class SpotPage extends Activity {
 	Uri imageViewUri;
 	String mCurrentPhotoPath;
 	Context context = this;
+	String spot_id;
 	
 	//NEW VARS
 	Bitmap mImageBitmap;
@@ -123,7 +125,7 @@ public class SpotPage extends Activity {
 				*/
 			
 			Bundle showData = getIntent().getExtras();
-			String spot_id = showData.getString("spot_id");	
+			spot_id = showData.getString("spot_id");	
 			
 			//Toast.makeText(this, "spot id:\n" +
 			//                     spot_id, Toast.LENGTH_LONG).show();
@@ -184,14 +186,14 @@ public class SpotPage extends Activity {
 		
 		uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Intent intent = new Intent(SpotPage.this, UploadImage.class);
+				Intent intent = new Intent(SpotPage.this, AddImage.class);
 				startActivity(intent);
 			}
 		});
 		
 		uploadCommentButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Intent intent = new Intent(SpotPage.this, UploadComment.class);
+				Intent intent = new Intent(SpotPage.this, AddComment.class);
 				startActivity(intent);
 			}
 		});
@@ -208,7 +210,13 @@ public class SpotPage extends Activity {
 		 */
 		commentsButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				// add spot_id to the new intent and start it
+				Bundle bundleData = new Bundle();
+				bundleData.putString("spot_id", spot_id);
+				
 				Intent intent = new Intent(SpotPage.this,ListViewComments.class);
+				intent.putExtras(bundleData);
+				
 				startActivity(intent);
 			}
 

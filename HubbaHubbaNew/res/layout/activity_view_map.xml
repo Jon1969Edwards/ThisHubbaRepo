@@ -42,6 +42,7 @@
 		    android:layout_height="fill_parent"
 		    android:entries="@array/showSpotTypes"
 		    android:background="@drawable/spinner_style"
+		    android:gravity="center"
 		    android:prompt="@string/spinnerPrompt" />
 		
         <Button

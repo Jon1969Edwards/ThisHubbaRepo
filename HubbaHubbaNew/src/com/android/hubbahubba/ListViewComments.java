@@ -1,40 +1,58 @@
 package com.android.hubbahubba;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListViewComments extends Activity {
 	
-	CustomListViewAdapterComments mAdapter;
+	HubbaCommentAdapter mAdapter;
+	private HubbaCommentAdapter dataAdapter;
+	String spot_id;
+	private ListView listView;
+	private View rootView;
+	private Context context;
+	private ArrayList<HashMap<String, String>> commentsArray;
+	private Bundle showData;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.spot_page_comments);
         
-        Button uploadPhotoButton = (Button) findViewById(R.id.uploadPhotoButton);
+        // get spot id
+        showData = getIntent().getExtras();
+		spot_id = showData.getString("spot_id");
         
-        uploadPhotoButton.setOnClickListener(new View.OnClickListener() {
+        Button uploadCommentButton = (Button) findViewById(R.id.uploadCommentButton);
+        
+        uploadCommentButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Intent intent = new Intent(ListViewComments.this, UploadComment.class);
+				Intent intent = new Intent(ListViewComments.this, AddComment.class);
+				intent.putExtras(showData);
 				startActivity(intent);
 			}
 		});
+        // get list view
+        listView = (ListView) findViewById(R.id.listViewComments);
+        //List<ListViewCommentsItem> items = new ArrayList<ListViewComments.ListViewCommentsItem>();
+        commentsArray = new ArrayList<HashMap<String, String>>();
         
-        ListView lv = (ListView) findViewById(R.id.listViewComments);
-        List<ListViewCommentsItem> items = new ArrayList<ListViewComments.ListViewCommentsItem>();
-        
+        // populate spots array
+     	Spot.getCommentsBySpotID(listView, dataAdapter, commentsArray, getApplicationContext(), spot_id);
+     	
+        /*
         ListViewCommentsItem item1 = new ListViewCommentsItem();
         item1.Username = "robsmall";
         item1.OverallRating = 10;
@@ -51,8 +69,9 @@ public class ListViewComments extends Activity {
         item2.CommentText = "I get kicked out of this spot every time I'm here and all there is is a small ledge for beginners...";
         items.add(item2);
         
-        mAdapter = new CustomListViewAdapterComments(this, items);
+        mAdapter = new HubbaCommentAdapter(this, items);
         lv.setAdapter(mAdapter);
+        */
         
     }
 
