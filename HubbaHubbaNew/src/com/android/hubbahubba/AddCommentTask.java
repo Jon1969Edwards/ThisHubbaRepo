@@ -69,9 +69,9 @@ public class AddCommentTask extends AsyncTask<String, Void, String>
             List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
             //postParameters.add(new BasicNameValuePair("uname", uname));
             postParameters.add(new BasicNameValuePair("text", text));
-            //postParameters.add(new BasicNameValuePair("overall", overall));
-            //postParameters.add(new BasicNameValuePair("difficulty", difficulty));
-            //postParameters.add(new BasicNameValuePair("bust", bust));
+            postParameters.add(new BasicNameValuePair("overall", overall));
+            postParameters.add(new BasicNameValuePair("difficulty", difficulty));
+            postParameters.add(new BasicNameValuePair("bust", bust));
 
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(
                     postParameters);

@@ -193,7 +193,12 @@ public class SpotPage extends Activity {
 		
 		uploadCommentButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				Bundle bundleData = new Bundle();
+				bundleData.putString("spot_id", spot_id);
+				
 				Intent intent = new Intent(SpotPage.this, AddComment.class);
+				
+				intent.putExtras(bundleData);
 				startActivity(intent);
 			}
 		});

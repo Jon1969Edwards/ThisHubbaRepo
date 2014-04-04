@@ -255,7 +255,7 @@ public class Spot {
 	}
 	
 	public static void addSpotByLatLon(Context context, String name, String lat,
-			String lon, String type){
+			String lon, String type, boolean isPrivate, String overall, String difficulty, String bust, String text){
 		
 		// get ukey and akey from shared preferences
 		SharedPreferences preferences = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
@@ -264,9 +264,14 @@ public class Spot {
 		String akey = preferences.getString("akey", "");
 		
 		Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
+		String is_private = "0";
+		if(isPrivate == true){
+			is_private = "1";
+		}
 		
 		String url = IPD + "/spots";
-		new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type, ukey, akey}); 
+		new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type, ukey, akey, is_private,
+				overall, difficulty, bust, text}); 
 	}
 	
 	public static void addComment(Context context, String text, String overall, String difficulty, String bust, String spot_id){

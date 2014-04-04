@@ -2,8 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background" 
-    android:windowSoftInputMode="stateHidden">
+    android:background="@drawable/plain_background_hubba" 
+    android:windowSoftInputMode="stateHidden"
+    android:paddingTop="115dp">
 
     <LinearLayout
         android:layout_width="fill_parent"

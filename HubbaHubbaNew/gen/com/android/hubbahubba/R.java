@@ -1235,7 +1235,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f02008d;
         public static final int com_facebook_loginbutton_silver=0x7f02008e;
         public static final int com_facebook_logo=0x7f02008f;
-        public static final int com_facebook_picker_default_separator_color=0x7f0200d8;
+        public static final int com_facebook_picker_default_separator_color=0x7f0200d9;
         public static final int com_facebook_picker_item_background=0x7f020090;
         public static final int com_facebook_picker_list_focused=0x7f020091;
         public static final int com_facebook_picker_list_longpressed=0x7f020092;
@@ -1297,17 +1297,18 @@ containing a value of this type.
         public static final int lightbox=0x7f0200ca;
         public static final int list_view_style=0x7f0200cb;
         public static final int nosegrabup=0x7f0200cc;
-        public static final int riley1=0x7f0200cd;
-        public static final int riley2=0x7f0200ce;
-        public static final int riley3=0x7f0200cf;
-        public static final int spinner_style=0x7f0200d0;
-        public static final int tab_color=0x7f0200d1;
-        public static final int take_picture_background=0x7f0200d2;
-        public static final int thumbs_down_crop=0x7f0200d3;
-        public static final int thumbs_down_crop_copy=0x7f0200d4;
-        public static final int thumbs_up_crop=0x7f0200d5;
-        public static final int thumbs_up_crop_copy=0x7f0200d6;
-        public static final int tony_hawk=0x7f0200d7;
+        public static final int plain_background_hubba=0x7f0200cd;
+        public static final int riley1=0x7f0200ce;
+        public static final int riley2=0x7f0200cf;
+        public static final int riley3=0x7f0200d0;
+        public static final int spinner_style=0x7f0200d1;
+        public static final int tab_color=0x7f0200d2;
+        public static final int take_picture_background=0x7f0200d3;
+        public static final int thumbs_down_crop=0x7f0200d4;
+        public static final int thumbs_down_crop_copy=0x7f0200d5;
+        public static final int thumbs_up_crop=0x7f0200d6;
+        public static final int thumbs_up_crop_copy=0x7f0200d7;
+        public static final int tony_hawk=0x7f0200d8;
     }
     public static final class id {
         public static final int AddSpot=0x7f04003a;

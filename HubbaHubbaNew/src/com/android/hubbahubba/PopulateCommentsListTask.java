@@ -107,9 +107,9 @@ public class PopulateCommentsListTask extends AsyncTask<String, String, String>{
 				
 				//String fb_user_id = user.getString("fb_user_id");
 				//String ukey = user.getString("ukey");
-				String difficulty = "4.4";//comment.getString("difficulty");
-				String overall = "10";//comment.getString("overall");
-				String bust = "0.5";//comment.getString("bust");
+				String difficulty = comment.getString("difficulty");
+				String overall = comment.getString("overall");
+				String bust = comment.getString("bust");
 				
 				// TODO: GET THE REST FROM THE DB/ FB
 

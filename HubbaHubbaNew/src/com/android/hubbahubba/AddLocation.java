@@ -57,6 +57,7 @@ public class AddLocation extends Activity {
 	ImageView mImage;
 	ImageButton takePhotoButton, uploadPhotoButton;
 	String mImagePath;
+	boolean isSecret;
 	Uri imageViewUri;
 	Uri mSelectedImage = Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);
 	Bitmap spotImage;
@@ -272,6 +273,13 @@ public class AddLocation extends Activity {
 				mAddress = spotAddress.getText().toString();
 				mCity = spotCity.getText().toString();
 				mType = typeSpinner.getSelectedItem().toString();
+				if(sharedButton.isChecked() == true){
+					isSecret = true;
+				}
+				else{
+					isSecret = false;
+				}
+				
 				
 				Context context = getApplicationContext();
 				int duration = Toast.LENGTH_LONG;
@@ -300,6 +308,7 @@ public class AddLocation extends Activity {
 				}
 				else {
 					Intent intent = new Intent(AddLocation.this, AddSpot.class);
+					intent.putExtra("isSecret", isSecret);
 					intent.putExtra("spotTitle", mTitle);
 					intent.putExtra("spotType", mType);
 					intent.putExtra("spotAddress", mAddress);

@@ -119,7 +119,7 @@
         <TextView   
 	        android:layout_height="fill_parent"   
 	        android:layout_width="fill_parent" 
-	        android:textSize="14sp"  
+	        android:textSize="16sp"  
 	        android:id="@+id/txtCommentText"
 	        android:layout_centerHorizontal="true"
 	        android:textColor="#FFF" >  

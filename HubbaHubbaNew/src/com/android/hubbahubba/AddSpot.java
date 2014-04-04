@@ -37,6 +37,7 @@ public class AddSpot extends Activity {
 	public static final int RESULT_CODE_SPOT_ADDED = 2;
 	double mLat;
 	double mLng;
+	boolean is_secret;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class AddSpot extends Activity {
 		//Read in extras passed from AddLocation Activity (i.e. Title and Type )
 		mTitle = getIntent().getStringExtra("spotTitle");
 		mType = getIntent().getStringExtra("spotType");
+		is_secret = getIntent().getBooleanExtra("isSecret", false);
 		
 		//get the doubles
 		mLat = getIntent().getDoubleExtra("Lat", 0);
@@ -731,6 +733,9 @@ public class AddSpot extends Activity {
 				intLevel = poClicked;
 				stringComments = mComment.getText().toString();
 				
+				String overall = Integer.toString(overallClicked);
+				String difficulty = Integer.toString(diffClicked);
+				String bust =  Integer.toString(poClicked);
 				/*
 				if(mSelectedImage != null){
 					selectedImagePath = getRealPathFromUri(mSelectedImage);
@@ -739,9 +744,9 @@ public class AddSpot extends Activity {
 
 				String lat = Double.toString(doubleLat);
 				String lon = Double.toString(doubleLong);
-				String type = "test";
 				
-				Spot.addSpotByLatLon(getApplicationContext(), stringName, lat, lon, type);
+				Spot.addSpotByLatLon(getApplicationContext(), stringName, lat, lon, stringType, is_secret,
+						overall, difficulty, bust, stringComments);
 				
 				//now return to listview
 				Intent intent = new Intent(AddSpot.this, ActionBarActivity.class);
