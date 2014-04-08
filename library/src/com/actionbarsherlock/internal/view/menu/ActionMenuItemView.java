@@ -118,11 +118,13 @@ public class ActionMenuItemView extends LinearLayout
         setOnLongClickListener(this);
     }
 
-    public MenuItemImpl getItemData() {
+    @Override
+	public MenuItemImpl getItemData() {
         return mItemData;
     }
 
-    public void initialize(MenuItemImpl itemData, int menuType) {
+    @Override
+	public void initialize(MenuItemImpl itemData, int menuType) {
         mItemData = itemData;
 
         setIcon(itemData.getIcon());
@@ -140,7 +142,8 @@ public class ActionMenuItemView extends LinearLayout
         mTextButton.setEnabled(enabled);
     }
 
-    public void onClick(View v) {
+    @Override
+	public void onClick(View v) {
         if (mItemInvoker != null) {
             mItemInvoker.invokeItem(mItemData);
         }
@@ -150,15 +153,18 @@ public class ActionMenuItemView extends LinearLayout
         mItemInvoker = invoker;
     }
 
-    public boolean prefersCondensedTitle() {
+    @Override
+	public boolean prefersCondensedTitle() {
         return true;
     }
 
-    public void setCheckable(boolean checkable) {
+    @Override
+	public void setCheckable(boolean checkable) {
         // TODO Support checkable action items
     }
 
-    public void setChecked(boolean checked) {
+    @Override
+	public void setChecked(boolean checked) {
         // TODO Support checkable action items
     }
 
@@ -179,7 +185,8 @@ public class ActionMenuItemView extends LinearLayout
         mTextButton.setVisibility(visible ? VISIBLE : GONE);
     }
 
-    public void setIcon(Drawable icon) {
+    @Override
+	public void setIcon(Drawable icon) {
         mImageButton.setImageDrawable(icon);
         if (icon != null) {
             mImageButton.setVisibility(VISIBLE);
@@ -194,11 +201,13 @@ public class ActionMenuItemView extends LinearLayout
         return mTextButton.getVisibility() != GONE;
     }
 
-    public void setShortcut(boolean showShortcut, char shortcutKey) {
+    @Override
+	public void setShortcut(boolean showShortcut, char shortcutKey) {
         // Action buttons don't show text for shortcut keys.
     }
 
-    public void setTitle(CharSequence title) {
+    @Override
+	public void setTitle(CharSequence title) {
         mTitle = title;
 
         mTextButton.setTextCompat(mTitle);
@@ -233,15 +242,18 @@ public class ActionMenuItemView extends LinearLayout
         return false;
     }
 
-    public boolean showsIcon() {
+    @Override
+	public boolean showsIcon() {
         return true;
     }
 
-    public boolean needsDividerBefore() {
+    @Override
+	public boolean needsDividerBefore() {
         return hasText() && mItemData.getIcon() == null;
     }
 
-    public boolean needsDividerAfter() {
+    @Override
+	public boolean needsDividerAfter() {
         return hasText();
     }
 

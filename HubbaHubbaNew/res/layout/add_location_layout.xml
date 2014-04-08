@@ -2,12 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background_2">
+    android:background="@drawable/plain_background_hubba"
+    android:paddingTop="115dp">
     
 	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:orientation="vertical" >
+	    android:orientation="vertical" 
+	    android:paddingBottom="20dp">
 		
 	    
 	    <RelativeLayout
@@ -41,21 +43,21 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="40dp"
 	        android:layout_marginRight="30dp"
-	        android:layout_marginBottom="-10dp"
 	        android:layout_marginTop="10dp" >
 	
 	        <EditText
 	            android:layout_marginLeft="30dp"
 	            android:id = "@+id/spotTitle"
+	            android:paddingLeft="10dp"
 	            android:layout_width="fill_parent"
 	            android:layout_height="match_parent"
 	            android:hint="@string/spotTitle"
 	            android:layout_centerVertical="true"
+	            android:textColor="#828282"
+                android:background="@drawable/edit_text_hubba"
 	            android:textSize="20sp"
-	            android:gravity="bottom"
 	            android:lines="1"
-	            android:layout_alignParentBottom="true"
-	            android:textColor="#FFFFFF"/>
+	            android:layout_alignParentBottom="true"/>
 	        
 	    </RelativeLayout>
 	    
@@ -71,17 +73,19 @@
 	            android:layout_width="fill_parent"
 	            android:layout_height="match_parent"
 	            android:hint="@string/address"
-	            android:layout_centerVertical="true"
 	            android:textSize="20sp"
-	            android:gravity="bottom"
 	            android:lines="1"
+	            android:layout_centerVertical="true"
+	            android:paddingLeft="10dp"
 	            android:layout_alignParentBottom="true"
-	            android:textColor="#FFFFFF"/>
+	            android:textColor="#828282"
+	            android:background="@drawable/edit_text_hubba"/>
 	        
 	    </RelativeLayout>
 	    
 	    <RelativeLayout
 	        android:layout_width="fill_parent"
+	        android:layout_marginTop="10dp"
 	        android:layout_height="40dp"
 	        android:layout_marginRight="30dp"
 	        android:layout_marginLeft="30dp" >
@@ -91,12 +95,12 @@
 	            android:layout_width="fill_parent"
 	            android:layout_height="match_parent"
 	            android:hint="@string/cityStateZip"
-	            android:gravity="bottom"
-	            android:layout_centerVertical="true"
 	            android:textSize="20sp"
 	            android:lines="1"
-	            android:layout_alignParentBottom="true"
-	            android:textColor="#FFFFFF"/>
+	            android:layout_centerVertical="true"
+	            android:paddingLeft="10dp"
+	            android:textColor="#828282"
+	            android:background="@drawable/edit_text_hubba"/>
 	        
 	    </RelativeLayout>
 		

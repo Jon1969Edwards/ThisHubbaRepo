@@ -225,7 +225,7 @@ public class IcsListPopupWindow {
             mPopup.setTouchInterceptor(mTouchInterceptor);
             mPopup.showAsDropDown(mDropDownAnchorView,
                     mDropDownHorizontalOffset, mDropDownVerticalOffset);
-            mDropDownList.setSelection(ListView.INVALID_POSITION);
+            mDropDownList.setSelection(AdapterView.INVALID_POSITION);
 
             if (!mModal || mDropDownList.isInTouchMode()) {
                 clearListSelection();
@@ -296,7 +296,8 @@ public class IcsListPopupWindow {
             mDropDownList.setFocusable(true);
             mDropDownList.setFocusableInTouchMode(true);
             mDropDownList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                public void onItemSelected(AdapterView<?> parent, View view,
+                @Override
+				public void onItemSelected(AdapterView<?> parent, View view,
                         int position, long id) {
 
                     if (position != -1) {
@@ -308,7 +309,8 @@ public class IcsListPopupWindow {
                     }
                 }
 
-                public void onNothingSelected(AdapterView<?> parent) {
+                @Override
+				public void onNothingSelected(AdapterView<?> parent) {
                 }
             });
             mDropDownList.setOnScrollListener(mScrollListener);
@@ -595,13 +597,15 @@ public class IcsListPopupWindow {
     }
 
     private class ListSelectorHider implements Runnable {
-        public void run() {
+        @Override
+		public void run() {
             clearListSelection();
         }
     }
 
     private class ResizePopupRunnable implements Runnable {
-        public void run() {
+        @Override
+		public void run() {
             if (mDropDownList != null && mDropDownList.getCount() > mDropDownList.getChildCount() &&
                     mDropDownList.getChildCount() <= mListItemExpandMaximum) {
                 mPopup.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
@@ -611,7 +615,8 @@ public class IcsListPopupWindow {
     }
 
     private class PopupTouchInterceptor implements OnTouchListener {
-        public boolean onTouch(View v, MotionEvent event) {
+        @Override
+		public boolean onTouch(View v, MotionEvent event) {
             final int action = event.getAction();
             final int x = (int) event.getX();
             final int y = (int) event.getY();
@@ -628,12 +633,14 @@ public class IcsListPopupWindow {
     }
 
     private class PopupScrollListener implements ListView.OnScrollListener {
-        public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+        @Override
+		public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
                 int totalItemCount) {
 
         }
 
-        public void onScrollStateChanged(AbsListView view, int scrollState) {
+        @Override
+		public void onScrollStateChanged(AbsListView view, int scrollState) {
             if (scrollState == SCROLL_STATE_TOUCH_SCROLL &&
                     !isInputMethodNotNeeded() && mPopup.getContentView() != null) {
                 mHandler.removeCallbacks(mResizePopupRunnable);

@@ -224,7 +224,8 @@ public class MenuInflater {
             }
         }
 
-        public boolean onMenuItemClick(MenuItem item) {
+        @Override
+		public boolean onMenuItemClick(MenuItem item) {
             try {
                 if (mMethod.getReturnType() == Boolean.TYPE) {
                     return (Boolean) mMethod.invoke(mRealOwner, item);

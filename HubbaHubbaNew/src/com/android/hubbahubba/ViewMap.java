@@ -118,6 +118,7 @@ public class ViewMap extends SherlockFragment {
 					R.id.map)).getMap();
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
+				mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 				mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 				mMap.setMyLocationEnabled(true);
 
@@ -125,7 +126,6 @@ public class ViewMap extends SherlockFragment {
 				mUiSettings = mMap.getUiSettings();
 				mUiSettings.setMyLocationButtonEnabled(true);
 				mUiSettings.setRotateGesturesEnabled(false);
-				mUiSettings.setMyLocationButtonEnabled(true);
 				mUiSettings.setZoomControlsEnabled(false);
 
 				// Construct a CameraPosition focusing on Mountain View and

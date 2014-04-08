@@ -33,6 +33,7 @@ import android.os.Bundle;
 import android.support.v4.widget.ResourceCursorAdapter;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.TextAppearanceSpan;
 import android.util.Log;
@@ -375,7 +376,8 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements OnClickListene
         }
     }
 
-    public void onClick(View v) {
+    @Override
+	public void onClick(View v) {
         Object tag = v.getTag();
         if (tag instanceof CharSequence) {
             mSearchView.onQueryRefine((CharSequence) tag);
@@ -393,7 +395,7 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements OnClickListene
         SpannableString text = new SpannableString(url);
         text.setSpan(new TextAppearanceSpan(null, 0, 0, mUrlColor, null),
                 0, url.length(),
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return text;
     }
 

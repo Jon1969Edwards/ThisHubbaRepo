@@ -63,7 +63,8 @@ public class SubMenuBuilder extends MenuBuilder implements SubMenu {
         return mParentMenu;
     }
 
-    public MenuItem getItem() {
+    @Override
+	public MenuItem getItem() {
         return mItem;
     }
 
@@ -83,33 +84,40 @@ public class SubMenuBuilder extends MenuBuilder implements SubMenu {
                 mParentMenu.dispatchMenuItemSelected(menu, item);
     }
 
-    public SubMenu setIcon(Drawable icon) {
+    @Override
+	public SubMenu setIcon(Drawable icon) {
         mItem.setIcon(icon);
         return this;
     }
 
-    public SubMenu setIcon(int iconRes) {
+    @Override
+	public SubMenu setIcon(int iconRes) {
         mItem.setIcon(iconRes);
         return this;
     }
 
-    public SubMenu setHeaderIcon(Drawable icon) {
+    @Override
+	public SubMenu setHeaderIcon(Drawable icon) {
         return (SubMenu) super.setHeaderIconInt(icon);
     }
 
-    public SubMenu setHeaderIcon(int iconRes) {
+    @Override
+	public SubMenu setHeaderIcon(int iconRes) {
         return (SubMenu) super.setHeaderIconInt(iconRes);
     }
 
-    public SubMenu setHeaderTitle(CharSequence title) {
+    @Override
+	public SubMenu setHeaderTitle(CharSequence title) {
         return (SubMenu) super.setHeaderTitleInt(title);
     }
 
-    public SubMenu setHeaderTitle(int titleRes) {
+    @Override
+	public SubMenu setHeaderTitle(int titleRes) {
         return (SubMenu) super.setHeaderTitleInt(titleRes);
     }
 
-    public SubMenu setHeaderView(View view) {
+    @Override
+	public SubMenu setHeaderView(View view) {
         return (SubMenu) super.setHeaderViewInt(view);
     }
 

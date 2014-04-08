@@ -118,7 +118,8 @@ public class StandaloneActionMode extends ActionMode implements MenuBuilder.Call
         return new MenuInflater(mContext);
     }
 
-    public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
+    @Override
+	public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
         return mCallback.onActionItemClicked(this, item);
     }
 
@@ -137,12 +138,14 @@ public class StandaloneActionMode extends ActionMode implements MenuBuilder.Call
     public void onCloseSubMenu(SubMenuBuilder menu) {
     }
 
-    public void onMenuModeChange(MenuBuilder menu) {
+    @Override
+	public void onMenuModeChange(MenuBuilder menu) {
         invalidate();
         mContextView.showOverflowMenu();
     }
 
-    public boolean isUiFocusable() {
+    @Override
+	public boolean isUiFocusable() {
         return mFocusable;
     }
 }

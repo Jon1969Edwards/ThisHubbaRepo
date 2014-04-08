@@ -136,7 +136,8 @@ public class ActionBarContextView extends AbsActionBarView implements AnimatorLi
         }
     }
 
-    public void setContentHeight(int height) {
+    @Override
+	public void setContentHeight(int height) {
         mContentHeight = height;
     }
 
@@ -211,7 +212,8 @@ public class ActionBarContextView extends AbsActionBarView implements AnimatorLi
 
         View closeButton = mClose.findViewById(R.id.abs__action_mode_close_button);
         closeButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
+            @Override
+			public void onClick(View v) {
                 mode.finish();
             }
         });

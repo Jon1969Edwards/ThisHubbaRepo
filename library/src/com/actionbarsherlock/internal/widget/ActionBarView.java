@@ -142,12 +142,14 @@ public class ActionBarView extends AbsActionBarView {
     @SuppressWarnings("rawtypes")
     private final IcsAdapterView.OnItemSelectedListener mNavItemSelectedListener =
             new IcsAdapterView.OnItemSelectedListener() {
-        public void onItemSelected(IcsAdapterView parent, View view, int position, long id) {
+        @Override
+		public void onItemSelected(IcsAdapterView parent, View view, int position, long id) {
             if (mCallback != null) {
                 mCallback.onNavigationItemSelected(position, id);
             }
         }
-        public void onNothingSelected(IcsAdapterView parent) {
+        @Override
+		public void onNothingSelected(IcsAdapterView parent) {
             // Do nothing
         }
     };
@@ -163,8 +165,9 @@ public class ActionBarView extends AbsActionBarView {
     };
 
     private final OnClickListener mUpClickListener = new OnClickListener() {
-        public void onClick(View v) {
-            mWindowCallback.onMenuItemSelected(Window.FEATURE_OPTIONS_PANEL, mLogoNavItem);
+        @Override
+		public void onClick(View v) {
+            mWindowCallback.onMenuItemSelected(android.view.Window.FEATURE_OPTIONS_PANEL, mLogoNavItem);
         }
     };
 
@@ -1275,11 +1278,13 @@ public class ActionBarView extends AbsActionBarView {
 
         public static final Parcelable.Creator<SavedState> CREATOR =
                 new Parcelable.Creator<SavedState>() {
-            public SavedState createFromParcel(Parcel in) {
+            @Override
+			public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }
 
-            public SavedState[] newArray(int size) {
+            @Override
+			public SavedState[] newArray(int size) {
                 return new SavedState[size];
             }
         };

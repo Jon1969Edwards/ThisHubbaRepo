@@ -472,8 +472,8 @@ public class ActionMenuView extends IcsLinearLayout implements MenuBuilder.ItemI
 
     @Override
     protected LayoutParams generateDefaultLayoutParams() {
-        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT,
-                LayoutParams.WRAP_CONTENT);
+        LayoutParams params = new LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.CENTER_VERTICAL;
         return params;
     }
@@ -506,20 +506,24 @@ public class ActionMenuView extends IcsLinearLayout implements MenuBuilder.ItemI
         return result;
     }
 
-    public boolean invokeItem(MenuItemImpl item) {
+    @Override
+	public boolean invokeItem(MenuItemImpl item) {
         return mMenu.performItemAction(item, 0);
     }
 
-    public int getWindowAnimations() {
+    @Override
+	public int getWindowAnimations() {
         return 0;
     }
 
-    public void initialize(MenuBuilder menu) {
+    @Override
+	public void initialize(MenuBuilder menu) {
         mMenu = menu;
     }
 
     //@Override
-    protected boolean hasDividerBeforeChildAt(int childIndex) {
+    @Override
+	protected boolean hasDividerBeforeChildAt(int childIndex) {
         if (childIndex == 0) {
             return false;
         }
@@ -535,7 +539,8 @@ public class ActionMenuView extends IcsLinearLayout implements MenuBuilder.ItemI
         return result;
     }
 
-    public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
+    @Override
+	public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
         return false;
     }
 
@@ -558,7 +563,7 @@ public class ActionMenuView extends IcsLinearLayout implements MenuBuilder.ItemI
         }
 
         public LayoutParams(LayoutParams other) {
-            super((LinearLayout.LayoutParams) other);
+            super(other);
             isOverflowButton = other.isOverflowButton;
         }
 

@@ -94,7 +94,8 @@ public class ListMenuItemView extends LinearLayout implements MenuView.ItemView 
         mShortcutView = (TextView) findViewById(R.id.abs__shortcut);
     }
 
-    public void initialize(MenuItemImpl itemData, int menuType) {
+    @Override
+	public void initialize(MenuItemImpl itemData, int menuType) {
         mItemData = itemData;
         //UNUSED mMenuType = menuType;
 
@@ -111,7 +112,8 @@ public class ListMenuItemView extends LinearLayout implements MenuView.ItemView 
         mPreserveIconSpacing = mForceShowIcon = forceShow;
     }
 
-    public void setTitle(CharSequence title) {
+    @Override
+	public void setTitle(CharSequence title) {
         if (title != null) {
             mTitleView.setText(title);
 
@@ -121,11 +123,13 @@ public class ListMenuItemView extends LinearLayout implements MenuView.ItemView 
         }
     }
 
-    public MenuItemImpl getItemData() {
+    @Override
+	public MenuItemImpl getItemData() {
         return mItemData;
     }
 
-    public void setCheckable(boolean checkable) {
+    @Override
+	public void setCheckable(boolean checkable) {
 
         if (!checkable && mRadioButton == null && mCheckBox == null) {
             return;
@@ -169,7 +173,8 @@ public class ListMenuItemView extends LinearLayout implements MenuView.ItemView 
         }
     }
 
-    public void setChecked(boolean checked) {
+    @Override
+	public void setChecked(boolean checked) {
         CompoundButton compoundButton;
 
         if (mItemData.isExclusiveCheckable()) {
@@ -187,7 +192,8 @@ public class ListMenuItemView extends LinearLayout implements MenuView.ItemView 
         compoundButton.setChecked(checked);
     }
 
-    public void setShortcut(boolean showShortcut, char shortcutKey) {
+    @Override
+	public void setShortcut(boolean showShortcut, char shortcutKey) {
         final int newVisibility = (showShortcut && mItemData.shouldShowShortcut())
                 ? VISIBLE : GONE;
 
@@ -200,7 +206,8 @@ public class ListMenuItemView extends LinearLayout implements MenuView.ItemView 
         }
     }
 
-    public void setIcon(Drawable icon) {
+    @Override
+	public void setIcon(Drawable icon) {
         final boolean showIcon = mItemData.shouldShowIcon() || mForceShowIcon;
         if (!showIcon && !mPreserveIconSpacing) {
             return;
@@ -261,11 +268,13 @@ public class ListMenuItemView extends LinearLayout implements MenuView.ItemView 
         addView(mCheckBox);
     }
 
-    public boolean prefersCondensedTitle() {
+    @Override
+	public boolean prefersCondensedTitle() {
         return false;
     }
 
-    public boolean showsIcon() {
+    @Override
+	public boolean showsIcon() {
         return mForceShowIcon;
     }
 

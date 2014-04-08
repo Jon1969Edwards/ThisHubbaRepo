@@ -61,6 +61,8 @@ public class ListViewHubba extends SherlockFragment {
 		SpotsArray = new ArrayList<HashMap<String, String>>();
 		
 		listView = (ListView) rootView.findViewById(R.id.listView);
+		listView.setDivider(getResources().getDrawable(R.drawable.list_divider_hubba));
+		listView.setDividerHeight(2);
 		
 		// populate spots array
 		Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);

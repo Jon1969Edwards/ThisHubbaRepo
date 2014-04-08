@@ -67,76 +67,94 @@ public class ActionMenuItem implements MenuItem {
         mTitle = title;
     }
 
-    public char getAlphabeticShortcut() {
+    @Override
+	public char getAlphabeticShortcut() {
         return mShortcutAlphabeticChar;
     }
 
-    public int getGroupId() {
+    @Override
+	public int getGroupId() {
         return mGroup;
     }
 
-    public Drawable getIcon() {
+    @Override
+	public Drawable getIcon() {
         return mIconDrawable;
     }
 
-    public Intent getIntent() {
+    @Override
+	public Intent getIntent() {
         return mIntent;
     }
 
-    public int getItemId() {
+    @Override
+	public int getItemId() {
         return mId;
     }
 
-    public ContextMenuInfo getMenuInfo() {
+    @Override
+	public ContextMenuInfo getMenuInfo() {
         return null;
     }
 
-    public char getNumericShortcut() {
+    @Override
+	public char getNumericShortcut() {
         return mShortcutNumericChar;
     }
 
-    public int getOrder() {
+    @Override
+	public int getOrder() {
         return mOrdering;
     }
 
-    public SubMenu getSubMenu() {
+    @Override
+	public SubMenu getSubMenu() {
         return null;
     }
 
-    public CharSequence getTitle() {
+    @Override
+	public CharSequence getTitle() {
         return mTitle;
     }
 
-    public CharSequence getTitleCondensed() {
+    @Override
+	public CharSequence getTitleCondensed() {
         return mTitleCondensed;
     }
 
-    public boolean hasSubMenu() {
+    @Override
+	public boolean hasSubMenu() {
         return false;
     }
 
-    public boolean isCheckable() {
+    @Override
+	public boolean isCheckable() {
         return (mFlags & CHECKABLE) != 0;
     }
 
-    public boolean isChecked() {
+    @Override
+	public boolean isChecked() {
         return (mFlags & CHECKED) != 0;
     }
 
-    public boolean isEnabled() {
+    @Override
+	public boolean isEnabled() {
         return (mFlags & ENABLED) != 0;
     }
 
-    public boolean isVisible() {
+    @Override
+	public boolean isVisible() {
         return (mFlags & HIDDEN) == 0;
     }
 
-    public MenuItem setAlphabeticShortcut(char alphaChar) {
+    @Override
+	public MenuItem setAlphabeticShortcut(char alphaChar) {
         mShortcutAlphabeticChar = alphaChar;
         return this;
     }
 
-    public MenuItem setCheckable(boolean checkable) {
+    @Override
+	public MenuItem setCheckable(boolean checkable) {
         mFlags = (mFlags & ~CHECKABLE) | (checkable ? CHECKABLE : 0);
         return this;
     }
@@ -146,65 +164,77 @@ public class ActionMenuItem implements MenuItem {
         return this;
     }
 
-    public MenuItem setChecked(boolean checked) {
+    @Override
+	public MenuItem setChecked(boolean checked) {
         mFlags = (mFlags & ~CHECKED) | (checked ? CHECKED : 0);
         return this;
     }
 
-    public MenuItem setEnabled(boolean enabled) {
+    @Override
+	public MenuItem setEnabled(boolean enabled) {
         mFlags = (mFlags & ~ENABLED) | (enabled ? ENABLED : 0);
         return this;
     }
 
-    public MenuItem setIcon(Drawable icon) {
+    @Override
+	public MenuItem setIcon(Drawable icon) {
         mIconDrawable = icon;
         //UNUSED mIconResId = NO_ICON;
         return this;
     }
 
-    public MenuItem setIcon(int iconRes) {
+    @Override
+	public MenuItem setIcon(int iconRes) {
         //UNUSED mIconResId = iconRes;
         mIconDrawable = mContext.getResources().getDrawable(iconRes);
         return this;
     }
 
-    public MenuItem setIntent(Intent intent) {
+    @Override
+	public MenuItem setIntent(Intent intent) {
         mIntent = intent;
         return this;
     }
 
-    public MenuItem setNumericShortcut(char numericChar) {
+    @Override
+	public MenuItem setNumericShortcut(char numericChar) {
         mShortcutNumericChar = numericChar;
         return this;
     }
 
-    public MenuItem setOnMenuItemClickListener(OnMenuItemClickListener menuItemClickListener) {
+    @Override
+	public MenuItem setOnMenuItemClickListener(OnMenuItemClickListener menuItemClickListener) {
         mClickListener = menuItemClickListener;
         return this;
     }
 
-    public MenuItem setShortcut(char numericChar, char alphaChar) {
+    @Override
+	public MenuItem setShortcut(char numericChar, char alphaChar) {
         mShortcutNumericChar = numericChar;
         mShortcutAlphabeticChar = alphaChar;
         return this;
     }
 
-    public MenuItem setTitle(CharSequence title) {
+    @Override
+	public MenuItem setTitle(CharSequence title) {
         mTitle = title;
         return this;
     }
 
-    public MenuItem setTitle(int title) {
+    @Override
+	public MenuItem setTitle(int title) {
         mTitle = mContext.getResources().getString(title);
         return this;
     }
 
-    public MenuItem setTitleCondensed(CharSequence title) {
+    @Override
+	public MenuItem setTitleCondensed(CharSequence title) {
         mTitleCondensed = title;
         return this;
     }
 
-    public MenuItem setVisible(boolean visible) {
+    @Override
+	public MenuItem setVisible(boolean visible) {
         mFlags = (mFlags & HIDDEN) | (visible ? 0 : HIDDEN);
         return this;
     }
@@ -222,15 +252,18 @@ public class ActionMenuItem implements MenuItem {
         return false;
     }
 
-    public void setShowAsAction(int show) {
+    @Override
+	public void setShowAsAction(int show) {
         // Do nothing. ActionMenuItems always show as action buttons.
     }
 
-    public MenuItem setActionView(View actionView) {
+    @Override
+	public MenuItem setActionView(View actionView) {
         throw new UnsupportedOperationException();
     }
 
-    public View getActionView() {
+    @Override
+	public View getActionView() {
         return null;
     }
 

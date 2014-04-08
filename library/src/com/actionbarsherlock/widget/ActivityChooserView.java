@@ -261,7 +261,8 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
     /**
      * {@inheritDoc}
      */
-    public void setActivityChooserModel(ActivityChooserModel dataModel) {
+    @Override
+	public void setActivityChooserModel(ActivityChooserModel dataModel) {
         mAdapter.setDataModel(dataModel);
         if (isShowingPopup()) {
             dismissPopup();
@@ -541,7 +542,8 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
             View.OnClickListener, View.OnLongClickListener, PopupWindow.OnDismissListener {
 
         // AdapterView#OnItemClickListener
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        @Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             ActivityChooserViewAdapter adapter = (ActivityChooserViewAdapter) parent.getAdapter();
             final int itemViewType = adapter.getItemViewType(position);
             switch (itemViewType) {
@@ -571,7 +573,8 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
         }
 
         // View.OnClickListener
-        public void onClick(View view) {
+        @Override
+		public void onClick(View view) {
             if (view == mDefaultActivityButton) {
                 dismissPopup();
                 ResolveInfo defaultActivity = mAdapter.getDefaultActivity();
@@ -603,7 +606,8 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
         }
 
         // PopUpWindow.OnDismissListener#onDismiss
-        public void onDismiss() {
+        @Override
+		public void onDismiss() {
             notifyOnDismissListener();
             if (mProvider != null) {
                 mProvider.subUiVisibilityChanged(false);
@@ -680,7 +684,8 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
             return ITEM_VIEW_TYPE_COUNT;
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             int count = 0;
             int activityCount = mDataModel.getActivityCount();
             if (!mShowDefaultActivity && mDataModel.getDefaultActivity() != null) {
@@ -693,7 +698,8 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
             return count;
         }
 
-        public Object getItem(int position) {
+        @Override
+		public Object getItem(int position) {
             final int itemViewType = getItemViewType(position);
             switch (itemViewType) {
                 case ITEM_VIEW_TYPE_FOOTER:
@@ -708,11 +714,13 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
             }
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return position;
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             final int itemViewType = getItemViewType(position);
             switch (itemViewType) {
                 case ITEM_VIEW_TYPE_FOOTER:

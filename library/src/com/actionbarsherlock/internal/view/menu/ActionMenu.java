@@ -49,26 +49,31 @@ public class ActionMenu implements Menu {
         return mContext;
     }
 
-    public MenuItem add(CharSequence title) {
+    @Override
+	public MenuItem add(CharSequence title) {
         return add(0, 0, 0, title);
     }
 
-    public MenuItem add(int titleRes) {
+    @Override
+	public MenuItem add(int titleRes) {
         return add(0, 0, 0, titleRes);
     }
 
-    public MenuItem add(int groupId, int itemId, int order, int titleRes) {
+    @Override
+	public MenuItem add(int groupId, int itemId, int order, int titleRes) {
         return add(groupId, itemId, order, mContext.getResources().getString(titleRes));
     }
 
-    public MenuItem add(int groupId, int itemId, int order, CharSequence title) {
+    @Override
+	public MenuItem add(int groupId, int itemId, int order, CharSequence title) {
         ActionMenuItem item = new ActionMenuItem(getContext(),
                 groupId, itemId, 0, order, title);
         mItems.add(order, item);
         return item;
     }
 
-    public int addIntentOptions(int groupId, int itemId, int order,
+    @Override
+	public int addIntentOptions(int groupId, int itemId, int order,
             ComponentName caller, Intent[] specifics, Intent intent, int flags,
             MenuItem[] outSpecificItems) {
         PackageManager pm = mContext.getPackageManager();
@@ -98,32 +103,38 @@ public class ActionMenu implements Menu {
         return N;
     }
 
-    public SubMenu addSubMenu(CharSequence title) {
+    @Override
+	public SubMenu addSubMenu(CharSequence title) {
         // TODO Implement submenus
         return null;
     }
 
-    public SubMenu addSubMenu(int titleRes) {
+    @Override
+	public SubMenu addSubMenu(int titleRes) {
         // TODO Implement submenus
         return null;
     }
 
-    public SubMenu addSubMenu(int groupId, int itemId, int order,
+    @Override
+	public SubMenu addSubMenu(int groupId, int itemId, int order,
             CharSequence title) {
         // TODO Implement submenus
         return null;
     }
 
-    public SubMenu addSubMenu(int groupId, int itemId, int order, int titleRes) {
+    @Override
+	public SubMenu addSubMenu(int groupId, int itemId, int order, int titleRes) {
         // TODO Implement submenus
         return null;
     }
 
-    public void clear() {
+    @Override
+	public void clear() {
         mItems.clear();
     }
 
-    public void close() {
+    @Override
+	public void close() {
     }
 
     private int findItemIndex(int id) {
@@ -138,15 +149,18 @@ public class ActionMenu implements Menu {
         return -1;
     }
 
-    public MenuItem findItem(int id) {
+    @Override
+	public MenuItem findItem(int id) {
         return mItems.get(findItemIndex(id));
     }
 
-    public MenuItem getItem(int index) {
+    @Override
+	public MenuItem getItem(int index) {
         return mItems.get(index);
     }
 
-    public boolean hasVisibleItems() {
+    @Override
+	public boolean hasVisibleItems() {
         final ArrayList<ActionMenuItem> items = mItems;
         final int itemCount = items.size();
 
@@ -176,11 +190,13 @@ public class ActionMenu implements Menu {
         return null;
     }
 
-    public boolean isShortcutKey(int keyCode, KeyEvent event) {
+    @Override
+	public boolean isShortcutKey(int keyCode, KeyEvent event) {
         return findItemWithShortcut(keyCode, event) != null;
     }
 
-    public boolean performIdentifierAction(int id, int flags) {
+    @Override
+	public boolean performIdentifierAction(int id, int flags) {
         final int index = findItemIndex(id);
         if (index < 0) {
             return false;
@@ -189,7 +205,8 @@ public class ActionMenu implements Menu {
         return mItems.get(index).invoke();
     }
 
-    public boolean performShortcut(int keyCode, KeyEvent event, int flags) {
+    @Override
+	public boolean performShortcut(int keyCode, KeyEvent event, int flags) {
         ActionMenuItem item = findItemWithShortcut(keyCode, event);
         if (item == null) {
             return false;
@@ -198,7 +215,8 @@ public class ActionMenu implements Menu {
         return item.invoke();
     }
 
-    public void removeGroup(int groupId) {
+    @Override
+	public void removeGroup(int groupId) {
         final ArrayList<ActionMenuItem> items = mItems;
         int itemCount = items.size();
         int i = 0;
@@ -212,11 +230,13 @@ public class ActionMenu implements Menu {
         }
     }
 
-    public void removeItem(int id) {
+    @Override
+	public void removeItem(int id) {
         mItems.remove(findItemIndex(id));
     }
 
-    public void setGroupCheckable(int group, boolean checkable,
+    @Override
+	public void setGroupCheckable(int group, boolean checkable,
             boolean exclusive) {
         final ArrayList<ActionMenuItem> items = mItems;
         final int itemCount = items.size();
@@ -230,7 +250,8 @@ public class ActionMenu implements Menu {
         }
     }
 
-    public void setGroupEnabled(int group, boolean enabled) {
+    @Override
+	public void setGroupEnabled(int group, boolean enabled) {
         final ArrayList<ActionMenuItem> items = mItems;
         final int itemCount = items.size();
 
@@ -242,7 +263,8 @@ public class ActionMenu implements Menu {
         }
     }
 
-    public void setGroupVisible(int group, boolean visible) {
+    @Override
+	public void setGroupVisible(int group, boolean visible) {
         final ArrayList<ActionMenuItem> items = mItems;
         final int itemCount = items.size();
 
@@ -254,11 +276,13 @@ public class ActionMenu implements Menu {
         }
     }
 
-    public void setQwertyMode(boolean isQwerty) {
+    @Override
+	public void setQwertyMode(boolean isQwerty) {
         mIsQwerty = isQwerty;
     }
 
-    public int size() {
+    @Override
+	public int size() {
         return mItems.size();
     }
 }

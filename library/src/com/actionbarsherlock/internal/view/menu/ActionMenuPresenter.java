@@ -254,7 +254,8 @@ public class ActionMenuPresenter extends BaseMenuPresenter
         return super.filterLeftoverView(parent, childIndex);
     }
 
-    public boolean onSubMenuSelected(SubMenuBuilder subMenu) {
+    @Override
+	public boolean onSubMenuSelected(SubMenuBuilder subMenu) {
         if (!subMenu.hasVisibleItems()) return false;
 
         SubMenuBuilder topSubMenu = subMenu;
@@ -368,7 +369,8 @@ public class ActionMenuPresenter extends BaseMenuPresenter
         return mReserveOverflow;
     }
 
-    public boolean flagActionItems() {
+    @Override
+	public boolean flagActionItems() {
         final ArrayList<MenuItemImpl> visibleItems = mMenu.getVisibleItems();
         final int itemsSize = visibleItems.size();
         int maxActions = mMaxItems;
@@ -557,11 +559,13 @@ public class ActionMenuPresenter extends BaseMenuPresenter
         @SuppressWarnings("unused")
         public static final Parcelable.Creator<SavedState> CREATOR
                 = new Parcelable.Creator<SavedState>() {
-            public SavedState createFromParcel(Parcel in) {
+            @Override
+			public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }
 
-            public SavedState[] newArray(int size) {
+            @Override
+			public SavedState[] newArray(int size) {
                 return new SavedState[size];
             }
         };
@@ -590,11 +594,13 @@ public class ActionMenuPresenter extends BaseMenuPresenter
             return true;
         }
 
-        public boolean needsDividerBefore() {
+        @Override
+		public boolean needsDividerBefore() {
             return false;
         }
 
-        public boolean needsDividerAfter() {
+        @Override
+		public boolean needsDividerAfter() {
             return false;
         }
 
@@ -702,7 +708,8 @@ public class ActionMenuPresenter extends BaseMenuPresenter
             mPopup = popup;
         }
 
-        public void run() {
+        @Override
+		public void run() {
             mMenu.changeMenuMode();
             final View menuView = (View) mMenuView;
             if (menuView != null && menuView.getWindowToken() != null && mPopup.tryShow()) {

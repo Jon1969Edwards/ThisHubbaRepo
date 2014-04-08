@@ -488,8 +488,10 @@
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
                 android:gravity="top"
+                android:padding="10dp"
                 android:hint="@string/commentHint"
-                android:textColor="#33b5e5"
+                android:textColor="#828282"
+                android:background="@drawable/edit_text_hubba"
                 android:textSize="20sp" />
         </RelativeLayout>
 		

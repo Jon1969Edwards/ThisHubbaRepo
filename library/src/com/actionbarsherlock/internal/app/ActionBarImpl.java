@@ -246,11 +246,13 @@ public class ActionBarImpl extends ActionBar {
         }
     }
 
-    public void addOnMenuVisibilityListener(OnMenuVisibilityListener listener) {
+    @Override
+	public void addOnMenuVisibilityListener(OnMenuVisibilityListener listener) {
         mMenuVisibilityListeners.add(listener);
     }
 
-    public void removeOnMenuVisibilityListener(OnMenuVisibilityListener listener) {
+    @Override
+	public void removeOnMenuVisibilityListener(OnMenuVisibilityListener listener) {
         mMenuVisibilityListeners.remove(listener);
     }
 
@@ -311,7 +313,8 @@ public class ActionBarImpl extends ActionBar {
         setSubtitle(mContext.getString(resId));
     }
 
-    public void setSelectedNavigationItem(int position) {
+    @Override
+	public void setSelectedNavigationItem(int position) {
         switch (mActionView.getNavigationMode()) {
         case NAVIGATION_MODE_TABS:
             selectTab(mTabs.get(position));
@@ -325,7 +328,8 @@ public class ActionBarImpl extends ActionBar {
         }
     }
 
-    public void removeAllTabs() {
+    @Override
+	public void removeAllTabs() {
         cleanupTabs();
     }
 
@@ -340,54 +344,66 @@ public class ActionBarImpl extends ActionBar {
         mSavedTabPosition = INVALID_POSITION;
     }
 
-    public void setTitle(CharSequence title) {
+    @Override
+	public void setTitle(CharSequence title) {
         mActionView.setTitle(title);
     }
 
-    public void setSubtitle(CharSequence subtitle) {
+    @Override
+	public void setSubtitle(CharSequence subtitle) {
         mActionView.setSubtitle(subtitle);
     }
 
-    public void setDisplayOptions(int options) {
+    @Override
+	public void setDisplayOptions(int options) {
         mActionView.setDisplayOptions(options);
     }
 
-    public void setDisplayOptions(int options, int mask) {
+    @Override
+	public void setDisplayOptions(int options, int mask) {
         final int current = mActionView.getDisplayOptions();
         mActionView.setDisplayOptions((options & mask) | (current & ~mask));
     }
 
-    public void setBackgroundDrawable(Drawable d) {
+    @Override
+	public void setBackgroundDrawable(Drawable d) {
         mContainerView.setPrimaryBackground(d);
     }
 
-    public void setStackedBackgroundDrawable(Drawable d) {
+    @Override
+	public void setStackedBackgroundDrawable(Drawable d) {
         mContainerView.setStackedBackground(d);
     }
 
-    public void setSplitBackgroundDrawable(Drawable d) {
+    @Override
+	public void setSplitBackgroundDrawable(Drawable d) {
         if (mSplitView != null) {
             mSplitView.setSplitBackground(d);
         }
     }
 
-    public View getCustomView() {
+    @Override
+	public View getCustomView() {
         return mActionView.getCustomNavigationView();
     }
 
-    public CharSequence getTitle() {
+    @Override
+	public CharSequence getTitle() {
         return mActionView.getTitle();
     }
 
-    public CharSequence getSubtitle() {
+    @Override
+	public CharSequence getSubtitle() {
         return mActionView.getSubtitle();
     }
 
-    public int getNavigationMode() {
+    @Override
+	public int getNavigationMode() {
         return mActionView.getNavigationMode();
     }
 
-    public int getDisplayOptions() {
+    @Override
+	public int getDisplayOptions() {
         return mActionView.getDisplayOptions();
     }
 
@@ -614,7 +630,8 @@ public class ActionBarImpl extends ActionBar {
         }
     }
 
-    public boolean isShowing() {
+    @Override
+	public boolean isShowing() {
         return mContainerView.getVisibility() == View.VISIBLE;
     }
 
@@ -633,7 +650,8 @@ public class ActionBarImpl extends ActionBar {
         }
     }
 
-    public Context getThemedContext() {
+    @Override
+	public Context getThemedContext() {
         if (mThemedContext == null) {
             TypedValue outValue = new TypedValue();
             Resources.Theme currentTheme = mContext.getTheme();
@@ -766,7 +784,8 @@ public class ActionBarImpl extends ActionBar {
             return mCustomView != null ? mCustomView.get() : null;
         }
 
-        public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
+        @Override
+		public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
             if (mCallback != null) {
                 return mCallback.onActionItemClicked(this, item);
             } else {
@@ -793,7 +812,8 @@ public class ActionBarImpl extends ActionBar {
         public void onCloseSubMenu(SubMenuBuilder menu) {
         }
 
-        public void onMenuModeChange(MenuBuilder menu) {
+        @Override
+		public void onMenuModeChange(MenuBuilder menu) {
             if (mCallback == null) {
                 return;
             }

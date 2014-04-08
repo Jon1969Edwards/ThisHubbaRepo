@@ -26,28 +26,32 @@ public class NineLinearLayout extends LinearLayout {
         super.setVisibility(visibility);
     }
 
-    public float getAlpha() {
+    @Override
+	public float getAlpha() {
         if (AnimatorProxy.NEEDS_PROXY) {
             return mProxy.getAlpha();
         } else {
             return super.getAlpha();
         }
     }
-    public void setAlpha(float alpha) {
+    @Override
+	public void setAlpha(float alpha) {
         if (AnimatorProxy.NEEDS_PROXY) {
             mProxy.setAlpha(alpha);
         } else {
             super.setAlpha(alpha);
         }
     }
-    public float getTranslationX() {
+    @Override
+	public float getTranslationX() {
         if (AnimatorProxy.NEEDS_PROXY) {
             return mProxy.getTranslationX();
         } else {
             return super.getTranslationX();
         }
     }
-    public void setTranslationX(float translationX) {
+    @Override
+	public void setTranslationX(float translationX) {
         if (AnimatorProxy.NEEDS_PROXY) {
             mProxy.setTranslationX(translationX);
         } else {

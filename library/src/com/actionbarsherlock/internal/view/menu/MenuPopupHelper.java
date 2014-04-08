@@ -137,7 +137,8 @@ public class MenuPopupHelper implements AdapterView.OnItemClickListener, View.On
         }
     }
 
-    public void onDismiss() {
+    @Override
+	public void onDismiss() {
         mPopup = null;
         mMenu.close();
         if (mTreeObserver != null) {
@@ -158,7 +159,8 @@ public class MenuPopupHelper implements AdapterView.OnItemClickListener, View.On
         adapter.mAdapterMenu.performItemAction(adapter.getItem(position), 0);
     }
 
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
+    @Override
+	public boolean onKey(View v, int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_MENU) {
             dismiss();
             return true;
@@ -281,11 +283,13 @@ public class MenuPopupHelper implements AdapterView.OnItemClickListener, View.On
         return false;
     }
 
-    public boolean expandItemActionView(MenuBuilder menu, MenuItemImpl item) {
+    @Override
+	public boolean expandItemActionView(MenuBuilder menu, MenuItemImpl item) {
         return false;
     }
 
-    public boolean collapseItemActionView(MenuBuilder menu, MenuItemImpl item) {
+    @Override
+	public boolean collapseItemActionView(MenuBuilder menu, MenuItemImpl item) {
         return false;
     }
 
@@ -313,7 +317,8 @@ public class MenuPopupHelper implements AdapterView.OnItemClickListener, View.On
             findExpandedIndex();
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             ArrayList<MenuItemImpl> items = mOverflowOnly ?
                     mAdapterMenu.getNonActionItems() : mAdapterMenu.getVisibleItems();
             if (mExpandedIndex < 0) {
@@ -322,7 +327,8 @@ public class MenuPopupHelper implements AdapterView.OnItemClickListener, View.On
             return items.size() - 1;
         }
 
-        public MenuItemImpl getItem(int position) {
+        @Override
+		public MenuItemImpl getItem(int position) {
             ArrayList<MenuItemImpl> items = mOverflowOnly ?
                     mAdapterMenu.getNonActionItems() : mAdapterMenu.getVisibleItems();
             if (mExpandedIndex >= 0 && position >= mExpandedIndex) {
@@ -331,13 +337,15 @@ public class MenuPopupHelper implements AdapterView.OnItemClickListener, View.On
             return items.get(position);
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             // Since a menu item's ID is optional, we'll use the position as an
             // ID for the item in the AdapterView
             return position;
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
                 convertView = mInflater.inflate(ITEM_LAYOUT, parent, false);
             }

@@ -253,11 +253,13 @@ public abstract class Keyframe implements Cloneable {
             mValueType = mHasValue ? value.getClass() : Object.class;
         }
 
-        public Object getValue() {
+        @Override
+		public Object getValue() {
             return mValue;
         }
 
-        public void setValue(Object value) {
+        @Override
+		public void setValue(Object value) {
             mValue = value;
             mHasValue = (value != null);
         }
@@ -296,11 +298,13 @@ public abstract class Keyframe implements Cloneable {
             return mValue;
         }
 
-        public Object getValue() {
+        @Override
+		public Object getValue() {
             return mValue;
         }
 
-        public void setValue(Object value) {
+        @Override
+		public void setValue(Object value) {
             if (value != null && value.getClass() == Integer.class) {
                 mValue = ((Integer)value).intValue();
                 mHasValue = true;
@@ -340,11 +344,13 @@ public abstract class Keyframe implements Cloneable {
             return mValue;
         }
 
-        public Object getValue() {
+        @Override
+		public Object getValue() {
             return mValue;
         }
 
-        public void setValue(Object value) {
+        @Override
+		public void setValue(Object value) {
             if (value != null && value.getClass() == Float.class) {
                 mValue = ((Float)value).floatValue();
                 mHasValue = true;

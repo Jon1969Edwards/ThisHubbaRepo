@@ -80,7 +80,8 @@ public abstract class BaseMenuPresenter implements MenuPresenter {
     /**
      * Reuses item views when it can
      */
-    public void updateMenuView(boolean cleared) {
+    @Override
+	public void updateMenuView(boolean cleared) {
         final ViewGroup parent = (ViewGroup) mMenuView;
         if (parent == null) return;
 
@@ -142,7 +143,8 @@ public abstract class BaseMenuPresenter implements MenuPresenter {
         return true;
     }
 
-    public void setCallback(Callback cb) {
+    @Override
+	public void setCallback(Callback cb) {
         mCallback = cb;
     }
 
@@ -196,32 +198,38 @@ public abstract class BaseMenuPresenter implements MenuPresenter {
         return true;
     }
 
-    public void onCloseMenu(MenuBuilder menu, boolean allMenusAreClosing) {
+    @Override
+	public void onCloseMenu(MenuBuilder menu, boolean allMenusAreClosing) {
         if (mCallback != null) {
             mCallback.onCloseMenu(menu, allMenusAreClosing);
         }
     }
 
-    public boolean onSubMenuSelected(SubMenuBuilder menu) {
+    @Override
+	public boolean onSubMenuSelected(SubMenuBuilder menu) {
         if (mCallback != null) {
             return mCallback.onOpenSubMenu(menu);
         }
         return false;
     }
 
-    public boolean flagActionItems() {
+    @Override
+	public boolean flagActionItems() {
         return false;
     }
 
-    public boolean expandItemActionView(MenuBuilder menu, MenuItemImpl item) {
+    @Override
+	public boolean expandItemActionView(MenuBuilder menu, MenuItemImpl item) {
         return false;
     }
 
-    public boolean collapseItemActionView(MenuBuilder menu, MenuItemImpl item) {
+    @Override
+	public boolean collapseItemActionView(MenuBuilder menu, MenuItemImpl item) {
         return false;
     }
 
-    public int getId() {
+    @Override
+	public int getId() {
         return mId;
     }
 

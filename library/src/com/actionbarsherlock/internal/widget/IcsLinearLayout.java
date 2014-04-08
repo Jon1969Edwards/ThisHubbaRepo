@@ -75,7 +75,8 @@ public class IcsLinearLayout extends NineLinearLayout {
      *                     {@link #SHOW_DIVIDER_MIDDLE}, or {@link #SHOW_DIVIDER_END},
      *                     or {@link #SHOW_DIVIDER_NONE} to show no dividers.
      */
-    public void setShowDividers(int showDividers) {
+    @Override
+	public void setShowDividers(int showDividers) {
         if (showDividers != mShowDividers) {
             requestLayout();
             invalidate(); //XXX This is required if you are toggling a divider off
@@ -87,7 +88,8 @@ public class IcsLinearLayout extends NineLinearLayout {
      * @return A flag set indicating how dividers should be shown around items.
      * @see #setShowDividers(int)
      */
-    public int getShowDividers() {
+    @Override
+	public int getShowDividers() {
         return mShowDividers;
     }
 
@@ -96,7 +98,8 @@ public class IcsLinearLayout extends NineLinearLayout {
      * @param divider Drawable that will divide each item.
      * @see #setShowDividers(int)
      */
-    public void setDividerDrawable(Drawable divider) {
+    @Override
+	public void setDividerDrawable(Drawable divider) {
         if (divider == mDivider) {
             return;
         }
@@ -121,7 +124,8 @@ public class IcsLinearLayout extends NineLinearLayout {
      * @see #setDividerDrawable(Drawable)
      * @see #getDividerPadding()
      */
-    public void setDividerPadding(int padding) {
+    @Override
+	public void setDividerPadding(int padding) {
         mDividerPadding = padding;
     }
 
@@ -132,7 +136,8 @@ public class IcsLinearLayout extends NineLinearLayout {
      * @see #setDividerDrawable(Drawable)
      * @see #setDividerPadding(int)
      */
-    public int getDividerPadding() {
+    @Override
+	public int getDividerPadding() {
         return mDividerPadding;
     }
 
@@ -286,7 +291,8 @@ public class IcsLinearLayout extends NineLinearLayout {
      *
      * @attr ref android.R.styleable#LinearLayout_measureWithLargestChild
      */
-    public boolean isMeasureWithLargestChildEnabled() {
+    @Override
+	public boolean isMeasureWithLargestChildEnabled() {
         return mUseLargestChild;
     }
 
@@ -302,7 +308,8 @@ public class IcsLinearLayout extends NineLinearLayout {
      *
      * @attr ref android.R.styleable#LinearLayout_measureWithLargestChild
      */
-    public void setMeasureWithLargestChildEnabled(boolean enabled) {
+    @Override
+	public void setMeasureWithLargestChildEnabled(boolean enabled) {
         mUseLargestChild = enabled;
     }
 

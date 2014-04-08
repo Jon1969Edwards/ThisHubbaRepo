@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background_2" 
+    android:background="@drawable/plain_background_hubba"
+    android:paddingTop="115dp"
     android:windowSoftInputMode="stateHidden">
 
     <LinearLayout
@@ -487,64 +488,12 @@
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
                 android:gravity="top"
+                android:padding="10dp"
                 android:hint="@string/commentHint"
-                android:textColor="#33b5e5"
+                android:textColor="#828282"
+                android:background="@drawable/edit_text_hubba"
                 android:textSize="20sp" />
         </RelativeLayout>
-		<!-- 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp" >
-
-            <TextView
-                android:id="@+id/showOff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/browseButton"
-                android:layout_marginBottom="5dp"
-                android:text="@string/showOff"
-                android:textColor="#FFF"
-                android:textSize="20sp"
-                tools:context=".MainActivity" />
-
-            <Button
-                android:id="@+id/browseButton"
-                android:layout_width="wrap_content"
-                android:layout_below="@+id/showOff"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/button_layout"
-                android:text="@string/browseButton"
-                android:textColor="#FFF"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/browseBar"
-                android:textAllCaps="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/browseBar"
-                android:layout_toLeftOf="@+id/browseButton"
-                android:textColor="#000"
-                android:textSize="15sp"
-                tools:context=".MainActivity" />
-
-            <ImageView
-                android:id="@+id/showOffImage"
-                android:layout_marginLeft="20dp"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@+id/showOff"
-                android:src="@drawable/gettinthere"
-                android:scaleType="centerCrop" />
-
-        </RelativeLayout>
-		-->
 		
         <RelativeLayout
             android:layout_width="fill_parent"

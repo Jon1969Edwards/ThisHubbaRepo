@@ -30,6 +30,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
@@ -395,7 +396,8 @@ public class IcsSpinner extends IcsAbsSpinner implements OnClickListener {
         return handled;
     }
 
-    public void onClick(DialogInterface dialog, int which) {
+    @Override
+	public void onClick(DialogInterface dialog, int which) {
         setSelection(which);
         dialog.dismiss();
     }
@@ -487,38 +489,46 @@ public class IcsSpinner extends IcsAbsSpinner implements OnClickListener {
             }
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             return mAdapter == null ? 0 : mAdapter.getCount();
         }
 
-        public Object getItem(int position) {
+        @Override
+		public Object getItem(int position) {
             return mAdapter == null ? null : mAdapter.getItem(position);
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return mAdapter == null ? -1 : mAdapter.getItemId(position);
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             return getDropDownView(position, convertView, parent);
         }
 
-        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getDropDownView(int position, View convertView, ViewGroup parent) {
             return mAdapter == null ? null :
                     mAdapter.getDropDownView(position, convertView, parent);
         }
 
-        public boolean hasStableIds() {
+        @Override
+		public boolean hasStableIds() {
             return mAdapter != null && mAdapter.hasStableIds();
         }
 
-        public void registerDataSetObserver(DataSetObserver observer) {
+        @Override
+		public void registerDataSetObserver(DataSetObserver observer) {
             if (mAdapter != null) {
                 mAdapter.registerDataSetObserver(observer);
             }
         }
 
-        public void unregisterDataSetObserver(DataSetObserver observer) {
+        @Override
+		public void unregisterDataSetObserver(DataSetObserver observer) {
             if (mAdapter != null) {
                 mAdapter.unregisterDataSetObserver(observer);
             }
@@ -528,7 +538,8 @@ public class IcsSpinner extends IcsAbsSpinner implements OnClickListener {
          * If the wrapped SpinnerAdapter is also a ListAdapter, delegate this call.
          * Otherwise, return true.
          */
-        public boolean areAllItemsEnabled() {
+        @Override
+		public boolean areAllItemsEnabled() {
             final ListAdapter adapter = mListAdapter;
             if (adapter != null) {
                 return adapter.areAllItemsEnabled();
@@ -541,7 +552,8 @@ public class IcsSpinner extends IcsAbsSpinner implements OnClickListener {
          * If the wrapped SpinnerAdapter is also a ListAdapter, delegate this call.
          * Otherwise, return true.
          */
-        public boolean isEnabled(int position) {
+        @Override
+		public boolean isEnabled(int position) {
             final ListAdapter adapter = mListAdapter;
             if (adapter != null) {
                 return adapter.isEnabled(position);
@@ -550,15 +562,18 @@ public class IcsSpinner extends IcsAbsSpinner implements OnClickListener {
             }
         }
 
-        public int getItemViewType(int position) {
+        @Override
+		public int getItemViewType(int position) {
             return 0;
         }
 
-        public int getViewTypeCount() {
+        @Override
+		public int getViewTypeCount() {
             return 1;
         }
 
-        public boolean isEmpty() {
+        @Override
+		public boolean isEmpty() {
             return getCount() == 0;
         }
     }
@@ -648,7 +663,8 @@ public class IcsSpinner extends IcsAbsSpinner implements OnClickListener {
             setModal(true);
             setPromptPosition(POSITION_PROMPT_ABOVE);
             setOnItemClickListener(new OnItemClickListener() {
-                @SuppressWarnings("rawtypes")
+                @Override
+				@SuppressWarnings("rawtypes")
                 public void onItemClick(AdapterView parent, View v, int position, long id) {
                     IcsSpinner.this.setSelection(position);
                     dismiss();
@@ -662,11 +678,13 @@ public class IcsSpinner extends IcsAbsSpinner implements OnClickListener {
             mAdapter = adapter;
         }
 
-        public CharSequence getHintText() {
+        @Override
+		public CharSequence getHintText() {
             return mHintText;
         }
 
-        public void setPromptText(CharSequence hintText) {
+        @Override
+		public void setPromptText(CharSequence hintText) {
             // Hint text is ignored for dropdowns, but maintain it here.
             mHintText = hintText;
         }
@@ -696,7 +714,7 @@ public class IcsSpinner extends IcsAbsSpinner implements OnClickListener {
             setHorizontalOffset(bgOffset + spinnerPaddingLeft);
             setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
             super.show();
-            getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            getListView().setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
             setSelection(IcsSpinner.this.getSelectedItemPosition());
         }
     }

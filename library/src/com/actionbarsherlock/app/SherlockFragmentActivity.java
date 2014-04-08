@@ -138,19 +138,22 @@ public class SherlockFragmentActivity extends Watson implements OnActionModeStar
     // Native menu handling
     ///////////////////////////////////////////////////////////////////////////
 
-    public MenuInflater getSupportMenuInflater() {
+    @Override
+	public MenuInflater getSupportMenuInflater() {
         if (DEBUG) Log.d(TAG, "[getSupportMenuInflater]");
 
         return getSherlock().getMenuInflater();
     }
 
-    public void invalidateOptionsMenu() {
+    @Override
+	public void invalidateOptionsMenu() {
         if (DEBUG) Log.d(TAG, "[invalidateOptionsMenu]");
 
         getSherlock().dispatchInvalidateOptionsMenu();
     }
 
-    public void supportInvalidateOptionsMenu() {
+    @Override
+	public void supportInvalidateOptionsMenu() {
         if (DEBUG) Log.d(TAG, "[supportInvalidateOptionsMenu]");
 
         invalidateOptionsMenu();
@@ -235,15 +238,18 @@ public class SherlockFragmentActivity extends Watson implements OnActionModeStar
     // Sherlock menu handling
     ///////////////////////////////////////////////////////////////////////////
 
-    public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
 
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
         return false;
     }
 

@@ -403,31 +403,38 @@ public class MenuBuilder implements Menu {
         return item;
     }
 
-    public MenuItem add(CharSequence title) {
+    @Override
+	public MenuItem add(CharSequence title) {
         return addInternal(0, 0, 0, title);
     }
 
-    public MenuItem add(int titleRes) {
+    @Override
+	public MenuItem add(int titleRes) {
         return addInternal(0, 0, 0, mResources.getString(titleRes));
     }
 
-    public MenuItem add(int group, int id, int categoryOrder, CharSequence title) {
+    @Override
+	public MenuItem add(int group, int id, int categoryOrder, CharSequence title) {
         return addInternal(group, id, categoryOrder, title);
     }
 
-    public MenuItem add(int group, int id, int categoryOrder, int title) {
+    @Override
+	public MenuItem add(int group, int id, int categoryOrder, int title) {
         return addInternal(group, id, categoryOrder, mResources.getString(title));
     }
 
-    public SubMenu addSubMenu(CharSequence title) {
+    @Override
+	public SubMenu addSubMenu(CharSequence title) {
         return addSubMenu(0, 0, 0, title);
     }
 
-    public SubMenu addSubMenu(int titleRes) {
+    @Override
+	public SubMenu addSubMenu(int titleRes) {
         return addSubMenu(0, 0, 0, mResources.getString(titleRes));
     }
 
-    public SubMenu addSubMenu(int group, int id, int categoryOrder, CharSequence title) {
+    @Override
+	public SubMenu addSubMenu(int group, int id, int categoryOrder, CharSequence title) {
         final MenuItemImpl item = (MenuItemImpl) addInternal(group, id, categoryOrder, title);
         final SubMenuBuilder subMenu = new SubMenuBuilder(mContext, this, item);
         item.setSubMenu(subMenu);
@@ -435,11 +442,13 @@ public class MenuBuilder implements Menu {
         return subMenu;
     }
 
-    public SubMenu addSubMenu(int group, int id, int categoryOrder, int title) {
+    @Override
+	public SubMenu addSubMenu(int group, int id, int categoryOrder, int title) {
         return addSubMenu(group, id, categoryOrder, mResources.getString(title));
     }
 
-    public int addIntentOptions(int group, int id, int categoryOrder, ComponentName caller,
+    @Override
+	public int addIntentOptions(int group, int id, int categoryOrder, ComponentName caller,
             Intent[] specifics, Intent intent, int flags, MenuItem[] outSpecificItems) {
         PackageManager pm = mContext.getPackageManager();
         final List<ResolveInfo> lri =
@@ -468,11 +477,13 @@ public class MenuBuilder implements Menu {
         return N;
     }
 
-    public void removeItem(int id) {
+    @Override
+	public void removeItem(int id) {
         removeItemAtInt(findItemIndex(id), true);
     }
 
-    public void removeGroup(int group) {
+    @Override
+	public void removeGroup(int group) {
         final int i = findGroupIndex(group);
 
         if (i >= 0) {
@@ -519,7 +530,8 @@ public class MenuBuilder implements Menu {
         onItemsChanged(true);
     }
 
-    public void clear() {
+    @Override
+	public void clear() {
         if (mExpandedItem != null) {
             collapseItemActionView(mExpandedItem);
         }
@@ -544,7 +556,8 @@ public class MenuBuilder implements Menu {
         }
     }
 
-    public void setGroupCheckable(int group, boolean checkable, boolean exclusive) {
+    @Override
+	public void setGroupCheckable(int group, boolean checkable, boolean exclusive) {
         final int N = mItems.size();
 
         for (int i = 0; i < N; i++) {
@@ -556,7 +569,8 @@ public class MenuBuilder implements Menu {
         }
     }
 
-    public void setGroupVisible(int group, boolean visible) {
+    @Override
+	public void setGroupVisible(int group, boolean visible) {
         final int N = mItems.size();
 
         // We handle the notification of items being changed ourselves, so we use setVisibleInt rather
@@ -573,7 +587,8 @@ public class MenuBuilder implements Menu {
         if (changedAtLeastOneItem) onItemsChanged(true);
     }
 
-    public void setGroupEnabled(int group, boolean enabled) {
+    @Override
+	public void setGroupEnabled(int group, boolean enabled) {
         final int N = mItems.size();
 
         for (int i = 0; i < N; i++) {
@@ -584,7 +599,8 @@ public class MenuBuilder implements Menu {
         }
     }
 
-    public boolean hasVisibleItems() {
+    @Override
+	public boolean hasVisibleItems() {
         final int size = size();
 
         for (int i = 0; i < size; i++) {
@@ -597,7 +613,8 @@ public class MenuBuilder implements Menu {
         return false;
     }
 
-    public MenuItem findItem(int id) {
+    @Override
+	public MenuItem findItem(int id) {
         final int size = size();
         for (int i = 0; i < size; i++) {
             MenuItemImpl item = mItems.get(i);
@@ -650,20 +667,24 @@ public class MenuBuilder implements Menu {
         return -1;
     }
 
-    public int size() {
+    @Override
+	public int size() {
         return mItems.size();
     }
 
     /** {@inheritDoc} */
-    public MenuItem getItem(int index) {
+    @Override
+	public MenuItem getItem(int index) {
         return mItems.get(index);
     }
 
-    public boolean isShortcutKey(int keyCode, KeyEvent event) {
+    @Override
+	public boolean isShortcutKey(int keyCode, KeyEvent event) {
         return findItemWithShortcutForKey(keyCode, event) != null;
     }
 
-    public void setQwertyMode(boolean isQwerty) {
+    @Override
+	public void setQwertyMode(boolean isQwerty) {
         mQwertyMode = isQwerty;
 
         onItemsChanged(false);
@@ -758,7 +779,8 @@ public class MenuBuilder implements Menu {
         return 0;
     }
 
-    public boolean performShortcut(int keyCode, KeyEvent event, int flags) {
+    @Override
+	public boolean performShortcut(int keyCode, KeyEvent event, int flags) {
         final MenuItemImpl item = findItemWithShortcutForKey(keyCode, event);
 
         boolean handled = false;
@@ -864,7 +886,8 @@ public class MenuBuilder implements Menu {
         return null;
     }
 
-    public boolean performIdentifierAction(int id, int flags) {
+    @Override
+	public boolean performIdentifierAction(int id, int flags) {
         // Look for an item whose identifier is the id.
         return performItemAction(findItem(id), flags);
     }
@@ -925,7 +948,8 @@ public class MenuBuilder implements Menu {
     }
 
     /** {@inheritDoc} */
-    public void close() {
+    @Override
+	public void close() {
         close(true);
     }
 

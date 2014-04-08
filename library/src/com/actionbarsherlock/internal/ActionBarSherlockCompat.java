@@ -525,11 +525,13 @@ public class ActionBarSherlockCompat extends ActionBarSherlock implements MenuBu
         return true;
     }
 
-    public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
+    @Override
+	public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
         return callbackOptionsItemSelected(item);
     }
 
-    public void onMenuModeChange(MenuBuilder menu) {
+    @Override
+	public void onMenuModeChange(MenuBuilder menu) {
         reopenMenu(true);
     }
 
@@ -1176,19 +1178,23 @@ public class ActionBarSherlockCompat extends ActionBarSherlock implements MenuBu
             mWrapped = wrapped;
         }
 
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        @Override
+		public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             return mWrapped.onCreateActionMode(mode, menu);
         }
 
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+        @Override
+		public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
             return mWrapped.onPrepareActionMode(mode, menu);
         }
 
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        @Override
+		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             return mWrapped.onActionItemClicked(mode, item);
         }
 
-        public void onDestroyActionMode(ActionMode mode) {
+        @Override
+		public void onDestroyActionMode(ActionMode mode) {
             mWrapped.onDestroyActionMode(mode);
             if (mActionModeView != null) {
                 mActionModeView.setVisibility(View.GONE);

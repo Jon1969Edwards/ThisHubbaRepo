@@ -5,5 +5,9 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 
 // TODO
 - Start using 9patch images (from android or fb and color them in photoshop) for things!
+- Reload spot from map to get rating values when altered (may have to be on the backend)
 - add delete buttons to images when adding a spot to allow for using the other button
-- use real db for thangs
+- Disable locate on map button if you came from the map
+- OR (or possibly and) - put something after address to say "or locate on map"
+- Make sure all old code is taken out
+- Diff markers for adding a spot
