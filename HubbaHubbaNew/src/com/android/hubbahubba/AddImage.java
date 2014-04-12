@@ -63,7 +63,7 @@ public class AddImage extends Activity{
 		takePhotoButton = (ImageButton) findViewById(R.id.takePhotoButton);
 		uploadPhotoButton = (ImageButton) findViewById(R.id.uploadPhotoButton);
 		riderName = (EditText) findViewById(R.id.rider);
-		userName = (EditText) findViewById(R.id.user);
+		//userName = (EditText) findViewById(R.id.user);
 		
 		
 		uploadPhotoButton.setOnClickListener(new OnClickListener() {

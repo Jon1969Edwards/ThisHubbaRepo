@@ -5,6 +5,7 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 
 // TODO
 - USE http://square.github.io/okhttp/ for getting images
+- DELETE button for uploading photos
 - Start using 9patch images (from android or fb and color them in photoshop) for things!
 - Reload spot from map to get rating values when altered (may have to be on the backend)
 - add delete buttons to images when adding a spot to allow for using the other button
@@ -20,3 +21,4 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 - rider field (user or )
 - add up and down ratings for spots
 - videos along with photos?
+- Delete endpoints

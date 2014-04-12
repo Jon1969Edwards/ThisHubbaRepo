@@ -16,7 +16,39 @@
 
 package com.actionbarsherlock.widget;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.WeakHashMap;
+
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.ComponentName;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.widget.ResourceCursorAdapter;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.text.style.TextAppearanceSpan;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.actionbarsherlock.R;
 
@@ -339,14 +371,13 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements OnClickListene
                 && (flags & SearchManager.FLAG_QUERY_REFINEMENT) != 0)) {
             views.mIconRefine.setVisibility(View.VISIBLE);
             views.mIconRefine.setTag(views.mText1.getText());
-            views.mIconRefine.setOnClickListener(this);
+            views.mIconRefine.setOnClickListener((android.view.View.OnClickListener) this);
         } else {
             views.mIconRefine.setVisibility(View.GONE);
         }
     }
 
-    @Override
-	public void onClick(View v) {
+    public void onClick(View v) {
         Object tag = v.getTag();
         if (tag instanceof CharSequence) {
             mSearchView.onQueryRefine((CharSequence) tag);
@@ -701,4 +732,10 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements OnClickListene
             return null;
         }
     }
+
+	@Override
+	public void onClick(DialogInterface arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 }

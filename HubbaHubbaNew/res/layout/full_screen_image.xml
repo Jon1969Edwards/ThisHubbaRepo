@@ -35,7 +35,7 @@
 				    android:id="@+id/thumbs_down"
 				    android:layout_width="40dp"
 				    android:layout_height="40dp"
-				    android:background="@drawable/thumbs_down_crop_copy"
+				    android:background="@drawable/ic_action_bad"
 				    />
 			</RelativeLayout>
 			
@@ -53,7 +53,7 @@
 				    android:id="@+id/thumbs_up"
 				    android:layout_width="40dp"
 				    android:layout_height="40dp"
-				    android:background="@drawable/thumbs_up_crop_copy"
+				    android:background="@drawable/ic_action_good"
 				    />
 			</RelativeLayout>
 			

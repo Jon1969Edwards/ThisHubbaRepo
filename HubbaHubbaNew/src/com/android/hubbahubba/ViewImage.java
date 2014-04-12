@@ -1,12 +1,9 @@
 package com.android.hubbahubba;
 
-import com.squareup.picasso.Picasso;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
@@ -14,7 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class ViewImage extends Activity {
 
@@ -61,13 +59,6 @@ public class ViewImage extends Activity {
 		    	   .resize(width, height)
 		    	   .placeholder(R.drawable.ic_empty)
 		    	   .into(imageView);
-			
-	        /*
-			BitmapFactory.Options bfo = new BitmapFactory.Options();
-			bfo.inSampleSize = 2;
-			mBitmap = BitmapFactory.decodeResource(getResources(), mImageID, bfo);
-			imageView.setImageBitmap(mBitmap);
-			*/
 		}
 		
 		//Buttons to incriment/decriment counter
