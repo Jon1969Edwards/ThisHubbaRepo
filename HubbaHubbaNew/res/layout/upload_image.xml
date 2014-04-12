@@ -69,7 +69,7 @@
 		    <ImageButton
 		        android:id="@+id/takePhotoButton"
 		        android:contentDescription="Take photo button"
-		        android:background="@drawable/take_photo_background"
+		        android:background="@drawable/take_picture_background"
 		        android:scaleType="centerCrop"
 		        android:layout_weight="1"
 		        android:layout_height="150dp"
