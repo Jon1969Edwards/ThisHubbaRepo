@@ -418,6 +418,7 @@ public class AddLocation extends Activity {
 	
 	/** Create a File for saving an image or video */
 	@SuppressLint("SimpleDateFormat")
+	/*
 	private static File getOutputMediaFile(int type){
 	    // To be safe, you should check that the SDCard is mounted
 	    // using Environment.getExternalStorageState() before doing this.
@@ -450,6 +451,7 @@ public class AddLocation extends Activity {
 
 	    return mediaFile;
 	}
+	*/
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

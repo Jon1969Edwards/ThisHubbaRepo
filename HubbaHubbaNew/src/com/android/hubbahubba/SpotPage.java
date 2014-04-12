@@ -4,6 +4,7 @@ package com.android.hubbahubba;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -11,7 +12,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,15 +38,14 @@ public class SpotPage extends Activity {
 	private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
 	private static final String JPEG_FILE_SUFFIX = "Hubba_Hubba";
 	private static final String JPEG_FILE_PREFIX = "Hubba_Hubba";
+	private HubbaGridAdapter dataAdapter;
+	private ArrayList<HashMap<String, String>> imagesArray;
 	//private GridAdapter gridAdapter;
 
 
 	//ImageLoader imageLoader = ImageLoader.getInstance();
 	//private static final String TEST_FILE_NAME = "Universal Image Loader @#&=+-_.,!()~'%20.png";
-
-	HubbaDBAdapter dbHelper;
 	int keyValue = -1;
-	Cursor c = null;
 
 	TextView mRating, mLevel, mDifficulty, mTitle, mDist, mComments, mType;
 	ImageView mImage;
@@ -55,6 +54,7 @@ public class SpotPage extends Activity {
 	String mCurrentPhotoPath;
 	Context context = this;
 	String spot_id;
+	
 	
 	//NEW VARS
 	Bitmap mImageBitmap;
@@ -74,10 +74,7 @@ public class SpotPage extends Activity {
 		mDist = (TextView) findViewById(R.id.txtDistance);
 		mDifficulty = (TextView) findViewById(R.id.txtDiffRating);
 		mImage = (ImageView) findViewById(R.id.imgThumbnail);
-
-		dbHelper = new HubbaDBAdapter(this);
-		dbHelper.open();
-		c = dbHelper.queryAll(keyValue);
+		
 		try{
 			/*if (c.moveToFirst()) {
 				
@@ -150,8 +147,6 @@ public class SpotPage extends Activity {
 		}
 		finally {
 	        // this gets called even if there is an exception somewhere above
-	        if(c != null)
-            c.close();
 		 }
 	  
 		// create buttons
@@ -186,7 +181,10 @@ public class SpotPage extends Activity {
 		
 		uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				Bundle bundleData = new Bundle();
+				bundleData.putString("spot_id", spot_id);
 				Intent intent = new Intent(SpotPage.this, AddImage.class);
+				intent.putExtras(bundleData);
 				startActivity(intent);
 			}
 		});
@@ -227,19 +225,29 @@ public class SpotPage extends Activity {
 
 		});
 		
-		
+		// Get gridview for images
 		GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
-		gridview.setAdapter(new GridAdapter(this));
+		//gridview.setAdapter(new GridAdapter(this));
+		
+		// Send task to get images
+		imagesArray = new ArrayList<HashMap<String, String>>();
+		Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
 		
 		// TODO: call getThumbnail from the Image class on the gridview's position
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-
+				
+				// TODO: USE NEW DB FOR THIS
 				Intent intent = new Intent(SpotPage.this, ViewImage.class);
 				//int imageID = (Integer)parent.getAdapter().getItem(position);
-				int imageID = mThumbIds[position];
-				intent.putExtra("imageName", imageID);
+				//int imageID = mThumbIds[position];
+				
+				// TODO: maybe use the above line?
+				HashMap<String, String> image = imagesArray.get(position);
+				String url = image.get("url");
+			
+				intent.putExtra("url", url);
 				startActivity(intent);
 			}
 		});
@@ -342,9 +350,8 @@ public class SpotPage extends Activity {
 		// TODO Auto-generated method stub
 		//imageLoader.destroy();
 		super.onDestroy();
-		dbHelper.close();
 	}
-	
+	/*
 	// references to our images
     private Integer[] mThumbIds = {
     		R.drawable.riley1, R.drawable.riley2, R.drawable.riley3,
@@ -353,5 +360,6 @@ public class SpotPage extends Activity {
             R.drawable.heart1, R.drawable.deatroit1, R.drawable.detroit2,
 
     };
+    */
 	
 }

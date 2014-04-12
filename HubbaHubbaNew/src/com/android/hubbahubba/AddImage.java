@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -115,15 +116,20 @@ public class AddImage extends Activity{
 				CharSequence text;
 				if(mSelectedImage != null && riderName.getText().toString().trim().length() > 0 && userName.getText().toString().trim().length() > 0){
 					
-					// TODO: this should go back to the spot page
+					// get spot id
+			        Bundle showData = getIntent().getExtras();
+					String spot_id = showData.getString("spot_id");
+					
+					// TODO: delete this -- get info for debugging
+					//String imageURI = mSelectedImage.getPath();
+					String imageURI = getImagePath(mSelectedImage);
+					Toast.makeText(context, "spot_id = " + spot_id + "\nimage = " + imageURI, duration).show();
+					
+					// Add image to DB
+					Spot.addImage(getApplicationContext(), spot_id, riderName.getText().toString(), imageURI);
+					
+					// TODO: this should go back to the spot page and reload
 					//Intent intent = new Intent(UploadImage.this, ListViewHubba.class);
-					
-					
-					text = mSelectedImage.toString();
-					Toast toaster = Toast.makeText(context, text, duration);
-					toaster.show();
-					
-					// TODO: Add image to the DB Here
 					
 					//startActivity(intent);
 					finish();
@@ -135,6 +141,15 @@ public class AddImage extends Activity{
 				}
 			}
 		});
+	}
+	
+	public String getImagePath(Uri uri) {
+		String[] projection = { MediaStore.Images.Media.DATA };
+		Cursor cursor = managedQuery(uri, projection, null, null, null);
+		startManagingCursor(cursor);
+		int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+		cursor.moveToFirst();
+		return cursor.getString(column_index);
 	}
 	
 	@Override
@@ -166,6 +181,7 @@ public class AddImage extends Activity{
 		            Toast.makeText(this, "Image saved to:\n" +
 		                     data.getData(), Toast.LENGTH_LONG).show();
 		            mSelectedImage = data.getData();
+		            
 		            //TODO THE BUG IS SOMEWHERE IN THE TRY CATCH BLOCK
 		            
 		            try {
@@ -173,7 +189,6 @@ public class AddImage extends Activity{
 						takePhotoButton.setImageBitmap(spotImage);
 						Toast.makeText(this, "GOT EM " +
 			                     data.getData(), Toast.LENGTH_LONG).show();
-						//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
 					} catch (FileNotFoundException e) {
 						Toast.makeText(this, "FILE NOT FOUND FUCKER", Toast.LENGTH_LONG).show();
 						e.printStackTrace();
@@ -181,9 +196,9 @@ public class AddImage extends Activity{
 		            uploadPhotoButton.setClickable(false);
 		            
 		        } else if (resultCode == RESULT_CANCELED) {
-		        	Toast.makeText(this, "Image cancelled\n you suck", Toast.LENGTH_LONG).show();
+		        	Toast.makeText(this, "Image cancelled\n", Toast.LENGTH_LONG).show();
 		        } else {
-		        	Toast.makeText(this, "Image FAILED\n you REALLY suck", Toast.LENGTH_LONG).show();
+		        	Toast.makeText(this, "Image failed\n", Toast.LENGTH_LONG).show();
 		        }
 		        
 	            break;
@@ -240,8 +255,7 @@ public class AddImage extends Activity{
 	    String imageFileName = JPEG_FILE_PREFIX + timeStamp + "_";
 	    File image = File.createTempFile(
 	        imageFileName, 
-	        JPEG_FILE_SUFFIX//, 
-	        //getAlbumDir()
+	        JPEG_FILE_SUFFIX
 	    );
 	    mCurrentPhotoPath = image.getAbsolutePath();
 	    return image;

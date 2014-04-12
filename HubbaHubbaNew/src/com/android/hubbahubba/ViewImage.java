@@ -19,6 +19,7 @@ import android.widget.Toast;
 public class ViewImage extends Activity {
 
 	int mImageID;
+	String url;
 	Bitmap mBitmap;
 	ImageView imageView;
 	int counter;				// TODO from db
@@ -38,55 +39,7 @@ public class ViewImage extends Activity {
 		Bundle bundle = getIntent().getExtras();
 
 		if (bundle != null) {
-			mImageID = bundle.getInt("imageName");
-			/*
-			// Decode image size
-	        BitmapFactory.Options o = new BitmapFactory.Options();
-	        o.inJustDecodeBounds = true;
-	        BitmapFactory.decodeResource(getResources(), mImageID, o);
-	        
-	        // Get screen size
-	        Display display = getWindowManager().getDefaultDisplay();
-	        Point size = new Point();
-	        display.getSize(size);
-	        int width = size.x;
-	        int height = size.y;
-	        
-	        // The new size we want to scale to
-	        final int REQUIRED_WIDTH = width - 50;
-	        final int REQUIRED_HEIGHT = height - 50;
-
-	        // Find the correct scale value. It should be the power of 2.
-	        int width_tmp = o.outWidth, height_tmp = o.outHeight;
-	        int scale = 1;
-	        while (true) {
-	            if (width_tmp / 2 < REQUIRED_WIDTH
-	               || height_tmp / 2 < REQUIRED_HEIGHT) {
-	                break;
-	            }
-	            width_tmp /= 2;
-	            height_tmp /= 2;
-	            scale *= 2;
-	        }
-	        // TODO: Delete this
-	        //scale = 2;
-
-	        // Decode with inSampleSize
-	        BitmapFactory.Options o2 = new BitmapFactory.Options();
-	        o2.inSampleSize = scale;
-	        mBitmap =  BitmapFactory.decodeResource(getResources(), mImageID, o2);
-	        
-	        // To see if it scaled
-	        Context context = getApplicationContext();
-	        String text = "Scale: " + Integer.toString(scale) + " Swidth: " + width + " pic width: " + width_tmp;
-	        int duration = Toast.LENGTH_SHORT;
-			
-			
-	        Toast toast = Toast.makeText(context, text, duration);
-	        toast.show();
-	        
-	        imageView.setImageBitmap(mBitmap);
-		    */
+			url = bundle.getString("url");
 			
 		    // Use picasso to load the image into view
 		    // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE
@@ -101,7 +54,8 @@ public class ViewImage extends Activity {
 	        height -= 300;
 	        
 		    Picasso.with(context)
-		    	   .load(mImageID)
+		    	   //.load(mImageID)
+		    	   .load(url)
 		    	   //.centerCrop()
 		    	   .centerInside()
 		    	   .resize(width, height)

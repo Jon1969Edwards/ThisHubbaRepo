@@ -6,6 +6,7 @@ import java.util.HashMap;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -254,6 +255,11 @@ public class Spot {
 		new PopulateCommentsListTask(listView, dataAdapter, CommentsArray, c).execute(IPD + "/spots/" + spot_id + "/comments");
 	}
 	
+	public static void getPhotosBySpotID(GridView gridView, HubbaGridAdapter dataAdapter,
+			ArrayList<HashMap<String, String>> imagesArray, Context c, String spot_id){
+		new GetSpotImagesTask(gridView, dataAdapter, imagesArray, c).execute(IPD + "/spots/" + spot_id + "/photos");
+	}
+	
 	public static void addSpotByLatLon(Context context, String name, String lat,
 			String lon, String type, boolean isPrivate, String overall, String difficulty, String bust, String text){
 		
@@ -288,6 +294,20 @@ public class Spot {
 		
 		String url = IPD + "/spots/" + spot_id + "/comments";
 		new AddCommentTask(context).execute(new String[] {url, uname, text, overall, difficulty, bust, ukey, akey}); 
+	}
+	
+	public static void addImage(Context context, String spot_id, String rider, String imageURI){
+		
+		// get ukey and akey from shared preferences
+		SharedPreferences preferences = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+		
+		// TODO FIGURE OUT HOW TO GET USERNAME FROM FB
+		String uname = "robsmall";
+		String ukey = preferences.getString("ukey", "");
+		String akey = preferences.getString("akey", "");
+		
+		String url = IPD + "/spots/" + spot_id + "/photos";
+		new AddImageTask(context).execute(new String[] {url, uname, rider, imageURI, ukey, akey}); 
 	}
 	
 	public static void getSpotInfoByID(Activity activity, String id, Context c){

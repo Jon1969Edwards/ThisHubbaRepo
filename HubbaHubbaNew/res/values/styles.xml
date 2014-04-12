@@ -20,5 +20,63 @@
     <style name="SpinnerTextItem" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
         <item name="android:textColor">#FFF</item>
     </style>
+    
+    <style name="Theme.Hubba_actionbar" parent="@style/Theme.Sherlock">
+        <item name="actionBarItemBackground">@drawable/selectable_background_hubba_actionbar</item>
+        <item name="popupMenuStyle">@style/PopupMenu.Hubba_actionbar</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Hubba_actionbar</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Hubba_actionbar</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.Hubba_actionbar</item>
+        <item name="actionBarStyle">@style/ActionBar.Transparent.Hubba_actionbar</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_hubba_actionbar</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_hubba_actionbar</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Hubba_actionbar</item>
+
+        
+    </style>
+
+    <style name="ActionBar.Solid.Hubba_actionbar" parent="@style/Widget.Sherlock.ActionBar.Solid">
+        <item name="background">@drawable/ab_solid_hubba_actionbar</item>
+        <item name="backgroundStacked">@drawable/ab_stacked_solid_hubba_actionbar</item>
+        <item name="backgroundSplit">@drawable/ab_bottom_solid_hubba_actionbar</item>
+        <item name="progressBarStyle">@style/ProgressBar.Hubba_actionbar</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Hubba_actionbar" parent="@style/Widget.Sherlock.ActionBar">
+        <item name="background">@drawable/ab_transparent_hubba_actionbar</item>
+        <item name="progressBarStyle">@style/ProgressBar.Hubba_actionbar</item>
+    </style>
+	
+    <style name="PopupMenu.Hubba_actionbar" parent="@style/Widget.Sherlock.ListPopupWindow">	
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_hubba_actionbar</item>	
+    </style>
+	
+    <style name="DropDownListView.Hubba_actionbar" parent="@style/Widget.Sherlock.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_hubba_actionbar</item>
+    </style>
+
+    <style name="ActionBarTabStyle.Hubba_actionbar" parent="@style/Widget.Sherlock.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_hubba_actionbar</item>
+    </style>
+	
+    <style name="DropDownNav.Hubba_actionbar" parent="@style/Widget.Sherlock.Spinner.DropDown.ActionBar">
+        <item name="android:background">@drawable/spinner_background_ab_hubba_actionbar</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_hubba_actionbar</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_hubba_actionbar</item>
+    </style>
+    
+    <style name="ProgressBar.Hubba_actionbar" parent="@style/Widget.Sherlock.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_hubba_actionbar</item>
+    </style>
+    
+    <style name="ActionButton.CloseMode.Hubba_actionbar" parent="@style/Widget.Sherlock.ActionButton.CloseMode">
+        <item name="android:background">@drawable/btn_cab_done_hubba_actionbar</item>
+    </style>
+    
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Hubba_actionbar.Widget" parent="@style/Theme.Sherlock">
+        <item name="popupMenuStyle">@style/PopupMenu.Hubba_actionbar</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Hubba_actionbar</item>
+    </style>
 
 </resources>
