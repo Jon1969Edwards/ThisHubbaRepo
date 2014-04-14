@@ -18,13 +18,13 @@ public class ViewImage extends Activity {
 
 	int mImageID;
 	String url;
+	String display_name;
 	Bitmap mBitmap;
 	ImageView imageView;
 	int counter;				// TODO from db
 	int negCounter;				// TODO from db
 	boolean votedOn = false;	// TODO from db
 	String rider;				// TODO from db
-	String photog;				// TODO from db
 
 	@SuppressLint("NewApi")
 	@Override
@@ -32,12 +32,22 @@ public class ViewImage extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.full_screen_image);
 		Context context = this;
+		
+		//Buttons to incriment/decriment counter
+		Button thumbsUpButton= (Button) findViewById(R.id.thumbs_up);
+		Button thumbsDownButton= (Button) findViewById(R.id.thumbs_down);
+		
+		// TODO: TO BE FILLED FROM THE DB
+		TextView rider = (TextView) findViewById(R.id.rider_text);
+		TextView photog = (TextView) findViewById(R.id.photog_text);
 
 		imageView = (ImageView) findViewById(R.id.image);
 		Bundle bundle = getIntent().getExtras();
 
 		if (bundle != null) {
 			url = bundle.getString("url");
+			display_name = bundle.getString("display_name");
+			
 			
 		    // Use picasso to load the image into view
 		    // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE
@@ -59,16 +69,10 @@ public class ViewImage extends Activity {
 		    	   .resize(width, height)
 		    	   .placeholder(R.drawable.ic_empty)
 		    	   .into(imageView);
+		    
+		    photog.setText("Photographer: " + display_name);
+		    rider.setText("Rider: " + "Anonymous");
 		}
-		
-		//Buttons to incriment/decriment counter
-		Button thumbsUpButton= (Button) findViewById(R.id.thumbs_up);
-		Button thumbsDownButton= (Button) findViewById(R.id.thumbs_down);
-		
-		// TODO: TO BE FILLED FROM THE DB
-		TextView rider = (TextView) findViewById(R.id.rider_text);
-		TextView photog = (TextView) findViewById(R.id.photog_text);
-		
 		
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view){

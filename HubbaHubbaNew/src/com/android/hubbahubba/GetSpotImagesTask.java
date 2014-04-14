@@ -97,10 +97,11 @@ public class GetSpotImagesTask extends AsyncTask<String, String, String>{
                 JSONObject photo = photos.getJSONObject(i);
                 
                 // TODO: get username and rider somehow
-                //JSONObject user = comment.getJSONObject("user");
+                JSONObject user = photo.getJSONObject("user");
                 
 				String url = photo.getString("url");
 				
+				String display_name = user.getString("display_name");
 				//String fb_user_id = user.getString("fb_user_id");
 				//String ukey = user.getString("ukey");
 				//String uname = photo.getString("uname");
@@ -109,6 +110,7 @@ public class GetSpotImagesTask extends AsyncTask<String, String, String>{
 				// TODO: GET THE REST FROM THE DB/ FB
 
 				photoMap.put("url", url);
+				photoMap.put("display_name", display_name);
                 
                 imagesArray.add(photoMap);            
             }       

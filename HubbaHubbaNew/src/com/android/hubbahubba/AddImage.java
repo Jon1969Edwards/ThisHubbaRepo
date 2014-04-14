@@ -28,7 +28,8 @@ public class AddImage extends Activity{
 
 	//declare Strings to pass through to AddSpot activity
 	Button cancelButton, locateOnMapButton, uploadButton;
-	EditText riderName, userName;
+	EditText riderName;
+	//EditText userName;
     
     //for take photo
 	String mCurrentPhotoPath;
@@ -114,7 +115,7 @@ public class AddImage extends Activity{
 				Context context = getApplicationContext();
 				int duration = Toast.LENGTH_LONG;
 				CharSequence text;
-				if(mSelectedImage != null && riderName.getText().toString().trim().length() > 0 && userName.getText().toString().trim().length() > 0){
+				if(mSelectedImage != null && riderName.getText().toString().trim().length() > 0 /*&& userName.getText().toString().trim().length() > 0*/){
 					
 					// get spot id
 			        Bundle showData = getIntent().getExtras();

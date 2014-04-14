@@ -246,8 +246,10 @@ public class SpotPage extends Activity {
 				// TODO: maybe use the above line?
 				HashMap<String, String> image = imagesArray.get(position);
 				String url = image.get("url");
+				String display_name = image.get("display_name");
 			
 				intent.putExtra("url", url);
+				intent.putExtra("display_name", display_name);
 				startActivity(intent);
 			}
 		});
