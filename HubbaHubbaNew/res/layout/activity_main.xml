@@ -38,5 +38,16 @@
         android:textAllCaps="true"
         android:textColor="#FFF"
         android:textSize="22sp" />
+    
+    <TextView 
+        android:id="@+id/leaveFeedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/leave_feedback"
+        android:textColor="#FFF"
+        android:textSize="16sp"/>
 
 </RelativeLayout>

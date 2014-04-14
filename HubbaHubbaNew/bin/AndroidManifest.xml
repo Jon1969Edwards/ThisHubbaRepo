@@ -130,6 +130,13 @@
         <activity
            android:name=".EditActivity"
            android:label="@string/title_activity_edit"
+           android:theme="@style/Theme.Sherlock.Light.NoActionBar"
+           android:windowSoftInputMode="stateHidden" >
+       </activity>
+       <activity
+           android:name=".LeaveFeedback"
+           android:label="Leave Feedback"
+           android:theme="@style/Theme.Sherlock.Light.NoActionBar"
            android:windowSoftInputMode="stateHidden" >
        </activity>
         <meta-data android:value="@string/app_id" android:name="com.facebook.sdk.ApplicationId"/>

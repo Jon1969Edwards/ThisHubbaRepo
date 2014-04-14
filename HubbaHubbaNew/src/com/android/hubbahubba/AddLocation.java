@@ -289,7 +289,6 @@ public class AddLocation extends Activity {
 					text = "Please insert a title for the spot.";
 					Toast toast = Toast.makeText(context, text, duration);
 					toast.show();
-					
 				}
 				else if(mAddress == null || mAddress.equals("")){
 					text = "Please insert an address for the spot.";

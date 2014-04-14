@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -100,6 +101,7 @@ public class MainFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.activity_main, container, false);
 		Button logInButton = (Button) rootView.findViewById(R.id.logInButton);
 		Button signUpButton = (Button) rootView.findViewById(R.id.signUpButton);
+		TextView leaveFeedback = (TextView) rootView.findViewById(R.id.leaveFeedback);
 		// Button viewMapButton = (Button)findViewById(R.id.viewMapButton);
 		
 		
@@ -110,6 +112,14 @@ public class MainFragment extends Fragment {
 		LoginButton authButton = (LoginButton) rootView.findViewById(R.id.authButton);
 		authButton.setPublishPermissions(Arrays.asList("publish_actions"));
 		authButton.setFragment(this);
+		
+		leaveFeedback.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent intent = new Intent(getActivity(), LeaveFeedback.class);
+				startActivity(intent);
+			}
+
+		});
 		
 		// log in button opens up logIn activity
 		logInButton.setOnClickListener(new View.OnClickListener() {

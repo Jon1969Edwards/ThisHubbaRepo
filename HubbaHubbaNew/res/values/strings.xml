@@ -55,6 +55,7 @@
 	<string name="spotTitle">Spot Title*</string>
 	<string name="cancel">Cancel</string>
 	<string name="continu">Continue</string>
+	<string name="leave_feedback"><u>Leave Feedback</u></string>
 	
 	<!-- Array of Types of Spots -->
 	
