@@ -4,7 +4,7 @@ ThisHubbaRepo
 Android mobile application using the Google Maps API, Picasso, and ActionBarSherlock. We are in the process of phasing out the SQL lite backend for testing for a real, working backend with a python API. Stay Tuned!
 
 // TODO
-- Add menue button to the right of the tabs for the actionbar
+- Add menu button to the right of the tabs for the actionbar
 - USE http://square.github.io/okhttp/ for getting images
 - Reload spot from map to get rating values when altered (may have to be on the backend)
 - Disable locate on map button if you came from the map
