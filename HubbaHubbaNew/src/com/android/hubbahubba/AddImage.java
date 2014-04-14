@@ -51,6 +51,8 @@ public class AddImage extends Activity{
 	private static final String JPEG_FILE_PREFIX = "Hubba_Hubba";
 	String rider;
 	String user;
+	boolean photo_taken = false;
+	boolean photo_uploaded = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -171,7 +173,11 @@ public class AddImage extends Activity{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-		            takePhotoButton.setClickable(false);
+		            //takePhotoButton.setClickable(false);
+		            photo_uploaded = true;
+		            if(photo_taken){
+		            	takePhotoButton.setImageBitmap(null);
+		            }
 		        }
 		        break;
 		        
@@ -194,7 +200,11 @@ public class AddImage extends Activity{
 						Toast.makeText(this, "FILE NOT FOUND FUCKER", Toast.LENGTH_LONG).show();
 						e.printStackTrace();
 					}
-		            uploadPhotoButton.setClickable(false);
+		            //uploadPhotoButton.setClickable(false);
+		            photo_taken = true;
+		            if(photo_uploaded){
+		            	uploadPhotoButton.setImageDrawable(null);
+		            }
 		            
 		        } else if (resultCode == RESULT_CANCELED) {
 		        	Toast.makeText(this, "Image cancelled\n", Toast.LENGTH_LONG).show();
