@@ -13,6 +13,7 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 - Diff markers for adding a spot
 - TOGGLE FOR MAP/SATELITE VIEW (find a button for this)
 - sliders for numbers on ratings for spots
+- Quit activity when returning from mail
 
 // TODO: FOR BACKEND
 - Make sure users can only rate photos/spots once
