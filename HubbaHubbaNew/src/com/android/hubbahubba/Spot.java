@@ -257,7 +257,7 @@ public class Spot {
 	
 	public static void getPhotosBySpotID(GridView gridView, HubbaGridAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> imagesArray, Context c, String spot_id){
-		new GetSpotImagesTask(gridView, dataAdapter, imagesArray, c).execute(IPD + "/spots/" + spot_id + "/photos");
+		new GetSpotImagesTaskTwo(gridView, dataAdapter, imagesArray, c).execute(IPD + "/spots/" + spot_id + "/photos");
 	}
 	
 	public static void addSpotByLatLon(Context context, String name, String lat,

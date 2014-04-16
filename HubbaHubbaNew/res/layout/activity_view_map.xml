@@ -27,6 +27,15 @@
     	android:layout_height="match_parent"
     	android:name="com.google.android.gms.maps.SupportMapFragment"
     	class="com.google.android.gms.maps.SupportMapFragment" />
+  	
+  	<Button 
+  	    android:id="@+id/hybridButton"
+  	    android:layout_width="41dp"
+  	    android:layout_height="41dp"
+  	    android:layout_marginLeft="10dp"
+  	   	android:layout_alignParentTop="true"
+  	   	android:background="@drawable/button_map_normal"
+  	   	android:layout_marginTop="10dp"/>
 	
 	<LinearLayout
     	android:layout_width="fill_parent"

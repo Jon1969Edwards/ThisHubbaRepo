@@ -43,6 +43,8 @@ public class ViewMap extends SherlockFragment {
 	private String text;
 	Marker addSpot;
 	Context context;
+	boolean isHybrid = false;
+	Button HybridButton;
 
 	// @SuppressLint("NewApi")
 	public View onCreateView(final LayoutInflater inflater,
@@ -58,6 +60,25 @@ public class ViewMap extends SherlockFragment {
 				Intent intent = new Intent(getSherlockActivity(),
 						ActionBarActivity.class);
 				ViewMap.this.startActivity(intent);
+			}
+
+		});
+		
+		
+		// Button for changing the map style
+		HybridButton = (Button) rootView.findViewById(R.id.hybridButton);
+		HybridButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				if(isHybrid){
+					mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+					HybridButton.setBackgroundResource(R.drawable.button_map_normal);
+					isHybrid = false;
+				}
+				else{
+					mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+					HybridButton.setBackgroundResource(R.drawable.button_map_hybrid);
+					isHybrid = true;
+				}
 			}
 
 		});
@@ -119,7 +140,8 @@ public class ViewMap extends SherlockFragment {
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-				mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+				//mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+				isHybrid = false;
 				mMap.setMyLocationEnabled(true);
 
 				// UI SETTINGS HERE

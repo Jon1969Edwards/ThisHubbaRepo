@@ -8,13 +8,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import com.google.android.gms.internal.r;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -22,9 +19,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -32,6 +27,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -45,6 +41,7 @@ public class AddLocation extends Activity {
 	EditText spotTitle, spotAddress, spotCity;
 	Spinner typeSpinner;
 	String LatLong;
+	RelativeLayout locateOnMapHolder;
 	String latitude;
 	String longitude;
 	String FromPage;
@@ -89,6 +86,7 @@ public class AddLocation extends Activity {
 		//initialize all needed objects 
 		cancelButton = (Button) findViewById(R.id.cancelButton);
 		locateOnMapButton = (Button) findViewById(R.id.locateOnMap);
+		locateOnMapHolder = (RelativeLayout) findViewById(R.id.locateOnMapHolder);
 		continueButton = (Button) findViewById(R.id.continueButton);
 		spotTitle = (EditText) findViewById(R.id.spotTitle);
 		spotAddress = (EditText) findViewById(R.id.address);
@@ -265,6 +263,10 @@ public class AddLocation extends Activity {
 			}
 
 		});
+		
+		if(FromPage.equals("ViewMap")){
+			locateOnMapHolder.setVisibility(View.GONE);
+		}
 
 		continueButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -470,7 +472,8 @@ public class AddLocation extends Activity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-		            takePhotoButton.setClickable(false);
+		            //takePhotoButton.setClickable(false);
+		            takePhotoButton.setImageBitmap(null);
 		        }
 		        break;
 		        
@@ -493,7 +496,8 @@ public class AddLocation extends Activity {
 						Toast.makeText(this, "FILE NOT FOUND FUCKER", Toast.LENGTH_LONG).show();
 						e.printStackTrace();
 					}
-		            uploadPhotoButton.setClickable(false);
+		            //uploadPhotoButton.setClickable(false);
+		            uploadPhotoButton.setImageBitmap(null);
 		            
 		        } else if (resultCode == RESULT_CANCELED) {
 		        	Toast.makeText(this, "Image cancelled\n you suck", Toast.LENGTH_LONG).show();
