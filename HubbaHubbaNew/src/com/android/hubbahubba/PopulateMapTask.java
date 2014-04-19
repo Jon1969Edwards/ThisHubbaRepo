@@ -114,7 +114,7 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
     			                                  .position(new LatLng(lat, lon))
     			                                  .title(name)
     			                                  .snippet(snippit)
-    			                                  .icon(BitmapDescriptorFactory.fromResource(R.drawable.hubba_marker_red)));
+    			                                  .icon(BitmapDescriptorFactory.fromResource(R.drawable.hubba_marker_red_two)));
 					
 			    } catch (JSONException e) {
 			    	Toast.makeText(context, "OOPS, JSON PROBLEM from map", Toast.LENGTH_LONG).show();

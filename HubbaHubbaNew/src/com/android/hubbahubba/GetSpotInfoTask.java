@@ -94,8 +94,8 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 				String distance = "11.1 mi";
 				String lat = spot.getString("lat");
 				String lon = spot.getString("lon");
-				Toast.makeText(context, "Name = " + name + ", id = " + id + " overall = " + overall
-						+ " bust = " + bust + " diff = " + difficulty + " type = " + type, Toast.LENGTH_LONG).show();
+				//Toast.makeText(context, "Name = " + name + ", id = " + id + " overall = " + overall
+				//		+ " bust = " + bust + " diff = " + difficulty + " type = " + type, Toast.LENGTH_LONG).show();
 				
 				// get views
 				TextView Title = (TextView) activity.findViewById(R.id.txtTitle);
@@ -115,7 +115,7 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 				Lat.setText(lat);
 				Lon.setText(lon);
 		    } catch (JSONException e) {
-		    	Toast.makeText(context, "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();
+		    	Toast.makeText(context, "Json problem in getting spot information array", Toast.LENGTH_LONG).show();
 		    }
 			
 			//Toast.makeText(context, "Name:\n" +
@@ -123,7 +123,7 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			Toast.makeText(context, "OOPS, JSON PROBLEM IN SPOT", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "JSON PROBLEM IN GETTING SPOT INFO", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
         //Do anything with response..

@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Base64;
 import android.widget.Toast;
@@ -35,6 +36,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
 	private String difficulty;
 	private String bust;
 	private String text;
+	private String url;
 	
 	//in constructor:
 	public AddSpotTask(Context context){
@@ -53,7 +55,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
     	
         BufferedReader inBuffer = null;
         //String url = "http://35.2.227.254:5000/spots";
-        String url = params[0];
+        url = params[0];
         String result = "fail";
         try {
         	
@@ -108,7 +110,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
     protected void onPostExecute(String response)
     {       
         //textView.setText(page); 
-        Toast.makeText(context, "Restponse = " + response, Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, "Response = " + response, Toast.LENGTH_LONG).show();
         String id;
         try {
 			JSONObject spot = new JSONObject(response);
@@ -118,8 +120,41 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			Toast.makeText(context, "couldn't parse response or post comment: " + response, Toast.LENGTH_LONG).show();
+			// Toast.makeText(context, "couldn't parse response or post comment: " + response, Toast.LENGTH_LONG).show();
 			e.printStackTrace();
+		}
+        
+        // Re-auth if possible when failed to add comment
+        // TODO: Remove race condition
+    	try {
+			JSONObject jResponse = new JSONObject(response);
+			String error = jResponse.getString("error");
+			
+			if(error.contains("authentication failed")){
+				//Toast.makeText(context, "error = " + error, Toast.LENGTH_LONG).show();
+				
+		    	// try to log back in if authentication failed
+		    	SharedPreferences hubbaprefs = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+				String fb_user_id = hubbaprefs.getString("fb_user_id", "");
+				String fb_access_token = hubbaprefs.getString("fb_access_token", "");
+				String fb_expire = hubbaprefs.getString("fb_expire", "");
+				//Toast.makeText(context, "user_id = " + fb_user_id + "\naccess_token = " + fb_access_token
+				//		+ "\nexpire = " + fb_expire, Toast.LENGTH_LONG).show();
+				
+				// TODO: do this not so sketch
+				if(!fb_access_token.equals("") && !fb_expire.equals("") && !fb_user_id.equals("")){
+					//Toast.makeText(context, "Attempting to log back in..." + response, Toast.LENGTH_LONG).show();
+					User.loginToFacebook(context, fb_user_id, fb_access_token, Integer.parseInt(fb_expire));
+					new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type, ukey, akey, is_private,
+							overall, difficulty, bust, text}); 
+				}
+				else{
+					Toast.makeText(context, "Please re-authenticate with facebook from the home screen", Toast.LENGTH_LONG).show();
+				}
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			// do nothing, most likely worked =)
 		}
         //Toast.makeText(context, "name = " + name + " lat = " + lat + " lon = " + lon, Toast.LENGTH_LONG).show();
     }   

@@ -24,7 +24,6 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -166,7 +165,7 @@ public class SpotPage extends Activity {
 				String lon = (String) Lon.getText();
 				String lat = (String) Lat.getText();
 				
-				Toast.makeText(context, "lat = " + lat + " and lon = " + lon, Toast.LENGTH_LONG).show();
+				//Toast.makeText(context, "lat = " + lat + " and lon = " + lon, Toast.LENGTH_LONG).show();
 				
 				bundleData.putString("lat", lat);
 				bundleData.putString("lon", lon);
@@ -309,8 +308,8 @@ public class SpotPage extends Activity {
 	    if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 	        if (resultCode == RESULT_OK) {
 	            // Image captured and saved to fileUri specified in the Intent
-	            Toast.makeText(this, "Image saved to:\n" +
-	                     data.getData(), Toast.LENGTH_LONG).show();
+	            //Toast.makeText(this, "Image saved to:\n" +
+	            //         data.getData(), Toast.LENGTH_LONG).show();
 	        } else if (resultCode == RESULT_CANCELED) {
 	            // User cancelled the image capture
 	        } else {
@@ -321,8 +320,8 @@ public class SpotPage extends Activity {
 	    if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE) {
 	        if (resultCode == RESULT_OK) {
 	            // Video captured and saved to fileUri specified in the Intent
-	            Toast.makeText(this, "Video saved to:\n" +
-	                     data.getData(), Toast.LENGTH_LONG).show();
+	            //Toast.makeText(this, "Video saved to:\n" +
+	            //         data.getData(), Toast.LENGTH_LONG).show();
 	        } else if (resultCode == RESULT_CANCELED) {
 	            // User cancelled the video capture
 	        } else {

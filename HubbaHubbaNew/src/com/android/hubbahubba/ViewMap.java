@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -311,8 +310,8 @@ public class ViewMap extends SherlockFragment {
 								.findViewById(R.id.info_window_distance);
 
 						// TODO: WAS AN ELSE
-						Toast.makeText(getActivity().getApplicationContext(),
-								"Using new DB", Toast.LENGTH_LONG).show();
+						//Toast.makeText(getActivity().getApplicationContext(),
+						//		"Using new DB", Toast.LENGTH_LONG).show();
 
 						// Get spot info
 						String spot_title = arg0.getTitle();

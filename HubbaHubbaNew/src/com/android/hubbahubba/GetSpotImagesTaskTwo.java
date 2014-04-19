@@ -113,7 +113,7 @@ public class GetSpotImagesTaskTwo extends AsyncTask<String, String, String>{
                 imagesArray.add(photoMap);            
             }       
         }catch(JSONException e)        {
-        	Toast.makeText(context, "IMAGES: " + "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();
+        	Toast.makeText(context, "IMAGES: " + "JSON PROBLEM in grabbing list of images", Toast.LENGTH_LONG).show();
         	e.printStackTrace();
         }
         
@@ -121,6 +121,6 @@ public class GetSpotImagesTaskTwo extends AsyncTask<String, String, String>{
 		
 		// Assign adapter to ListView
 		gridView.setAdapter(dataAdapter);
-		Toast.makeText(context, "Result: " + result, Toast.LENGTH_LONG).show();
+		//Toast.makeText(context, "Result: " + result, Toast.LENGTH_LONG).show();
     }
 }

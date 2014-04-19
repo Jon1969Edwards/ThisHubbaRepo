@@ -3,22 +3,20 @@ package com.android.hubbahubba;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
+import org.apache.http.ParseException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Base64;
 import android.widget.Toast;
@@ -31,6 +29,7 @@ public class AddImageTask extends AsyncTask<String, Void, String>
 	private String rider;
 	private String ukey;
 	private String akey;
+	private String url;
 	
 	//in constructor:
 	public AddImageTask(Context context){
@@ -47,8 +46,9 @@ public class AddImageTask extends AsyncTask<String, Void, String>
     	 */
         BufferedReader inBuffer = null;
         //String url = "http://35.2.227.254:5000/spots";
-        String url = params[0];
+        url = params[0];
         String result = "fail";
+        HttpResponse response = null;
         try {
         	
         	// Get info from params
@@ -81,12 +81,20 @@ public class AddImageTask extends AsyncTask<String, Void, String>
         	request.setEntity(entity);
         	
             // get response and execute request
-            HttpResponse response = httpClient.execute(request);
+            response = httpClient.execute(request);
             result = EntityUtils.toString(response.getEntity());
 
         } catch(Exception e) {
-            // Do something about exceptions
-            result = e.getMessage();
+            // TODO: find a better way to do this
+        	try {
+				result = EntityUtils.toString(response.getEntity());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
         } finally {
             if (inBuffer != null) {
                 try {
@@ -100,8 +108,42 @@ public class AddImageTask extends AsyncTask<String, Void, String>
     }
 
     protected void onPostExecute(String response)
-    {       
+    {
+    	// TODO: Remove race condition
+    	try {
+			JSONObject jResponse = new JSONObject(response);
+			String error = jResponse.getString("error");
+			
+			if(error.contains("authentication failed")){
+				//Toast.makeText(context, "error = " + error, Toast.LENGTH_LONG).show();
+				
+		    	// try to log back in if authentication failed
+		    	SharedPreferences hubbaprefs = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+				String fb_user_id = hubbaprefs.getString("fb_user_id", "");
+				String fb_access_token = hubbaprefs.getString("fb_access_token", "");
+				String fb_expire = hubbaprefs.getString("fb_expire", "");
+				//Toast.makeText(context, "user_id = " + fb_user_id + "\naccess_token = " + fb_access_token
+				//		+ "\nexpire = " + fb_expire, Toast.LENGTH_LONG).show();
+				
+				// TODO: do this not so sketch
+				if(!fb_access_token.equals("") && !fb_expire.equals("") && !fb_user_id.equals("")){
+					//Toast.makeText(context, "Attempting to log back in..." + response, Toast.LENGTH_LONG).show();
+					User.loginToFacebook(context, fb_user_id, fb_access_token, Integer.parseInt(fb_expire));
+					new AddImageTask(context).execute(new String[] {url, uname, rider, imageURI, ukey, akey}); 
+				}
+				else{
+					Toast.makeText(context, "Please re-authenticate with facebook from the home screen", Toast.LENGTH_LONG).show();
+				}
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			// do nothing, most likely worked =)
+		}
+    	
+    	// TODO: Success add to array
+    	
+    	
         //textView.setText(page); 
-        Toast.makeText(context, "response = " + response, Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, "response = " + response, Toast.LENGTH_LONG).show();
     }   
 }  

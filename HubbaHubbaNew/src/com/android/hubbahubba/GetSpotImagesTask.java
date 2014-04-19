@@ -123,6 +123,6 @@ public class GetSpotImagesTask extends AsyncTask<String, String, String>{
 		
 		// Assign adapter to ListView
 		gridView.setAdapter(dataAdapter);
-		Toast.makeText(context, "Result: " + result, Toast.LENGTH_LONG).show();
+		//Toast.makeText(context, "Result: " + result, Toast.LENGTH_LONG).show();
     }
 }

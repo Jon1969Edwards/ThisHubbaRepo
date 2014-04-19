@@ -4,15 +4,15 @@ ThisHubbaRepo
 Android mobile application using the Google Maps API, Picasso, and ActionBarSherlock. We are in the process of phasing out the SQL lite backend for testing for a real, working backend with a python API. Stay Tuned!
 
 // TODO
-- Add menu button to the right of the tabs for the actionbar (logout and eventually profile)
-- check the post to /me and if its an error repost to /login/facebook
-- Reload spot from map to get rating values when altered (may have to be on the backend)
+- Add menu button to the right of the tabs for the actionbar (logout, login, go home, leave feedback, and eventually profile)
+- check the post to /me when resuming activities and if its an error repost to /login/facebook
 - Make sure all old code is taken out
 - Diff markers for adding a spot
-- TOGGLE FOR MAP/SATELITE VIEW (find a button for this)
 - Quit activity when returning from mail
 - USE http://square.github.io/okhttp/ for get requests other than images
-- also make sure code is good
+- Eliminate race condition with re-auth on post requests
+- Add info to arrays when posted so you see it when a refresh happens
+
 
 // WishList
 - Start using 9patch images (from android or fb and color them in photoshop) for things!

@@ -120,8 +120,8 @@ public class AddLocation extends Activity {
 				
 				address = List.get(0);
 				text = address.toString();
-				Toast toast0 = Toast.makeText(context, text, duration);
-				toast0.show();
+				//Toast toast0 = Toast.makeText(context, text, duration);
+				//toast0.show();
 				
 				for (int j=0; j<1; j++){
 				    Address returnedAddress = List.get(j);
@@ -137,9 +137,9 @@ public class AddLocation extends Activity {
 				    }
 				    addressList[j] = strReturnedAddress.toString();
 				    
-				    text = addressList[j];
-					Toast toast1 = Toast.makeText(context, text, duration);
-					toast1.show();
+				    //text = addressList[j];
+					//Toast toast1 = Toast.makeText(context, text, duration);
+					//toast1.show();
 				 }
 				
 				
@@ -151,10 +151,10 @@ public class AddLocation extends Activity {
 				String lat = Double.toString(D1);
 				String lon = Double.toString(D2);
 				
-				text = lat + " " + lon + " NUMBER_FORMAT_EXCEPTION";
+				//text = lat + " " + lon + " NUMBER_FORMAT_EXCEPTION";
 				
-				Toast toast0 = Toast.makeText(context, text, duration);
-				toast0.show();
+				//Toast toast0 = Toast.makeText(context, text, duration);
+				//toast0.show();
 				
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -165,10 +165,10 @@ public class AddLocation extends Activity {
 				String lat = Double.toString(D1);
 				String lon = Double.toString(D2);
 				
-				text = lat + " " + lon + " IOE_EXCEPTION";
+				//text = lat + " " + lon + " IOE_EXCEPTION";
 				
-				Toast toast0 = Toast.makeText(context, text, duration);
-				toast0.show();
+				//Toast toast0 = Toast.makeText(context, text, duration);
+				//toast0.show();
 				
 				e.printStackTrace();
 			}
@@ -320,7 +320,7 @@ public class AddLocation extends Activity {
 					//Toast toaster = Toast.makeText(context, text, duration);
 					//toaster.show();
 					
-					Toast.makeText(context, "type = " + mType, duration).show();
+					//Toast.makeText(context, "type = " + mType, duration).show();
 					
 					FromPage = getIntent().getStringExtra("FromPage");
 					
@@ -489,8 +489,8 @@ public class AddLocation extends Activity {
 		            try {
 						spotImage = decodeUri(mSelectedImage);
 						takePhotoButton.setImageBitmap(spotImage);
-						Toast.makeText(this, "GOT EM" +
-			                     data.getData(), Toast.LENGTH_LONG).show();
+						//Toast.makeText(this, "GOT EM" +
+			            //         data.getData(), Toast.LENGTH_LONG).show();
 						//uploadPhotoButton.setBackgroundResource(R.color.abs__background_holo_light);
 					} catch (FileNotFoundException e) {
 						Toast.makeText(this, "FILE NOT FOUND FUCKER", Toast.LENGTH_LONG).show();

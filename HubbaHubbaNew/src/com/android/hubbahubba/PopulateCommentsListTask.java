@@ -125,7 +125,7 @@ public class PopulateCommentsListTask extends AsyncTask<String, String, String>{
                 commentsArray.add(commentMap);            
             }       
         }catch(JSONException e)        {
-        	Toast.makeText(context, "COMMENTS: " + "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();
+        	Toast.makeText(context, "COMMENTS: " + "JSON exception thrown in grabbing comments array", Toast.LENGTH_LONG).show();
         	e.printStackTrace();
         }
         
@@ -136,6 +136,6 @@ public class PopulateCommentsListTask extends AsyncTask<String, String, String>{
 		
 		// Assign adapter to ListView
 		listView.setAdapter(dataAdapter);
-		Toast.makeText(context, "result: " + result, Toast.LENGTH_LONG).show();
+		//Toast.makeText(context, "result: " + result, Toast.LENGTH_LONG).show();
     }
 }

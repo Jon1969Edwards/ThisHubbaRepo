@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 
@@ -269,7 +268,7 @@ public class Spot {
 		String ukey = preferences.getString("ukey", "");
 		String akey = preferences.getString("akey", "");
 		
-		Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
+		//Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
 		String is_private = "0";
 		if(isPrivate == true){
 			is_private = "1";
@@ -290,7 +289,7 @@ public class Spot {
 		String ukey = preferences.getString("ukey", "");
 		String akey = preferences.getString("akey", "");
 		
-		Toast.makeText(context, "spotID = " + spot_id, Toast.LENGTH_LONG).show();
+		//Toast.makeText(context, "spotID = " + spot_id, Toast.LENGTH_LONG).show();
 		
 		String url = IPD + "/spots/" + spot_id + "/comments";
 		new AddCommentTask(context).execute(new String[] {url, uname, text, overall, difficulty, bust, ukey, akey}); 

@@ -93,12 +93,17 @@ public class FacebookLoginTask extends AsyncTask<String, Void, String> {
 
 			akey = resp.getString("akey");
 			ukey = user.getString("ukey");
-			hubbaprefsEditor.clear();
+			//hubbaprefsEditor.clear();
+			
+			// Save our keys
 			hubbaprefsEditor.putString("akey", akey);
 			hubbaprefsEditor.putString("ukey", ukey);
 			hubbaprefsEditor.commit();
 			
-			Log.i("MMMM", "ukey = " + hubbaprefs.getString("ukey", "") + "\nakey = " + hubbaprefs.getString("akey", ""));
+			Log.i("Facebook Login:", "uid = " + hubbaprefs.getString("fb_user_id", "") +
+					"\naccess_token = " + hubbaprefs.getString("fb_access_token", "") +
+					"\nexpire = " + hubbaprefs.getString("fb_expire", ""));
+			Log.i("Our Login:", "ukey = " + hubbaprefs.getString("ukey", "") + "\nakey = " + hubbaprefs.getString("akey", ""));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -108,11 +113,13 @@ public class FacebookLoginTask extends AsyncTask<String, Void, String> {
 		// Toast.makeText(context, "user_id = " + user_id + " access_t = " +
 		// access_token + " exp = " + expire, Toast.LENGTH_LONG).show();
 		
+		/*
 		// Sanity check TODO delete this
 		ukey = hubbaprefs.getString("ukey", "");
 		akey = hubbaprefs.getString("akey", "");
 		Toast.makeText(context, "FB LOGIN: ukey = " + ukey + "\nakey = " +
 				akey, Toast.LENGTH_LONG).show();
 		Log.i("SHEEE", "ukey = " + hubbaprefs.getString("ukey", "") + "\nakey = " + hubbaprefs.getString("akey", ""));
+		*/
 	}
 }

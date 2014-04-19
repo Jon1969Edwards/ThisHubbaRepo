@@ -3,7 +3,9 @@ package com.android.hubbahubba;
 import java.util.Arrays;
 import java.util.Date;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -49,6 +51,14 @@ public class MainFragment extends Fragment {
 		                        Date expire_date = sesh.getExpirationDate(); // get expire date
 		                        expire = (int) (expire_date.getTime() / 1000);
 		                        
+		                        // Save fb info to shared preferences
+		                        SharedPreferences hubbaprefs = getActivity().getApplicationContext().getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+		                		SharedPreferences.Editor hubbaprefsEditor = hubbaprefs.edit();
+		            			hubbaprefsEditor.putString("fb_user_id", user_id);
+		            			hubbaprefsEditor.putString("fb_access_token", access_token);
+		            			hubbaprefsEditor.putString("fb_expire", Integer.toString(expire));
+		            			hubbaprefsEditor.commit();
+		            			
 		            	        User.loginToFacebook(getActivity().getApplicationContext(), user_id, access_token, expire);
 		                        
 		            	        // TODO -- get the expire stuff
@@ -72,7 +82,13 @@ public class MainFragment extends Fragment {
 			}
 		}
 		else if (state.isClosed()) {
-			Log.i(TAG, "Logged out...");
+			Log.i(TAG, "Logged out... Clearing Prefs");
+			
+			SharedPreferences hubbaprefs = getActivity().getApplicationContext().getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+			SharedPreferences.Editor hubbaprefsEditor = hubbaprefs.edit();
+			hubbaprefsEditor.clear();
+			hubbaprefsEditor.commit();
+			
 			access_token = "";
 			user_id = "";
 			expire = 0;

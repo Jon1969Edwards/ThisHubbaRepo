@@ -13,8 +13,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Base64;
 import android.widget.Toast;
@@ -29,6 +32,7 @@ public class AddCommentTask extends AsyncTask<String, Void, String>
 	private String bust;
 	private String ukey;
 	private String akey;
+	private String url;
 	
 	//in constructor:
 	public AddCommentTask(Context context){
@@ -45,7 +49,7 @@ public class AddCommentTask extends AsyncTask<String, Void, String>
     	 */
         BufferedReader inBuffer = null;
         //String url = "http://35.2.227.254:5000/spots";
-        String url = params[0];
+        url = params[0];
         String result = "fail";
         try {
         	
@@ -96,8 +100,38 @@ public class AddCommentTask extends AsyncTask<String, Void, String>
     }
 
     protected void onPostExecute(String response)
-    {       
-        //textView.setText(page); 
+    {
+    	// TODO: put this check in with other posts
+    	try {
+			JSONObject jResponse = new JSONObject(response);
+			String error = jResponse.getString("error");
+			
+			if(error.contains("authentication failed")){
+				Toast.makeText(context, "error = " + error, Toast.LENGTH_LONG).show();
+				
+		    	// try to log back in if authentication failed
+		    	SharedPreferences hubbaprefs = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+				String fb_user_id = hubbaprefs.getString("fb_user_id", "");
+				String fb_access_token = hubbaprefs.getString("fb_access_token", "");
+				String fb_expire = hubbaprefs.getString("fb_expire", "");
+				Toast.makeText(context, "user_id = " + fb_user_id + "\naccess_token = " + fb_access_token
+						+ "\nexpire = " + fb_expire, Toast.LENGTH_LONG).show();
+				// TODO: do this not so sketch
+				if(!fb_access_token.equals("") && !fb_expire.equals("") && !fb_user_id.equals("")){
+					Toast.makeText(context, "Attempting to log back in..." + response, Toast.LENGTH_LONG).show();
+					User.loginToFacebook(context, fb_user_id, fb_access_token, Integer.parseInt(fb_expire));
+					new AddCommentTask(context).execute(new String[] {url, uname, text, overall, difficulty, bust, ukey, akey});
+				}
+				else{
+					Toast.makeText(context, "Please re-authenticate with facebook from the home screen", Toast.LENGTH_LONG).show();
+				}
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			// do nothing, most likely worked =)
+		}
+		
+		// otherwise nothing
         Toast.makeText(context, "response = " + response, Toast.LENGTH_LONG).show();
     }   
 }  
