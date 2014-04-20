@@ -60,7 +60,6 @@ public class SpotPage extends Activity {
 	ImageView mImageView;
 	//private Uri fileUri;
 
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -262,6 +261,19 @@ public class SpotPage extends Activity {
 		*/
 			
 	}
+	
+	// TODO: USE A TASK TO GET THE RESULTING URL AND ADD IT TO THE ADAPTER
+	// WORKS FOR NOW THOUGH =)
+	@Override
+    protected void onResume() {
+    	super.onResume();
+    	// Get gridview for images
+    	GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
+    			
+    	imagesArray = new ArrayList<HashMap<String, String>>();
+    	Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
+    	
+    }
 
 	/** Create a file Uri for saving an image or video *//*
 	private static Uri getOutputMediaFileUri(int type){

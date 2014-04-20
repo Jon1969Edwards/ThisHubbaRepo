@@ -11,8 +11,8 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 - Quit activity when returning from mail
 - USE http://square.github.io/okhttp/ for get requests other than images
 - Eliminate race condition with re-auth on post requests
-- Add info to arrays when posted so you see it when a refresh happens
-
+- **** FILTERING WITH THE UI VIEWS ******
+- unhide footer on the map
 
 // WishList
 - Start using 9patch images (from android or fb and color them in photoshop) for things!

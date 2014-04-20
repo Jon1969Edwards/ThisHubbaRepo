@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -113,4 +114,16 @@ public class ListViewComments extends Activity {
     		
     	}
     }
+    
+    // TODO: USE A TASK TO GET THE RESULTING URL AND ADD IT TO THE ADAPTER
+ 	// WORKS FOR NOW THOUGH =)
+ 	@Override
+     protected void onResume() {
+     	super.onResume();
+     			
+     	commentsArray = new ArrayList<HashMap<String, String>>();
+     	// populate spots array
+     	Spot.getCommentsBySpotID(listView, dataAdapter, commentsArray, getApplicationContext(), spot_id);
+     	
+     }
 }

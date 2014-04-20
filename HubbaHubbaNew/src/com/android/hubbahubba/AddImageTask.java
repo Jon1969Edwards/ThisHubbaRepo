@@ -3,6 +3,7 @@ package com.android.hubbahubba;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
@@ -12,6 +13,7 @@ import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -139,9 +141,32 @@ public class AddImageTask extends AsyncTask<String, Void, String>
 			// TODO Auto-generated catch block
 			// do nothing, most likely worked =)
 		}
-    	
+    	/*
     	// TODO: Success add to array
-    	
+    	try{
+    		JSONObject photo = new JSONObject(response);
+			
+            JSONObject user = photo.getJSONObject("user");
+            
+			String url = photo.getString("url");
+			
+			String display_name = user.getString("display_name");
+			//String fb_user_id = user.getString("fb_user_id");
+			//String ukey = user.getString("ukey");
+			//String uname = photo.getString("uname");
+			//String rider = photo.getString("rider");
+			
+			// TODO: GET THE REST FROM THE DB/ FB
+			HashMap<String, String> photoMap = new HashMap<String, String>(); 
+			photoMap.put("url", url);
+			photoMap.put("display_name", display_name);
+            
+            imagesArray.add(photoMap);            
+        }catch(JSONException e)        {
+        	Toast.makeText(context, "IMAGES: " + "JSON PROBLEM in grabbing list of images", Toast.LENGTH_LONG).show();
+        	e.printStackTrace();
+        }
+    	*/
     	
         //textView.setText(page); 
         //Toast.makeText(context, "response = " + response, Toast.LENGTH_LONG).show();

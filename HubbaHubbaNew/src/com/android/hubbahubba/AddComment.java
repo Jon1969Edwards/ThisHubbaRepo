@@ -698,15 +698,18 @@ public class AddComment extends Activity{
 			        Bundle showData = getIntent().getExtras();
 					String spot_id = showData.getString("spot_id");
 					
-					Toast toast = Toast.makeText(getApplicationContext(), "Comment = " + stringComment + "\nsid = " + spot_id, Toast.LENGTH_LONG);
+					//Toast.makeText(getApplicationContext(), "Comment = " + stringComment + "\nsid = " + spot_id, Toast.LENGTH_LONG).show();
 					
 					Spot.addComment(getApplicationContext(), stringComment, overall, difficulty, bust, spot_id);
 					
+					// back to list view
+					finish();
+					/*
 					// TODO: now return to listview for correct spot
-					Intent intent = new Intent(AddComment.this, ActionBarActivity.class/*ListViewComments.class*/);
+					Intent intent = new Intent(AddComment.this, ListViewComments.class);
 					setResult(Activity.RESULT_OK, intent);
 					startActivity(intent);
-					
+					*/
 					//return true;
 				}
 				else{

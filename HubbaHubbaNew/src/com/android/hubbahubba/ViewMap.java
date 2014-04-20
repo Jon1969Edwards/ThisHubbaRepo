@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ public class ViewMap extends SherlockFragment {
 	Context context;
 	boolean isHybrid = false;
 	Button HybridButton;
+	LinearLayout Footer;
 
 	// @SuppressLint("NewApi")
 	public View onCreateView(final LayoutInflater inflater,
@@ -54,16 +56,19 @@ public class ViewMap extends SherlockFragment {
 
 		Button searchButton = (Button) rootView.findViewById(R.id.searchButton);
 		// back button goes back to the main page
-		searchButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Intent intent = new Intent(getSherlockActivity(),
-						ActionBarActivity.class);
-				ViewMap.this.startActivity(intent);
-			}
-
-		});
 		
+		// TODO: Search Button
+//		searchButton.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View view) {
+//				Intent intent = new Intent(getSherlockActivity(),
+//						ActionBarActivity.class);
+//				ViewMap.this.startActivity(intent);
+//			}
+//
+//		});
 		
+		Footer = (LinearLayout) rootView.findViewById(R.id.footer);
+		Footer.setVisibility(View.GONE);
 		// Button for changing the map style
 		HybridButton = (Button) rootView.findViewById(R.id.hybridButton);
 		HybridButton.setOnClickListener(new View.OnClickListener() {
