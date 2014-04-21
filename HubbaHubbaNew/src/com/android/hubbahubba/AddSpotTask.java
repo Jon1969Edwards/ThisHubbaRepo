@@ -37,6 +37,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
 	private String bust;
 	private String text;
 	private String url;
+	private String imageURI;
 	
 	//in constructor:
 	public AddSpotTask(Context context){
@@ -48,8 +49,8 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
     {           
     	
     	/*
-    	 * 	 0	   1	2	 3	  4 	5	   6		7		   8		9		10		11
-    	 * {url, name, lat, lon, type, ukey, akey, is_private, overall, difficulty, bust, text}
+    	 * 	 0	   1	2	 3	  4 	5	   6		7		   8		9		10		11		12
+    	 * {url, name, lat, lon, type, ukey, akey, is_private, overall, difficulty, bust, text, imageURI}
     	 * 
     	 */
     	
@@ -71,6 +72,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
         	difficulty = params[9];
         	bust = params[10];
         	text = params[11];
+        	imageURI = params[12];
         	
         	HttpClient httpClient = new DefaultHttpClient();
             HttpPost request = new HttpPost(url);
@@ -117,6 +119,11 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
 			id = spot.getString("id");
 			
 			Spot.addComment(context, text, overall, difficulty, bust, id);
+			
+			if(!imageURI.equals("")){
+				// TODO: Make rider not be empty anymore
+				Spot.addImage(context, id, "", imageURI);
+			}
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

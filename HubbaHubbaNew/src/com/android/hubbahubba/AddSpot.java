@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -54,7 +56,7 @@ public class AddSpot extends Activity {
 	    
 	    String text = "Passed Through Lat and Long: " + lat + " " + lng;
 	    
-	    Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+	    //Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
 		
 		//get image passed through
 		mSelectedImage = Uri.parse(getIntent().getStringExtra("mSelectedImage"));
@@ -728,20 +730,24 @@ public class AddSpot extends Activity {
 				intLevel = poClicked;
 				stringComments = mComment.getText().toString();
 				
+				
 				String overall = Integer.toString(overallClicked);
 				String difficulty = Integer.toString(diffClicked);
 				String bust =  Integer.toString(poClicked);
-				/*
+				
 				if(mSelectedImage != null){
-					selectedImagePath = getRealPathFromUri(mSelectedImage);
+					selectedImagePath = getImagePath(mSelectedImage);
 				}
-				*/
+				else{
+					selectedImagePath = "";
+				}
+				
 
 				String lat = Double.toString(doubleLat);
 				String lon = Double.toString(doubleLong);
 				
 				Spot.addSpotByLatLon(getApplicationContext(), stringName, lat, lon, stringType, is_secret,
-						overall, difficulty, bust, stringComments);
+						overall, difficulty, bust, stringComments, selectedImagePath);
 				
 				//now return to listview
 				Intent intent = new Intent(AddSpot.this, ActionBarActivity.class);
@@ -763,6 +769,14 @@ public class AddSpot extends Activity {
 	    return cursor.getString(column_index);
 	}
 	*/
+	public String getImagePath(Uri uri) {
+		String[] projection = { MediaStore.Images.Media.DATA };
+		Cursor cursor = managedQuery(uri, projection, null, null, null);
+		startManagingCursor(cursor);
+		int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+		cursor.moveToFirst();
+		return cursor.getString(column_index);
+	}
 	@Override
 	protected void onDestroy() {
 		//dbHelper.close();

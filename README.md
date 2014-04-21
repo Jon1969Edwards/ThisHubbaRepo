@@ -13,6 +13,9 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 - Eliminate race condition with re-auth on post requests
 - **** FILTERING WITH THE UI VIEWS ******
 - unhide footer on the map
+- make map refresh when data is changed or add a refresh button
+- Make sure photo is posted when adding a spot
+- SHARE SECRET SPOTS WITH OTHERS
 
 // WishList
 - Start using 9patch images (from android or fb and color them in photoshop) for things!
@@ -26,3 +29,4 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 - add up and down ratings for spots
 - videos along with photos?
 - Delete endpoints
+- SHARE SECRET SPOTS WITH OTHERS

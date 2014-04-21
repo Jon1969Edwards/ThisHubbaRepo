@@ -461,8 +461,8 @@ public class AddLocation extends Activity {
 		        if(resultCode == RESULT_OK){  
 		            mSelectedImage = data.getData();
 		            
-		            Toast.makeText(this, "IMG From:\n" +
-		                     data.getData(), Toast.LENGTH_LONG).show();
+		            //Toast.makeText(this, "IMG From:\n" +
+		            //         data.getData(), Toast.LENGTH_LONG).show();
 		            try {
 						spotImage = decodeUri(mSelectedImage);
 						uploadPhotoButton.setImageBitmap(spotImage);
@@ -481,8 +481,8 @@ public class AddLocation extends Activity {
 		    case TAKE_PHOTO:
 		        if (resultCode == RESULT_OK) {
 		            // Image captured and saved to fileUri specified in the Intent
-		            Toast.makeText(this, "Image saved to:\n" +
-		                     data.getData(), Toast.LENGTH_LONG).show();
+		            //Toast.makeText(this, "Image saved to:\n" +
+		            //         data.getData(), Toast.LENGTH_LONG).show();
 		            mSelectedImage = data.getData();
 		            //TODO THE BUG IS SOMEWHERE IN THE TRY CATCH BLOCK
 		            
@@ -500,9 +500,9 @@ public class AddLocation extends Activity {
 		            uploadPhotoButton.setImageBitmap(null);
 		            
 		        } else if (resultCode == RESULT_CANCELED) {
-		        	Toast.makeText(this, "Image cancelled\n you suck", Toast.LENGTH_LONG).show();
+		        	Toast.makeText(this, "Image cancelled", Toast.LENGTH_LONG).show();
 		        } else {
-		        	Toast.makeText(this, "Image FAILED\n you REALLY suck", Toast.LENGTH_LONG).show();
+		        	Toast.makeText(this, "Image FAILED", Toast.LENGTH_LONG).show();
 		        }
 		        
 	            break;
@@ -510,8 +510,8 @@ public class AddLocation extends Activity {
 		    case CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE:
 		        if (resultCode == RESULT_OK) {
 		            // Video captured and saved to fileUri specified in the Intent
-		            Toast.makeText(this, "Video saved to:\n" +
-		                     data.getData(), Toast.LENGTH_LONG).show();
+		            //Toast.makeText(this, "Video saved to:\n" +
+		            //         data.getData(), Toast.LENGTH_LONG).show();
 		        } else if (resultCode == RESULT_CANCELED) {
 		            // User cancelled the video capture
 		        } else {

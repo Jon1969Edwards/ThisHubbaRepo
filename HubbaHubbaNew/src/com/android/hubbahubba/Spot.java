@@ -260,7 +260,8 @@ public class Spot {
 	}
 	
 	public static void addSpotByLatLon(Context context, String name, String lat,
-			String lon, String type, boolean isPrivate, String overall, String difficulty, String bust, String text){
+			String lon, String type, boolean isPrivate, String overall, String difficulty,
+			String bust, String text, String imageURI){
 		
 		// get ukey and akey from shared preferences
 		SharedPreferences preferences = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
@@ -276,7 +277,7 @@ public class Spot {
 		
 		String url = IPD + "/spots";
 		new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type, ukey, akey, is_private,
-				overall, difficulty, bust, text}); 
+				overall, difficulty, bust, text, imageURI}); 
 	}
 	
 	public static void addComment(Context context, String text, String overall, String difficulty, String bust, String spot_id){
