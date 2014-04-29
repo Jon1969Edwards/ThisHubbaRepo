@@ -11,6 +11,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -46,6 +48,8 @@ public class ViewMap extends SherlockFragment {
 	boolean isHybrid = false;
 	Button HybridButton;
 	LinearLayout Footer;
+	Spinner spinner;
+	boolean spinnerTouched = false;
 
 	// @SuppressLint("NewApi")
 	public View onCreateView(final LayoutInflater inflater,
@@ -54,7 +58,7 @@ public class ViewMap extends SherlockFragment {
 		rootView = inflater.inflate(R.layout.activity_view_map, container,
 				false);
 
-		Button searchButton = (Button) rootView.findViewById(R.id.searchButton);
+		//Button searchButton = (Button) rootView.findViewById(R.id.searchButton);
 		// back button goes back to the main page
 		
 		// TODO: Search Button
@@ -67,8 +71,11 @@ public class ViewMap extends SherlockFragment {
 //
 //		});
 		
-		Footer = (LinearLayout) rootView.findViewById(R.id.footer);
-		Footer.setVisibility(View.GONE);
+		// TODO: take this out
+		//Footer = (LinearLayout) rootView.findViewById(R.id.footer);
+		//Footer.setVisibility(View.GONE);
+		
+		
 		// Button for changing the map style
 		HybridButton = (Button) rootView.findViewById(R.id.hybridButton);
 		HybridButton.setOnClickListener(new View.OnClickListener() {
@@ -88,11 +95,39 @@ public class ViewMap extends SherlockFragment {
 		});
 
 		// Set spinner color
-		Spinner spinner = (Spinner) rootView.findViewById(R.id.spotTypeSpinner);
+		spinner = (Spinner) rootView.findViewById(R.id.spotTypeSpinner);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
 				R.layout.spinner_row, R.id.text1, getResources()
 						.getStringArray(R.array.showSpotTypes));
 		spinner.setAdapter(adapter);
+		
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+		    @Override
+		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+		    	String type = spinner.getSelectedItem().toString();
+		    	
+	    		if(spinnerTouched && type.equalsIgnoreCase("Show All")){
+		    		//type = "";
+					Spot.getAllSpots(mMap, getActivity().getApplicationContext());
+		    	}
+		    	else if(!type.equalsIgnoreCase("Show All")){
+		    		spinnerTouched = true;
+		    		// Take off the s
+		    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
+		    			type = type.substring(0, type.length() - 1);
+		    		}
+		    		Spot.getSpotsByType(mMap, getActivity().getApplicationContext(), type);
+		    	}
+	    		// else nothing (page loaded)
+		    }
+
+		    @Override
+		    public void onNothingSelected(AdapterView<?> parentView) {
+		        // your code here
+		    	// TODO: anything?
+		    }
+
+		});
 
 		// get mapFragment
 		// mMap = ((SupportMapFragment)
@@ -212,8 +247,9 @@ public class ViewMap extends SherlockFragment {
 							addSpot = mMap.addMarker(new MarkerOptions()
 									.position(point)
 									.title("Tap to Add Spot")
-									.icon(BitmapDescriptorFactory
-											.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+									.icon(BitmapDescriptorFactory.fromResource(R.drawable.hubba_marker_add)));
+									//.icon(BitmapDescriptorFactory
+									//		.defaultMarker()));
 							addSpot.hideInfoWindow();
 
 							text = addSpot.getPosition().toString();

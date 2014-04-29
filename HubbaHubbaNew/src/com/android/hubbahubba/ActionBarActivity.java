@@ -54,7 +54,7 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
         bar.setDisplayShowTitleEnabled(false);
         bar.setDisplayUseLogoEnabled(false);
         bar.setDisplayShowHomeEnabled(false);
-        bar.setBackgroundDrawable(getResources().getDrawable(R.drawable.hubba_header));
+        //bar.setBackgroundDrawable(getResources().getDrawable(R.drawable.hubba_header));
         
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); 
     }

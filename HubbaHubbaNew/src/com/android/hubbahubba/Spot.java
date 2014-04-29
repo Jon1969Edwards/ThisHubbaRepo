@@ -319,4 +319,10 @@ public class Spot {
 		new PopulateMapTask(map, c).execute(IPD + "/spots");
 		return null;
 	}
+	
+	public static Spot[] getSpotsByType(GoogleMap map, Context c, String type){
+		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
+		new UpdateMapTask(map, c, type).execute(IPD + "/spots");
+		return null;
+	}
 }

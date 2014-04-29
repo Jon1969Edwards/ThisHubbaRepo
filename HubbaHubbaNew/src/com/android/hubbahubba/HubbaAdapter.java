@@ -145,4 +145,51 @@ public class HubbaAdapter extends BaseAdapter /*implements Filterable*/ {
     public long getItemId(int position) {
         return position;
     }
+    
+    /* TODO - query by spotname
+    Filter myFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+         FilterResults filterResults = new FilterResults();   
+         ArrayList<HashMap<String, String>> spots = new ArrayList<HashMap<String, String>>();
+         //constraint is the result from text you want to filter against. 
+         //objects is your data set you will filter from
+         if(constraint != null && objects!=null) {
+             int length = objects.size();
+             int i=0;
+                while(i<length){
+                    ListTO item=objects.get(i);
+                    //do whatever you wanna do here
+                    //adding result set output array     
+
+                    tempList.add(item);
+
+                    i++;
+                }
+                //following two lines is very important
+                //as publish result can only take FilterResults objects
+                filterResults.values = tempList;
+                filterResults.count = tempList.size();
+          }
+          return filterResults;
+      }
+
+      @SuppressWarnings("unchecked")
+      @Override
+      protected void publishResults(CharSequence contraint, FilterResults results) {
+          objects = (ArrayList<ListTO>) results.values;
+          if (results.count > 0) {
+           notifyDataSetChanged();
+          } else {
+              notifyDataSetInvalidated();
+          }  
+      }
+     };
+
+	@Override
+	public Filter getFilter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	*/
 }
