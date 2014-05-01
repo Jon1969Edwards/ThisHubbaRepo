@@ -134,7 +134,6 @@ public class MainFragment extends Fragment {
 				Intent intent = new Intent(getActivity(), LeaveFeedback.class);
 				startActivity(intent);
 			}
-
 		});
 		
 		// log in button opens up logIn activity

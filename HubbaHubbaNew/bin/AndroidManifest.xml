@@ -38,12 +38,16 @@
     <application
         android:icon="@drawable/hubba_icon_red"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:uiOptions="splitActionBarWhenNarrow"
+        android:allowBackup="false">
         
         <!-- ALLOWS FOR GOOGLE MAPS API -->
         <meta-data
     		android:name="com.google.android.maps.v2.API_KEY"
     		android:value="AIzaSyA-e9oGMiB4INkTitEPHIv9UPOCJzapdwQ"/>
+        <meta-data android:name="android.support.UI_OPTIONS"
+		           android:value="splitActionBarWhenNarrow" />
         
         <activity
             android:name=".MainActivity"
@@ -127,7 +131,11 @@
         <activity
             android:name=".ActionBarActivity"
             android:label="@string/title_activity_action_bar"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <!-- To support below API Level 14 -->
+		    <meta-data android:name="android.support.UI_OPTIONS"
+		           android:value="splitActionBarWhenNarrow" />
         </activity>
         <activity
            android:name=".EditActivity"

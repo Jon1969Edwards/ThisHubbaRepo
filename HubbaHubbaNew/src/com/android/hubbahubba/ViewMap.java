@@ -21,6 +21,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
@@ -57,6 +60,8 @@ public class ViewMap extends SherlockFragment {
 		context = getActivity().getApplicationContext();
 		rootView = inflater.inflate(R.layout.activity_view_map, container,
 				false);
+		
+		setHasOptionsMenu(true);
 
 		//Button searchButton = (Button) rootView.findViewById(R.id.searchButton);
 		// back button goes back to the main page
@@ -72,8 +77,8 @@ public class ViewMap extends SherlockFragment {
 //		});
 		
 		// TODO: take this out
-		//Footer = (LinearLayout) rootView.findViewById(R.id.footer);
-		//Footer.setVisibility(View.GONE);
+		Footer = (LinearLayout) rootView.findViewById(R.id.footer);
+		Footer.setVisibility(View.GONE);
 		
 		
 		// Button for changing the map style
@@ -138,9 +143,27 @@ public class ViewMap extends SherlockFragment {
 		return rootView;
 	}
 	
+	public void refreshMap(){
+		String type = spinner.getSelectedItem().toString();
+		if(type.equalsIgnoreCase("Show All")){
+    		//type = "";
+			Spot.getAllSpots(mMap, getActivity().getApplicationContext());
+    	}
+    	else if(!type.equalsIgnoreCase("Show All")){
+    		spinnerTouched = true;
+    		// Take off the s
+    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
+    			type = type.substring(0, type.length() - 1);
+    		}
+    		// TODO: CLEAR CURRENT ADAPTER
+    		Spot.getSpotsByType(mMap, getActivity().getApplicationContext(), type);
+    	}
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
 	}
 
 	public void onDestroyView() {
@@ -397,6 +420,76 @@ public class ViewMap extends SherlockFragment {
 		}
 	}
 	
+	 @Override
+	 public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+	        inflater = new MenuInflater(context);
+	        inflater.inflate(R.menu.action_items, menu);
+	        
+	        // set spinner style
+	        spinner = (Spinner) menu.findItem(R.id.action_filter).getActionView();
+	        spinner.setBackgroundDrawable(null);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
+					R.layout.spinner_row, R.id.text1, getResources()
+							.getStringArray(R.array.showSpotTypes));
+			
+			spinner.setAdapter(adapter);
+			
+			spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+			    @Override
+			    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+			    	String type = spinner.getSelectedItem().toString();
+			    	
+		    		if(spinnerTouched && type.equalsIgnoreCase("Show All")){
+			    		//type = "";
+						Spot.getAllSpots(mMap, getActivity().getApplicationContext());
+			    	}
+			    	else if(!type.equalsIgnoreCase("Show All")){
+			    		spinnerTouched = true;
+			    		// Take off the s
+			    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
+			    			type = type.substring(0, type.length() - 1);
+			    		}
+			    		// TODO: CLEAR CURRENT ADAPTER
+			    		Spot.getSpotsByType(mMap, getActivity().getApplicationContext(), type);
+			    	}
+		    		// else nothing (page loaded)
+			    }
+
+			    @Override
+			    public void onNothingSelected(AdapterView<?> parentView) {
+			        // your code here
+			    	// TODO: anything?
+			    }
+
+			});
+			
+			super.onCreateOptionsMenu(menu, inflater);
+	    }
+	 
+	 @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+        case R.id.action_filter:
+            return true;
+//        case R.id.action_location_found:
+//            // location found
+//        	
+//            return true;
+        case R.id.action_refresh:
+        	refreshMap();
+            // refresh
+            return true;
+        case R.id.action_help:
+        	Intent intent = new Intent(getActivity(), LeaveFeedback.class);
+			startActivity(intent);
+            // help action
+			// TODO: maybe delete this?
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
 	
 	@Override
 	public void onDestroy() {

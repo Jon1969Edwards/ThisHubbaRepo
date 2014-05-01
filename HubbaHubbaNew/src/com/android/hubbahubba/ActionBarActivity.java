@@ -12,14 +12,21 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
 public class ActionBarActivity extends SherlockFragmentActivity implements TabListener, OnPageChangeListener {
     ViewPager  mViewPager;
+    String pageString = "map_view";
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,7 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
         
         // set color to black
         bar.setStackedBackgroundDrawable(new ColorDrawable(android.graphics.Color.BLACK));
+        bar.setSplitBackgroundDrawable(new ColorDrawable(android.graphics.Color.BLACK));
         
         // Get tabs
         ActionBar.Tab mapTab = bar.newTab()
@@ -42,6 +50,7 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
         
         ActionBar.Tab listTab = bar.newTab()
         		.setIcon(R.drawable.ic_action_view_as_list)
+        		// TODO: Set the color of the tab underneath to red... not working now
         		//.setCustomView(R.layout.action_bar_tab)
         		.setTabListener(this);
        
@@ -65,6 +74,50 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
     	Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		startActivity(intent);
     }
+    /*
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = new MenuInflater(getApplicationContext());
+        inflater.inflate(R.menu.action_items, menu);
+        
+        // set spinner style
+        spinner = (Spinner) menu.findItem(R.id.action_filter).getActionView();
+        spinner.setBackgroundDrawable(null);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+				R.layout.spinner_row, R.id.text1, getResources()
+						.getStringArray(R.array.showSpotTypes));
+		
+		spinner.setAdapter(adapter);
+ 
+        return super.onCreateOptionsMenu(menu);
+    }
+    */
+    /**
+     * On selecting action bar icons
+     * */
+    /*
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+        case R.id.action_filter:
+            // search action
+        	setupSpinner();
+            return true;
+        case R.id.action_location_found:
+            // location found
+            return true;
+        case R.id.action_refresh:
+            // refresh
+            return true;
+        case R.id.action_help:
+            // help action
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
+    */
     
     @Override
     protected void onResume() {
@@ -102,6 +155,7 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
 			Fragment f = null;
 			switch(position) {
 			case 0:
+				pageString = "map_view";
 				f = new ViewMap();
 				
 				// pass through the bundle holding lat/long
@@ -112,10 +166,12 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
 				}
 				break;
 			case 1:
+				pageString = "list_view";
 				//f = new NewListView();
 				f = new ListViewHubba();
 				break;
 			case 2:
+				pageString = "favorites_view";
 				f = new ListViewFavorites();
 				break;
 			}
