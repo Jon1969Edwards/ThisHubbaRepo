@@ -56,23 +56,24 @@ public class UpdateMapTask extends AsyncTask<String, String, String>{
         params.add(new BasicNameValuePair("type", type));
         String paramString = URLEncodedUtils.format(params, "utf-8");
 
-        URL += paramString;
+        URL += '?' + paramString;
     	
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet request = new HttpGet(URL);
-        HttpResponse response;
+        HttpResponse response = null;
         String responseString = null;
         
         // get ukey and akey from shared preferences
  		SharedPreferences hubbaprefs = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
         String ukey = hubbaprefs.getString("ukey", "");
  		String akey = hubbaprefs.getString("akey", "");
- 		Log.i("SHITTT", "ukey = " + ukey + " akey = " + akey);
+ 		Log.i("GET", "URL == " + URL);
 		//Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
      	
 		// set header and params
  		String source = ukey+":"+akey;
         request.setHeader("Authorization","Basic " + Base64.encodeToString(source.getBytes(), Base64.URL_SAFE|Base64.NO_WRAP));
+        
         try {
             response = httpclient.execute(request);
             StatusLine statusLine = response.getStatusLine();
@@ -83,6 +84,7 @@ public class UpdateMapTask extends AsyncTask<String, String, String>{
                 responseString = out.toString();
             } else{
                 //Closes the connection.
+            	//responseString = EntityUtils.toString(response.getEntity());
                 response.getEntity().getContent().close();
                 throw new IOException(statusLine.getReasonPhrase());
             }
@@ -99,12 +101,13 @@ public class UpdateMapTask extends AsyncTask<String, String, String>{
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        
+        Toast.makeText(context, "Result: " + result, Toast.LENGTH_LONG).show();
         try {
         	// convert to json and get spot entries
 			JSONObject jObject = new JSONObject(result);
 			JSONArray spotsArray = jObject.getJSONArray("spots");
 			
+			this.map.clear();
 			for (int i=0; i < spotsArray.length(); i++)
 			{
 			    try {

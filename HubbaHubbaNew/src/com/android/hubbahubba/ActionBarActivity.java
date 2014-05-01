@@ -2,6 +2,7 @@ package com.android.hubbahubba;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -57,6 +58,12 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
         //bar.setBackgroundDrawable(getResources().getDrawable(R.drawable.hubba_header));
         
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); 
+    }
+    
+    @Override
+    public void onBackPressed() {
+    	Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+		startActivity(intent);
     }
     
     @Override

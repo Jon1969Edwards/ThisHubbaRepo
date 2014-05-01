@@ -13,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+
 
 import com.actionbarsherlock.app.SherlockFragment;
 
@@ -27,6 +29,8 @@ public class ListViewHubba extends SherlockFragment {
 	private View rootView;
 	private Context context;
 	private ArrayList<HashMap<String, String>> SpotsArray;
+	Spinner spinner;
+	boolean spinnerTouched = false;
 
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,12 +50,44 @@ public class ListViewHubba extends SherlockFragment {
 			}
 		});
 		
-		Spinner spinner = (Spinner) rootView.findViewById(R.id.spotTypeSpinner);
+		spinner = (Spinner) rootView.findViewById(R.id.spotTypeSpinner);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_row, R.id.text1, getResources().getStringArray(R.array.showSpotTypes));
 		spinner.setAdapter(adapter);
 		
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+		    @Override
+		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+		    	String type = spinner.getSelectedItem().toString();
+		    	
+	    		if(spinnerTouched && type.equalsIgnoreCase("Show All")){
+		    		//type = "";
+	    			// populate spots array
+	    			Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
+		    	}
+		    	else if(!type.equalsIgnoreCase("Show All")){
+		    		spinnerTouched = true;
+		    		// Take off the s
+		    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
+		    			type = type.substring(0, type.length() - 1);
+		    		}
+		    		// TODO: CLEAR CURRENT ADAPTER
+		    		Spot.updateListOfSpots(listView, dataAdapter, SpotsArray, context, type);
+		    	}
+	    		// else nothing (page loaded)
+		    }
+
+		    @Override
+		    public void onNothingSelected(AdapterView<?> parentView) {
+		        // your code here
+		    	// TODO: anything?
+		    }
+
+		});
+		
+		
 		// Generate ListView from SQLite Database
 		displayListView();
+
 		return rootView;
 	}
 

@@ -249,6 +249,11 @@ public class Spot {
 		new PopulateListTask(listView, dataAdapter, SpotsArray, c).execute(IPD + "/spots");
 	}
 	
+	public static void updateListOfSpots(ListView listView, HubbaAdapter dataAdapter,
+			ArrayList<HashMap<String, String>> SpotsArray, Context c, String type){
+		new UpdateListTask(listView, dataAdapter, SpotsArray, c, type).execute(IPD + "/spots");
+	}
+	
 	public static void getCommentsBySpotID(ListView listView, HubbaCommentAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> CommentsArray, Context c, String spot_id){
 		new PopulateCommentsListTask(listView, dataAdapter, CommentsArray, c).execute(IPD + "/spots/" + spot_id + "/comments");

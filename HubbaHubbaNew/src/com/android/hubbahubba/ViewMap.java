@@ -116,6 +116,7 @@ public class ViewMap extends SherlockFragment {
 		    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
 		    			type = type.substring(0, type.length() - 1);
 		    		}
+		    		// TODO: CLEAR CURRENT ADAPTER
 		    		Spot.getSpotsByType(mMap, getActivity().getApplicationContext(), type);
 		    	}
 	    		// else nothing (page loaded)
