@@ -60,39 +60,40 @@ public class ViewMap extends SherlockFragment {
 		context = getActivity().getApplicationContext();
 		rootView = inflater.inflate(R.layout.activity_view_map, container,
 				false);
-		
+
 		setHasOptionsMenu(true);
 
-		//Button searchButton = (Button) rootView.findViewById(R.id.searchButton);
+		// Button searchButton = (Button)
+		// rootView.findViewById(R.id.searchButton);
 		// back button goes back to the main page
-		
+
 		// TODO: Search Button
-//		searchButton.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				Intent intent = new Intent(getSherlockActivity(),
-//						ActionBarActivity.class);
-//				ViewMap.this.startActivity(intent);
-//			}
-//
-//		});
-		
+		// searchButton.setOnClickListener(new View.OnClickListener() {
+		// public void onClick(View view) {
+		// Intent intent = new Intent(getSherlockActivity(),
+		// ActionBarActivity.class);
+		// ViewMap.this.startActivity(intent);
+		// }
+		//
+		// });
+
 		// TODO: take this out
 		Footer = (LinearLayout) rootView.findViewById(R.id.footer);
 		Footer.setVisibility(View.GONE);
-		
-		
+
 		// Button for changing the map style
 		HybridButton = (Button) rootView.findViewById(R.id.hybridButton);
 		HybridButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				if(isHybrid){
+				if (isHybrid) {
 					mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-					HybridButton.setBackgroundResource(R.drawable.button_map_normal);
+					HybridButton
+							.setBackgroundResource(R.drawable.button_map_normal);
 					isHybrid = false;
-				}
-				else{
+				} else {
 					mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-					HybridButton.setBackgroundResource(R.drawable.button_map_hybrid);
+					HybridButton
+							.setBackgroundResource(R.drawable.button_map_hybrid);
 					isHybrid = true;
 				}
 			}
@@ -105,33 +106,35 @@ public class ViewMap extends SherlockFragment {
 				R.layout.spinner_row, R.id.text1, getResources()
 						.getStringArray(R.array.showSpotTypes));
 		spinner.setAdapter(adapter);
-		
-		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-		    @Override
-		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-		    	String type = spinner.getSelectedItem().toString();
-		    	
-	    		if(spinnerTouched && type.equalsIgnoreCase("Show All")){
-		    		//type = "";
-					Spot.getAllSpots(mMap, getActivity().getApplicationContext());
-		    	}
-		    	else if(!type.equalsIgnoreCase("Show All")){
-		    		spinnerTouched = true;
-		    		// Take off the s
-		    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
-		    			type = type.substring(0, type.length() - 1);
-		    		}
-		    		// TODO: CLEAR CURRENT ADAPTER
-		    		Spot.getSpotsByType(mMap, getActivity().getApplicationContext(), type);
-		    	}
-	    		// else nothing (page loaded)
-		    }
 
-		    @Override
-		    public void onNothingSelected(AdapterView<?> parentView) {
-		        // your code here
-		    	// TODO: anything?
-		    }
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parentView,
+					View selectedItemView, int position, long id) {
+				String type = spinner.getSelectedItem().toString();
+
+				if (spinnerTouched && type.equalsIgnoreCase("Show All")) {
+					// type = "";
+					Spot.getAllSpots(mMap, getActivity()
+							.getApplicationContext());
+				} else if (!type.equalsIgnoreCase("Show All")) {
+					spinnerTouched = true;
+					// Take off the s
+					if (type.substring(type.length() - 1).equalsIgnoreCase("s")) {
+						type = type.substring(0, type.length() - 1);
+					}
+					// TODO: CLEAR CURRENT ADAPTER
+					Spot.getSpotsByType(mMap, getActivity()
+							.getApplicationContext(), type);
+				}
+				// else nothing (page loaded)
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView) {
+				// your code here
+				// TODO: anything?
+			}
 
 		});
 
@@ -142,24 +145,24 @@ public class ViewMap extends SherlockFragment {
 		setUpMapIfNeeded();
 		return rootView;
 	}
-	
-	public void refreshMap(){
+
+	public void refreshMap() {
 		String type = spinner.getSelectedItem().toString();
-		if(type.equalsIgnoreCase("Show All")){
-    		//type = "";
+		if (type.equalsIgnoreCase("Show All")) {
+			// type = "";
 			Spot.getAllSpots(mMap, getActivity().getApplicationContext());
-    	}
-    	else if(!type.equalsIgnoreCase("Show All")){
-    		spinnerTouched = true;
-    		// Take off the s
-    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
-    			type = type.substring(0, type.length() - 1);
-    		}
-    		// TODO: CLEAR CURRENT ADAPTER
-    		Spot.getSpotsByType(mMap, getActivity().getApplicationContext(), type);
-    	}
+		} else if (!type.equalsIgnoreCase("Show All")) {
+			spinnerTouched = true;
+			// Take off the s
+			if (type.substring(type.length() - 1).equalsIgnoreCase("s")) {
+				type = type.substring(0, type.length() - 1);
+			}
+			// TODO: CLEAR CURRENT ADAPTER
+			Spot.getSpotsByType(mMap, getActivity().getApplicationContext(),
+					type);
+		}
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -169,12 +172,12 @@ public class ViewMap extends SherlockFragment {
 	public void onDestroyView() {
 		super.onDestroyView();
 		// Do Not Miss this
-		if(!getActivity().isFinishing()){
+		if (!getActivity().isFinishing()) {
 			try {
 				Fragment fragment = (getFragmentManager()
 						.findFragmentById(R.id.map));
-				FragmentTransaction ft = getActivity().getSupportFragmentManager()
-						.beginTransaction();
+				FragmentTransaction ft = getActivity()
+						.getSupportFragmentManager().beginTransaction();
 				ft.remove(fragment);
 				ft.commit();
 			} catch (Exception e) {
@@ -203,7 +206,7 @@ public class ViewMap extends SherlockFragment {
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-				//mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+				// mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 				isHybrid = false;
 				mMap.setMyLocationEnabled(true);
 
@@ -271,9 +274,10 @@ public class ViewMap extends SherlockFragment {
 							addSpot = mMap.addMarker(new MarkerOptions()
 									.position(point)
 									.title("Tap to Add Spot")
-									.icon(BitmapDescriptorFactory.fromResource(R.drawable.hubba_marker_add)));
-									//.icon(BitmapDescriptorFactory
-									//		.defaultMarker()));
+									.icon(BitmapDescriptorFactory
+											.fromResource(R.drawable.hubba_marker_add)));
+							// .icon(BitmapDescriptorFactory
+							// .defaultMarker()));
 							addSpot.hideInfoWindow();
 
 							text = addSpot.getPosition().toString();
@@ -375,8 +379,8 @@ public class ViewMap extends SherlockFragment {
 								.findViewById(R.id.info_window_distance);
 
 						// TODO: WAS AN ELSE
-						//Toast.makeText(getActivity().getApplicationContext(),
-						//		"Using new DB", Toast.LENGTH_LONG).show();
+						// Toast.makeText(getActivity().getApplicationContext(),
+						// "Using new DB", Toast.LENGTH_LONG).show();
 
 						// Get spot info
 						String spot_title = arg0.getTitle();
@@ -419,89 +423,91 @@ public class ViewMap extends SherlockFragment {
 			}
 		}
 	}
-	
-	 @Override
-	 public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-	        inflater = new MenuInflater(context);
-	        inflater.inflate(R.menu.action_items, menu);
-	        
-	        // set spinner style
-	        spinner = (Spinner) menu.findItem(R.id.action_filter).getActionView();
-	        spinner.setBackgroundDrawable(null);
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
-					R.layout.spinner_row, R.id.text1, getResources()
-							.getStringArray(R.array.showSpotTypes));
-			
-			spinner.setAdapter(adapter);
-			
-			spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-			    @Override
-			    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-			    	String type = spinner.getSelectedItem().toString();
-			    	
-		    		if(spinnerTouched && type.equalsIgnoreCase("Show All")){
-			    		//type = "";
-						Spot.getAllSpots(mMap, getActivity().getApplicationContext());
-			    	}
-			    	else if(!type.equalsIgnoreCase("Show All")){
-			    		spinnerTouched = true;
-			    		// Take off the s
-			    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
-			    			type = type.substring(0, type.length() - 1);
-			    		}
-			    		// TODO: CLEAR CURRENT ADAPTER
-			    		Spot.getSpotsByType(mMap, getActivity().getApplicationContext(), type);
-			    	}
-		    		// else nothing (page loaded)
-			    }
 
-			    @Override
-			    public void onNothingSelected(AdapterView<?> parentView) {
-			        // your code here
-			    	// TODO: anything?
-			    }
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater = new MenuInflater(context);
+		inflater.inflate(R.menu.map_action_items, menu);
 
-			});
-			
-			super.onCreateOptionsMenu(menu, inflater);
-	    }
-	 
-	 @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Take appropriate action for each action item click
-        switch (item.getItemId()) {
-        case R.id.action_filter:
-            return true;
-//        case R.id.action_location_found:
-//            // location found
-//        	
-//            return true;
-        case R.id.action_refresh:
-        	refreshMap();
-            // refresh
-            return true;
-        case R.id.action_help:
-        	Intent intent = new Intent(getActivity(), LeaveFeedback.class);
+		// set spinner style
+		spinner = (Spinner) menu.findItem(R.id.action_filter).getActionView();
+		spinner.setBackgroundDrawable(null);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
+				R.layout.spinner_row, R.id.text1, getResources()
+						.getStringArray(R.array.showSpotTypes));
+
+		spinner.setAdapter(adapter);
+
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parentView,
+					View selectedItemView, int position, long id) {
+				String type = spinner.getSelectedItem().toString();
+
+				if (spinnerTouched && type.equalsIgnoreCase("Show All")) {
+					// type = "";
+					Spot.getAllSpots(mMap, getActivity()
+							.getApplicationContext());
+				} else if (!type.equalsIgnoreCase("Show All")) {
+					spinnerTouched = true;
+					// Take off the s
+					if (type.substring(type.length() - 1).equalsIgnoreCase("s")) {
+						type = type.substring(0, type.length() - 1);
+					}
+					// TODO: CLEAR CURRENT ADAPTER
+					Spot.getSpotsByType(mMap, getActivity()
+							.getApplicationContext(), type);
+				}
+				// else nothing (page loaded)
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView) {
+				// your code here
+				// TODO: anything?
+			}
+
+		});
+
+		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+		case R.id.action_filter:
+			return true;
+			// case R.id.action_location_found:
+			// // location found
+			//
+			// return true;
+		case R.id.action_refresh:
+			refreshMap();
+			// refresh
+			return true;
+		case R.id.action_help:
+			Intent intent = new Intent(getActivity(), LeaveFeedback.class);
 			startActivity(intent);
-            // help action
+			// help action
 			// TODO: maybe delete this?
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
-        }
-    }
-	
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		// Do Not Miss this
-		if(!getActivity().isFinishing()){
+		if (!getActivity().isFinishing()) {
 			try {
 				Fragment fragment = (getFragmentManager()
 						.findFragmentById(R.id.map));
-				FragmentTransaction ft = getActivity().getSupportFragmentManager()
-						.beginTransaction();
+				FragmentTransaction ft = getActivity()
+						.getSupportFragmentManager().beginTransaction();
 				ft.remove(fragment);
 				ft.commit();
 			} catch (Exception e) {

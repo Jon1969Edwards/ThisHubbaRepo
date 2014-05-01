@@ -21,6 +21,9 @@ import android.widget.Spinner;
 
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
 public class ListViewHubba extends SherlockFragment {
 
@@ -35,6 +38,9 @@ public class ListViewHubba extends SherlockFragment {
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                     Bundle savedInstanceState) {
+		
+		// enable menu at bottom
+		setHasOptionsMenu(true);
 		
         // Inflate the layout for this fragment
 		context = getActivity().getBaseContext();
@@ -178,6 +184,100 @@ public class ListViewHubba extends SherlockFragment {
 		SpotsArray = new ArrayList<HashMap<String, String>>();
 		Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
 	}
+	
+	/* --- Start menu --- */
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater = new MenuInflater(context);
+		inflater.inflate(R.menu.list_action_items, menu);
+
+		// set spinner style
+		spinner = (Spinner) menu.findItem(R.id.action_filter).getActionView();
+		spinner.setBackgroundDrawable(null);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
+				R.layout.spinner_row, R.id.text1, getResources()
+						.getStringArray(R.array.showSpotTypes));
+
+		spinner.setAdapter(adapter);
+
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+		    @Override
+		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+		    	String type = spinner.getSelectedItem().toString();
+		    	
+	    		if(spinnerTouched && type.equalsIgnoreCase("Show All")){
+		    		//type = "";
+	    			// populate spots array
+	    			Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
+		    	}
+		    	else if(!type.equalsIgnoreCase("Show All")){
+		    		spinnerTouched = true;
+		    		// Take off the s
+		    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
+		    			type = type.substring(0, type.length() - 1);
+		    		}
+		    		// TODO: CLEAR CURRENT ADAPTER
+		    		Spot.updateListOfSpots(listView, dataAdapter, SpotsArray, context, type);
+		    	}
+	    		// else nothing (page loaded)
+		    }
+
+		    @Override
+		    public void onNothingSelected(AdapterView<?> parentView) {
+		        // your code here
+		    	// TODO: anything?
+		    }
+
+		});
+
+		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Take appropriate action for each action item click
+		switch (item.getItemId()) {
+		case R.id.action_filter:
+			// TODO: delete?
+			return true;
+		case R.id.action_add_spot:
+			// TODO: add spot
+			return true;
+		case R.id.action_search:
+			// TODO: search
+			return true;
+		case R.id.action_refresh:
+			refreshList();
+			// refresh
+			return true;
+		case R.id.action_help:
+			Intent intent = new Intent(getActivity(), LeaveFeedback.class);
+			startActivity(intent);
+			// help action
+			// TODO: maybe delete this?
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	public void refreshList() {
+		String type = spinner.getSelectedItem().toString();
+		if (type.equalsIgnoreCase("Show All")) {
+			// type = "";
+			Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
+		} else if (!type.equalsIgnoreCase("Show All")) {
+			spinnerTouched = true;
+			// Take off the s
+			if (type.substring(type.length() - 1).equalsIgnoreCase("s")) {
+				type = type.substring(0, type.length() - 1);
+			}
+			// TODO: CLEAR CURRENT ADAPTER
+			Spot.updateListOfSpots(listView, dataAdapter, SpotsArray, context, type);
+		}
+	}
+	
+	/* --- end menu --- */
 	
 	
 	@Override

@@ -3,14 +3,55 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/plain_background_hubba"
-    android:paddingTop="120dp">
+    android:paddingTop="130dp">
     
 	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" 
 	    android:paddingBottom="20dp">
-		
+	    
+	    <RelativeLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginTop="15dp" >
+	
+	        <TextView
+	            android:layout_marginLeft="20dp"
+	            android:id = "@+id/LeaveFeedback"
+	            android:paddingLeft="10dp"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:textColor="#FFF"
+	            android:text="Help shape Hubba Hubba"
+	            android:textSize="25sp"
+	            android:lines="1"
+	            android:layout_alignParentBottom="true"/>
+	        
+	    </RelativeLayout>
+	    
+	    <RelativeLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginBottom="10dp" >
+	
+	        <TextView
+	            android:layout_marginLeft="20dp"
+	            android:id = "@+id/info"
+	            android:paddingLeft="10dp"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:textColor="#828282"
+	            android:text="We're always seeking improvement"
+	            android:textSize="18sp"
+	            android:layout_alignParentBottom="true"/>
+	        
+	    </RelativeLayout>
+	    
 	    <RelativeLayout
 	        android:layout_width="fill_parent"
 	        android:layout_height="40dp"
@@ -55,14 +96,13 @@
 	        
 	    </RelativeLayout>
 	    
-	    
 	    <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="130dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp" >
 
             <EditText
@@ -72,7 +112,7 @@
                 android:layout_alignParentBottom="true"
                 android:gravity="top"
                 android:padding="10dp"
-                android:hint="Feedback *"
+                android:hint="Comments, suggestions, bugs *"
                 android:textColor="#828282"
                 android:background="@drawable/edit_text_hubba"
                 android:textSize="20sp" />

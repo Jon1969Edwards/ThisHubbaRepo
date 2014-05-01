@@ -12,16 +12,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 
 public class ActionBarActivity extends SherlockFragmentActivity implements TabListener, OnPageChangeListener {
     ViewPager  mViewPager;
@@ -74,50 +70,6 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
     	Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		startActivity(intent);
     }
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = new MenuInflater(getApplicationContext());
-        inflater.inflate(R.menu.action_items, menu);
-        
-        // set spinner style
-        spinner = (Spinner) menu.findItem(R.id.action_filter).getActionView();
-        spinner.setBackgroundDrawable(null);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-				R.layout.spinner_row, R.id.text1, getResources()
-						.getStringArray(R.array.showSpotTypes));
-		
-		spinner.setAdapter(adapter);
- 
-        return super.onCreateOptionsMenu(menu);
-    }
-    */
-    /**
-     * On selecting action bar icons
-     * */
-    /*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Take appropriate action for each action item click
-        switch (item.getItemId()) {
-        case R.id.action_filter:
-            // search action
-        	setupSpinner();
-            return true;
-        case R.id.action_location_found:
-            // location found
-            return true;
-        case R.id.action_refresh:
-            // refresh
-            return true;
-        case R.id.action_help:
-            // help action
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
-        }
-    }
-    */
     
     @Override
     protected void onResume() {
