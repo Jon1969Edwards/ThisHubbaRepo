@@ -22,7 +22,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockFragment;
 
 public class ListViewFavorites extends SherlockFragment {
-
+	
 	private HubbaDBAdapter dbHelper;
 	//private SimpleCursorAdapter dataAdapter;
 	private HubbaCursorAdapter dataAdapter;
@@ -43,7 +43,7 @@ public class ListViewFavorites extends SherlockFragment {
         rootView =  inflater.inflate(R.layout.activity_list_view, container, false);
 		dbHelper = new HubbaDBAdapter(getActivity().getBaseContext());
 		dbHelper.open();
-
+		/*
 		Button addSpot = (Button) rootView.findViewById(R.id.AddSpot);
 		addSpot.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -53,7 +53,7 @@ public class ListViewFavorites extends SherlockFragment {
 				//startActivity(intent);
 			}
 		});
-
+	*/
 		// Clean all data
 		//dbHelper.deleteAllSpots();
 		// Add some data
@@ -144,7 +144,7 @@ public class ListViewFavorites extends SherlockFragment {
 		});
 			
 		
-
+		/*
 		EditText myFilter = (EditText) rootView.findViewById(R.id.SearchBar);
 		myFilter.addTextChangedListener(new TextWatcher() {
 
@@ -166,7 +166,7 @@ public class ListViewFavorites extends SherlockFragment {
 				return dbHelper.fetchSpotByName(constraint.toString());
 			}
 		});
-
+		*/
 	}
 	
 	

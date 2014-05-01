@@ -74,7 +74,8 @@
         <activity
             android:name=".ViewMap"
             android:label="@string/viewMap"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".AddImage"
@@ -93,7 +94,8 @@
         <activity
             android:name=".ListViewHubba"
             android:theme="@style/AppTheme"
-            android:label="@string/listViewHubba" >
+            android:label="@string/listViewHubba" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".SpotPage"
@@ -132,6 +134,7 @@
             android:name=".ActionBarActivity"
             android:label="@string/title_activity_action_bar"
             android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
             android:uiOptions="splitActionBarWhenNarrow">
             <!-- To support below API Level 14 -->
 		    <meta-data android:name="android.support.UI_OPTIONS"

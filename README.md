@@ -5,6 +5,7 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 Stay Tuned!
 
 // TODO
+- Don't allow turning sideways
 - **** FIX TAKE IMAGE BUTTON COLOR ****
 - Add login to menu button
 - check the post to /me when resuming activities and if its an error repost to /login/facebook
@@ -20,6 +21,7 @@ Stay Tuned!
 - Start using 9patch images (from android or fb and color them in photoshop) for things!
 - sliders for numbers on ratings for spots
 - Redo continue and backwards buttons to look like the top bar but on the bottom bar
+- Have flag for allowing others to also share it (Cred: freeBurg)
 
 
 // TODO: FOR BACKEND

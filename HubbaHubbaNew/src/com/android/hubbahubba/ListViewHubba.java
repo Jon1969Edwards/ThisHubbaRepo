@@ -15,10 +15,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
-
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
@@ -29,6 +28,7 @@ public class ListViewHubba extends SherlockFragment {
 
 	private HubbaAdapter dataAdapter;
 	private ListView listView;
+	private LinearLayout header;
 	private View rootView;
 	private Context context;
 	private ArrayList<HashMap<String, String>> SpotsArray;
@@ -45,8 +45,9 @@ public class ListViewHubba extends SherlockFragment {
         // Inflate the layout for this fragment
 		context = getActivity().getBaseContext();
         rootView =  inflater.inflate(R.layout.activity_list_view, container, false);
-
-		Button addSpot = (Button) rootView.findViewById(R.id.AddSpot);
+        //header = (LinearLayout) rootView.findViewById(R.id.header)
+		/*
+        		Button addSpot = (Button) rootView.findViewById(R.id.AddSpot);
 		addSpot.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent intent = new Intent(getSherlockActivity(), AddLocation.class);
@@ -55,12 +56,12 @@ public class ListViewHubba extends SherlockFragment {
 				//startActivity(intent);
 			}
 		});
+		*/
+		//spinner = (Spinner) rootView.findViewById(R.id.spotTypeSpinner);
+		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_row, R.id.text1, getResources().getStringArray(R.array.showSpotTypes));
+		//spinner.setAdapter(adapter);
 		
-		spinner = (Spinner) rootView.findViewById(R.id.spotTypeSpinner);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_row, R.id.text1, getResources().getStringArray(R.array.showSpotTypes));
-		spinner.setAdapter(adapter);
-		
-		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+		/*spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 		    @Override
 		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 		    	String type = spinner.getSelectedItem().toString();
@@ -90,7 +91,7 @@ public class ListViewHubba extends SherlockFragment {
 
 		});
 		
-		
+		*/
 		// Generate ListView from SQLite Database
 		displayListView();
 

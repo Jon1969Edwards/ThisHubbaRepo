@@ -126,7 +126,7 @@ public class MainFragment extends Fragment {
 		//logInButton.setVisibility(View.GONE);
 		
 		LoginButton authButton = (LoginButton) rootView.findViewById(R.id.authButton);
-		authButton.setPublishPermissions(Arrays.asList("publish_actions"));
+		//authButton.setPublishPermissions(Arrays.asList("publish_actions"));
 		authButton.setFragment(this);
 		
 		leaveFeedback.setOnClickListener(new View.OnClickListener() {
