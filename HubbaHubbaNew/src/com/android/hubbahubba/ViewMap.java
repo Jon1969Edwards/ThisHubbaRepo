@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
@@ -478,10 +479,12 @@ public class ViewMap extends SherlockFragment {
 		switch (item.getItemId()) {
 		case R.id.action_filter:
 			return true;
-			// case R.id.action_location_found:
-			// // location found
-			//
-			// return true;
+		case R.id.action_add_spot:
+			// location found
+			Toast.makeText(getActivity().getApplicationContext(),
+					"Press and hold on the map\n" +
+					"to add a spot at that location", Toast.LENGTH_LONG).show();
+			return true;
 		case R.id.action_refresh:
 			refreshMap();
 			// refresh

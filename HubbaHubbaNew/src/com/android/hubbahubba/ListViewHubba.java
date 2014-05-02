@@ -242,6 +242,9 @@ public class ListViewHubba extends SherlockFragment {
 			// TODO: delete?
 			return true;
 		case R.id.action_add_spot:
+			Intent addintent = new Intent(getSherlockActivity(), AddLocation.class);
+			addintent.putExtra("FromPage", "ListViewHubba");
+			ListViewHubba.this.startActivity(addintent);
 			// TODO: add spot
 			return true;
 		case R.id.action_search:

@@ -6,12 +6,6 @@
           android:showAsAction="ifRoom"
           android:actionLayout="@layout/map_spinner"/>
      
-    <!-- Location Found -->
-    <!-- item android:id="@+id/action_location_found"
-          android:icon="@drawable/ic_action_location_found"
-          android:title="Location Found"
-          android:showAsAction="ifRoom" /-->
-     
     <!-- Refresh -->
     <item android:id="@+id/action_refresh"
           android:icon="@drawable/ic_action_refresh"
@@ -23,4 +17,11 @@
           android:icon="@drawable/ic_action_help"
           android:title="Leave Feedback"
           android:showAsAction="ifRoom"/>
+    
+    <!-- Add Spot -->
+    <item android:id="@+id/action_add_spot"
+          android:icon="@drawable/ic_action_new"
+          android:title="Add Spot"
+          android:showAsAction="ifRoom" />
+    
 </menu>
