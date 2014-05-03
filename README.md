@@ -5,17 +5,19 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 Stay Tuned!
 
 // TODO
-- Don't allow turning sideways
-- **** FIX TAKE IMAGE BUTTON COLOR ****
 - Add login to menu button
 - check the post to /me when resuming activities and if its an error repost to /login/facebook
 - Make sure all old code is taken out
 - Quit activity when returning from mail
 - USE http://square.github.io/okhttp/ for get requests other than images
-- Eliminate race condition with re-auth on post requests
-- make map refresh when data is changed or add a refresh button
-- Make sure photo is posted when adding a spot
 - SHARE SECRET SPOTS WITH OTHERS
+
+//BUGS:
+- ** when spot added ratings appear to be 0 until refresh **
+- ** Cant get secret stuff to work **
+- Make sure photo is posted when adding a spot (s3 error?)
+- **** FIX TAKE IMAGE BUTTON COLOR ****
+- Eliminate race condition with re-auth on post requests
 
 // WishList
 - Start using 9patch images (from android or fb and color them in photoshop) for things!
@@ -31,3 +33,10 @@ Stay Tuned!
 - videos along with photos?
 - Delete endpoints
 - SHARE SECRET SPOTS WITH OTHERS
+
+Sharing - 
+
+- Might need usernames to be able to share with eachother. Search by name.
+Just list of picture / name username
+- May need to add a friends list to make this easier
+- user pages

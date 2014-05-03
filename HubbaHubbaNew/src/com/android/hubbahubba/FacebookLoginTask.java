@@ -121,5 +121,7 @@ public class FacebookLoginTask extends AsyncTask<String, Void, String> {
 				akey, Toast.LENGTH_LONG).show();
 		Log.i("SHEEE", "ukey = " + hubbaprefs.getString("ukey", "") + "\nakey = " + hubbaprefs.getString("akey", ""));
 		*/
+		
+		 Toast.makeText(context, "logged in", Toast.LENGTH_LONG).show();
 	}
 }

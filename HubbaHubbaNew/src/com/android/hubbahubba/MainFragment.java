@@ -1,6 +1,5 @@
 package com.android.hubbahubba;
 
-import java.util.Arrays;
 import java.util.Date;
 
 import android.content.Context;
@@ -15,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.FacebookException;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
@@ -22,6 +22,7 @@ import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
+import com.facebook.widget.LoginButton.OnErrorListener;
 
 public class MainFragment extends Fragment {
 	// For FaceBook oauth
@@ -65,7 +66,7 @@ public class MainFragment extends Fragment {
 		            	        // graph api explorer
 		            	        // username == ukey
 		            	        // password == akey
-		            	        	// all api calls (other than login) will need this stuff
+		            	        	// all api c alls (other than login) will need this stuff
 	
 		            	        // to enable, under class definition uncomment requireauth
 		            	        
@@ -126,6 +127,15 @@ public class MainFragment extends Fragment {
 		//logInButton.setVisibility(View.GONE);
 		
 		LoginButton authButton = (LoginButton) rootView.findViewById(R.id.authButton);
+		
+		// error listener
+		authButton.setOnErrorListener(new OnErrorListener() {
+
+			@Override
+			public void onError(FacebookException error) {
+				Log.e("FACEBOOK ERROR", "Error " + error.getMessage());
+			}
+	    });
 		//authButton.setPublishPermissions(Arrays.asList("publish_actions"));
 		authButton.setFragment(this);
 		
@@ -169,7 +179,8 @@ public class MainFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-
+		
+		
 		// For scenarios where the main activity is launched and user
 		// session is not null, the session state change notification
 		// may not be triggered. Trigger it if it's open/closed.
@@ -178,7 +189,7 @@ public class MainFragment extends Fragment {
 			//Toast.makeText(getActivity().getApplicationContext(), "Resumed", Toast.LENGTH_SHORT).show();
 			onSessionStateChange(session, session.getState(), null);
 		}
-
+		
 		uiHelper.onResume();
 	}
 
