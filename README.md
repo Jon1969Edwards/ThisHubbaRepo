@@ -5,6 +5,7 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 Stay Tuned!
 
 // TODO
+- ***** Allow only us to delete ******
 - Add login to menu button
 - check the post to /me when resuming activities and if its an error repost to /login/facebook
 - Make sure all old code is taken out

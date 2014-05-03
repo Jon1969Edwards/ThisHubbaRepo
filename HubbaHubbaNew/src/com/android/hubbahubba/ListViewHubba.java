@@ -1,5 +1,9 @@
 package com.android.hubbahubba;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
@@ -136,23 +141,30 @@ public class ListViewHubba extends SherlockFragment {
 		listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			public boolean onItemLongClick(AdapterView<?> parent, View v, int position,long id)
 		    {
-				
+				Bundle bundleData = new Bundle();
+				HashMap<String, String> spot = SpotsArray.get(position);
 				//int clickId;
-		
+				String spot_id = spot.get("id");
+				
+				
 				//Cursor cursor = (Cursor) listView.getItemAtPosition(position);
 				//clickId = Integer.valueOf(cursor.getString(cursor
 				//		.getColumnIndexOrThrow("_id")));
 		
 				// Toast.makeText(getApplicationContext(),
 				// clickId + " is the ID", Toast.LENGTH_SHORT).show();
-		
-				Bundle bundleData = new Bundle();
+				
+				// DELETE spot
+				Spot.deleteSpotByID(context, spot_id);
+				
+				refreshList();
+				/*
 				bundleData.putInt("keyid", 29);
 				Intent intent = new Intent(getActivity().getApplicationContext(),
 						EditActivity.class);
 				intent.putExtras(bundleData);
 				startActivity(intent);
-			
+				*/
 		      return true;
 		    }
 		
@@ -189,7 +201,7 @@ public class ListViewHubba extends SherlockFragment {
 	/* --- Start menu --- */
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater = new MenuInflater(context);
+		//inflater = new MenuInflater(context);
 		inflater.inflate(R.menu.list_action_items, menu);
 
 		// set spinner style
@@ -267,6 +279,9 @@ public class ListViewHubba extends SherlockFragment {
 	
 	public void refreshList() {
 		String type = spinner.getSelectedItem().toString();
+		
+		// reset array
+		SpotsArray = new ArrayList<HashMap<String, String>>();
 		if (type.equalsIgnoreCase("Show All")) {
 			// type = "";
 			Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);

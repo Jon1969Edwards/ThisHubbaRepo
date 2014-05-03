@@ -285,6 +285,18 @@ public class Spot {
 				overall, difficulty, bust, text, imageURI}); 
 	}
 	
+	public static void deleteSpotByID(Context context, String spot_id){
+		
+		// get ukey and akey from shared preferences
+		SharedPreferences preferences = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+		
+		String ukey = preferences.getString("ukey", "");
+		String akey = preferences.getString("akey", "");
+		
+		String url = IPD + "/spots/" + spot_id;
+		new DeleteSpotTask(context).execute(new String[] {url, ukey, akey}); 
+	}
+	
 	public static void addComment(Context context, String text, String overall, String difficulty, String bust, String spot_id){
 		
 		// get ukey and akey from shared preferences
