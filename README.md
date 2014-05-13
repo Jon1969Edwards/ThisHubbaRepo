@@ -10,7 +10,7 @@ For Demo:
 - images rider field (user or string)
 - SHARE SECRET SPOTS WITH OTHERS
 - Make sure users can only rate photos/spots and comments once
-- Add login to menu button
+- ** Add login to menu button
 - Quit activity when returning from mail
 - ** when spot added ratings appear to be 0 until refresh **
 - videos along with photos?
@@ -30,7 +30,6 @@ For Demo:
 - ** when spot added ratings appear to be 0 until refresh **
 - ** Cant get secret stuff to work **
 - Make sure photo is posted when adding a spot (s3 error?)
-- **** FIX TAKE IMAGE BUTTON COLOR ****
 - Eliminate race condition with re-auth on post requests
 
 // WishList
