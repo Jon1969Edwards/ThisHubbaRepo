@@ -28,5 +28,5 @@
                 android:color="#eee"/>
         </shape>
     </item>
-    <item android:drawable="@drawable/ic_action_camera" android:top="25dp" android:bottom="25dp" android:left="25dp" android:right="25dp"></item>
+    <item android:drawable="@drawable/camera_button" android:top="25dp" android:bottom="25dp" android:left="25dp" android:right="25dp"></item>
 </layer-list>

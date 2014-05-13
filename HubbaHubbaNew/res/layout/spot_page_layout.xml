@@ -92,7 +92,7 @@
 	        android:id = "@+id/uploadPhotoButton"
 	        android:paddingTop="10dp"
 	        android:layout_width="0dp"
-	        android:layout_weight="1"
+	        android:layout_weight="2.5"
 	        android:textAllCaps="true"
 	        android:layout_height="wrap_content"
 	        android:textSize="18sp"
@@ -103,12 +103,22 @@
 	        android:id = "@+id/uploadCommentButton"
 	        android:paddingTop="10dp"
 	        android:layout_width="0dp"
-	        android:layout_weight="1"
+	        android:layout_weight="2.5"
 	        android:textAllCaps="true"
 	        android:layout_height="wrap_content"
 	        android:textSize="18sp"
 	        android:textColor="#FFF"
 	        android:background="@drawable/button_add_comment"/>
+	    <Button
+	        android:id = "@+id/shareButton"
+	        android:paddingTop="10dp"
+	        android:layout_width="0dp"
+	        android:layout_weight="1"
+	        android:textAllCaps="true"
+	        android:layout_height="wrap_content"
+	        android:textSize="18sp"
+	        android:textColor="#FFF"
+	        android:background="@drawable/button_share"/>
     </LinearLayout>
 
 </RelativeLayout>

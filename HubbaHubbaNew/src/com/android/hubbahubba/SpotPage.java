@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -39,6 +40,7 @@ public class SpotPage extends Activity {
 	private static final String JPEG_FILE_PREFIX = "Hubba_Hubba";
 	private HubbaGridAdapter dataAdapter;
 	private ArrayList<HashMap<String, String>> imagesArray;
+	private Boolean canShare = true;
 	//private GridAdapter gridAdapter;
 
 
@@ -153,7 +155,16 @@ public class SpotPage extends Activity {
 		Button commentsButton = (Button) findViewById(R.id.commentsButton);
 		Button uploadCommentButton = (Button) findViewById(R.id.uploadCommentButton);
 		//Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
-
+		Button shareButton = (Button) findViewById(R.id.shareButton);
+		
+		// TODO: if secret and can share
+		if(canShare){
+			
+		}
+		else{
+			((ViewManager)shareButton.getParent()).removeView(shareButton);
+		}
+		
 		viewMapButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Bundle bundleData = new Bundle();
