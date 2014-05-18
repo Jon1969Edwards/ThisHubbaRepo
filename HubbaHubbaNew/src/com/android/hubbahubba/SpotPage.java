@@ -76,64 +76,13 @@ public class SpotPage extends Activity {
 		mImage = (ImageView) findViewById(R.id.imgThumbnail);
 		
 		try{
-			/*if (c.moveToFirst()) {
-				
-		        do {
-		            mTitle.setText(c.getString(1));
-		            //mType.setText(c.getString(2));
-			        mRating.setText(c.getString(5));
-			        mDifficulty.setText(c.getString(6));
-			        mLevel.setText(c.getString(7));
-			        //mComments.setText(c.getString(8));
-			        
-			        //now extract the image path
-			        mImagePath = c.getString(9);
-			        
-		        	// Convert the dp value for xml to pixels (casted to int from float)
-			        int size = Image.convertDpToPixel(85, context);
-			        
-			        // Toast.makeText(this, "Image path:\n" +
-		            //         mImagePath + "with size: " + size, Toast.LENGTH_LONG).show();
-			        
-			        // TODO: add if back in but since no db leave out for now
-			        if(mImagePath != null ) {
-			    	    // use picasso to load the image into view
-			    	    Picasso.with(context)
-			    	    	   //.load(mImagePath)
-			    	    	   .load(R.drawable.gettinthere)
-			    	    	   .centerCrop()
-			    	    	   .resize(size, size)
-			    	    	   .placeholder(R.drawable.gettinthere)
-			    	    	   .into(mImage);
-			    	    
-			        }
-			        else{
-			        	Picasso.with(context)
-		    	    	   .load(R.drawable.gettinthere)
-		    	    	   .centerCrop()
-		    	    	   .resize(size, size)
-		    	    	   .placeholder(R.drawable.ic_empty)
-		    	    	   .into(mImage);
-			        }
-			    }
-			    while (c.moveToNext());
-			}
-			else{
-				*/
-			
 			Bundle showData = getIntent().getExtras();
 			spot_id = showData.getString("spot_id");	
-			
-			//Toast.makeText(this, "spot id:\n" +
-			//                     spot_id, Toast.LENGTH_LONG).show();
 			
 			// for now just sets the title
 			Spot.getSpotInfoByID(this, spot_id, context);
 			
     	    int size = Image.convertDpToPixel(90, context);
-    	    
-    	    // Toast.makeText(this, "Size:\n" +
-            //          size, Toast.LENGTH_LONG).show();
     	    
     	    // use picasso to load the image into view
     	    Picasso.with(context)
@@ -142,8 +91,6 @@ public class SpotPage extends Activity {
     	    	   .resize(size, size)
     	    	   .placeholder(R.drawable.ic_empty)
     	    	   .into(mImage);
-	    	    
-			//}
 		}
 		finally {
 	        // this gets called even if there is an exception somewhere above
@@ -156,14 +103,35 @@ public class SpotPage extends Activity {
 		Button uploadCommentButton = (Button) findViewById(R.id.uploadCommentButton);
 		//Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
 		Button shareButton = (Button) findViewById(R.id.shareButton);
+		TextView isSecret = (TextView) findViewById(R.id.isSecret);
 		
-		// TODO: if secret and can share
-		if(canShare){
-			
-		}
-		else{
+		/*
+		// If the spot isn't secret then no need to have a share button
+		if(isSecret.getText().equals("False") || isSecret.getText().equals("false")){
 			((ViewManager)shareButton.getParent()).removeView(shareButton);
 		}
+		else{
+			shareButton.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View view) {
+					Bundle bundleData = new Bundle();
+					bundleData.putString("spot_id", spot_id);
+					Intent intent = new Intent(SpotPage.this, ShareUserList.class);
+					intent.putExtras(bundleData);
+					startActivity(intent);
+				}
+			});
+		}
+		*/
+		
+		shareButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Bundle bundleData = new Bundle();
+				bundleData.putString("spot_id", spot_id);
+				Intent intent = new Intent(SpotPage.this, ShareUserList.class);
+				intent.putExtras(bundleData);
+				startActivity(intent);
+			}
+		});
 		
 		viewMapButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {

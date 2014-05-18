@@ -15,9 +15,14 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
+import android.view.ViewManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,6 +87,7 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
         try {
         	// convert to json and get spot entries
 			JSONObject spot = new JSONObject(result);
+			JSONObject visibility;
 			
 		    try {
 		        // Pulling items from the array
@@ -94,6 +100,20 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 				String distance = "11.1 mi";
 				String lat = spot.getString("lat");
 				String lon = spot.getString("lon");
+				
+				// Get visibility object and isSecret value
+				visibility = spot.getJSONObject("visibility");
+				String isSecret = visibility.getString("isSecret");
+				
+				Toast.makeText(context, "isSecret = " + isSecret, Toast.LENGTH_LONG).show();
+				
+				
+				// Remove share button if spot isnt secret
+				Button shareButton = (Button) activity.findViewById(R.id.shareButton);
+				if(isSecret.equals("False") || isSecret.equals("false")){
+					((ViewManager)shareButton.getParent()).removeView(shareButton);
+				}
+				
 				//Toast.makeText(context, "Name = " + name + ", id = " + id + " overall = " + overall
 				//		+ " bust = " + bust + " diff = " + difficulty + " type = " + type, Toast.LENGTH_LONG).show();
 				
@@ -105,8 +125,10 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 				TextView Distance = (TextView) activity.findViewById(R.id.txtDistance);
 				TextView Lat = (TextView) activity.findViewById(R.id.lat);
 				TextView Lon = (TextView) activity.findViewById(R.id.lon);
+				TextView SecretHolder = (TextView) activity.findViewById(R.id.isSecret);
 				
 				// set texts
+				SecretHolder.setText(isSecret);
 				Overall.setText(overall);
 				Bust.setText(bust);
 				Difficulty.setText(difficulty);

@@ -275,11 +275,12 @@ public class AddLocation extends Activity {
 				mAddress = spotAddress.getText().toString();
 				mCity = spotCity.getText().toString();
 				mType = typeSpinner.getSelectedItem().toString();
+				
 				if(sharedButton.isChecked() == true){
-					isSecret = true;
+					isSecret = false;
 				}
 				else{
-					isSecret = false;
+					isSecret = true;
 				}
 				
 				

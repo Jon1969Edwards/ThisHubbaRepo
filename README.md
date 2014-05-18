@@ -15,6 +15,8 @@ For Demo:
 - ** when spot added ratings appear to be 0 until refresh **
 - videos along with photos?
 - Delete endpoints Only for Super Users
+- Move code around to be more easily accessible
+- Photo needs to be returned with the spot info
 
 
 // TODO

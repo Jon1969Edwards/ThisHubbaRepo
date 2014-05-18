@@ -56,7 +56,6 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
 		//Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
      	
 		// set header and params
-		// set header and params
  		String source = ukey+":"+akey;
         request.setHeader("Authorization","Basic " + Base64.encodeToString(source.getBytes(), Base64.URL_SAFE|Base64.NO_WRAP));
         try {
@@ -107,12 +106,8 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
 				String bust = spot.getString("bust");
 				String type = spot.getString("type");
 				
-				// TODO: GET THESE FROM THE DB
-				//String overall = "10";//spot.getString("overall");
-				//String difficulty = "9";//spot.getString("diff");
-				//String bust = "8";//spot.getString("bust");
+				// TODO: Figure out distance stuff
 				String distance = "10.0 mi";
-				//String type = "Hubba";
 
                 spotMap.put("id",  id);
                 spotMap.put("name", name);
@@ -122,6 +117,8 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
                 spotMap.put("difficulty", difficulty);
                 spotMap.put("bust", bust);
                 spotMap.put("distance", distance);
+                
+                // TODO: Fix this DB side
                 if(type!= null){
                 	spotMap.put("type", type);
                 }
@@ -135,13 +132,6 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
         	Toast.makeText(context, "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();
         	e.printStackTrace();
         }
-        /*
-        String[] from = new String[] { "name", "type", "overall", "diff", "bust", "img" };
-		
-		// the XML defined views which the data will be bound to
-		int[] to = new int[] { R.id.txtTitle, R.id.txtType,
-					R.id.txtOverallRating, R.id.txtDiffRating, R.id.txtPoRating, R.id.imgThumbnail };
-        */
         
         dataAdapter = new HubbaAdapter(context, SpotsArray, R.layout.activity_list_view);
 		// create the adapter using the cursor pointing to the desired data
@@ -150,7 +140,5 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
 		
 		// Assign adapter to ListView
 		listView.setAdapter(dataAdapter);
-        
-        
     }
 }

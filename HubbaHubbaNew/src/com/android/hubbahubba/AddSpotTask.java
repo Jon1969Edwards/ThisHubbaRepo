@@ -75,6 +75,13 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
         	text = params[11];
         	imageURI = params[12];
         	
+        	/*
+        	boolean secret = false;
+        	if(is_private.equals("True")){
+        		secret = true;
+        	}
+        	*/
+        	
         	HttpClient httpClient = new DefaultHttpClient();
             HttpPost request = new HttpPost(url);
 

@@ -1415,13 +1415,13 @@ containing a value of this type.
         public static final int abs__title=0x7f040021;
         public static final int abs__titleDivider=0x7f040022;
         public static final int abs__up=0x7f040011;
-        public static final int action_add_spot=0x7f0400dc;
-        public static final int action_filter=0x7f0400d8;
-        public static final int action_help=0x7f0400db;
-        public static final int action_refresh=0x7f0400da;
-        public static final int action_search=0x7f0400d9;
+        public static final int action_add_spot=0x7f0400df;
+        public static final int action_filter=0x7f0400db;
+        public static final int action_help=0x7f0400de;
+        public static final int action_refresh=0x7f0400dd;
+        public static final int action_search=0x7f0400dc;
         public static final int actionbar_spinner=0x7f0400cd;
-        public static final int addCommentButton=0x7f0400d4;
+        public static final int addCommentButton=0x7f0400d6;
         public static final int addSpotButton=0x7f040084;
         public static final int address=0x7f04005b;
         public static final int authButton=0x7f04003f;
@@ -1451,7 +1451,7 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_login_button=0x7f040099;
         public static final int com_facebook_usersettingsfragment_logo_image=0x7f040097;
         public static final int com_facebook_usersettingsfragment_profile_name=0x7f040098;
-        public static final int comment=0x7f0400d3;
+        public static final int comment=0x7f0400d5;
         public static final int commentBlock=0x7f040083;
         public static final int comments=0x7f040082;
         public static final int commentsButton=0x7f04004e;
@@ -1459,6 +1459,7 @@ containing a value of this type.
         public static final int dangerLevel=0x7f04006c;
         public static final int difficulty=0x7f040061;
         public static final int disableHome=0x7f04000f;
+        public static final int displayName=0x7f0400d9;
         public static final int edit_comments=0x7f0400ab;
         public static final int edit_difficulty=0x7f0400a9;
         public static final int edit_level=0x7f0400aa;
@@ -1479,6 +1480,7 @@ containing a value of this type.
         public static final int fourButtonDiff=0x7f040065;
         public static final int fourButtonOverall=0x7f04007b;
         public static final int gridviewPictures=0x7f040050;
+        public static final int header=0x7f0400ce;
         public static final int homeAsUp=0x7f04000c;
         public static final int hybrid=0x7f040006;
         public static final int hybridButton=0x7f040054;
@@ -1493,12 +1495,13 @@ containing a value of this type.
         public static final int info_window_title=0x7f0400b7;
         public static final int info_window_txtPoRating=0x7f0400bd;
         public static final int info_window_txtPolice=0x7f0400bc;
+        public static final int isSecret=0x7f0400d4;
         public static final int large=0x7f040002;
         public static final int lat=0x7f0400c4;
         public static final int leaveFeedback=0x7f040042;
         public static final int listMode=0x7f040008;
         public static final int listView=0x7f04003a;
-        public static final int listViewComments=0x7f0400d0;
+        public static final int listViewComments=0x7f0400d1;
         public static final int listViewFavorites=0x7f04003e;
         public static final int locateOnMap=0x7f040059;
         public static final int locateOnMapHolder=0x7f040058;
@@ -1506,7 +1509,7 @@ containing a value of this type.
         public static final int lon=0x7f0400c5;
         public static final int map=0x7f040053;
         public static final int map_container=0x7f040052;
-        public static final int menu_settings=0x7f0400d7;
+        public static final int menu_settings=0x7f0400da;
         public static final int messageBody=0x7f0400c9;
         public static final int name=0x7f040043;
         public static final int nineButtonDanger=0x7f040075;
@@ -1523,7 +1526,7 @@ containing a value of this type.
         public static final int picker_subtitle=0x7f040094;
         public static final int ratings=0x7f04009b;
         public static final int relativeLayout1=0x7f04009a;
-        public static final int rider=0x7f0400d5;
+        public static final int rider=0x7f0400d7;
         public static final int rider_text=0x7f0400b5;
         public static final int rowView=0x7f04004b;
         public static final int satellite=0x7f040004;
@@ -1531,7 +1534,7 @@ containing a value of this type.
         public static final int sevenButtonDanger=0x7f040073;
         public static final int sevenButtonDiff=0x7f040068;
         public static final int sevenButtonOverall=0x7f04007e;
-        public static final int shareButton=0x7f0400d2;
+        public static final int shareButton=0x7f0400d3;
         public static final int sharedButton=0x7f04005d;
         public static final int showCustom=0x7f04000e;
         public static final int showHome=0x7f04000b;
@@ -1553,7 +1556,7 @@ containing a value of this type.
         public static final int tenButtonDiff=0x7f04006b;
         public static final int tenButtonOverall=0x7f040081;
         public static final int terrain=0x7f040005;
-        public static final int text1=0x7f0400ce;
+        public static final int text1=0x7f0400cf;
         public static final int threeButtonDanger=0x7f04006f;
         public static final int threeButtonDiff=0x7f040064;
         public static final int threeButtonOverall=0x7f04007a;
@@ -1574,10 +1577,10 @@ containing a value of this type.
         public static final int txtPoRating=0x7f0400a1;
         public static final int txtPolice=0x7f0400a0;
         public static final int txtTitle=0x7f0400c1;
-        public static final int txtType=0x7f0400cf;
+        public static final int txtType=0x7f0400d0;
         public static final int txtUsername=0x7f04009c;
-        public static final int uploadButton=0x7f0400d6;
-        public static final int uploadCommentButton=0x7f0400d1;
+        public static final int uploadButton=0x7f0400d8;
+        public static final int uploadCommentButton=0x7f0400d2;
         public static final int uploadPhotoButton=0x7f040051;
         public static final int useLogo=0x7f04000a;
         public static final int username=0x7f040045;
@@ -1647,14 +1650,16 @@ containing a value of this type.
         public static final int login_layout=0x7f030038;
         public static final int map_spinner=0x7f030039;
         public static final int new_lightbox_image=0x7f03003a;
-        public static final int sherlock_spinner_dropdown_item=0x7f03003b;
-        public static final int sherlock_spinner_item=0x7f03003c;
-        public static final int spinner_row=0x7f03003d;
-        public static final int spot_info_updated=0x7f03003e;
-        public static final int spot_page_comments=0x7f03003f;
-        public static final int spot_page_layout=0x7f030040;
-        public static final int upload_comment=0x7f030041;
-        public static final int upload_image=0x7f030042;
+        public static final int share_user_list_view=0x7f03003b;
+        public static final int sherlock_spinner_dropdown_item=0x7f03003c;
+        public static final int sherlock_spinner_item=0x7f03003d;
+        public static final int spinner_row=0x7f03003e;
+        public static final int spot_info_updated=0x7f03003f;
+        public static final int spot_page_comments=0x7f030040;
+        public static final int spot_page_layout=0x7f030041;
+        public static final int upload_comment=0x7f030042;
+        public static final int upload_image=0x7f030043;
+        public static final int user_item_row=0x7f030044;
     }
     public static final class menu {
         public static final int activity_list_view=0x7f0c0000;

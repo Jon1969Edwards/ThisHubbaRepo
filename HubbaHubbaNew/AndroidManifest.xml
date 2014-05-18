@@ -98,6 +98,12 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name=".ShareUserList"
+            android:theme="@style/Theme.Sherlock.Light.NoActionBar"
+            android:label="Share User List" 
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".SpotPage"
             android:theme="@style/Theme.Sherlock.Light.NoActionBar"
             android:label="@string/spotPage">
