@@ -241,32 +241,32 @@ public class Spot {
 	}
 	
 	private static String IP = "http://10.0.0.44:5000";
-	//private static String IP = "http://35.2.211.107:5000";
+	//private static String IPD = "http://35.2.211.107:5000";
 	private static String IPD = "http://hubba-api.herokuapp.com";
 	
 	public static void getListOfSpots(ListView listView, HubbaAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> SpotsArray, Context c){
-		new PopulateListTask(listView, dataAdapter, SpotsArray, c).execute(IP + "/spots");
+		new PopulateListTask(listView, dataAdapter, SpotsArray, c).execute(IPD + "/spots");
 	}
 	
 	public static void getListOfUsers(ListView listView, HubbaUserAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> UsersArray, Context c){
-		new PopulateUserListTask(listView, dataAdapter, UsersArray, c).execute(IP + "/users");
+		new PopulateUserListTask(listView, dataAdapter, UsersArray, c).execute(IPD + "/users");
 	}
 	
 	public static void updateListOfSpots(ListView listView, HubbaAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> SpotsArray, Context c, String type){
-		new UpdateListTask(listView, dataAdapter, SpotsArray, c, type).execute(IP + "/spots");
+		new UpdateListTask(listView, dataAdapter, SpotsArray, c, type).execute(IPD + "/spots");
 	}
 	
 	public static void getCommentsBySpotID(ListView listView, HubbaCommentAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> CommentsArray, Context c, String spot_id){
-		new PopulateCommentsListTask(listView, dataAdapter, CommentsArray, c).execute(IP + "/spots/" + spot_id + "/comments");
+		new PopulateCommentsListTask(listView, dataAdapter, CommentsArray, c).execute(IPD + "/spots/" + spot_id + "/comments");
 	}
 	
 	public static void getPhotosBySpotID(GridView gridView, HubbaGridAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> imagesArray, Context c, String spot_id){
-		new GetSpotImagesTaskTwo(gridView, dataAdapter, imagesArray, c).execute(IP + "/spots/" + spot_id + "/photos");
+		new GetSpotImagesTaskTwo(gridView, dataAdapter, imagesArray, c).execute(IPD + "/spots/" + spot_id + "/photos");
 	}
 	
 	public static void addSpotByLatLon(Context context, String name, String lat,
@@ -285,7 +285,7 @@ public class Spot {
 			is_private = "true";
 		}
 		
-		String url = IP + "/spots";
+		String url = IPD + "/spots";
 		new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type, ukey, akey, is_private,
 				overall, difficulty, bust, text, imageURI}); 
 	}
@@ -298,7 +298,7 @@ public class Spot {
 		String ukey = preferences.getString("ukey", "");
 		String akey = preferences.getString("akey", "");
 		
-		String url = IP + "/spots/" + spot_id;
+		String url = IPD + "/spots/" + spot_id;
 		new DeleteSpotTask(context).execute(new String[] {url, ukey, akey}); 
 	}
 	
@@ -314,7 +314,7 @@ public class Spot {
 		
 		//Toast.makeText(context, "spotID = " + spot_id, Toast.LENGTH_LONG).show();
 		
-		String url = IP + "/spots/" + spot_id + "/comments";
+		String url = IPD + "/spots/" + spot_id + "/comments";
 		new AddCommentTask(context).execute(new String[] {url, uname, text, overall, difficulty, bust, ukey, akey}); 
 	}
 	
@@ -328,23 +328,23 @@ public class Spot {
 		String ukey = preferences.getString("ukey", "");
 		String akey = preferences.getString("akey", "");
 		
-		String url = IP + "/spots/" + spot_id + "/photos";
+		String url = IPD + "/spots/" + spot_id + "/photos";
 		new AddImageTask(context).execute(new String[] {url, uname, rider, imageURI, ukey, akey}); 
 	}
 	
 	public static void getSpotInfoByID(Activity activity, String id, Context c){
-		new GetSpotInfoTask(activity, c).execute(IP + "/spots/" + id);
+		new GetSpotInfoTask(activity, c).execute(IPD + "/spots/" + id);
 	}
 	
 	public static Spot[] getAllSpots(GoogleMap map, Context c){
 		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
-		new PopulateMapTask(map, c).execute(IP + "/spots");
+		new PopulateMapTask(map, c).execute(IPD + "/spots");
 		return null;
 	}
 	
 	public static Spot[] getSpotsByType(GoogleMap map, Context c, String type){
 		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
-		new UpdateMapTask(map, c, type).execute(IP + "/spots");
+		new UpdateMapTask(map, c, type).execute(IPD + "/spots");
 		return null;
 	}
 }

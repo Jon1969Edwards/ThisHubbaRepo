@@ -85,7 +85,7 @@ public class User {
 	public static final String PREFS_FILE = "com.android.hubbahubba.prefs";
 	
 	public static void loginToFacebook(Context context, String user_id, String access_token, int expire){
-		String url = IP + "/login/facebook";
+		String url = IPD + "/login/facebook";
 		String expire_string = Integer.toString(expire);
 		new FacebookLoginTask(context).execute(new String[] {url, user_id, access_token, expire_string}); 
 	}
@@ -98,7 +98,7 @@ public class User {
 		String ukey = preferences.getString("ukey", "");
 		String akey = preferences.getString("akey", "");
 				
-		String url = IP + "/spots/" + spot_id + "/share";
+		String url = IPD + "/spots/" + spot_id + "/share";
 		
 		// TODO: may not need to pass in the spot_id since it is in the URL
 		new ShareSpotTask(context).execute(new String[] {url, ukey, akey, spot_id, fb_user_id});
