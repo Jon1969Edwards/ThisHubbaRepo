@@ -6,10 +6,12 @@ import java.util.HashMap;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.View;
 import android.widget.GridView;
 import android.widget.ListView;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.Marker;
 
 
 public class Spot {
@@ -240,9 +242,10 @@ public class Spot {
 		return null;
 	}
 	
-	private static String IP = "http://10.0.0.44:5000";
+	// TODO: make these private
+	public static String IP = "http://10.0.0.44:5000";
 	//private static String IPD = "http://35.2.211.107:5000";
-	private static String IPD = "http://hubba-api.herokuapp.com";
+	public static String IPD = "http://hubba-api.herokuapp.com";
 	
 	public static void getListOfSpots(ListView listView, HubbaAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> SpotsArray, Context c){
@@ -267,6 +270,14 @@ public class Spot {
 	public static void getPhotosBySpotID(GridView gridView, HubbaGridAdapter dataAdapter,
 			ArrayList<HashMap<String, String>> imagesArray, Context c, String spot_id){
 		new GetSpotImagesTaskTwo(gridView, dataAdapter, imagesArray, c).execute(IPD + "/spots/" + spot_id + "/photos");
+	}
+	
+	public static void getTopPhotoBySpotID(Context c, String spot_id, Activity activity){
+		new GetSpotTopImageTask(activity, c).execute(IPD + "/spots/" + spot_id + "/top_photo");
+	}
+	
+	public static void getTopPhotoBySpotID_VIEW(Context c, String spot_id, View view, Marker marker){
+		new GetSpotTopImageTask_VIEW(view, c, marker).execute(IPD + "/spots/" + spot_id + "/top_photo");
 	}
 	
 	public static void addSpotByLatLon(Context context, String name, String lat,

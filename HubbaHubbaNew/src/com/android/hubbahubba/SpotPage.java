@@ -18,15 +18,12 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 public class SpotPage extends Activity {
 	
@@ -75,27 +72,29 @@ public class SpotPage extends Activity {
 		mDifficulty = (TextView) findViewById(R.id.txtDiffRating);
 		mImage = (ImageView) findViewById(R.id.imgThumbnail);
 		
-		try{
-			Bundle showData = getIntent().getExtras();
-			spot_id = showData.getString("spot_id");	
-			
-			// for now just sets the title
-			Spot.getSpotInfoByID(this, spot_id, context);
-			
-    	    int size = Image.convertDpToPixel(90, context);
-    	    
-    	    // use picasso to load the image into view
-    	    Picasso.with(context)
-    	    	   .load(R.drawable.gettinthere)
-    	    	   .centerCrop()
-    	    	   .resize(size, size)
-    	    	   .placeholder(R.drawable.ic_empty)
-    	    	   .into(mImage);
-		}
-		finally {
-	        // this gets called even if there is an exception somewhere above
-		 }
-	  
+		Bundle showData = getIntent().getExtras();
+		spot_id = showData.getString("spot_id");	
+		
+		// for now just sets the title
+		Spot.getSpotInfoByID(this, spot_id, context);
+		
+	    int size = Image.convertDpToPixel(90, context);
+	    
+	    /*
+	    // use picasso to load the image into view
+	    Picasso.with(context)
+	    	   .load(R.drawable.gettinthere)
+	    	   .centerCrop()
+	    	   .resize(size, size)
+	    	   .placeholder(R.drawable.ic_empty)
+	    	   .into(mImage);
+	  	*/
+	    
+	    // TODO: do away with image map
+	    // Get and populate header photo for the spot
+	    
+	    Spot.getTopPhotoBySpotID(context, spot_id, this);
+	    
 		// create buttons
 		Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
 		Button uploadPhotosButton = (Button) findViewById(R.id.uploadPhotoButton);

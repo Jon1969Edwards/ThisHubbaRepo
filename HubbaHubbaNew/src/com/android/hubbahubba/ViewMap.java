@@ -30,6 +30,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -54,6 +55,8 @@ public class ViewMap extends SherlockFragment {
 	LinearLayout Footer;
 	Spinner spinner;
 	boolean spinnerTouched = false;
+	private View v;
+	private Marker selectedMarker = null;
 
 	// @SuppressLint("NewApi")
 	public View onCreateView(final LayoutInflater inflater,
@@ -339,6 +342,23 @@ public class ViewMap extends SherlockFragment {
 
 					}
 				});
+				
+				mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
+
+		            public boolean onMarkerClick(Marker marker) {
+		            	// hide info window if it is shown
+		            	if(!(selectedMarker == null) && selectedMarker.equals(marker)){
+		            		marker.hideInfoWindow();
+		            		selectedMarker = null;
+		            		return true;
+		            	}
+		            	
+		            	// else set selectedMarker
+		                selectedMarker = marker;
+		                v = null;
+		                return false;
+		            }
+		        });
 
 				// INFO WINDOW
 				// Setting a custom info window adapter for the google map
@@ -347,6 +367,9 @@ public class ViewMap extends SherlockFragment {
 					// Use default InfoWindow frame
 					@Override
 					public View getInfoWindow(Marker arg0) {
+						if (selectedMarker.isInfoWindowShown()) {
+		                    return v;
+		                }
 						String LatLong = arg0.getPosition().toString();
 						LatLong = LatLong.substring(10, LatLong.length() - 1);
 
@@ -362,7 +385,7 @@ public class ViewMap extends SherlockFragment {
 						Context context = getActivity().getApplicationContext();
 
 						// Getting view from the layout file info_window_layout
-						View v = getSherlockActivity().getLayoutInflater()
+						v = getSherlockActivity().getLayoutInflater()
 								.inflate(R.layout.info_window_layout, null);
 
 						// =========== NEW CODE==========//
@@ -388,6 +411,7 @@ public class ViewMap extends SherlockFragment {
 
 						// parse snippit
 						String[] snip = arg0.getSnippet().split(",");
+						String spot_id = snip[0];
 						String overall = snip[1];
 						String difficulty = snip[2];
 						String bust = snip[3];
@@ -403,14 +427,18 @@ public class ViewMap extends SherlockFragment {
 						// Convert the dp value for xml to pixels (casted to int
 						// from float)
 						int size = Image.convertDpToPixel(80, context);
-
+						
+						Spot.getTopPhotoBySpotID_VIEW(context, spot_id, v, arg0);
+						
+						// TODO: get a better placeholder
+						// This is overridden by the above asynctask
 						// Use picasso to load the image into view
-						Picasso.with(context).load(R.drawable.gettinthere)
+						Picasso.with(context)
+								.load(R.drawable.gettinthere)
 								.centerCrop().resize(size, size)
-								.placeholder(R.drawable.gettinthere)
+								.placeholder(R.drawable.ic_empty)
 								.into(imgThumbnail);
-
-						// Returning the view containing InfoWindow contents
+						
 						return v;
 					}
 

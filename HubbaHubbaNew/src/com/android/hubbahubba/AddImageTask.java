@@ -126,7 +126,7 @@ public class AddImageTask extends AsyncTask<String, Void, String>
 				String fb_expire = hubbaprefs.getString("fb_expire", "");
 				//Toast.makeText(context, "user_id = " + fb_user_id + "\naccess_token = " + fb_access_token
 				//		+ "\nexpire = " + fb_expire, Toast.LENGTH_LONG).show();
-				
+				/*
 				// TODO: do this not so sketch
 				if(!fb_access_token.equals("") && !fb_expire.equals("") && !fb_user_id.equals("")){
 					//Toast.makeText(context, "Attempting to log back in..." + response, Toast.LENGTH_LONG).show();
@@ -136,6 +136,7 @@ public class AddImageTask extends AsyncTask<String, Void, String>
 				else{
 					Toast.makeText(context, "Please re-authenticate with facebook from the home screen", Toast.LENGTH_LONG).show();
 				}
+				*/
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

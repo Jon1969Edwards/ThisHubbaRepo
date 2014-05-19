@@ -106,6 +106,7 @@ public class AddCommentTask extends AsyncTask<String, Void, String>
 			JSONObject jResponse = new JSONObject(response);
 			String error = jResponse.getString("error");
 			
+			/*
 			if(error.contains("authentication failed")){
 				Toast.makeText(context, "error = " + error, Toast.LENGTH_LONG).show();
 				
@@ -125,7 +126,9 @@ public class AddCommentTask extends AsyncTask<String, Void, String>
 				else{
 					Toast.makeText(context, "Please re-authenticate with facebook from the home screen", Toast.LENGTH_LONG).show();
 				}
+			
 			}
+    	*/
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			// do nothing, most likely worked =)

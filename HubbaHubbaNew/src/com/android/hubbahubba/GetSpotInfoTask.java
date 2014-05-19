@@ -105,8 +105,7 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 				visibility = spot.getJSONObject("visibility");
 				String isSecret = visibility.getString("isSecret");
 				
-				Toast.makeText(context, "isSecret = " + isSecret, Toast.LENGTH_LONG).show();
-				
+				//Toast.makeText(context, "isSecret = " + isSecret, Toast.LENGTH_LONG).show();
 				
 				// Remove share button if spot isnt secret
 				Button shareButton = (Button) activity.findViewById(R.id.shareButton);

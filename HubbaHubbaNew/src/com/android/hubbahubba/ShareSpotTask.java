@@ -96,7 +96,7 @@ public class ShareSpotTask extends AsyncTask<String, Void, String>
 			JSONObject jResponse = new JSONObject(response);
 			String error = jResponse.getString("error");
 			
-			Toast.makeText(context, "error = " + error, Toast.LENGTH_LONG).show();
+			Toast.makeText(context, error, Toast.LENGTH_LONG).show();
 			/*
 			if(error.contains("authentication failed")){
 				Toast.makeText(context, "error = " + error, Toast.LENGTH_LONG).show();

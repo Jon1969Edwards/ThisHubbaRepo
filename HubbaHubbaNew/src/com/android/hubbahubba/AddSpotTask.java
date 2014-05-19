@@ -156,6 +156,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
 				//Toast.makeText(context, "user_id = " + fb_user_id + "\naccess_token = " + fb_access_token
 				//		+ "\nexpire = " + fb_expire, Toast.LENGTH_LONG).show();
 				
+				/* TODO: Re-auth
 				//Log.i("Our Login:", "is private " + is_private);				
 				// TODO: do this not so sketch
 				if(!fb_access_token.equals("") && !fb_expire.equals("") && !fb_user_id.equals("")){
@@ -179,16 +180,19 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
 				else{
 					Toast.makeText(context, "Please re-authenticate with facebook from the home screen", Toast.LENGTH_LONG).show();
 				}
+				*/
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			// do nothing, most likely worked =)
 		}
         //Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+    	/*
     	catch (InterruptedException e) {
 			// TODO Auto-generated catch block
     		Toast.makeText(context, "sleep failed", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
+		*/
     }   
 }  
