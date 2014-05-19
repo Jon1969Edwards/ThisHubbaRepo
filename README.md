@@ -5,10 +5,7 @@ Android mobile application using the Google Maps API, Picasso, and ActionBarSher
 Stay Tuned!
 
 For Demo:
-- ** Cant get secret stuff to work **
-- Make sure photo is posted when adding a spot (s3 error?)
 - images rider field (user or string)
-- SHARE SECRET SPOTS WITH OTHERS
 - Make sure users can only rate photos/spots and comments once
 - ** Add login to menu button
 - Quit activity when returning from mail
@@ -17,6 +14,7 @@ For Demo:
 - Delete endpoints Only for Super Users
 - Move code around to be more easily accessible
 - Photo needs to be returned with the spot info
+- Better loading image for placeholders/no images in spot
 
 
 // TODO

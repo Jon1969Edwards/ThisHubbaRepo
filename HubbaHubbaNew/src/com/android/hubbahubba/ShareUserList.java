@@ -59,6 +59,8 @@ public class ShareUserList extends Activity {
 				//Toast.makeText(context, "spot_id = " + spot_id + "\n FBID = " + fb_user_id, Toast.LENGTH_LONG).show();
 				
 				User.shareSpot(context, spot_id, fb_user_id);
+				
+				finish();
 			}
 		});
 	}
