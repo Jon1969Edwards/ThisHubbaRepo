@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    android:orientation="vertical" >
+	
+	<include
+	    android:layout_alignParentTop="true"
+	   	layout="@layout/item_row"
+	    android:id="@+id/rowView"/>
+
+     
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:layout_below="@+id/rowView"
+        android:paddingBottom="10dp"
+        android:id="@+id/buttons"
+        android:background="#000"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+		
+        <Button
+            android:layout_weight="1"
+            android:textAllCaps="true"
+            android:layout_marginRight="10dp"
+            android:id = "@+id/viewMapButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/viewOnMap"
+            tools:context=".MainActivity"
+            android:background="@drawable/button_layout"
+            android:layout_gravity="center_vertical"
+            android:textSize="12sp"
+            android:textColor="#FFF" />   
+        <Button
+            android:layout_weight="1"
+            android:textAllCaps="true"
+            android:id = "@+id/commentsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/Comments"
+            tools:context=".MainActivity"
+            android:layout_marginRight="10dp"
+            android:textSize="12sp"
+            android:textColor="#FFF"
+            android:background="@drawable/button_layout" />
+        <Button
+            android:layout_weight="1"
+            android:textAllCaps="true"
+            android:id = "@+id/favoritesButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/addToFavorites"
+            tools:context=".MainActivity"
+            android:textSize="12sp"
+            android:textColor="#FFF"
+            android:background="@drawable/button_layout" />
+    </LinearLayout>
+    
+    <!-- xmlns:android="http://schemas.android.com/apk/res/android" -->
+    <GridView 
+        android:layout_below="@+id/buttons"
+	    android:id="@+id/gridviewPictures"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:columnWidth="100dp"
+	    android:numColumns="auto_fit"
+	    android:verticalSpacing="10dp"
+	    android:paddingTop="10dp"
+	    android:horizontalSpacing="10dp"
+	    android:stretchMode="columnWidth"
+	    android:scaleType="centerCrop"
+	    android:gravity="center"
+	    android:background="@drawable/background_2"
+	/>
+    <Button
+        android:id = "@+id/uploadPhotoButton"
+        android:paddingTop="10dp"
+        android:layout_width="fill_parent"
+        android:textAllCaps="true"
+        android:layout_height="wrap_content"
+        android:text="@string/uploadPhoto"
+        tools:context=".MainActivity"
+        android:textSize="18sp"
+        android:textColor="#FFF"
+        android:background="#000"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout><!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/activity_spot_page.xml -->

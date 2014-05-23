@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout  
+    android:id="@+id/relativeLayout1"   
+    android:layout_width="fill_parent"   
+    android:layout_height="wrap_content"   
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="5dp"
+    android:background="@drawable/list_view_style">  
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"   
+        android:layout_height="wrap_content"
+        android:id="@+id/ratings" >
+        
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/txtUsername"
+	        android:layout_alignParentTop="true" 
+	        android:textColor="#FFF" >  
+	    </TextView> 
+        
+        <RelativeLayout
+	        android:id="@+id/OverallRatings"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/txtUsername" >
+	        
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtOverall"
+		        android:text="Overall:" 
+		        android:layout_marginTop="5dp"  
+		        android:textColor="#FFF" >  
+		    </TextView>
+		    
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtOverallRating" 
+		        android:layout_toRightOf="@+id/txtOverall"
+		        android:layout_marginTop="5dp"  
+		        android:layout_marginLeft="5dp"
+		        android:textColor="#FFF"
+		        android:layout_centerHorizontal="true" >  
+		    </TextView>
+	        
+	    </RelativeLayout>
+	    
+	    <RelativeLayout
+	        android:id="@+id/PoliceRatings"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/OverallRatings" >
+	        
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtPolice"
+		        android:text="Bust:" 
+		        android:layout_marginTop="5dp"  
+		        android:textColor="#FFF" >  
+		    </TextView>
+		    
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtPoRating"   
+		        android:layout_toRightOf="@+id/txtPolice"
+		        android:layout_marginTop="5dp"  
+		        android:layout_marginLeft="5dp"
+		        android:textColor="#FFF"
+		        android:layout_centerHorizontal="true" >  
+		    </TextView>
+	        
+	    </RelativeLayout>
+    
+	    <RelativeLayout
+	        android:id="@+id/DiffRatings"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/PoliceRatings" >
+	        
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtDiff"   
+		        android:text="Difficulty:" 
+		        android:layout_marginTop="5dp"  
+		        android:textColor="#FFF" >  
+		    </TextView>
+		    
+	        <TextView   
+		        android:layout_height="wrap_content"   
+		        android:layout_width="wrap_content"   
+		        android:id="@+id/txtDiffRating"   
+		        android:layout_toRightOf="@+id/txtDiff"
+		        android:layout_marginTop="5dp"  
+		        android:layout_marginLeft="5dp"
+		        android:layout_centerHorizontal="true"
+		        android:textColor="#FFF" >  
+		    </TextView>
+	        
+	    </RelativeLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginTop="10dp"
+	    android:layout_marginBottom="10dp"
+	    android:layout_marginRight="10dp"
+	    android:padding="5dp"
+	    android:background="#000">
+        
+        <TextView   
+	        android:layout_height="fill_parent"   
+	        android:layout_width="fill_parent" 
+	        android:textSize="16sp"  
+	        android:id="@+id/txtCommentText"
+	        android:layout_centerHorizontal="true"
+	        android:textColor="#FFF" >  
+	    </TextView>
+        
+    </RelativeLayout>
+
+</LinearLayout> <!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/comment_item_row.xml -->

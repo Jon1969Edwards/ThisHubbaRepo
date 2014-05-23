@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HubbaHubbaNew/HubbaHubbaNew.iml" filepath="$PROJECT_DIR$/HubbaHubbaNew/HubbaHubbaNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThisHubbaRepo.iml" filepath="$PROJECT_DIR$/ThisHubbaRepo.iml" />
+    </modules>
+  </component>
+</project>
+

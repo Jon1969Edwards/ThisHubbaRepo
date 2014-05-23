@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/build/exploded-aar/fr.avianey/facebook-android-api/3.14.1/res/values-xhdpi/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="com_facebook_picker_divider_width">2px</dimen>
+
+</resources>

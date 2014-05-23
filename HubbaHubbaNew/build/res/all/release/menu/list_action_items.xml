@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- Search / will display always -->
+    <item android:id="@+id/action_filter"
+          android:title="Search"
+          android:showAsAction="ifRoom"
+          android:actionLayout="@layout/map_spinner"/>
+     
+    <!-- Search -->
+    <item android:id="@+id/action_search"
+          android:icon="@drawable/ic_action_search"
+          android:title="Search"
+          android:showAsAction="ifRoom" />
+    
+    <!-- Refresh -->
+    <item android:id="@+id/action_refresh"
+          android:icon="@drawable/ic_action_refresh"
+          android:title="Refresh"
+          android:showAsAction="ifRoom" />
+     
+    <!-- Help -->
+    <item android:id="@+id/action_help"
+          android:icon="@drawable/ic_action_help"
+          android:title="Leave Feedback"
+          android:showAsAction="ifRoom"/>
+    
+    <!-- Add Spot -->
+    <item android:id="@+id/action_add_spot"
+          android:icon="@drawable/ic_action_new"
+          android:title="Add Spot"
+          android:showAsAction="ifRoom" />
+</menu>
+<!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/menu/list_action_items.xml -->

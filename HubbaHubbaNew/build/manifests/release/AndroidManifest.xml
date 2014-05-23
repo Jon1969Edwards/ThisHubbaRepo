@@ -1,0 +1,80 @@
+<!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.android.hubbahubba">
+    
+    <!--  FOR LOADING LARGE BITMAPS -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Include next permission if you want to allow UIL to cache images on SD card -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    
+    <!-- FOR USING THE CAMERA -->
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- GOOGLE MAPS PERMISSION -->    
+	<permission android:name="com.android.hubbahubba.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+	<uses-permission android:name="com.android.hubbahubba.permission.MAPS_RECEIVE"/>
+	<!-- Copied from Google Maps Library/AndroidManifest.xml. -->
+	<uses-sdk android:minSdkVersion="11" android:targetSdkVersion="19"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+	<!-- External storage for caching. -->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<!-- My Location -->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<!-- Maps API needs OpenGL ES 2.0. -->
+	<uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+
+    <application android:allowBackup="false" android:icon="@drawable/hubba_icon_red" android:label="@string/app_name" android:theme="@style/AppTheme" android:uiOptions="splitActionBarWhenNarrow">
+        
+        <!-- ALLOWS FOR GOOGLE MAPS API -->
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyA-e9oGMiB4INkTitEPHIv9UPOCJzapdwQ"/>
+        <meta-data android:name="android.support.UI_OPTIONS" android:value="splitActionBarWhenNarrow"/>
+        
+        <activity android:label="@string/title_activity_main" android:name="com.android.hubbahubba.MainActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Sherlock.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/logIn" android:name="com.android.hubbahubba.LogIn" android:theme="@style/Theme.Sherlock.Light.NoActionBar" android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:label="@string/signUp" android:name="com.android.hubbahubba.SignUp" android:theme="@style/Theme.Sherlock.Light.NoActionBar" android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:label="@string/viewMap" android:name="com.android.hubbahubba.ViewMap" android:screenOrientation="portrait" android:theme="@style/AppTheme">
+        </activity>
+        <activity android:configChanges="orientation|screenSize|keyboardHidden" android:label="uploadImage" android:name="com.android.hubbahubba.AddImage" android:theme="@style/Theme.Sherlock.Light.NoActionBar" android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:configChanges="orientation|screenSize|keyboardHidden" android:label="uploadComment" android:name="com.android.hubbahubba.AddComment" android:theme="@style/Theme.Sherlock.Light.NoActionBar" android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:label="@string/listViewHubba" android:name="com.android.hubbahubba.ListViewHubba" android:screenOrientation="portrait" android:theme="@style/AppTheme">
+        </activity>
+        <activity android:label="Share User List" android:name="com.android.hubbahubba.ShareUserList" android:screenOrientation="portrait" android:theme="@style/Theme.Sherlock.Light.NoActionBar">
+        </activity>
+        <activity android:label="@string/spotPage" android:name="com.android.hubbahubba.SpotPage" android:theme="@style/Theme.Sherlock.Light.NoActionBar">
+        </activity>
+        <activity android:configChanges="orientation|screenSize|keyboardHidden" android:label="@string/addLocation" android:name="com.android.hubbahubba.AddLocation" android:theme="@style/Theme.Sherlock.Light.NoActionBar" android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:label="@string/listViewComments" android:name="com.android.hubbahubba.ListViewComments" android:theme="@style/Theme.Sherlock.Light.NoActionBar">
+        </activity>
+        <activity android:configChanges="orientation|screenSize|keyboardHidden" android:label="@string/addSpot" android:name="com.android.hubbahubba.AddSpot" android:theme="@style/Theme.Sherlock.Light.NoActionBar" android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:label="@string/listViewFavorites" android:name="com.android.hubbahubba.ListViewFavorites">
+        </activity>
+        <activity android:label="@string/viewImage" android:name="com.android.hubbahubba.ViewImage" android:theme="@style/Theme.Sherlock.Light.NoActionBar">
+        </activity>
+        <activity android:label="@string/title_activity_action_bar" android:name="com.android.hubbahubba.ActionBarActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" android:uiOptions="splitActionBarWhenNarrow">
+            <!-- To support below API Level 14 -->
+		    <meta-data android:name="android.support.UI_OPTIONS" android:value="splitActionBarWhenNarrow"/>
+        </activity>
+        <activity android:label="@string/title_activity_edit" android:name="com.android.hubbahubba.EditActivity" android:theme="@style/Theme.Sherlock.Light.NoActionBar" android:windowSoftInputMode="stateHidden">
+       </activity>
+       <activity android:label="Leave Feedback" android:name="com.android.hubbahubba.LeaveFeedback" android:theme="@style/Theme.Sherlock.Light.NoActionBar" android:windowSoftInputMode="stateHidden">
+       </activity>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+        <activity android:name="com.facebook.LoginActivity"/>
+ 
+    </application>
+
+</manifest>

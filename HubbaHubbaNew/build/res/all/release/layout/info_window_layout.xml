@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout   
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout1"   
+    android:layout_width="match_parent"   
+    android:layout_height="match_parent"
+    android:background="@drawable/info_window_edit_small"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp">
+    
+    <!--  SHOLD BE INFO_WINDOW_BACKGROUND -->
+      
+    <TextView   
+        android:layout_height="wrap_content"   
+        android:layout_width="wrap_content"   
+        android:id="@+id/info_window_title"
+        android:textStyle="bold"   
+        android:textAllCaps="true"
+        android:layout_toRightOf="@+id/info_window_image"
+        android:layout_marginLeft="5dp"
+        android:textColor="#FFF" >  
+    </TextView>  
+    
+    <ImageView
+        android:contentDescription="Spot Photo"
+        android:layout_width="80dp"   
+        android:layout_height="80dp"   
+        android:id="@+id/info_window_image"   
+        android:layout_alignParentLeft="true"  
+        android:layout_centerInParent="true"
+        android:layout_alignTop="@id/info_window_title"
+        android:scaleType="centerCrop">  
+    </ImageView>  
+    
+    <TextView   
+        android:layout_height="wrap_content"   
+        android:layout_width="wrap_content"   
+        android:id="@+id/info_window_OverallRating"   
+        android:layout_toRightOf="@+id/info_window_image"  
+        android:layout_below="@+id/info_window_title"
+        android:layout_marginTop="10dp"  
+        android:layout_marginLeft="5dp"
+        android:textColor="#FFF">  
+    </TextView>
+    
+    <TextView   
+        android:layout_height="wrap_content"   
+        android:layout_width="wrap_content"   
+        android:id="@+id/info_window_distance"   
+        android:layout_toRightOf="@+id/info_window_image"  
+        android:layout_below="@+id/info_window_OverallRating"
+        android:layout_marginTop="10dp"  
+        android:layout_marginLeft="5dp"
+        android:textColor="#FFF" >  
+    </TextView>
+    
+    <RelativeLayout
+        android:id="@+id/PoliceRatings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_window_title"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/info_window_distance" >
+        
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/info_window_txtPolice"
+	        android:text="@string/txtPolice" 
+	        android:layout_marginTop="5dp"  
+	        android:layout_marginLeft="5dp"
+	        android:textColor="#FFF" >  
+	    </TextView>
+	    
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/info_window_txtPoRating"   
+	        android:layout_below="@+id/info_window_txtPolice"
+	        android:layout_marginTop="5dp"  
+	        android:layout_marginLeft="5dp"
+	        android:textColor="#FFF"
+	        android:layout_centerHorizontal="true" >  
+	    </TextView>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/info_window_title"
+        android:layout_toRightOf="@+id/PoliceRatings" >
+        
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/info_window_diff"   
+	        android:text="@string/txtDiff" 
+	        android:layout_marginTop="5dp"  
+	        android:layout_marginLeft="5dp"
+	        android:textColor="#FFF" >  
+	    </TextView>
+	    
+        <TextView   
+	        android:layout_height="wrap_content"   
+	        android:layout_width="wrap_content"   
+	        android:id="@+id/info_window_diffRating"   
+	        android:layout_below="@+id/info_window_diff"
+	        android:layout_marginTop="5dp"  
+	        android:layout_marginLeft="5dp"
+	        android:layout_centerHorizontal="true"
+	        android:textColor="#FFF" >  
+	    </TextView>
+        
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/info_window_layout.xml -->

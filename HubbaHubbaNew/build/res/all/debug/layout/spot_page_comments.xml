@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_2"
+    android:orientation="vertical" >
+	
+    <!-- Top of spot page goes here -->
+    
+    <!-- End Top of Spot -->
+    
+    <!-- List of Comments Here -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left" >
+        
+        <ListView
+        	android:id="@+id/listViewComments"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content" >
+    	</ListView>
+        
+   	</RelativeLayout>
+   	
+    <Button
+        android:id = "@+id/uploadCommentButton"
+        android:paddingTop="10dp"
+        android:layout_width="fill_parent"
+        android:textAllCaps="true"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity"
+        android:textSize="18sp"
+	    android:textColor="#FFF"
+	    android:background="@drawable/button_add_new"
+        android:layout_alignParentBottom="true" />
+    
+	<!-- End List of Comments -->
+	
+</RelativeLayout><!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/spot_page_comments.xml -->

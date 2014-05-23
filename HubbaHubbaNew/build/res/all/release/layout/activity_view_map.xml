@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:map="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/map_container"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/background">
+  	
+    <!--
+    <Button
+	    android:id="@+id/addSpotToMapButton"
+	    android:layout_width="60dp"
+	    android:layout_height="60dp"
+	    android:background="#000"
+	    android:paddingBottom="5dp"
+	    android:paddingTop="5dp"
+	    android:text="@string/addSpot"
+	    android:textColor="#FFF"
+	    android:textSize="15sp"
+	    android:layout_alignParentTop="true" 
+	    android:layout_alignParentLeft="true"/>
+    -->
+
+  	<fragment
+    	android:id="@+id/map"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:name="com.google.android.gms.maps.SupportMapFragment"
+    	class="com.google.android.gms.maps.SupportMapFragment" />
+  	
+  	<Button 
+  	    android:id="@+id/hybridButton"
+  	    android:layout_width="41dp"
+  	    android:layout_height="41dp"
+  	    android:layout_marginLeft="10dp"
+  	   	android:layout_alignParentTop="true"
+  	   	android:background="@drawable/button_map_normal"
+  	   	android:layout_marginTop="10dp"/>
+	
+	<LinearLayout
+	    android:id="@+id/footer"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:layout_alignParentBottom="true"
+	   	android:layout_alignParentLeft="true" >
+	   	
+	    <Spinner
+	        android:textSize="20sp"
+		    android:id="@+id/spotTypeSpinner"
+		    android:layout_width="200dp"
+		    android:layout_height="fill_parent"
+		    android:entries="@array/showSpotTypes"
+		    android:background="@drawable/spinner_style"
+		    android:gravity="center"
+		    android:prompt="@string/spinnerPrompt" />
+		
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textAllCaps="true"
+            android:background="#000"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/search"
+            android:textColor="#FFF"
+            android:textSize="20sp" />
+        <!--
+        <Button
+            android:id="@+id/layers"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="#000"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/layers"
+            android:textColor="#FFF"
+            android:textSize="20sp" />
+        -->
+	</LinearLayout>
+</RelativeLayout><!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/activity_view_map.xml -->
