@@ -5,13 +5,11 @@ import java.io.IOException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
-import org.apache.http.ParseException;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -109,6 +107,8 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
 					snippit += (bust + ",");
 					String type = spot.getString("type");
 					snippit += (type + ",");
+					String photo_url = spot.getString("photo");
+					snippit += (photo_url + ",");
 					//Toast.makeText(context, snippit, Toast.LENGTH_LONG).show();
 					
 					double lat = Double.parseDouble(spot.getString("lat"));
