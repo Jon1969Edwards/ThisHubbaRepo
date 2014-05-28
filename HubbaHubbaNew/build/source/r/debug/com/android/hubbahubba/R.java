@@ -9,6 +9,8 @@ package com.android.hubbahubba;
 
 public final class R {
     public static final class array {
+        /**  item>My Spots</item 
+         */
         public static final int pageTitle=0x7f040000;
         public static final int showSpotTypes=0x7f040001;
         public static final int spotTypes=0x7f040002;

@@ -271,7 +271,7 @@ Of course it&apos;s possible that your custom drawable is translucent and you wa
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/info_window_layout.xml"
-            line="8"
+            line="7"
             column="5"/>
     </issue>
 
@@ -655,6 +655,54 @@ Of course it&apos;s possible that your custom drawable is translucent and you wa
             file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/values/strings.xml"
             line="13"
             column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource R.string.viewMap appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Looks for unused resources"
+        explanation="Unused resources make applications larger and slow down builds."
+        errorLine1="    &lt;string name=&quot;viewMap&quot;>Map View&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/values/strings.xml"
+            line="16"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource R.string.listViewHubba appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Looks for unused resources"
+        explanation="Unused resources make applications larger and slow down builds."
+        errorLine1="    &lt;string name=&quot;listViewHubba&quot;> List View&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/values/strings.xml"
+            line="17"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource R.string.listViewFavorites appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Looks for unused resources"
+        explanation="Unused resources make applications larger and slow down builds."
+        errorLine1=" &lt;string name=&quot;listViewFavorites&quot;>Hubba Hubba&lt;/string>"
+        errorLine2="         ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/values/strings.xml"
+            line="21"
+            column="10"/>
     </issue>
 
     <issue
@@ -1185,6 +1233,20 @@ Of course it&apos;s possible that your custom drawable is translucent and you wa
     </issue>
 
     <issue
+        id="IconDuplicatesConfig"
+        severity="Warning"
+        message="The info_window_edit_small.9.png icon has identical contents in the following configuration folders: drawable-hdpi, drawable"
+        category="Usability:Icons"
+        priority="5"
+        summary="Finds icons that have identical bitmaps across various configuration parameters"
+        explanation="If an icon is provided under different configuration parameters such as `drawable-hdpi` or `-v11`, they should typically be different. This detector catches cases where the same icon is provided in different configuration folder which is usually not intentional.">
+        <location
+            file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/drawable/info_window_edit_small.9.png"/>
+        <location
+            file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/drawable-hdpi/info_window_edit_small.9.png"/>
+    </issue>
+
+    <issue
         id="IconLocation"
         severity="Warning"
         message="Found bitmap drawable res/drawable/btn_black.9.png in densityless folder"
@@ -1658,6 +1720,20 @@ Of course it&apos;s possible that your custom drawable is translucent and you wa
         urls="http://developer.android.com/guide/practices/screens_support.html">
         <location
             file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/drawable/info_window.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        severity="Warning"
+        message="Found bitmap drawable res/drawable/info_window_edit_small.9.png in densityless folder"
+        category="Usability:Icons"
+        priority="5"
+        summary="Ensures that images are not defined in the density-independent drawable folder"
+        explanation="The res/drawable folder is intended for density-independent graphics such as shapes defined in XML. For bitmaps, move it to `drawable-mdpi` and consider providing higher and lower resolution versions in `drawable-ldpi`, `drawable-hdpi` and `drawable-xhdpi`. If the icon *really* is density independent (for example a solid color) you can place it in `drawable-nodpi`."
+        url="http://developer.android.com/guide/practices/screens_support.html"
+        urls="http://developer.android.com/guide/practices/screens_support.html">
+        <location
+            file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/drawable/info_window_edit_small.9.png"/>
     </issue>
 
     <issue
@@ -3664,7 +3740,7 @@ In Android Studio and Eclipse there are quickfixes to automatically extract this
         quickfix="adt">
         <location
             file="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/info_window_layout.xml"
-            line="28"
+            line="27"
             column="9"/>
     </issue>
 

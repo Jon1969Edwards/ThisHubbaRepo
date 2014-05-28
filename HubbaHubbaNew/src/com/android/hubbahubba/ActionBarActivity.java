@@ -122,10 +122,10 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
 				//f = new NewListView();
 				f = new ListViewHubba();
 				break;
-			case 2:
-				pageString = "favorites_view";
-				f = new ListViewFavorites();
-				break;
+//			case 2:
+//				pageString = "favorites_view";
+//				f = new ListViewFavorites();
+//				break;
 			}
 			return f;
 		}

@@ -7,7 +7,7 @@
     <string-array name="pageTitle">
         <item>Map View</item>
         <item>List View</item>
-        <item>My Spots</item>
+        <!-- item>My Spots</item -->
     </string-array>
     <string-array name="showSpotTypes">
         <item>Show All</item>

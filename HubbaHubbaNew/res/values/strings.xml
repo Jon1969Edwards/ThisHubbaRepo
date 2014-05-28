@@ -3,7 +3,7 @@
     <string-array name="pageTitle">
         <item>Map View</item>
         <item>List View</item>
-        <item>My Spots</item>
+        <!--item>My Spots</item-->
     </string-array>
     <string name="title_activity_edit">Edit Activity</string>
     <string name="title_activity_action_bar">Hubba Hubba</string>

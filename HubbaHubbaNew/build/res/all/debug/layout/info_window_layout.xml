@@ -25,7 +25,8 @@
     
     <ImageView
         android:contentDescription="Spot Photo"
-        android:layout_width="80dp"   
+        android:layout_width="80dp"
+        android:background="@drawable/ic_empty_sec"
         android:layout_height="80dp"   
         android:id="@+id/info_window_image"   
         android:layout_alignParentLeft="true"  

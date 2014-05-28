@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,53 +46,7 @@ public class ListViewHubba extends SherlockFragment {
         // Inflate the layout for this fragment
 		context = getActivity().getBaseContext();
         rootView =  inflater.inflate(R.layout.activity_list_view, container, false);
-        //header = (LinearLayout) rootView.findViewById(R.id.header)
-		/*
-        		Button addSpot = (Button) rootView.findViewById(R.id.AddSpot);
-		addSpot.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Intent intent = new Intent(getSherlockActivity(), AddLocation.class);
-				intent.putExtra("FromPage", "ListViewHubba");
-				ListViewHubba.this.startActivity(intent);
-				//startActivity(intent);
-			}
-		});
-		*/
-		//spinner = (Spinner) rootView.findViewById(R.id.spotTypeSpinner);
-		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_row, R.id.text1, getResources().getStringArray(R.array.showSpotTypes));
-		//spinner.setAdapter(adapter);
-		
-		/*spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-		    @Override
-		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-		    	String type = spinner.getSelectedItem().toString();
-		    	
-	    		if(spinnerTouched && type.equalsIgnoreCase("Show All")){
-		    		//type = "";
-	    			// populate spots array
-	    			Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
-		    	}
-		    	else if(!type.equalsIgnoreCase("Show All")){
-		    		spinnerTouched = true;
-		    		// Take off the s
-		    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
-		    			type = type.substring(0, type.length() - 1);
-		    		}
-		    		// TODO: CLEAR CURRENT ADAPTER
-		    		Spot.updateListOfSpots(listView, dataAdapter, SpotsArray, context, type);
-		    	}
-	    		// else nothing (page loaded)
-		    }
 
-		    @Override
-		    public void onNothingSelected(AdapterView<?> parentView) {
-		        // your code here
-		    	// TODO: anything?
-		    }
-
-		});
-		
-		*/
 		// Generate ListView from SQLite Database
 		displayListView();
 
@@ -190,7 +145,9 @@ public class ListViewHubba extends SherlockFragment {
 		// populate spots array
 		SpotsArray = null;
 		SpotsArray = new ArrayList<HashMap<String, String>>();
-		Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
+        Log.i("TASK", "RESUME");
+
+        //Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
 	}
 	
 	/* --- Start menu --- */
@@ -212,21 +169,7 @@ public class ListViewHubba extends SherlockFragment {
 		    @Override
 		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 		    	String type = spinner.getSelectedItem().toString();
-		    	
-	    		if(spinnerTouched && type.equalsIgnoreCase("Show All")){
-		    		//type = "";
-	    			// populate spots array
-	    			Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
-		    	}
-		    	else if(!type.equalsIgnoreCase("Show All")){
-		    		spinnerTouched = true;
-		    		// Take off the s
-		    		if(type.substring(type.length() - 1).equalsIgnoreCase("s")){
-		    			type = type.substring(0, type.length() - 1);
-		    		}
-		    		// TODO: CLEAR CURRENT ADAPTER
-		    		Spot.updateListOfSpots(listView, dataAdapter, SpotsArray, context, type);
-		    	}
+                refreshList();
 	    		// else nothing (page loaded)
 		    }
 
@@ -290,7 +233,6 @@ public class ListViewHubba extends SherlockFragment {
 			Spot.updateListOfSpots(listView, dataAdapter, SpotsArray, context, type);
 		}
 	}
-	
 	/* --- end menu --- */
 	
 	

@@ -14412,6 +14412,11 @@ center
                 qualifiers=""
                 type="drawable" />
             <file
+                name="info_window_edit_small"
+                path="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/drawable/info_window_edit_small.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
                 name="lightbox"
                 path="/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/drawable/lightbox.xml"
                 qualifiers=""

@@ -275,11 +275,7 @@ public class Spot {
 	public static void getTopPhotoBySpotID(Context c, String spot_id, Activity activity){
 		new GetSpotTopImageTask(activity, c).execute(IPD + "/spots/" + spot_id + "/top_photo");
 	}
-	
-	public static void getTopPhotoBySpotID_VIEW(Context c, String spot_id, View view, Marker marker){
-		new GetSpotTopImageTask_VIEW(view, c, marker).execute(IPD + "/spots/" + spot_id + "/top_photo");
-	}
-	
+
 	public static void addSpotByLatLon(Context context, String name, String lat,
 			String lon, String type, boolean isPrivate, String overall, String difficulty,
 			String bust, String text, String imageURI){

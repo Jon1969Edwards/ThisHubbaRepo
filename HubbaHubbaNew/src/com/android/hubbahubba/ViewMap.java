@@ -59,6 +59,8 @@ public class ViewMap extends SherlockFragment {
 	private View v;
 	private Marker selectedMarker = null;
 	private String url;
+    private boolean already_shown = false;
+    private int loop = 0;
 
 	// @SuppressLint("NewApi")
 	public View onCreateView(final LayoutInflater inflater,
@@ -143,10 +145,6 @@ public class ViewMap extends SherlockFragment {
 			}
 
 		});
-
-		// get mapFragment
-		// mMap = ((SupportMapFragment)
-		// getFragmentManager().findFragmentById(R.id.map)).getMap();
 
 		setUpMapIfNeeded();
 		return rootView;
@@ -235,35 +233,25 @@ public class ViewMap extends SherlockFragment {
 
 						final LatLng spotLoc = new LatLng(dLat, dLon);
 						CameraPosition cameraPosition = new CameraPosition.Builder()
-								.target(spotLoc) // Sets the center of the map
-													// to
-													// Mountain View
-								.zoom(17) // Sets the zoom
-								.bearing(0) // Sets the orientation of the
-											// camera to
-											// north
-								.tilt(30) // Sets the tilt of the camera to 30
-											// degrees
-								.build(); // Creates a CameraPosition from the
-											// builder
+								.target(spotLoc)    // sets camera location to spotLoc
+								.zoom(17)           // Sets the zoom
+								.bearing(0)         // Sets orientation to north
+								.tilt(30)           // Sets tilt of the camera to 30 degrees
+								.build();           // Creates a CameraPosition from the builder
 						mMap.animateCamera(CameraUpdateFactory
 								.newCameraPosition(cameraPosition));
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				} else {
+                    // default to riley skatepark
 					final LatLng Center = new LatLng(42.4409010, -83.3978000);
-
 					CameraPosition cameraPosition = new CameraPosition.Builder()
-							.target(Center) // Sets the center of the map to
-											// Mountain View
-							.zoom(17) // Sets the zoom
-							.bearing(0) // Sets the orientation of the camera to
-										// north
-							.tilt(30) // Sets the tilt of the camera to 30
-										// degrees
-							.build(); // Creates a CameraPosition from the
-										// builder
+							.target(Center)
+							.zoom(17)
+							.bearing(0)
+							.tilt(30)
+							.build();
 					mMap.animateCamera(CameraUpdateFactory
 							.newCameraPosition(cameraPosition));
 				}
@@ -277,37 +265,25 @@ public class ViewMap extends SherlockFragment {
 					public void onMapLongClick(LatLng point) {
 						if (!spotAdded) {
 
+                            // Create the marker
 							addSpot = mMap.addMarker(new MarkerOptions()
 									.position(point)
 									.title("Tap to Add Spot")
 									.icon(BitmapDescriptorFactory
 											.fromResource(R.drawable.hubba_marker_add)));
-							// .icon(BitmapDescriptorFactory
-							// .defaultMarker()));
 							addSpot.hideInfoWindow();
 
 							text = addSpot.getPosition().toString();
-							// mMarkerMap.put(addSpot.getPosition(), TYPE_NEW);
 							text = text.substring(10, text.length() - 1);
 
 							spotAdded = true;
-
-							// Toast toast = Toast.makeText(context, text,
-							// Toast.LENGTH_LONG);
-							// toast.show();
-
 							Intent intent = new Intent(getSherlockActivity(),
 									AddLocation.class);
 							intent.putExtra("LatLong", text);
 							intent.putExtra("FromPage", "ViewMap");
-							// startActivityForResult(intent, 0);
+
 							startActivityForResult(intent, 0);
 						}
-
-						// intent.addextra lat and long
-						// in add spot retrieve lat and long
-						// when done add lat and long to intent
-						// start add spot
 					}
 				});
 
@@ -349,15 +325,18 @@ public class ViewMap extends SherlockFragment {
 				mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 
 		            public boolean onMarkerClick(Marker marker) {
+
 		            	// hide info window if it is shown
 		            	if(!(selectedMarker == null) && selectedMarker.equals(marker)){
 		            		marker.hideInfoWindow();
 		            		selectedMarker = null;
+                            v = null;
 		            		return true;
 		            	}
 
 		            	// else set selectedMarker
 		                selectedMarker = marker;
+                        already_shown = false;
 		                v = null;
 		                return false;
 		            }
@@ -390,7 +369,7 @@ public class ViewMap extends SherlockFragment {
 								.inflate(R.layout.info_window_layout, null);
 
 						// =========== Get views ==========//
-						ImageView imgThumbnail = (ImageView) v
+                        ImageView imgThumbnail = (ImageView) v
 								.findViewById(R.id.info_window_image);
 						TextView txtTitle = (TextView) v
 								.findViewById(R.id.info_window_title);
@@ -426,7 +405,44 @@ public class ViewMap extends SherlockFragment {
 						// Convert the dp value for xml to pixels (casted to int
 						// from float)
 						int size = Image.convertDpToPixel(80, context);
-						
+                        if(!already_shown){
+                            if(url.equals("lol")){
+                                Picasso.with(getActivity().getApplicationContext())
+                                        .load(R.drawable.gettinthere)
+                                        .centerCrop().resize(size, size)
+                                        .placeholder(R.drawable.ic_empty_sec)
+                                        .noFade()
+                                        .into(imgThumbnail, new InfoWindowRefresher(arg0));
+                            }
+                            else{
+                                Picasso.with(getActivity().getApplicationContext())
+                                        .load(url)
+                                        .noFade()
+                                        .centerCrop().resize(size, size)
+                                        .placeholder(R.drawable.ic_empty_sec)
+                                        .into(imgThumbnail, new InfoWindowRefresher(arg0));
+                            }
+                        }
+                        else{
+                            already_shown = false;
+                            if(url.equals("lol")){
+                                Picasso.with(getActivity().getApplicationContext())
+                                        .load(R.drawable.gettinthere)
+                                        .centerCrop().resize(size, size)
+                                        .placeholder(R.drawable.ic_empty_sec)
+                                        .noFade()
+                                        .into(imgThumbnail);
+                            }
+                            else{
+                                Picasso.with(getActivity().getApplicationContext())
+                                        .load(url)
+                                        .noFade()
+                                        .centerCrop().resize(size, size)
+                                        .placeholder(R.drawable.ic_empty_sec)
+                                        .into(imgThumbnail);
+                            }
+                        }
+                        /*
 						// TODO: get a better placeholder
 						// Use picasso to load the image into view
 						if(url.equals("lol")){
@@ -445,7 +461,7 @@ public class ViewMap extends SherlockFragment {
 									.placeholder(R.drawable.ic_empty_sec)
 									.into(imgThumbnail, new InfoWindowRefresher(arg0));
 						}
-						
+						*/
 						return v;
 					}
 
@@ -555,9 +571,6 @@ public class ViewMap extends SherlockFragment {
 	}
 	
 	public void update_info_window(Marker marker){
-		// Getting view from the layout file info_window_layout
-		v = getSherlockActivity().getLayoutInflater()
-				.inflate(R.layout.info_window_layout, null);
 		
 		ImageView imgThumbnail = (ImageView) v
 				.findViewById(R.id.info_window_image);
@@ -605,6 +618,7 @@ public class ViewMap extends SherlockFragment {
 		    @Override
 		    public void onSuccess() {
 		        markerToRefresh.showInfoWindow();
+                //update_info_window(markerToRefresh);
 		    }
 
 		    @Override

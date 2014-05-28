@@ -18,8 +18,8 @@ document.getElementById(id+'Link').style.display = 'none';
 <body>
 <h1>Lint Report</h1>
 <div class="titleSeparator"></div>
-Check performed at Fri May 23 19:22:23 EDT 2014.<br/>
-0 errors and 242 warnings found:<br/><br/>
+Check performed at Tue May 27 20:22:22 EDT 2014.<br/>
+0 errors and 247 warnings found:<br/><br/>
 <table class="overview">
 <tr><td></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
 </td></tr>
@@ -40,7 +40,7 @@ Check performed at Fri May 23 19:22:23 EDT 2014.<br/>
 <a href="#Overdraw">Overdraw: Overdraw: Painting regions more than once</a>
 </td></tr>
 <tr>
-<td class="countColumn">45</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<td class="countColumn">48</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
 <a href="#UnusedResources">UnusedResources: Unused resources</a>
 </td></tr>
 <tr>
@@ -64,11 +64,11 @@ Check performed at Fri May 23 19:22:23 EDT 2014.<br/>
 <a href="#IconDipSize">IconDipSize: Icon density-independent size validation</a>
 </td></tr>
 <tr>
-<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<td class="countColumn">2</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
 <a href="#IconDuplicatesConfig">IconDuplicatesConfig: Identical bitmaps across various configurations</a>
 </td></tr>
 <tr>
-<td class="countColumn">44</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<td class="countColumn">45</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
 <a href="#IconLocation">IconLocation: Image defined in density-independent drawable folder</a>
 </td></tr>
 <tr>
@@ -256,13 +256,13 @@ This check looks through the string definitions, and if it finds any words that 
 </pre>
 <button id="OverdrawDivLink" onclick="reveal('OverdrawDiv');" />+ 7 More Occurrences...</button>
 <div id="OverdrawDiv" style="display: none">
-<span class="location"><a href="../res/layout/info_window_layout.xml">../res/layout/info_window_layout.xml</a>:8</span>: <span class="message">Possible overdraw: Root element paints background @drawable/info_window_edit_small with a theme that also paints a background (inferred theme is @style/AppTheme)</span><br /><pre class="errorlines">
-<span class="lineno">   5</span>     android:id="@+id/relativeLayout1"   
-<span class="lineno">   6</span>     android:layout_width="match_parent"   
-<span class="lineno">   7</span>     android:layout_height="match_parent"
-<span class="lineno">   8</span>     <span class="errorspan">android:background="@drawable/info_window_edit_small"</span>
-<span class="lineno">   9</span>     android:paddingLeft="15dp"
-<span class="lineno">  10</span>     android:paddingTop="10dp"
+<span class="location"><a href="../res/layout/info_window_layout.xml">../res/layout/info_window_layout.xml</a>:7</span>: <span class="message">Possible overdraw: Root element paints background @drawable/info_window_edit_small with a theme that also paints a background (inferred theme is @style/AppTheme)</span><br /><pre class="errorlines">
+<span class="lineno">   4</span>     android:id="@+id/relativeLayout1"   
+<span class="lineno">   5</span>     android:layout_width="match_parent"   
+<span class="lineno">   6</span>     android:layout_height="match_parent"
+<span class="lineno">   7</span>     <span class="errorspan">android:background="@drawable/info_window_edit_small"</span>
+<span class="lineno">   8</span>     android:paddingLeft="15dp"
+<span class="lineno">   9</span>     android:paddingTop="10dp"
 </pre>
 <span class="location"><a href="../res/layout/leave_feedback.xml">../res/layout/leave_feedback.xml</a>:5</span>: <span class="message">Possible overdraw: Root element paints background @drawable/plain_background_hubba with a theme that also paints a background (inferred theme is @style/Theme_Sherlock_Light_NoActionBar)</span><br /><pre class="errorlines">
 <span class="lineno">   2</span>     xmlns:tools="http://schemas.android.com/tools"
@@ -340,7 +340,7 @@ Of course it's possible that your custom drawable is translucent and you want it
 <span class="location"><a href="../res/menu/activity_list_view.xml">../res/menu/activity_list_view.xml</a></span>: <span class="message">The resource R.menu.activity_list_view appears to be unused</span><br />
 <span class="location"><a href="../res/layout/activity_list_view_favorites.xml">../res/layout/activity_list_view_favorites.xml</a></span>: <span class="message">The resource R.layout.activity_list_view_favorites appears to be unused</span><br />
 <span class="location"><a href="../res/layout/activity_spot_page.xml">../res/layout/activity_spot_page.xml</a></span>: <span class="message">The resource R.layout.activity_spot_page appears to be unused</span><br />
-<button id="UnusedResourcesDivLink" onclick="reveal('UnusedResourcesDiv');" />+ 40 More Occurrences...</button>
+<button id="UnusedResourcesDivLink" onclick="reveal('UnusedResourcesDiv');" />+ 43 More Occurrences...</button>
 <div id="UnusedResourcesDiv" style="display: none">
 <span class="location"><a href="../res/menu/activity_view_map.xml">../res/menu/activity_view_map.xml</a></span>: <span class="message">The resource R.menu.activity_view_map appears to be unused</span><br />
 <span class="location"><a href="../res/drawable/btn_cab_done_hubba_actionbar.xml">../res/drawable/btn_cab_done_hubba_actionbar.xml</a></span>: <span class="message">The resource R.drawable.btn_cab_done_hubba_actionbar appears to be unused</span><br />
@@ -363,6 +363,30 @@ Of course it's possible that your custom drawable is translucent and you want it
 <span class="lineno">  13</span>     &lt;string <span class="errorspan">name="title"> Hubba Hubba&lt;/string></span>
 <span class="lineno">  14</span>     &lt;string name="logIn"> Log In&lt;/string>
 <span class="lineno">  15</span>     &lt;string name="signUp"> Sign Up&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:16</span>: <span class="message">The resource R.string.viewMap appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  13</span>     &lt;string name="title"> Hubba Hubba&lt;/string>
+<span class="lineno">  14</span>     &lt;string name="logIn"> Log In&lt;/string>
+<span class="lineno">  15</span>     &lt;string name="signUp"> Sign Up&lt;/string>
+<span class="lineno">  16</span>     &lt;string <span class="errorspan">name="viewMap">Map View&lt;/string></span>
+<span class="lineno">  17</span>     &lt;string name="listViewHubba"> List View&lt;/string>
+<span class="lineno">  18</span>     &lt;string name="listViewComments">Comments&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:17</span>: <span class="message">The resource R.string.listViewHubba appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  14</span>     &lt;string name="logIn"> Log In&lt;/string>
+<span class="lineno">  15</span>     &lt;string name="signUp"> Sign Up&lt;/string>
+<span class="lineno">  16</span>     &lt;string name="viewMap">Map View&lt;/string>
+<span class="lineno">  17</span>     &lt;string <span class="errorspan">name="listViewHubba"> List View&lt;/string></span>
+<span class="lineno">  18</span>     &lt;string name="listViewComments">Comments&lt;/string>
+<span class="lineno">  19</span> 	&lt;string name="addLocation">Add Spot&lt;/string>
+</pre>
+<span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:21</span>: <span class="message">The resource R.string.listViewFavorites appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  18</span>     &lt;string name="listViewComments">Comments&lt;/string>
+<span class="lineno">  19</span> 	&lt;string name="addLocation">Add Spot&lt;/string>
+<span class="lineno">  20</span> 	&lt;string name="spotPage">Hubba Hubba&lt;/string>
+<span class="lineno">  21</span> 	&lt;string <span class="errorspan">name="listViewFavorites">Hubba Hubba&lt;/string></span>
+<span class="lineno">  22</span> 	&lt;string name="viewImage">View Image&lt;/string>
+<span class="lineno">  23</span> 	&lt;string name="takePhoto">Take Photo&lt;/string>
 </pre>
 <span class="location"><a href="../res/values/strings.xml">../res/values/strings.xml</a>:23</span>: <span class="message">The resource R.string.takePhoto appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno">  20</span> 	&lt;string name="spotPage">Hubba Hubba&lt;/string>
@@ -720,6 +744,17 @@ Additional locations: <ul>
 </td><td><a href="../res/drawable-ldpi/hubba_icon_red.png"><img border="0" align="top" src="../res/drawable-ldpi/hubba_icon_red.png" /></a>
 </td></tr><tr><th>mdpi</th><th>ldpi</th></tr>
 </table>
+<span class="location"><a href="../res/drawable/info_window_edit_small.9.png">../res/drawable/info_window_edit_small.9.png</a></span>: <span class="message">The info_window_edit_small.9.png icon has identical contents in the following configuration folders: drawable-hdpi, drawable</span><br />
+<ul></ul><button id="Location2DivLink" onclick="reveal('Location2Div');" />+ 1 Additional Locations...</button>
+<div id="Location2Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../res/drawable-hdpi/info_window_edit_small.9.png">../res/drawable-hdpi/info_window_edit_small.9.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../res/drawable-hdpi/info_window_edit_small.9.png"><img border="0" align="top" src="../res/drawable-hdpi/info_window_edit_small.9.png" /></a>
+</td><td><a href="../res/drawable/info_window_edit_small.9.png"><img border="0" align="top" src="../res/drawable/info_window_edit_small.9.png" /></a>
+</td></tr><tr><th>hdpi</th><th></th></tr>
+</table>
 </div>
 <div class="metadata">Priority: 5 / 10<br/>
 Category: Usability:Icons</div>
@@ -740,7 +775,7 @@ If an icon is provided under different configuration parameters such as <code>dr
 <span class="location"><a href="../res/drawable/btn_blue_glossy.9.png">../res/drawable/btn_blue_glossy.9.png</a></span>: <img class="embedimage" align="right" src="../res/drawable/btn_blue_glossy.9.png" /><span class="message">Found bitmap drawable res/drawable/btn_blue_glossy.9.png in densityless folder</span><br clear="right"/>
 <span class="location"><a href="../res/drawable/btn_green_matte.9.png">../res/drawable/btn_green_matte.9.png</a></span>: <img class="embedimage" align="right" src="../res/drawable/btn_green_matte.9.png" /><span class="message">Found bitmap drawable res/drawable/btn_green_matte.9.png in densityless folder</span><br clear="right"/>
 <span class="location"><a href="../res/drawable/btn_red_matte.9.png">../res/drawable/btn_red_matte.9.png</a></span>: <img class="embedimage" align="right" src="../res/drawable/btn_red_matte.9.png" /><span class="message">Found bitmap drawable res/drawable/btn_red_matte.9.png in densityless folder</span><br clear="right"/>
-<button id="IconLocationDivLink" onclick="reveal('IconLocationDiv');" />+ 39 More Occurrences...</button>
+<button id="IconLocationDivLink" onclick="reveal('IconLocationDiv');" />+ 40 More Occurrences...</button>
 <div id="IconLocationDiv" style="display: none">
 <span class="location"><a href="../res/drawable/btn_white_glossy.9.png">../res/drawable/btn_white_glossy.9.png</a></span>: <img class="embedimage" align="right" src="../res/drawable/btn_white_glossy.9.png" /><span class="message">Found bitmap drawable res/drawable/btn_white_glossy.9.png in densityless folder</span><br clear="right"/>
 <span class="location"><a href="../res/drawable/camera_button.png">../res/drawable/camera_button.png</a></span>: <img class="embedimage" align="right" src="../res/drawable/camera_button.png" /><span class="message">Found bitmap drawable res/drawable/camera_button.png in densityless folder</span><br clear="right"/>
@@ -771,6 +806,7 @@ If an icon is provided under different configuration parameters such as <code>dr
 <span class="location"><a href="../res/drawable/img1.jpg">../res/drawable/img1.jpg</a></span>: <span class="message">Found bitmap drawable res/drawable/img1.jpg in densityless folder</span><br />
 <span class="location"><a href="../res/drawable/indysunburst.jpg">../res/drawable/indysunburst.jpg</a></span>: <span class="message">Found bitmap drawable res/drawable/indysunburst.jpg in densityless folder</span><br />
 <span class="location"><a href="../res/drawable/info_window.png">../res/drawable/info_window.png</a></span>: <img class="embedimage" align="right" src="../res/drawable/info_window.png" /><span class="message">Found bitmap drawable res/drawable/info_window.png in densityless folder</span><br clear="right"/>
+<span class="location"><a href="../res/drawable/info_window_edit_small.9.png">../res/drawable/info_window_edit_small.9.png</a></span>: <img class="embedimage" align="right" src="../res/drawable/info_window_edit_small.9.png" /><span class="message">Found bitmap drawable res/drawable/info_window_edit_small.9.png in densityless folder</span><br clear="right"/>
 <span class="location"><a href="../res/drawable/nosegrabup.jpg">../res/drawable/nosegrabup.jpg</a></span>: <span class="message">Found bitmap drawable res/drawable/nosegrabup.jpg in densityless folder</span><br />
 <span class="location"><a href="../res/drawable/plain_background_hubba.jpg">../res/drawable/plain_background_hubba.jpg</a></span>: <span class="message">Found bitmap drawable res/drawable/plain_background_hubba.jpg in densityless folder</span><br />
 <span class="location"><a href="../res/drawable/riley1.jpg">../res/drawable/riley1.jpg</a></span>: <span class="message">Found bitmap drawable res/drawable/riley1.jpg in densityless folder</span><br />
@@ -1661,13 +1697,13 @@ Note that for text fields, you should not set both the <code>hint</code> and the
 <span class="lineno">  25</span>    	    android:visibility="gone"/>
 <span class="lineno">  26</span> 
 </pre>
-<span class="location"><a href="../res/layout/info_window_layout.xml">../res/layout/info_window_layout.xml</a>:28</span>: <span class="message">[I18N] Hardcoded string "Spot Photo", should use @string resource</span><br /><pre class="errorlines">
-<span class="lineno">  25</span>     &lt;/TextView>  
-<span class="lineno">  26</span>     
-<span class="lineno">  27</span>     &lt;ImageView
-<span class="lineno">  28</span>         <span class="errorspan">android:contentDescription="Spot Photo"</span>
-<span class="lineno">  29</span>         android:layout_width="80dp"   
-<span class="lineno">  30</span>         android:layout_height="80dp"   
+<span class="location"><a href="../res/layout/info_window_layout.xml">../res/layout/info_window_layout.xml</a>:27</span>: <span class="message">[I18N] Hardcoded string "Spot Photo", should use @string resource</span><br /><pre class="errorlines">
+<span class="lineno">  24</span>     &lt;/TextView>  
+<span class="lineno">  25</span>     
+<span class="lineno">  26</span>     &lt;ImageView
+<span class="lineno">  27</span>         <span class="errorspan">android:contentDescription="Spot Photo"</span>
+<span class="lineno">  28</span>         android:layout_width="80dp"   
+<span class="lineno">  29</span>         android:layout_height="80dp"   
 </pre>
 <span class="location"><a href="../res/layout/leave_feedback.xml">../res/layout/leave_feedback.xml</a>:28</span>: <span class="message">[I18N] Hardcoded string "Help shape Hubba Hubba", should use @string resource</span><br /><pre class="errorlines">
 <span class="lineno">  25</span> 	            android:layout_height="wrap_content"

@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -52,8 +53,10 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
 		SharedPreferences hubbaprefs = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
 		String ukey = hubbaprefs.getString("ukey", "");
 		String akey = hubbaprefs.getString("akey", "");
-		
-		//Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
+
+        Log.i("TASK", "LIST: ukey = " + ukey + " akey = " + akey);
+
+        //Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
      	
 		// set header and params
  		String source = ukey+":"+akey;

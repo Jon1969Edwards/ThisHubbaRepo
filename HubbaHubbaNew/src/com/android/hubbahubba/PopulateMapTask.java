@@ -49,7 +49,7 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
  		SharedPreferences hubbaprefs = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
         String ukey = hubbaprefs.getString("ukey", "");
  		String akey = hubbaprefs.getString("akey", "");
- 		Log.i("SHITTT", "ukey = " + ukey + " akey = " + akey);
+ 		Log.i("TASK", "MAP: ukey = " + ukey + " akey = " + akey);
 		//Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
      	
 		// set header and params

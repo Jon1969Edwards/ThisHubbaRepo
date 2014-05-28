@@ -29,7 +29,7 @@ public class AddSpot extends Activity {
 	int poClicked = 0;
 	String mTitle, mType;
 	EditText mComment;
-	Uri mSelectedImage = Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);;
+	Uri mSelectedImage = null;
 	//private static final int SELECT_PHOTO = 1;
 	public static final int RESULT_CODE_SPOT_ADDED = 2;
 	double mLat;
@@ -57,9 +57,13 @@ public class AddSpot extends Activity {
 	    String text = "Passed Through Lat and Long: " + lat + " " + lng;
 	    
 	    //Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
-		
-		//get image passed through
-		mSelectedImage = Uri.parse(getIntent().getStringExtra("mSelectedImage"));
+
+        String imageString = getIntent().getStringExtra("mSelectedImage");
+
+        if(imageString != null){
+            //get image passed through
+            mSelectedImage = Uri.parse(imageString);
+        }
 		
 		//initialize objects in layout
 		mComment = (EditText) findViewById(R.id.commentBlock);

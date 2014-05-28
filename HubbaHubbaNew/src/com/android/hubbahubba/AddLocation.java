@@ -56,7 +56,7 @@ public class AddLocation extends Activity {
 	String mImagePath;
 	boolean isSecret;
 	Uri imageViewUri;
-	Uri mSelectedImage = Uri.parse("android.resource://com.segf4ult.test/" + R.drawable.ic_launcher);
+	Uri mSelectedImage = null;
 	Bitmap spotImage;
 	Bitmap mImageBitmap;
 	ImageView mImageView;
@@ -105,74 +105,75 @@ public class AddLocation extends Activity {
 			// TODO only add the marker to the map if you press the "AddSpotButton" in addspot
 			LatLong = getIntent().getStringExtra("LatLong");
 			//LatLong = LatLong.substring(1, LatLong.length() - 1);
-			
-			String[] separated = LatLong.split(",");
-			latitude = separated[0];
-			longitude = separated[1];
-			
-			//Toast.makeText(context, latitude + "   " + longitude, duration).show();
-			
-			Address address;
-			// GET ADDRESS FROM THE LATATUDE AND LONGITUDE
-			Geocoder geocoder = new Geocoder(this, Locale.ENGLISH);
-			try {
-				List<Address> List = geocoder.getFromLocation(Double.parseDouble(latitude),Double.parseDouble(longitude),1);
-				
-				address = List.get(0);
-				text = address.toString();
-				//Toast toast0 = Toast.makeText(context, text, duration);
-				//toast0.show();
-				
-				for (int j=0; j<1; j++){
-				    Address returnedAddress = List.get(j);
-				    StringBuilder strReturnedAddress = new StringBuilder();
-				    for(int i=0; i<returnedAddress.getMaxAddressLineIndex(); i++) {
-				     strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
-				     if(i == 0){
-				    	 spotAddress.setText(returnedAddress.getAddressLine(i));
-				     }
-				     else if(i == 1){
-				    	 spotCity.setText(returnedAddress.getAddressLine(i));
-				     }
-				    }
-				    addressList[j] = strReturnedAddress.toString();
-				    
-				    //text = addressList[j];
-					//Toast toast1 = Toast.makeText(context, text, duration);
-					//toast1.show();
-				 }
-				
-				
-			} catch (NumberFormatException e) {
-				
-				double D1 = Double.parseDouble(latitude);
-				double D2 = Double.parseDouble(longitude);
-				
-				String lat = Double.toString(D1);
-				String lon = Double.toString(D2);
-				
-				//text = lat + " " + lon + " NUMBER_FORMAT_EXCEPTION";
-				
-				//Toast toast0 = Toast.makeText(context, text, duration);
-				//toast0.show();
-				
-				e.printStackTrace();
-			} catch (IOException e) {
-				
-				double D1 = Double.parseDouble(latitude);
-				double D2 = Double.parseDouble(longitude);
-				
-				String lat = Double.toString(D1);
-				String lon = Double.toString(D2);
-				
-				//text = lat + " " + lon + " IOE_EXCEPTION";
-				
-				//Toast toast0 = Toast.makeText(context, text, duration);
-				//toast0.show();
-				
-				e.printStackTrace();
-			}
-			
+			if(LatLong != null){
+                String[] separated = LatLong.split(",");
+                latitude = separated[0];
+                longitude = separated[1];
+
+                //Toast.makeText(context, latitude + "   " + longitude, duration).show();
+
+                Address address;
+                // GET ADDRESS FROM THE LATATUDE AND LONGITUDE
+                Geocoder geocoder = new Geocoder(this, Locale.ENGLISH);
+                try {
+                    List<Address> List = geocoder.getFromLocation(Double.parseDouble(latitude),Double.parseDouble(longitude),1);
+
+                    address = List.get(0);
+                    text = address.toString();
+                    //Toast toast0 = Toast.makeText(context, text, duration);
+                    //toast0.show();
+
+                    for (int j=0; j<1; j++){
+                        Address returnedAddress = List.get(j);
+                        StringBuilder strReturnedAddress = new StringBuilder();
+                        for(int i=0; i<returnedAddress.getMaxAddressLineIndex(); i++) {
+                            strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
+                            if(i == 0){
+                                spotAddress.setText(returnedAddress.getAddressLine(i));
+                            }
+                            else if(i == 1){
+                                spotCity.setText(returnedAddress.getAddressLine(i));
+                            }
+                        }
+                        addressList[j] = strReturnedAddress.toString();
+
+                        //text = addressList[j];
+                        //Toast toast1 = Toast.makeText(context, text, duration);
+                        //toast1.show();
+                    }
+
+
+                } catch (NumberFormatException e) {
+
+                    double D1 = Double.parseDouble(latitude);
+                    double D2 = Double.parseDouble(longitude);
+
+                    String lat = Double.toString(D1);
+                    String lon = Double.toString(D2);
+
+                    //text = lat + " " + lon + " NUMBER_FORMAT_EXCEPTION";
+
+                    //Toast toast0 = Toast.makeText(context, text, duration);
+                    //toast0.show();
+
+                    e.printStackTrace();
+                } catch (IOException e) {
+
+                    double D1 = Double.parseDouble(latitude);
+                    double D2 = Double.parseDouble(longitude);
+
+                    String lat = Double.toString(D1);
+                    String lon = Double.toString(D2);
+
+                    //text = lat + " " + lon + " IOE_EXCEPTION";
+
+                    //Toast toast0 = Toast.makeText(context, text, duration);
+                    //toast0.show();
+
+                    e.printStackTrace();
+                }
+            }
+
 			/*
 			if(list != null && list.get(0) != null){
 				// TODO THIS DOESNT WORK
@@ -182,7 +183,7 @@ public class AddLocation extends Activity {
 					toast0.show();
 			}
 			else{
-					//TODO GETTING IOE EXCEPTION  
+					//TODO GETTING IOE EXCEPTION
 					text = "SHEEEETTTT";
 					Toast toast1 = Toast.makeText(context, text, duration);
 					toast1.show();
@@ -315,7 +316,9 @@ public class AddLocation extends Activity {
 					intent.putExtra("spotType", mType);
 					intent.putExtra("spotAddress", mAddress);
 					intent.putExtra("spotCity", mCity );
-					intent.putExtra("mSelectedImage", mSelectedImage.toString());
+                    if(mSelectedImage != null){
+                        intent.putExtra("mSelectedImage", mSelectedImage.toString());
+                    }
 					
 					//text = "Image from: " + mSelectedImage.toString();
 					//Toast toaster = Toast.makeText(context, text, duration);
