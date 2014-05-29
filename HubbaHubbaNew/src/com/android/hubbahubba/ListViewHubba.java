@@ -3,10 +3,8 @@ package com.android.hubbahubba;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +33,7 @@ public class ListViewHubba extends SherlockFragment {
 	private ArrayList<HashMap<String, String>> SpotsArray;
 	Spinner spinner;
 	boolean spinnerTouched = false;
+    private boolean clickable = false;
 
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,66 +47,60 @@ public class ListViewHubba extends SherlockFragment {
         rootView =  inflater.inflate(R.layout.activity_list_view, container, false);
 
 		// Generate ListView from SQLite Database
-		displayListView();
+		//displayListView();
 
-		return rootView;
-	}
+        SpotsArray = new ArrayList<HashMap<String, String>>();
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void displayListView() {
-			
-		SpotsArray = new ArrayList<HashMap<String, String>>();
-		
-		listView = (ListView) rootView.findViewById(R.id.listView);
-		listView.setDivider(getResources().getDrawable(R.drawable.list_divider_hubba));
-		listView.setDividerHeight(2);
-		
-		// populate spots array
-		Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
-		
-		//short press is to view the spot (SpotPage.java)
-		listView.setOnItemClickListener(new OnItemClickListener() {
-		
-			public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
-				Bundle bundleData = new Bundle();
-				HashMap<String, String> spot = SpotsArray.get(position);
-				
-				//bundleData.putInt("keyid", 29);
-				//TextView SpotID = (TextView) rootView.findViewById(R.id.spot_id);
-				
-				String spot_id = spot.get("id");
-				
-				bundleData.putString("spot_id", spot_id);
-				
-				Intent intent = new Intent(getActivity().getApplicationContext(),
-						SpotPage.class);
-				
-				intent.putExtras(bundleData);
-				startActivity(intent);
-			}
-		});
-		
-		//long press is to edit the spot (EditActivity.java);
-		listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-			public boolean onItemLongClick(AdapterView<?> parent, View v, int position,long id)
-		    {
-				Bundle bundleData = new Bundle();
-				HashMap<String, String> spot = SpotsArray.get(position);
-				//int clickId;
-				String spot_id = spot.get("id");
-				
-				
-				//Cursor cursor = (Cursor) listView.getItemAtPosition(position);
-				//clickId = Integer.valueOf(cursor.getString(cursor
-				//		.getColumnIndexOrThrow("_id")));
-		
-				// Toast.makeText(getApplicationContext(),
-				// clickId + " is the ID", Toast.LENGTH_SHORT).show();
-				
-				// DELETE spot
-				Spot.deleteSpotByID(context, spot_id);
-				
-				refreshList();
+        listView = (ListView) rootView.findViewById(R.id.listView);
+        listView.setDivider(getResources().getDrawable(R.drawable.list_divider_hubba));
+        listView.setDividerHeight(2);
+
+        // populate spots array
+        Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
+
+        //short press is to view the spot (SpotPage.java)
+        listView.setOnItemClickListener(new OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
+                Bundle bundleData = new Bundle();
+                HashMap<String, String> spot = SpotsArray.get(position);
+
+                //bundleData.putInt("keyid", 29);
+                //TextView SpotID = (TextView) rootView.findViewById(R.id.spot_id);
+
+                String spot_id = spot.get("id");
+
+                bundleData.putString("spot_id", spot_id);
+
+                Intent intent = new Intent(getActivity().getApplicationContext(),
+                        SpotPage.class);
+
+                intent.putExtras(bundleData);
+                startActivity(intent);
+            }
+        });
+
+        //long press is to edit the spot (EditActivity.java);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> parent, View v, int position,long id)
+            {
+                Bundle bundleData = new Bundle();
+                HashMap<String, String> spot = SpotsArray.get(position);
+                //int clickId;
+                String spot_id = spot.get("id");
+
+
+                //Cursor cursor = (Cursor) listView.getItemAtPosition(position);
+                //clickId = Integer.valueOf(cursor.getString(cursor
+                //		.getColumnIndexOrThrow("_id")));
+
+                // Toast.makeText(getApplicationContext(),
+                // clickId + " is the ID", Toast.LENGTH_SHORT).show();
+
+                // DELETE spot
+                Spot.deleteSpotByID(context, spot_id);
+
+                refreshList();
 				/*
 				bundleData.putInt("keyid", 29);
 				Intent intent = new Intent(getActivity().getApplicationContext(),
@@ -115,41 +108,33 @@ public class ListViewHubba extends SherlockFragment {
 				intent.putExtras(bundleData);
 				startActivity(intent);
 				*/
-		      return true;
-		    }
-		
-		});
-		
-		/*
-		EditText myFilter = (EditText) rootView.findViewById(R.id.SearchBar);
-		myFilter.addTextChangedListener(new TextWatcher() {
-		
-			public void afterTextChanged(Editable s) {
-			}
-		
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-			}
-		
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-				dataAdapter.getFilter().filter(s.toString());
-			}
-		});
-		*/
+                return true;
+            }
+
+        });
+
+		return rootView;
 	}
-	
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    /*
 	public void onResume() {
 		super.onResume();
 		
 		// populate spots array
 		SpotsArray = null;
 		SpotsArray = new ArrayList<HashMap<String, String>>();
-        Log.i("TASK", "RESUME");
+        Log.i("TASK", "RESUME LIST");
 
         //Spot.getListOfSpots(listView, dataAdapter, SpotsArray, context);
 	}
-	
+	*/
+
 	/* --- Start menu --- */
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -169,8 +154,12 @@ public class ListViewHubba extends SherlockFragment {
 		    @Override
 		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 		    	String type = spinner.getSelectedItem().toString();
-                refreshList();
-	    		// else nothing (page loaded)
+                if (spinnerTouched && type.equalsIgnoreCase("Show All")) {
+                    refreshList();
+                } else if (!type.equalsIgnoreCase("Show All")) {
+                    spinnerTouched = true;
+                    refreshList();
+                }
 		    }
 
 		    @Override
@@ -217,7 +206,6 @@ public class ListViewHubba extends SherlockFragment {
 	
 	public void refreshList() {
 		String type = spinner.getSelectedItem().toString();
-		
 		// reset array
 		SpotsArray = new ArrayList<HashMap<String, String>>();
 		if (type.equalsIgnoreCase("Show All")) {
@@ -234,12 +222,21 @@ public class ListViewHubba extends SherlockFragment {
 		}
 	}
 	/* --- end menu --- */
-	
-	
+
+    public void onDestroyView() {
+        super.onDestroyView();
+        // clear spots array
+        if(SpotsArray != null){
+            SpotsArray = null;
+        }
+    }
+
 	@Override
 	public void onDestroy(){
 		super.onDestroy();
-		// populate spots array
-		SpotsArray = null;
+		// clear spots array
+        if(SpotsArray != null) {
+            SpotsArray = null;
+        }
 	}
 }

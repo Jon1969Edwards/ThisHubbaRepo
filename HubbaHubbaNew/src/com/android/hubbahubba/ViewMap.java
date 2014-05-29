@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,9 +61,7 @@ public class ViewMap extends SherlockFragment {
 	private Marker selectedMarker = null;
 	private String url;
     private boolean already_shown = false;
-    private int loop = 0;
 
-	// @SuppressLint("NewApi")
 	public View onCreateView(final LayoutInflater inflater,
 			final ViewGroup container, Bundle savedInstanceState) {
 		context = getActivity().getApplicationContext();
@@ -108,6 +107,7 @@ public class ViewMap extends SherlockFragment {
 
 		});
 
+        // TODO: 2 spinners
 		// Set spinner color
 		spinner = (Spinner) rootView.findViewById(R.id.spotTypeSpinner);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
@@ -171,23 +171,6 @@ public class ViewMap extends SherlockFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
-	}
-
-	public void onDestroyView() {
-		super.onDestroyView();
-		// Do Not Miss this
-		if (!getActivity().isFinishing()) {
-			try {
-				Fragment fragment = (getFragmentManager()
-						.findFragmentById(R.id.map));
-				FragmentTransaction ft = getActivity()
-						.getSupportFragmentManager().beginTransaction();
-				ft.remove(fragment);
-				ft.commit();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	// TODO Possibly delete this
@@ -551,6 +534,23 @@ public class ViewMap extends SherlockFragment {
 		}
 	}
 
+    public void onDestroyView() {
+        super.onDestroyView();
+        // Do Not Miss this
+        if (!getActivity().isFinishing()) {
+            try {
+                Fragment fragment = (getFragmentManager()
+                        .findFragmentById(R.id.map));
+                FragmentTransaction ft = getActivity()
+                        .getSupportFragmentManager().beginTransaction();
+                ft.remove(fragment);
+                ft.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
@@ -569,43 +569,43 @@ public class ViewMap extends SherlockFragment {
 			}
 		}
 	}
-	
-	public void update_info_window(Marker marker){
-		
-		ImageView imgThumbnail = (ImageView) v
-				.findViewById(R.id.info_window_image);
-    	
-    	// parse snippit
-		String[] snip = marker.getSnippet().split(",");
-		
-		// Get url for the image
-		url = snip[5];
-		
-		Toast.makeText(context, "URL = " + url, Toast.LENGTH_LONG).show();
-
-		// Convert the dp value for xml to pixels (casted to int
-		// from float)
-		int size = Image.convertDpToPixel(80, context);
-		
-		// TODO: get a better placeholder
-		// Use picasso to load the image into view
-		if(url.equals("lol")){
-			Picasso.with(getActivity().getApplicationContext())
-			.load(R.drawable.gettinthere)
-			.centerCrop().resize(size, size)
-			//.placeholder(R.drawable.ic_empty)
-			.noFade()
-			.into(imgThumbnail);
-		}
-		else{
-			Picasso.with(getActivity().getApplicationContext())
-					.load(url)
-					.noFade()
-					.centerCrop().resize(size, size)
-					//.placeholder(R.drawable.ic_empty)
-					.into(imgThumbnail);
-		}
-	}
+//
+//	public void update_info_window(Marker marker){
+//
+//		ImageView imgThumbnail = (ImageView) v
+//				.findViewById(R.id.info_window_image);
+//
+//    	// parse snippit
+//		String[] snip = marker.getSnippet().split(",");
+//
+//		// Get url for the image
+//		url = snip[5];
+//
+//		Toast.makeText(context, "URL = " + url, Toast.LENGTH_LONG).show();
+//
+//		// Convert the dp value for xml to pixels (casted to int
+//		// from float)
+//		int size = Image.convertDpToPixel(80, context);
+//
+//		// TODO: get a better placeholder
+//		// Use picasso to load the image into view
+//		if(url.equals("lol")){
+//			Picasso.with(getActivity().getApplicationContext())
+//			.load(R.drawable.gettinthere)
+//			.centerCrop().resize(size, size)
+//			//.placeholder(R.drawable.ic_empty)
+//			.noFade()
+//			.into(imgThumbnail);
+//		}
+//		else{
+//			Picasso.with(getActivity().getApplicationContext())
+//					.load(url)
+//					.noFade()
+//					.centerCrop().resize(size, size)
+//					//.placeholder(R.drawable.ic_empty)
+//					.into(imgThumbnail);
+//		}
+//	}
 	
 	// Loads the info window
 	private class InfoWindowRefresher implements Callback {
