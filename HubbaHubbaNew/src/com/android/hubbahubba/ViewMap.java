@@ -14,7 +14,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,7 +49,6 @@ public class ViewMap extends SherlockFragment {
 	Context context;
 	boolean isHybrid = false;
 	Button HybridButton;
-	LinearLayout Footer;
 	Spinner spinner;
 	boolean spinnerTouched = false;
 	private View v;
@@ -64,24 +62,6 @@ public class ViewMap extends SherlockFragment {
 				false);
 
 		setHasOptionsMenu(true);
-
-		// Button searchButton = (Button)
-		// rootView.findViewById(R.id.searchButton);
-		// back button goes back to the main page
-
-		// TODO: Search Button
-		// searchButton.setOnClickListener(new View.OnClickListener() {
-		// public void onClick(View view) {
-		// Intent intent = new Intent(getSherlockActivity(),
-		// ActionBarActivity.class);
-		// ViewMap.this.startActivity(intent);
-		// }
-		//
-		// });
-
-		// TODO: take this out
-		Footer = (LinearLayout) rootView.findViewById(R.id.footer);
-		Footer.setVisibility(View.GONE);
 
 		// Button for changing the map style
 		HybridButton = (Button) rootView.findViewById(R.id.hybridButton);
@@ -98,45 +78,6 @@ public class ViewMap extends SherlockFragment {
 							.setBackgroundResource(R.drawable.button_map_hybrid);
 					isHybrid = true;
 				}
-			}
-
-		});
-
-        // TODO: 2 spinners
-		// Set spinner color
-		spinner = (Spinner) rootView.findViewById(R.id.spotTypeSpinner);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
-				R.layout.spinner_row, R.id.text1, getResources()
-						.getStringArray(R.array.showSpotTypes));
-		spinner.setAdapter(adapter);
-
-		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> parentView,
-					View selectedItemView, int position, long id) {
-				String type = spinner.getSelectedItem().toString();
-
-				if (spinnerTouched && type.equalsIgnoreCase("Show All")) {
-					// type = "";
-					Spot.getAllSpots(mMap, getActivity()
-							.getApplicationContext());
-				} else if (!type.equalsIgnoreCase("Show All")) {
-					spinnerTouched = true;
-					// Take off the s
-					if (type.substring(type.length() - 1).equalsIgnoreCase("s")) {
-						type = type.substring(0, type.length() - 1);
-					}
-					// TODO: CLEAR CURRENT ADAPTER
-					Spot.getSpotsByType(mMap, getActivity()
-							.getApplicationContext(), type);
-				}
-				// else nothing (page loaded)
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parentView) {
-				// your code here
-				// TODO: anything?
 			}
 
 		});

@@ -1,12 +1,8 @@
 package com.android.hubbahubba;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -23,17 +18,18 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ListViewHubba extends SherlockFragment {
 
 	private HubbaAdapter dataAdapter;
 	private ListView listView;
-	private LinearLayout header;
 	private View rootView;
 	private Context context;
 	private ArrayList<HashMap<String, String>> SpotsArray;
 	Spinner spinner;
 	boolean spinnerTouched = false;
-    private boolean clickable = false;
 
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,12 +41,9 @@ public class ListViewHubba extends SherlockFragment {
         // Inflate the layout for this fragment
 		context = getActivity().getBaseContext();
         rootView =  inflater.inflate(R.layout.activity_list_view, container, false);
-
-		// Generate ListView from SQLite Database
-		//displayListView();
-
         SpotsArray = new ArrayList<HashMap<String, String>>();
 
+        // get listview and set divider
         listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setDivider(getResources().getDrawable(R.drawable.list_divider_hubba));
         listView.setDividerHeight(2);
@@ -64,9 +57,6 @@ public class ListViewHubba extends SherlockFragment {
             public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
                 Bundle bundleData = new Bundle();
                 HashMap<String, String> spot = SpotsArray.get(position);
-
-                //bundleData.putInt("keyid", 29);
-                //TextView SpotID = (TextView) rootView.findViewById(R.id.spot_id);
 
                 String spot_id = spot.get("id");
 
@@ -89,25 +79,10 @@ public class ListViewHubba extends SherlockFragment {
                 //int clickId;
                 String spot_id = spot.get("id");
 
-
-                //Cursor cursor = (Cursor) listView.getItemAtPosition(position);
-                //clickId = Integer.valueOf(cursor.getString(cursor
-                //		.getColumnIndexOrThrow("_id")));
-
-                // Toast.makeText(getApplicationContext(),
-                // clickId + " is the ID", Toast.LENGTH_SHORT).show();
-
                 // DELETE spot
                 Spot.deleteSpotByID(context, spot_id);
 
                 refreshList();
-				/*
-				bundleData.putInt("keyid", 29);
-				Intent intent = new Intent(getActivity().getApplicationContext(),
-						EditActivity.class);
-				intent.putExtras(bundleData);
-				startActivity(intent);
-				*/
                 return true;
             }
 

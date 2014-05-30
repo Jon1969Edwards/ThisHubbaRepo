@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Spinner xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/actionbar_spinner"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:entries="@array/showSpotTypes" >
-</Spinner>
-<!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/map_spinner.xml -->

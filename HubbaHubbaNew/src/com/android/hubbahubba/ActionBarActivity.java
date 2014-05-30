@@ -12,7 +12,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.WindowManager;
-import android.widget.Spinner;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -22,7 +21,6 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 public class ActionBarActivity extends SherlockFragmentActivity implements TabListener, OnPageChangeListener {
     ViewPager  mViewPager;
     String pageString = "map_view";
-    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +52,11 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         bar.addTab(mapTab);
         bar.addTab(listTab);
-        //bar.addTab(bar.newTab().setText("My Spots").setTabListener(this));
         
         // set options for action bar
         bar.setDisplayShowTitleEnabled(false);
         bar.setDisplayUseLogoEnabled(false);
         bar.setDisplayShowHomeEnabled(false);
-        //bar.setBackgroundDrawable(getResources().getDrawable(R.drawable.hubba_header));
         
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); 
     }
@@ -122,10 +118,6 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
 				//f = new NewListView();
 				f = new ListViewHubba();
 				break;
-//			case 2:
-//				pageString = "favorites_view";
-//				f = new ListViewFavorites();
-//				break;
 			}
 			return f;
 		}
@@ -155,6 +147,4 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
 		// noop
 	}
-    
-    
 }

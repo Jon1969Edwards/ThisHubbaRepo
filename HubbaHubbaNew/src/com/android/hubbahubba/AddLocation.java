@@ -1,13 +1,5 @@
 package com.android.hubbahubba;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -26,11 +18,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class AddLocation extends Activity {
 
@@ -51,25 +50,15 @@ public class AddLocation extends Activity {
     
     //for take photo
 	String mCurrentPhotoPath;
-	ImageView mImage;
 	ImageButton takePhotoButton, uploadPhotoButton;
-	String mImagePath;
 	boolean isSecret;
-	Uri imageViewUri;
 	Uri mSelectedImage = null;
 	Bitmap spotImage;
-	Bitmap mImageBitmap;
-	ImageView mImageView;
 	ArrayAdapter<String> adapter;
     private static final int SELECT_PHOTO = 1;
     private static final int TAKE_PHOTO = 2;
-    public static final int MEDIA_TYPE_IMAGE = 3;
-	public static final int MEDIA_TYPE_VIDEO = 4;
-	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-	private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
 	private static final String JPEG_FILE_SUFFIX = "Hubba_Hubba";
 	private static final String JPEG_FILE_PREFIX = "Hubba_Hubba";
-	//boolean photo_selected = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -173,23 +162,7 @@ public class AddLocation extends Activity {
                     e.printStackTrace();
                 }
             }
-
-			/*
-			if(list != null && list.get(0) != null){
-				// TODO THIS DOESNT WORK
-				address = list.get(0);
-					text = address.toString();
-					Toast toast0 = Toast.makeText(context, text, duration);
-					toast0.show();
-			}
-			else{
-					//TODO GETTING IOE EXCEPTION
-					text = "SHEEEETTTT";
-					Toast toast1 = Toast.makeText(context, text, duration);
-					toast1.show();
-			}*/
 		}
-		
 		
 		uploadPhotoButton.setOnClickListener(new OnClickListener() {
 			@Override
@@ -215,10 +188,7 @@ public class AddLocation extends Activity {
 				}
 			}
 		});
-		
-		
-		
-		
+
 		takePhotoButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				//TODO take picture
@@ -249,11 +219,6 @@ public class AddLocation extends Activity {
 				Intent intent = new Intent(AddLocation.this, ActionBarActivity.class);
 				setResult(Activity.RESULT_CANCELED, intent);
 				finish();
-				/*
-				Intent intent = new Intent(AddLocation.this,
-						MainActivity.class);
-				startActivity(intent);
-				*/
 			}
 		});
 		
@@ -320,16 +285,11 @@ public class AddLocation extends Activity {
                         intent.putExtra("mSelectedImage", mSelectedImage.toString());
                     }
 					
-					//text = "Image from: " + mSelectedImage.toString();
-					//Toast toaster = Toast.makeText(context, text, duration);
-					//toaster.show();
-					
-					//Toast.makeText(context, "type = " + mType, duration).show();
-					
 					FromPage = getIntent().getStringExtra("FromPage");
 					
 					if(FromPage.equals("ListViewHubba") || FromPage.equals("ListViewFavorites")){
-						
+
+						// TODO: pretty sure this should be nothing, test this
 						List<Address> address = null; //= new Address(Locale.ENGLISH);						
 						//address.setAddressLine(0, mAddress);
 						//address.setAddressLine(1, mCity);
@@ -349,16 +309,8 @@ public class AddLocation extends Activity {
 						    selectedLat = address.get(0).getLatitude();
 						    selectedLng = address.get(0).getLongitude();
 						    
-						    String lat = Double.toString(selectedLat);
-						    String lng = Double.toString(selectedLng);
-						    
-						    text = "IT WORKED " + lat + " " + lng;
-						    
 						    intent.putExtra("Lat", selectedLat);
 							intent.putExtra("Lng", selectedLng);
-
-//							Toast toast = Toast.makeText(context, text, duration);
-//							toast.show();
 							
 							startActivity(intent);
 						}
@@ -395,9 +347,6 @@ public class AddLocation extends Activity {
 						else if(address.get(0).hasLatitude() && address.get(0).hasLongitude()){
 						    String lat = Double.toString(selectedLat);
 						    String lng = Double.toString(selectedLng);
-						    text = "IT WORKED FROM MAP " + lat + " " + lng;
-//						    Toast toast = Toast.makeText(context, text, duration);
-//							toast.show();
 						}
 						else{
 							// TODO Better err message
@@ -510,21 +459,10 @@ public class AddLocation extends Activity {
 		        }
 		        
 	            break;
-	            
-		    case CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE:
-		        if (resultCode == RESULT_OK) {
-		            // Video captured and saved to fileUri specified in the Intent
-		            //Toast.makeText(this, "Video saved to:\n" +
-		            //         data.getData(), Toast.LENGTH_LONG).show();
-		        } else if (resultCode == RESULT_CANCELED) {
-		            // User cancelled the video capture
-		        } else {
-		            // Video capture failed, advise user
-		        }
-		        break;
 	    }
 	}
-	
+
+    // TODO: use picasso for this instead
 	private Bitmap decodeUri(Uri selectedImage) throws FileNotFoundException {
 
         // Decode image size

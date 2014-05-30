@@ -123,7 +123,7 @@ public final class R {
 		public static final int selectionDetails = 0x7f070014;
 		public static final int strict_sandbox = 0x7f070012;
 		public static final int terrain = 0x7f070003;
-		public static final int text1 = 0x7f0700e0;
+		public static final int text1 = 0x7f0700de;
 		public static final int wrap_content = 0x7f07000d;
 	}
 	public static final class integer {
