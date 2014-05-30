@@ -1,22 +1,9 @@
 package com.android.hubbahubba;
 
-
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -25,85 +12,49 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class SpotPage extends Activity {
-	
-	//private static final int SELECT_PHOTO = 1;
-	//private static final int TAKE_PHOTO = 2;
-	public static final int MEDIA_TYPE_IMAGE = 3;
-	public static final int MEDIA_TYPE_VIDEO = 4;
-	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-	private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
-	private static final String JPEG_FILE_SUFFIX = "Hubba_Hubba";
-	private static final String JPEG_FILE_PREFIX = "Hubba_Hubba";
-	private HubbaGridAdapter dataAdapter;
-	private ArrayList<HashMap<String, String>> imagesArray;
-	private Boolean canShare = true;
-	//private GridAdapter gridAdapter;
+    private ArrayList<HashMap<String, String>> imagesArray;
 
+    TextView mRating, mLevel, mDifficulty, mTitle, mDist;
+    ImageView mImage;
+    Context context = this;
+    String spot_id;
+    private HubbaGridAdapter dataAdapter;
 
-	//ImageLoader imageLoader = ImageLoader.getInstance();
-	//private static final String TEST_FILE_NAME = "Universal Image Loader @#&=+-_.,!()~'%20.png";
-	int keyValue = -1;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.spot_page_layout);
 
-	TextView mRating, mLevel, mDifficulty, mTitle, mDist, mComments, mType;
-	ImageView mImage;
-	String mImagePath;
-	Uri imageViewUri;
-	String mCurrentPhotoPath;
-	Context context = this;
-	String spot_id;
-	
-	
-	//NEW VARS
-	Bitmap mImageBitmap;
-	ImageView mImageView;
-	//private Uri fileUri;
+        // initialize everything now
+        mTitle = (TextView) findViewById(R.id.txtTitle);
+        mRating = (TextView) findViewById(R.id.txtOverallRating);
+        mLevel = (TextView) findViewById(R.id.txtPoRating);
+        mDist = (TextView) findViewById(R.id.txtDistance);
+        mDifficulty = (TextView) findViewById(R.id.txtDiffRating);
+        mImage = (ImageView) findViewById(R.id.imgThumbnail);
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.spot_page_layout);
-		
-		// initialize everything now
-		mTitle = (TextView) findViewById(R.id.txtTitle);
-		mRating = (TextView) findViewById(R.id.txtOverallRating);
-		mLevel = (TextView) findViewById(R.id.txtPoRating);
-		mDist = (TextView) findViewById(R.id.txtDistance);
-		mDifficulty = (TextView) findViewById(R.id.txtDiffRating);
-		mImage = (ImageView) findViewById(R.id.imgThumbnail);
-		
-		Bundle showData = getIntent().getExtras();
-		spot_id = showData.getString("spot_id");	
-		
-		// for now just sets the title
-		Spot.getSpotInfoByID(this, spot_id, context);
-		
-	    int size = Image.convertDpToPixel(90, context);
-	    
-	    /*
-	    // use picasso to load the image into view
-	    Picasso.with(context)
-	    	   .load(R.drawable.gettinthere)
-	    	   .centerCrop()
-	    	   .resize(size, size)
-	    	   .placeholder(R.drawable.ic_empty)
-	    	   .into(mImage);
-	  	*/
-	    
-	    // TODO: do away with image map
-	    // Get and populate header photo for the spot
-	    
-	    Spot.getTopPhotoBySpotID(context, spot_id, this);
-	    
-		// create buttons
-		Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
-		Button uploadPhotosButton = (Button) findViewById(R.id.uploadPhotoButton);
-		Button commentsButton = (Button) findViewById(R.id.commentsButton);
-		Button uploadCommentButton = (Button) findViewById(R.id.uploadCommentButton);
-		//Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
-		Button shareButton = (Button) findViewById(R.id.shareButton);
-		TextView isSecret = (TextView) findViewById(R.id.isSecret);
-		
+        Bundle showData = getIntent().getExtras();
+        spot_id = showData.getString("spot_id");
+
+        // for now just sets the title
+        Spot.getSpotInfoByID(this, spot_id, context);
+
+        // Get and populate header photo for the spot
+        Spot.getTopPhotoBySpotID(context, spot_id, this);
+
+        // create buttons
+        Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
+        Button uploadPhotosButton = (Button) findViewById(R.id.uploadPhotoButton);
+        Button commentsButton = (Button) findViewById(R.id.commentsButton);
+        Button uploadCommentButton = (Button) findViewById(R.id.uploadCommentButton);
+        //Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
+        Button shareButton = (Button) findViewById(R.id.shareButton);
+        TextView isSecret = (TextView) findViewById(R.id.isSecret);
+
 		/*
 		// If the spot isn't secret then no need to have a share button
 		if(isSecret.getText().equals("False") || isSecret.getText().equals("false")){
@@ -121,61 +72,61 @@ public class SpotPage extends Activity {
 			});
 		}
 		*/
-		
-		shareButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Bundle bundleData = new Bundle();
-				bundleData.putString("spot_id", spot_id);
-				Intent intent = new Intent(SpotPage.this, ShareUserList.class);
-				intent.putExtras(bundleData);
-				startActivity(intent);
-			}
-		});
-		
-		viewMapButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Bundle bundleData = new Bundle();
-				
-				TextView Lat = (TextView) findViewById(R.id.lat);
-				TextView Lon = (TextView) findViewById(R.id.lon);
-				
-				String lon = (String) Lon.getText();
-				String lat = (String) Lat.getText();
-				
-				//Toast.makeText(context, "lat = " + lat + " and lon = " + lon, Toast.LENGTH_LONG).show();
-				
-				bundleData.putString("lat", lat);
-				bundleData.putString("lon", lon);
-				
-				Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
-				
-				intent.putExtras(bundleData);
-				startActivity(intent);
-			}
 
-		});
-		
-		uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Bundle bundleData = new Bundle();
-				bundleData.putString("spot_id", spot_id);
-				Intent intent = new Intent(SpotPage.this, AddImage.class);
-				intent.putExtras(bundleData);
-				startActivity(intent);
-			}
-		});
-		
-		uploadCommentButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Bundle bundleData = new Bundle();
-				bundleData.putString("spot_id", spot_id);
-				
-				Intent intent = new Intent(SpotPage.this, AddComment.class);
-				
-				intent.putExtras(bundleData);
-				startActivity(intent);
-			}
-		});
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Bundle bundleData = new Bundle();
+                bundleData.putString("spot_id", spot_id);
+                Intent intent = new Intent(SpotPage.this, ShareUserList.class);
+                intent.putExtras(bundleData);
+                startActivity(intent);
+            }
+        });
+
+        viewMapButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Bundle bundleData = new Bundle();
+
+                TextView Lat = (TextView) findViewById(R.id.lat);
+                TextView Lon = (TextView) findViewById(R.id.lon);
+
+                String lon = (String) Lon.getText();
+                String lat = (String) Lat.getText();
+
+                //Toast.makeText(context, "lat = " + lat + " and lon = " + lon, Toast.LENGTH_LONG).show();
+
+                bundleData.putString("lat", lat);
+                bundleData.putString("lon", lon);
+
+                Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
+
+                intent.putExtras(bundleData);
+                startActivity(intent);
+            }
+
+        });
+
+        uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Bundle bundleData = new Bundle();
+                bundleData.putString("spot_id", spot_id);
+                Intent intent = new Intent(SpotPage.this, AddImage.class);
+                intent.putExtras(bundleData);
+                startActivity(intent);
+            }
+        });
+
+        uploadCommentButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Bundle bundleData = new Bundle();
+                bundleData.putString("spot_id", spot_id);
+
+                Intent intent = new Intent(SpotPage.this, AddComment.class);
+
+                intent.putExtras(bundleData);
+                startActivity(intent);
+            }
+        });
 		
 		
 		/*
@@ -187,48 +138,46 @@ public class SpotPage extends Activity {
 
 		});
 		 */
-		commentsButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				// add spot_id to the new intent and start it
-				Bundle bundleData = new Bundle();
-				bundleData.putString("spot_id", spot_id);
-				
-				Intent intent = new Intent(SpotPage.this,ListViewComments.class);
-				intent.putExtras(bundleData);
-				
-				startActivity(intent);
-			}
 
-		});
-		
-		// Get gridview for images
-		GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
-		//gridview.setAdapter(new GridAdapter(this));
-		
-		// Send task to get images
-		imagesArray = new ArrayList<HashMap<String, String>>();
-		Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
-		
-		// TODO: call getThumbnail from the Image class on the gridview's position
-		gridview.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
-				
-				// TODO: USE NEW DB FOR THIS
-				Intent intent = new Intent(SpotPage.this, ViewImage.class);
-				//int imageID = (Integer)parent.getAdapter().getItem(position);
-				//int imageID = mThumbIds[position];
-				
-				// TODO: maybe use the above line?
-				HashMap<String, String> image = imagesArray.get(position);
-				String url = image.get("url");
-				String display_name = image.get("display_name");
-			
-				intent.putExtra("url", url);
-				intent.putExtra("display_name", display_name);
-				startActivity(intent);
-			}
-		});
+        commentsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                // add spot_id to the new intent and start it
+                Bundle bundleData = new Bundle();
+                bundleData.putString("spot_id", spot_id);
+
+                Intent intent = new Intent(SpotPage.this, ListViewComments.class);
+                intent.putExtras(bundleData);
+
+                startActivity(intent);
+            }
+
+        });
+
+        // Get gridview for images
+        GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
+
+        // Send task to get images
+        imagesArray = new ArrayList<HashMap<String, String>>();
+        Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
+
+        // Open full screen image
+        // TODO: better full screen view
+        gridview.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+
+                Intent intent = new Intent(SpotPage.this, ViewImage.class);
+
+                // TODO: maybe use the above line?
+                HashMap<String, String> image = imagesArray.get(position);
+                String url = image.get("url");
+                String display_name = image.get("display_name");
+
+                intent.putExtra("url", url);
+                intent.putExtra("display_name", display_name);
+                startActivity(intent);
+            }
+        });
 		
 		/*
 		//TO AVOID SCROLLING LAGS
@@ -237,120 +186,26 @@ public class SpotPage extends Activity {
 		PauseOnScrollListener listener = new PauseOnScrollListener(imageLoader, pauseOnScroll, pauseOnFling);
 		gridview.setOnScrollListener(listener);
 		*/
-			
-	}
-	
-	// TODO: USE A TASK TO GET THE RESULTING URL AND ADD IT TO THE ADAPTER
-	// WORKS FOR NOW THOUGH =)
-	@Override
-    protected void onResume() {
-    	super.onResume();
-    	// Get gridview for images
-    	GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
-    			
-    	imagesArray = new ArrayList<HashMap<String, String>>();
-    	Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
-    	
+
     }
 
-	/** Create a file Uri for saving an image or video *//*
-	private static Uri getOutputMediaFileUri(int type){
-	      return Uri.fromFile(getOutputMediaFile(type));
-	}*/
-	
-	/** Create a File for saving an image or video */
-	@SuppressLint("SimpleDateFormat")
-	private static File getOutputMediaFile(int type){
-	    // To be safe, you should check that the SDCard is mounted
-	    // using Environment.getExternalStorageState() before doing this.
+    // TODO: USE A TASK TO GET THE RESULTING URL AND ADD IT TO THE ADAPTER
+    // WORKS FOR NOW THOUGH =)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Get gridview for images
+        GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
 
-	    File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-	              Environment.DIRECTORY_PICTURES), "MyCameraApp");
-	    // This location works best if you want the created images to be shared
-	    // between applications and persist after your app has been uninstalled.
+        imagesArray = new ArrayList<HashMap<String, String>>();
+        Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
 
-	    // Create the storage directory if it does not exist
-	    if (! mediaStorageDir.exists()){
-	        if (! mediaStorageDir.mkdirs()){
-	            Log.d("MyCameraApp", "failed to create directory");
-	            return null;
-	        }
-	    }
+    }
 
-	    // Create a media file name
-	    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-	    File mediaFile;
-	    if (type == MEDIA_TYPE_IMAGE){
-	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-	        "IMG_"+ timeStamp + ".jpg");
-	    } else if(type == MEDIA_TYPE_VIDEO) {
-	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-	        "VID_"+ timeStamp + ".mp4");
-	    } else {
-	        return null;
-	    }
-
-	    return mediaFile;
-	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	    if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-	        if (resultCode == RESULT_OK) {
-	            // Image captured and saved to fileUri specified in the Intent
-	            //Toast.makeText(this, "Image saved to:\n" +
-	            //         data.getData(), Toast.LENGTH_LONG).show();
-	        } else if (resultCode == RESULT_CANCELED) {
-	            // User cancelled the image capture
-	        } else {
-	            // Image capture failed, advise user
-	        }
-	    }
-
-	    if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE) {
-	        if (resultCode == RESULT_OK) {
-	            // Video captured and saved to fileUri specified in the Intent
-	            //Toast.makeText(this, "Video saved to:\n" +
-	            //         data.getData(), Toast.LENGTH_LONG).show();
-	        } else if (resultCode == RESULT_CANCELED) {
-	            // User cancelled the video capture
-	        } else {
-	            // Video capture failed, advise user
-	        }
-	    }
-	}
-	
-	@SuppressLint("SimpleDateFormat")
-	private File createImageFile() throws IOException {
-	    // Create an image file name
-	    String timeStamp = 
-	        new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-	    String imageFileName = JPEG_FILE_PREFIX + timeStamp + "_";
-	    File image = File.createTempFile(
-	        imageFileName, 
-	        JPEG_FILE_SUFFIX//, 
-	        //getAlbumDir()
-	    );
-	    mCurrentPhotoPath = image.getAbsolutePath();
-	    return image;
-	}
-	
-	
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		//imageLoader.destroy();
-		super.onDestroy();
-	}
-	/*
-	// references to our images
-    private Integer[] mThumbIds = {
-    		R.drawable.riley1, R.drawable.riley2, R.drawable.riley3,
-            R.drawable.connorock , R.drawable.indysunburst,
-            R.drawable.nosegrabup , R.drawable.img1,
-            R.drawable.heart1, R.drawable.deatroit1, R.drawable.detroit2,
-
-    };
-    */
-	
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        //imageLoader.destroy();
+        super.onDestroy();
+    }
 }

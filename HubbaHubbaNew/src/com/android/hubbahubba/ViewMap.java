@@ -1,14 +1,11 @@
 package com.android.hubbahubba;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,14 +39,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ViewMap extends SherlockFragment {
 
 	private GoogleMap mMap;
 	private UiSettings mUiSettings;
 	private boolean spotAdded = false;
 	private View rootView;
-	private String text;
+	private String lat_long;
 	Marker addSpot;
 	Context context;
 	boolean isHybrid = false;
@@ -60,7 +56,6 @@ public class ViewMap extends SherlockFragment {
 	private View v;
 	private Marker selectedMarker = null;
 	private String url;
-    private boolean already_shown = false;
 
 	public View onCreateView(final LayoutInflater inflater,
 			final ViewGroup container, Bundle savedInstanceState) {
@@ -188,12 +183,13 @@ public class ViewMap extends SherlockFragment {
 		// Do a null check to confirm that we have not already instantiated the
 		// map.
 		if (mMap == null) {
+
 			mMap = ((SupportMapFragment) getFragmentManager().findFragmentById(
 					R.id.map)).getMap();
+
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-				// mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 				isHybrid = false;
 				mMap.setMyLocationEnabled(true);
 
@@ -223,6 +219,7 @@ public class ViewMap extends SherlockFragment {
 								.build();           // Creates a CameraPosition from the builder
 						mMap.animateCamera(CameraUpdateFactory
 								.newCameraPosition(cameraPosition));
+
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -241,28 +238,29 @@ public class ViewMap extends SherlockFragment {
 
 				Spot.getAllSpots(mMap, getActivity().getApplicationContext());
 
-				// NEW STUFF
+				// Add spot by long clicking on the map
 				mMap.setOnMapLongClickListener(new OnMapLongClickListener() {
 
 					@Override
 					public void onMapLongClick(LatLng point) {
 						if (!spotAdded) {
-
                             // Create the marker
 							addSpot = mMap.addMarker(new MarkerOptions()
 									.position(point)
 									.title("Tap to Add Spot")
 									.icon(BitmapDescriptorFactory
 											.fromResource(R.drawable.hubba_marker_add)));
+
+                            // Hide info window from showing up
 							addSpot.hideInfoWindow();
 
-							text = addSpot.getPosition().toString();
-							text = text.substring(10, text.length() - 1);
+							lat_long = addSpot.getPosition().toString();
+							lat_long = lat_long.substring(10, lat_long.length() - 1);
 
 							spotAdded = true;
 							Intent intent = new Intent(getSherlockActivity(),
 									AddLocation.class);
-							intent.putExtra("LatLong", text);
+							intent.putExtra("LatLong", lat_long);
 							intent.putExtra("FromPage", "ViewMap");
 
 							startActivityForResult(intent, 0);
@@ -286,13 +284,11 @@ public class ViewMap extends SherlockFragment {
 
 						Bundle bundleData = new Bundle();
 
-						// TODO delete this
-						bundleData.putInt("keyid", 29);
-
 						// get spot id
 						String[] snip = marker.getSnippet().split(",");
 						String id = snip[0];
 
+                        // Add spot_id to spotPage
 						bundleData.putString("spot_id", id);
 
 						Intent intent = new Intent(getActivity()
@@ -303,7 +299,7 @@ public class ViewMap extends SherlockFragment {
 
 					}
 				});
-				
+
 				// Hides the info window if shown, else returns selectedMarker
 				mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 
@@ -319,21 +315,20 @@ public class ViewMap extends SherlockFragment {
 
 		            	// else set selectedMarker
 		                selectedMarker = marker;
-                        already_shown = false;
-		                v = null;
+		                //v = null;
 		                return false;
 		            }
 		        });
 
 				// Sets custom info window adapter for mMap
 				mMap.setInfoWindowAdapter(new InfoWindowAdapter() {
-					// Use default InfoWindow frame
+					// Set info window contents
 					@Override
-					public View getInfoWindow(Marker arg0) {
+					public View getInfoWindow(Marker marker) {
 						if (selectedMarker.isInfoWindowShown()) {
 		                    return v;
 		                }
-						String LatLong = arg0.getPosition().toString();
+						String LatLong = marker.getPosition().toString();
 						LatLong = LatLong.substring(10, LatLong.length() - 1);
 
 						String[] separated = LatLong.split(",");
@@ -366,17 +361,17 @@ public class ViewMap extends SherlockFragment {
 								.findViewById(R.id.info_window_distance);
 
 						// Get spot info
-						String spot_title = arg0.getTitle();
+						String spot_title = marker.getTitle();
 
 						// parse snippit
-						String[] snip = arg0.getSnippet().split(",");
+						String[] snip = marker.getSnippet().split(",");
 						String spot_id = snip[0];
 						String overall = snip[1];
 						String difficulty = snip[2];
 						String bust = snip[3];
 						// String type = snip[4];
 						url = snip[5];
-						
+
 						//Toast.makeText(context, "URL = " + url, Toast.LENGTH_LONG).show();
 
 						txtTitle.setText(spot_title); // name
@@ -388,63 +383,24 @@ public class ViewMap extends SherlockFragment {
 						// Convert the dp value for xml to pixels (casted to int
 						// from float)
 						int size = Image.convertDpToPixel(80, context);
-                        if(!already_shown){
-                            if(url.equals("lol")){
-                                Picasso.with(getActivity().getApplicationContext())
-                                        .load(R.drawable.gettinthere)
-                                        .centerCrop().resize(size, size)
-                                        .placeholder(R.drawable.ic_empty_sec)
-                                        .noFade()
-                                        .into(imgThumbnail, new InfoWindowRefresher(arg0));
-                            }
-                            else{
-                                Picasso.with(getActivity().getApplicationContext())
-                                        .load(url)
-                                        .noFade()
-                                        .centerCrop().resize(size, size)
-                                        .placeholder(R.drawable.ic_empty_sec)
-                                        .into(imgThumbnail, new InfoWindowRefresher(arg0));
-                            }
+
+                        // TODO: Lol is used as a placeholder for no image... needs to be changed
+                        if(url.equals("lol")){
+                            Picasso.with(getActivity().getApplicationContext())
+                                    .load(R.drawable.gettinthere)
+                                    .centerCrop().resize(size, size)
+                                    .placeholder(R.drawable.ic_empty_sec)
+                                    .noFade()
+                                    .into(imgThumbnail, new InfoWindowRefresher(marker));
                         }
                         else{
-                            already_shown = false;
-                            if(url.equals("lol")){
-                                Picasso.with(getActivity().getApplicationContext())
-                                        .load(R.drawable.gettinthere)
-                                        .centerCrop().resize(size, size)
-                                        .placeholder(R.drawable.ic_empty_sec)
-                                        .noFade()
-                                        .into(imgThumbnail);
-                            }
-                            else{
-                                Picasso.with(getActivity().getApplicationContext())
-                                        .load(url)
-                                        .noFade()
-                                        .centerCrop().resize(size, size)
-                                        .placeholder(R.drawable.ic_empty_sec)
-                                        .into(imgThumbnail);
-                            }
+                            Picasso.with(getActivity().getApplicationContext())
+                                    .load(url)
+                                    .noFade()
+                                    .centerCrop().resize(size, size)
+                                    .placeholder(R.drawable.ic_empty_sec)
+                                    .into(imgThumbnail, new InfoWindowRefresher(marker));
                         }
-                        /*
-						// TODO: get a better placeholder
-						// Use picasso to load the image into view
-						if(url.equals("lol")){
-							Picasso.with(getActivity().getApplicationContext())
-							.load(R.drawable.gettinthere)
-							.centerCrop().resize(size, size)
-							.placeholder(R.drawable.ic_empty_sec)
-							.noFade()
-							.into(imgThumbnail, new InfoWindowRefresher(arg0));
-						}
-						else{
-							Picasso.with(getActivity().getApplicationContext())
-									.load(url)
-									.noFade()
-									.centerCrop().resize(size, size)
-									.placeholder(R.drawable.ic_empty_sec)
-									.into(imgThumbnail, new InfoWindowRefresher(arg0));
-						}
-						*/
 						return v;
 					}
 
@@ -569,59 +525,22 @@ public class ViewMap extends SherlockFragment {
 			}
 		}
 	}
-//
-//	public void update_info_window(Marker marker){
-//
-//		ImageView imgThumbnail = (ImageView) v
-//				.findViewById(R.id.info_window_image);
-//
-//    	// parse snippit
-//		String[] snip = marker.getSnippet().split(",");
-//
-//		// Get url for the image
-//		url = snip[5];
-//
-//		Toast.makeText(context, "URL = " + url, Toast.LENGTH_LONG).show();
-//
-//		// Convert the dp value for xml to pixels (casted to int
-//		// from float)
-//		int size = Image.convertDpToPixel(80, context);
-//
-//		// TODO: get a better placeholder
-//		// Use picasso to load the image into view
-//		if(url.equals("lol")){
-//			Picasso.with(getActivity().getApplicationContext())
-//			.load(R.drawable.gettinthere)
-//			.centerCrop().resize(size, size)
-//			//.placeholder(R.drawable.ic_empty)
-//			.noFade()
-//			.into(imgThumbnail);
-//		}
-//		else{
-//			Picasso.with(getActivity().getApplicationContext())
-//					.load(url)
-//					.noFade()
-//					.centerCrop().resize(size, size)
-//					//.placeholder(R.drawable.ic_empty)
-//					.into(imgThumbnail);
-//		}
-//	}
-	
+
 	// Loads the info window
+	// (needed due to image being rendered after info window)
 	private class InfoWindowRefresher implements Callback {
-		   private Marker markerToRefresh;
+        private Marker markerToRefresh;
 
-		   private InfoWindowRefresher(Marker markerToRefresh) {
-		        this.markerToRefresh = markerToRefresh;
-		    }
+        private InfoWindowRefresher(Marker markerToRefresh) {
+            this.markerToRefresh = markerToRefresh;
+        }
 
-		    @Override
-		    public void onSuccess() {
-		        markerToRefresh.showInfoWindow();
-                //update_info_window(markerToRefresh);
-		    }
+        @Override
+        public void onSuccess() {
+            markerToRefresh.showInfoWindow();
+        }
 
-		    @Override
-		    public void onError() {}
+        @Override
+        public void onError() {}
 	}
 }
