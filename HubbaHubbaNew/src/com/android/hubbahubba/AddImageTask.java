@@ -1,9 +1,9 @@
 package com.android.hubbahubba;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Base64;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
@@ -13,15 +13,12 @@ import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Base64;
-import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
 
 public class AddImageTask extends AsyncTask<String, Void, String> 
 {       
@@ -70,11 +67,7 @@ public class AddImageTask extends AsyncTask<String, Void, String>
 
             // create file for image (must be named file)
         	File file = new File(imageURI);
-        	
-        	// create entity for post params
         	MultipartEntity entity = new MultipartEntity();
-
-        	// files[0] = image
         	entity.addPart("file", new FileBody(file));
         	
         	// TODO: add rider name

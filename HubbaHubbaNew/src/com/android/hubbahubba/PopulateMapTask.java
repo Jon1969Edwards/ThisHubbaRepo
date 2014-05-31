@@ -1,7 +1,16 @@
 package com.android.hubbahubba;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Base64;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -14,17 +23,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Base64;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 // TODO: For async tasks but currently unused
 public class PopulateMapTask extends AsyncTask<String, String, String>{
@@ -84,7 +84,7 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
         super.onPostExecute(result);
         
         //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-        
+        this.map.clear();
         try {
         	// convert to json and get spot entries
 			JSONObject jObject = new JSONObject(result);

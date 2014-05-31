@@ -116,6 +116,7 @@
             android:theme="@style/Theme.Sherlock.Light.NoActionBar"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
             android:label="@string/addLocation" >
         </activity>
         <activity

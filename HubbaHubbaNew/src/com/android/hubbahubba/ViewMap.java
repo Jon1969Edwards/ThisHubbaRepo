@@ -45,7 +45,7 @@ public class ViewMap extends SherlockFragment {
 	private boolean spotAdded = false;
 	private View rootView;
 	private String lat_long;
-	Marker addSpot;
+	Marker addSpot = null;
 	Context context;
 	boolean isHybrid = false;
 	Button HybridButton;
@@ -115,7 +115,9 @@ public class ViewMap extends SherlockFragment {
 		if (requestCode == 0) {
 			if (resultCode != Activity.RESULT_OK) {
 				spotAdded = false;
-				addSpot.remove();
+                if(addSpot != null){
+                    addSpot.remove();
+                }
 			}
 		}
 	}
