@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -42,9 +41,7 @@ public class GetSpotTopImageTask extends AsyncTask<String, String, String>{
 
     @Override
     protected String doInBackground(String... uri) {
-        Toast.makeText(context, "Started images", Toast.LENGTH_SHORT).show();
-
-        OkHttpClient client = new OkHttpClient();
+    	OkHttpClient client = new OkHttpClient();
     	HttpURLConnection connection = null;
     	/*
 		try {

@@ -1,10 +1,9 @@
 ThisHubbaRepo
 =============
 
-Android mobile application using the Google Maps API, Picasso, and ActionBarSherlock. We are working backend with a python API using mongoDB.
-Stay Tuned!
+Android mobile application using the Google Maps API, Picasso, OkHttp, and ActionBarSherlock. Our backend is a python API using mongoDB with mongoengine. If you're interested in working on the iOS version of HubbaHubba email me at robsmall@umich.edu and pull the iOS code and to started! 
 
-For Demo:
+// TODO For Beta Release:
 - images rider field (user or string)
 - Make sure users can only rate photos/spots and comments once
 - ** Add login to menu button
@@ -18,17 +17,12 @@ For Demo:
 
 
 // TODO
-- ***** Allow only us to delete ******
-- Add login to menu button
 - check the post to /me when resuming activities and if its an error repost to /login/facebook
 - Make sure all old code is taken out
-- Quit activity when returning from mail
 - USE http://square.github.io/okhttp/ for get requests other than images
-- SHARE SECRET SPOTS WITH OTHERS
 
 //BUGS:
 - ** when spot added ratings appear to be 0 until refresh **
-- ** Cant get secret stuff to work **
 - Make sure photo is posted when adding a spot (s3 error?)
 - Eliminate race condition with re-auth on post requests
 
@@ -45,10 +39,8 @@ For Demo:
 - add up and down ratings for images
 - videos along with photos?
 - Delete endpoints Only for Super Users
-- SHARE SECRET SPOTS WITH OTHERS
 
-Sharing - 
-
+// Sharing Notes - 
 - Might need usernames to be able to share with eachother. Search by name.
 Just list of picture / name username
 - May need to add a friends list to make this easier
