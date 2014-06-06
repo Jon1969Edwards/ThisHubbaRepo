@@ -59,25 +59,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97fab327-10b3-4594-bc71-c8451a7654f6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/actionbarsherlock_4_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/apache_mime4j_0_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bolts_android_api_1_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/facebook_android_api_3_14_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/httpcore_4_3_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/httpmime_4_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/okhttp_2_0_0_RC1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/okhttp_urlconnection_2_0_0_RC1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/okio_1_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/picasso_2_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_4_4_52.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_19_0_1.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/build/pre-dexed/debug/okhttp-2.0.0-RC1-226f7bb54020f00e2d8fcb0a4da698db867e4355.jar" afterPath="$PROJECT_DIR$/HubbaHubbaNew/build/pre-dexed/debug/okhttp-2.0.0-RC1-226f7bb54020f00e2d8fcb0a4da698db867e4355.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/build/pre-dexed/debug/okhttp-urlconnection-2.0.0-RC1-be82399c4b61ab0b9fedea8c6dcbcd888a231140.jar" afterPath="$PROJECT_DIR$/HubbaHubbaNew/build/pre-dexed/debug/okhttp-urlconnection-2.0.0-RC1-be82399c4b61ab0b9fedea8c6dcbcd888a231140.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/build/pre-dexed/debug/okio-1.0.0-e20f0c86f8761ad6f983f692b6c3b614bc400355.jar" afterPath="$PROJECT_DIR$/HubbaHubbaNew/build/pre-dexed/debug/okio-1.0.0-e20f0c86f8761ad6f983f692b6c3b614bc400355.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/build/pre-dexed/debug/picasso-2.3.1-07c153a9d9c8776903210445ceb6b0a362d4f3a6.jar" afterPath="$PROJECT_DIR$/HubbaHubbaNew/build/pre-dexed/debug/picasso-2.3.1-07c153a9d9c8776903210445ceb6b0a362d4f3a6.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotImagesTaskTwo.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotImagesTaskTwo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotTopImageTask.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotTopImageTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/build.gradle" afterPath="$PROJECT_DIR$/HubbaHubbaNew/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ThisHubbaRepo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -139,13 +123,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetSpotImagesTaskTwo.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GetSpotImagesTaskTwo.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotImagesTaskTwo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="404" max-vertical-offset="1935">
-              <caret line="50" column="52" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.027027028" vertical-offset="495" max-vertical-offset="1530">
+              <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
               <folding>
-                <element signature="e#3042#3058#0" expanded="true" />
+                <element signature="e#2382#2398#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,11 +145,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetSpotTopImageTask.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GetSpotTopImageTask.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotTopImageTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.027027028" vertical-offset="375" max-vertical-offset="1830">
-              <caret line="42" column="52" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1410">
+              <caret line="44" column="44" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -1016,8 +1000,8 @@
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/HubbaInfoWindowAdapter.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ViewMap.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/build.gradle" />
-        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotImagesTaskTwo.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotTopImageTask.java" />
+        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotImagesTaskTwo.java" />
       </list>
     </option>
   </component>
@@ -1401,7 +1385,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1377551" sideWeight="0.49959117" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.008503402" sideWeight="0.85036796" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.008503402" sideWeight="0.85036796" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1952,21 +1936,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotImagesTaskTwo.java">
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotTopImageTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="404" max-vertical-offset="1935">
-          <caret line="50" column="52" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
-          <folding>
-            <element signature="e#3042#3058#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1410">
+          <caret line="44" column="44" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotTopImageTask.java">
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotImagesTaskTwo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.027027028" vertical-offset="375" max-vertical-offset="1830">
-          <caret line="42" column="52" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
-          <folding />
+        <state vertical-scroll-proportion="0.027027028" vertical-offset="495" max-vertical-offset="1530">
+          <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
+          <folding>
+            <element signature="e#2382#2398#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

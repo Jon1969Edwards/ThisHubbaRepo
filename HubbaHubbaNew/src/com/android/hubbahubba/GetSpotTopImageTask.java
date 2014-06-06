@@ -43,34 +43,6 @@ public class GetSpotTopImageTask extends AsyncTask<String, String, String>{
     protected String doInBackground(String... uri) {
     	OkHttpClient client = new OkHttpClient();
     	HttpURLConnection connection = null;
-    	/*
-		try {
-			connection = client.open(new URL(uri[0].toString()));
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-    	InputStream in = null;
-        try {
-        	in = connection.getInputStream();
-        	byte[] response = readFully(in);
-            
-        	return new String(response, "UTF-8");
-        } catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-          if (in != null)
-			try {
-				in.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        }
-        return "";
-        */
         String url = uri[0];
 
         Request request = new Request.Builder()
