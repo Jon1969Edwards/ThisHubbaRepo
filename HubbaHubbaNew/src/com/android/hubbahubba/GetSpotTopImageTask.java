@@ -1,22 +1,23 @@
 package com.android.hubbahubba;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 
 public class GetSpotTopImageTask extends AsyncTask<String, String, String>{
 	
@@ -41,9 +42,11 @@ public class GetSpotTopImageTask extends AsyncTask<String, String, String>{
 
     @Override
     protected String doInBackground(String... uri) {
-    	OkHttpClient client = new OkHttpClient();    	
+        Toast.makeText(context, "Started images", Toast.LENGTH_SHORT).show();
+
+        OkHttpClient client = new OkHttpClient();
     	HttpURLConnection connection = null;
-    	
+    	/*
 		try {
 			connection = client.open(new URL(uri[0].toString()));
 		} catch (MalformedURLException e) {
@@ -68,6 +71,23 @@ public class GetSpotTopImageTask extends AsyncTask<String, String, String>{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+        }
+        return "";
+        */
+        String url = uri[0];
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = null;
+        try {
+            response = client.newCall(request).execute();
+            if(response != null){
+                return response.body().string();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return "";
     }

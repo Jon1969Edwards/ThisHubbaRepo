@@ -1,24 +1,24 @@
 package com.android.hubbahubba;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GetSpotImagesTaskTwo extends AsyncTask<String, String, String>{
 	
@@ -51,7 +51,7 @@ public class GetSpotImagesTaskTwo extends AsyncTask<String, String, String>{
     protected String doInBackground(String... uri) {
     	OkHttpClient client = new OkHttpClient();    	
     	HttpURLConnection connection = null;
-    	
+    	/*
 		try {
 			connection = client.open(new URL(uri[0].toString()));
 		} catch (MalformedURLException e) {
@@ -76,6 +76,22 @@ public class GetSpotImagesTaskTwo extends AsyncTask<String, String, String>{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+        }
+        */
+        String url = uri[0];
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = null;
+        try {
+            response = client.newCall(request).execute();
+            if(response != null){
+                return response.body().string();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
     }

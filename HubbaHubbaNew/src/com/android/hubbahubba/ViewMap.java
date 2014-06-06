@@ -54,6 +54,7 @@ public class ViewMap extends SherlockFragment {
 	private View v;
 	private Marker selectedMarker = null;
 	private String url;
+    private boolean refreshed = false;
 
 	public View onCreateView(final LayoutInflater inflater,
 			final ViewGroup container, Bundle savedInstanceState) {
@@ -259,6 +260,7 @@ public class ViewMap extends SherlockFragment {
 		            	// else set selectedMarker
 		                selectedMarker = marker;
 		                //v = null;
+
 		                return false;
 		            }
 		        });
@@ -267,10 +269,14 @@ public class ViewMap extends SherlockFragment {
 				mMap.setInfoWindowAdapter(new InfoWindowAdapter() {
 					// Set info window contents
 					@Override
-					public View getInfoWindow(Marker marker) {
+					public View getInfoWindow(final Marker marker) {
+                        /*
 						if (selectedMarker.isInfoWindowShown()) {
 		                    return v;
 		                }
+		                */
+                        selectedMarker = marker;
+
 						String LatLong = marker.getPosition().toString();
 						LatLong = LatLong.substring(10, LatLong.length() - 1);
 
@@ -334,7 +340,17 @@ public class ViewMap extends SherlockFragment {
                                     .centerCrop().resize(size, size)
                                     .placeholder(R.drawable.ic_empty_sec)
                                     .noFade()
-                                    .into(imgThumbnail, new InfoWindowRefresher(marker));
+                                    .into(imgThumbnail, /*new InfoWindowRefresher(marker)*/new Callback() {
+                                        @Override
+                                        public void onSuccess() {
+                                            getInfoContents(marker);
+                                        }
+
+                                        @Override
+                                        public void onError() {
+
+                                        }
+                                    });
                         }
                         else{
                             Picasso.with(getActivity().getApplicationContext())
@@ -342,14 +358,41 @@ public class ViewMap extends SherlockFragment {
                                     .noFade()
                                     .centerCrop().resize(size, size)
                                     .placeholder(R.drawable.ic_empty_sec)
-                                    .into(imgThumbnail, new InfoWindowRefresher(marker));
+                                    .into(imgThumbnail, /*new InfoWindowRefresher(marker)*/new Callback() {
+                                        @Override
+                                        public void onSuccess() {
+                                            getInfoContents(marker);
+                                        }
+
+                                        @Override
+                                        public void onError() {
+
+                                        }
+                                    });
                         }
+
+//                        Handler handler = new Handler(Looper.getMainLooper());
+//                        handler.post(new Runnable(){
+//                            @Override
+//                            public void run() {
+//                                Toast.makeText(getActivity().getApplicationContext(), "FUCK ME", Toast.LENGTH_SHORT).show();
+//                                selectedMarker.showInfoWindow();
+//                            }
+//                            // your UI code here
+//                        });
 						return v;
 					}
 
 					// Defines the contents of the InfoWindows
 					@Override
-					public View getInfoContents(Marker arg0) {
+					public View getInfoContents(Marker marker) {
+
+                        if (selectedMarker != null
+                                && selectedMarker.isInfoWindowShown()) {
+                            selectedMarker.hideInfoWindow();
+                            selectedMarker.showInfoWindow();
+                        }
+
 						return null;
 					}
 
