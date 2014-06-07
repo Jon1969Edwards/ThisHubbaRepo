@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -77,17 +78,29 @@ public class GetSpotTopImageTask extends AsyncTask<String, String, String>{
             //JSONObject user = photo.getJSONObject("user");
             
 			String url = photo.getString("url");
+
+            Toast.makeText(context, "url =  " + url, Toast.LENGTH_SHORT).show();
 			
 			//String display_name = user.getString("display_name");
 			//imageMap.put("display_name", display_name);  
-			
-	        // use picasso to load the image into view
-		    Picasso.with(context)
-		    	   .load(url)
-		    	   .centerCrop()
-		    	   .resize(size, size)
-		    	   .placeholder(R.drawable.ic_empty)
-		    	   .into(mImage);
+
+            // TODO: get better way of doing this
+            if(url != null && !url.equals("null")){
+                Picasso.with(context)
+                        .load(url)
+                        .centerCrop()
+                        .resize(size, size)
+                        .placeholder(R.drawable.ic_empty_sec)
+                        .into(mImage);
+            }
+            else{
+                Picasso.with(context)
+                        .load(R.drawable.gettinthere)
+                        .centerCrop()
+                        .resize(size, size)
+                        .placeholder(R.drawable.ic_empty_sec)
+                        .into(mImage);
+            }
 			    
         }catch(JSONException e)        {
         	e.printStackTrace();
@@ -98,7 +111,7 @@ public class GetSpotTopImageTask extends AsyncTask<String, String, String>{
 		    	   .load(R.drawable.gettinthere)
 		    	   .centerCrop()
 		    	   .resize(size, size)
-		    	   .placeholder(R.drawable.ic_empty)
+		    	   .placeholder(R.drawable.ic_empty_sec)
 		    	   .into(mImage);
         }
     }

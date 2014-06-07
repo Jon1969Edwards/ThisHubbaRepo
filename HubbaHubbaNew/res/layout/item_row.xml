@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>  
-<RelativeLayout   
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativeLayout1"   
     android:layout_width="fill_parent"   
-    android:layout_height="100dp"   
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="100dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/solid_list_view_style">  
     <!-- android:background="@drawable/list_view_style" -->
@@ -25,8 +25,8 @@
         android:layout_width="wrap_content"   
         android:id="@+id/txtTitle"   
         android:layout_toRightOf="@+id/imgThumbnail"
-        android:layout_alignTop="@+id/imgThumbnail"
-        android:layout_marginTop="-5dp" 
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
         android:textStyle="bold"
         android:textAllCaps="true"
         android:textSize="20sp"
