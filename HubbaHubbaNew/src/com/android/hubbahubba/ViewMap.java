@@ -334,7 +334,7 @@ public class ViewMap extends SherlockFragment {
 						int size = Image.convertDpToPixel(80, context);
 
                         // TODO: Lol is used as a placeholder for no image... needs to be changed
-                        if(url.equals("lol")){
+                        if(url == null || url.equals("null")){
                             Picasso.with(getActivity().getApplicationContext())
                                     .load(R.drawable.gettinthere)
                                     .centerCrop().resize(size, size)

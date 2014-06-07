@@ -1,9 +1,10 @@
 package com.android.hubbahubba;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Base64;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -16,12 +17,10 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Base64;
-import android.util.Log;
-import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddSpotTask extends AsyncTask<String, Void, String> 
 {       
@@ -125,7 +124,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
         try {
 			JSONObject spot = new JSONObject(response);
 			id = spot.getString("id");
-			
+
 			Spot.addComment(context, text, overall, difficulty, bust, id);
 			
 			if(!imageURI.equals("")){
