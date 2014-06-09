@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -55,7 +56,7 @@ public class SpotPage extends Activity {
         Button shareButton = (Button) findViewById(R.id.shareButton);
         TextView isSecret = (TextView) findViewById(R.id.isSecret);
 
-		/*
+
 		// If the spot isn't secret then no need to have a share button
 		if(isSecret.getText().equals("False") || isSecret.getText().equals("false")){
 			((ViewManager)shareButton.getParent()).removeView(shareButton);
@@ -71,17 +72,6 @@ public class SpotPage extends Activity {
 				}
 			});
 		}
-		*/
-
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Bundle bundleData = new Bundle();
-                bundleData.putString("spot_id", spot_id);
-                Intent intent = new Intent(SpotPage.this, ShareUserList.class);
-                intent.putExtras(bundleData);
-                startActivity(intent);
-            }
-        });
 
         viewMapButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -157,8 +147,8 @@ public class SpotPage extends Activity {
         GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
 
         // Send task to get images
-        imagesArray = new ArrayList<HashMap<String, String>>();
-        Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
+        //imagesArray = new ArrayList<HashMap<String, String>>();
+        //Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
 
         // Open full screen image
         // TODO: better full screen view
@@ -172,8 +162,10 @@ public class SpotPage extends Activity {
                 HashMap<String, String> image = imagesArray.get(position);
                 String url = image.get("url");
                 String display_name = image.get("display_name");
+                String rider_name = image.get("rider_name");
 
                 intent.putExtra("url", url);
+                intent.putExtra("rider_name", rider_name);
                 intent.putExtra("display_name", display_name);
                 startActivity(intent);
             }

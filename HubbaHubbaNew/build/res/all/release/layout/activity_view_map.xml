@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:map="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/map_container"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/background">
+
+  	<fragment
+    	android:id="@+id/map"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:name="com.google.android.gms.maps.SupportMapFragment"
+    	class="com.google.android.gms.maps.SupportMapFragment" />
+  	
+  	<Button 
+  	    android:id="@+id/hybridButton"
+  	    android:layout_width="41dp"
+  	    android:layout_height="41dp"
+  	    android:layout_marginLeft="10dp"
+  	   	android:layout_alignParentTop="true"
+  	   	android:background="@drawable/button_map_normal"
+  	   	android:layout_marginTop="10dp"/>
+</RelativeLayout><!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/activity_view_map.xml -->

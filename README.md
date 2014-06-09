@@ -14,7 +14,10 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - Move code around to be more easily accessible
 - Photo needs to be returned with the spot info
 - Better loading image for placeholders/no images in spot
-
+- Pass "photo" from spot object to spot page activity
+	then use it there to load the image. Remove top_photo function.
+	- Alternatively could just grab the first image from the spot images
+		Array and use that.
 
 // TODO
 - check the post to /me when resuming activities and if its an error repost to /login/facebook
@@ -25,6 +28,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - ** when spot added ratings appear to be 0 until refresh **
 - Make sure photo is posted when adding a spot (s3 error?)
 - Eliminate race condition with re-auth on post requests
+- Not get /photos so much (firing off too many times)
 
 // WishList
 - Start using 9patch images (from android or fb and color them in photoshop) for things!

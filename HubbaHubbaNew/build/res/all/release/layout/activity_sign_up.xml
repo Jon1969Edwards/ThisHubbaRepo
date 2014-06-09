@@ -1,0 +1,128 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/hubba_background_img7" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_marginTop="300dp"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/Name"
+                android:textColor="#FFF" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" >
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFF" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" >
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/username"
+                android:textColor="#FFF" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" >
+
+            <EditText
+                android:id="@+id/Password"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColor="#FFF" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" >
+
+            <EditText
+                android:id="@+id/ConfirmPassword"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/confirmPassword"
+                android:inputType="textPassword"
+                android:textColor="#FFF" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" >
+
+            <CheckBox
+                android:id="@+id/RCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/rememberPassword" />
+
+            <CheckBox
+                android:id="@+id/KCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/RCheckBox"
+                android:layout_below="@+id/RCheckBox"
+                android:hint="@string/keepLoggedIn"
+                android:textColor="#FFF" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp" >
+
+            <Button
+                android:id="@+id/SignUpButton"
+                android:layout_width="250dp"
+                android:layout_height="45dp"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_layout_3"
+                android:text="@string/signUp"
+                android:textAllCaps="true"
+                android:textColor="#FFF" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView><!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/activity_sign_up.xml -->

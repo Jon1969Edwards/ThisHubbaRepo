@@ -1,11 +1,6 @@
 package com.android.hubbahubba;
 
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
-import android.provider.ContactsContract.CommonDataKinds.Photo;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,8 +8,10 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.hubbahubba.HubbaCommentAdapter.ViewHolder;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class HubbaGridAdapter extends BaseAdapter /*implements Filterable*/ {
 	
@@ -84,7 +81,6 @@ public class HubbaGridAdapter extends BaseAdapter /*implements Filterable*/ {
 		// Use picasso to load the image into view
 		// XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE
 		Picasso.with(context)
-			   //.load(mThumbIds[position])
 			   .load(image.get("url"))
 			   .centerCrop()
 			   .resize(size, size)

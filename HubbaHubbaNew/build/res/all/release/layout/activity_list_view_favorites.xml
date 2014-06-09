@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_2"
+    android:orientation="vertical" >
+	
+    <!--
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#000" >
+		
+        <Button
+
+            android:layout_alignParentLeft="true"
+            android:id = "@+id/backButton"
+            android:paddingLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            tools:context=".MainActivity"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:background="#000"
+            android:textColor="#FFF" />
+            
+        
+        <TextView
+            android:id = "@+id/ListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/listView"
+            tools:context=".MainActivity"
+            android:layout_centerInParent="true"
+            android:textSize="25sp"
+            android:textColor="#FFF" />
+    </RelativeLayout>
+     -->
+     
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+		
+        <!-- this will be a photo instead of "add" eventually -->
+        <Button
+            android:id="@+id/AddSpot"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="#FFF"
+            android:textSize="18sp"
+            android:background="@drawable/button_layout_2"
+			android:text="@string/add" />
+        
+       <EditText
+            android:id="@+id/SearchBar"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="4"
+            android:textSize="18sp"
+            android:gravity="bottom"
+            android:textColor="#FFF"
+            android:ems="10"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:hint="@string/searchSpots" >
+
+            <requestFocus />
+        </EditText>
+        
+        <!-- this should be a spinner but I can't get them to work -->
+        <Button
+            android:id="@+id/Show"
+            android:background="@drawable/button_layout_2"
+            android:textColor="#FFF"
+            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1.5"
+            android:gravity="bottom"
+			android:text="@string/show"
+            />
+
+    </LinearLayout>
+    
+    <!-- List of spots here -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="left" >
+        
+        <ListView
+        	android:id="@+id/listViewFavorites"
+        	android:layout_width="fill_parent"
+        	android:layout_height="fill_parent" >
+    	</ListView>
+        
+   	</RelativeLayout>
+
+</LinearLayout><!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/activity_list_view_favorites.xml -->

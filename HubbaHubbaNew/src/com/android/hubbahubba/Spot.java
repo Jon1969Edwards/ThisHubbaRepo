@@ -1,17 +1,15 @@
 package com.android.hubbahubba;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.view.View;
 import android.widget.GridView;
 import android.widget.ListView;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.Marker;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Spot {
@@ -243,8 +241,9 @@ public class Spot {
 	}
 	
 	// TODO: make these private
-	public static String IP = "http://10.0.0.44:5000";
-	//private static String IPD = "http://35.2.211.107:5000";
+	//public static String IP = "http://10.0.0.44:5000";
+    //public static String IP = "http://192.168.1.41:5000";
+	//private static String IP = "http://35.2.211.107:5000";
 	public static String IPD = "http://hubba-api.herokuapp.com";
 	
 	public static void getListOfSpots(ListView listView, HubbaAdapter dataAdapter,

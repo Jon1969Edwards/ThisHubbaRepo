@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    
+    <ImageView
+	    android:id="@+id/image"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:contentDescription="Spot image" />
+    
+    <!-- Placeholders -->
+    <TextView 
+   	    android:layout_marginTop="10dp"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:id="@+id/rider_text"
+   	    android:text="Rider: "
+   	    android:visibility="gone"/>
+    <TextView 
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:id="@+id/photog_text"
+   	    android:text="Photog: "
+   	    android:visibility="gone"/>
+
+</LinearLayout>
+<!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/grid_image.xml -->

@@ -11,6 +11,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
@@ -63,14 +64,13 @@ public class AddImageTask extends AsyncTask<String, Void, String>
             
             // set header
             String source = ukey+":"+akey;
-            request.setHeader("Authorization","Basic " + Base64.encodeToString(source.getBytes(), Base64.URL_SAFE|Base64.NO_WRAP));
+            request.setHeader("Authorization","Basic " + Base64.encodeToString(source.getBytes(), Base64.URL_SAFE | Base64.NO_WRAP));
 
             // create file for image (must be named file)
         	File file = new File(imageURI);
         	MultipartEntity entity = new MultipartEntity();
         	entity.addPart("file", new FileBody(file));
-        	
-        	// TODO: add rider name
+            entity.addPart("rider", new StringBody(rider));
         	
         	// add entity to request
         	request.setEntity(entity);

@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/hubba_background_img7">
+	
+	<LinearLayout
+	    android:layout_alignParentBottom="true"
+	    android:layout_marginBottom="15dp"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical">
+		
+	    <RelativeLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="50dp">
+	
+	        <EditText
+		        android:textColor="#FFF"
+		        android:id = "@+id/username"
+		        android:layout_width="250dp"
+		        android:layout_height="50dp"
+		        android:layout_alignParentTop="true"
+		        android:layout_centerHorizontal="true"
+		        android:hint="@string/username" />
+	    </RelativeLayout>
+		    
+	     <RelativeLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="50dp">
+	       <EditText
+	            android:textColor="#FFF"
+		        android:id = "@+id/password"
+		        android:inputType="textPassword"
+		        android:layout_width="250dp"
+		        android:layout_height="50dp"
+		        android:layout_alignParentTop="true"
+		        android:layout_centerHorizontal="true"
+		        android:hint="@string/password" />
+	    </RelativeLayout>
+		    
+		     
+	    <RelativeLayout
+	       android:layout_width="fill_parent"
+	       android:gravity="center_horizontal"
+	       android:layout_height="wrap_content"
+	       android:layout_marginTop="5dp">
+	
+	       <CheckBox
+	           android:id="@+id/CheckBox"
+	           android:layout_centerInParent="true"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textColor="#FFF"
+	           android:hint="@string/rememberPassword"
+	           android:textIsSelectable="true" />
+	
+	   </RelativeLayout>
+		    
+	   <RelativeLayout
+	       android:layout_width="fill_parent"
+	       android:layout_height="55dp"
+	       android:layout_marginTop="10dp"
+	       android:layout_marginBottom="30dp">
+	
+	       <Button
+	           android:id="@+id/logInButton"
+	           android:layout_width="250dp"
+	           android:layout_height="55dp"
+	           android:textSize="20sp"
+	           android:layout_centerHorizontal="true"
+	           android:textAllCaps="true"
+	           android:layout_centerVertical="true"
+	           android:text="@string/logIn"
+	           android:background="@drawable/button_layout_3"
+	           android:textColor="#FFF" />
+	   </RelativeLayout>
+	</LinearLayout>
+</RelativeLayout><!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/login_layout.xml -->

@@ -76,8 +76,6 @@ public class GetSpotImagesTaskTwo extends AsyncTask<String, String, String>{
         try{
         	JSONObject jObject = new JSONObject(result);
 			JSONArray photos = jObject.getJSONArray("photos");
-			
-			//akey, user {ukey}
 
             for(int i = 0; i < photos.length(); i++){                     
                 HashMap<String, String> photoMap = new HashMap<String, String>();    
@@ -87,17 +85,20 @@ public class GetSpotImagesTaskTwo extends AsyncTask<String, String, String>{
                 JSONObject user = photo.getJSONObject("user");
                 
 				String url = photo.getString("url");
-				
-				String display_name = user.getString("display_name");
+                String rider_name = photo.getString("rider");
+                String display_name = "";
+                if(user != null){
+                    display_name = user.getString("display_name");
+                }
 				//String fb_user_id = user.getString("fb_user_id");
 				//String ukey = user.getString("ukey");
 				//String uname = photo.getString("uname");
-				//String rider = photo.getString("rider");
 				
 				// TODO: GET THE REST FROM THE DB/ FB
 
 				photoMap.put("url", url);
 				photoMap.put("display_name", display_name);
+                photoMap.put("rider_name", rider_name);
                 
                 imagesArray.add(photoMap);            
             }       

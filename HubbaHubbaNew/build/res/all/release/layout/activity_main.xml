@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/hubba_background_img7"
+    android:orientation="vertical" >
+    
+	<com.facebook.widget.LoginButton
+        android:id="@+id/authButton"
+        android:layout_width="250dp"
+        android:layout_height="51dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="75dp" />
+	
+    <Button
+        android:id="@+id/logInButton"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:layout_above="@+id/signUpButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_layout_3"
+        android:text="View Map"
+        android:textAllCaps="true"
+        android:textColor="#FFF"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="85dp"
+        android:background="@drawable/button_layout_3"
+        android:text="@string/signUp"
+        android:textAllCaps="true"
+        android:textColor="#FFF"
+        android:textSize="22sp" />
+    
+    <TextView 
+        android:id="@+id/leaveFeedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/leave_feedback"
+        android:textColor="#FFF"
+        android:textSize="16sp"/>
+
+</RelativeLayout><!-- From: file:/Users/Robbie/Desktop/trunk/ThisHubbaRepo/HubbaHubbaNew/res/layout/activity_main.xml -->

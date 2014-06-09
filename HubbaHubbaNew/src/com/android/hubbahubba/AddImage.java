@@ -96,10 +96,15 @@ public class AddImage extends Activity {
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (mSelectedImage != null && riderName.getText().toString().trim().length() > 0 /*&& userName.getText().toString().trim().length() > 0*/) {
+                if (mSelectedImage != null /*&& riderName.getText().toString().trim().length() > 0*/ /*&& userName.getText().toString().trim().length() > 0*/) {
                     // get spot id
                     Bundle showData = getIntent().getExtras();
                     String spot_id = showData.getString("spot_id");
+
+                    // If Rider Name is left blank, leave blank in db
+                    if(riderName.getText().toString().trim().length() > 0){
+                        riderName.setText("");
+                    }
 
                     //String imageURI = mSelectedImage.getPath();
                     String imageURI = getImagePath(mSelectedImage);

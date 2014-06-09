@@ -24,7 +24,7 @@ public class ViewImage extends Activity {
 	int counter;				// TODO from db
 	int negCounter;				// TODO from db
 	boolean votedOn = false;	// TODO from db
-	String rider;				// TODO from db
+	String rider_name;			// TODO from db
 
 	@SuppressLint("NewApi")
 	@Override
@@ -47,8 +47,9 @@ public class ViewImage extends Activity {
 		if (bundle != null) {
 			url = bundle.getString("url");
 			display_name = bundle.getString("display_name");
-			
-			
+            rider_name = bundle.getString("rider_name");
+
+
 		    // Use picasso to load the image into view
 		    // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE
 			Display display = getWindowManager().getDefaultDisplay();
@@ -62,16 +63,14 @@ public class ViewImage extends Activity {
 	        height -= 300;
 	        
 		    Picasso.with(context)
-		    	   //.load(mImageID)
 		    	   .load(url)
-		    	   //.centerCrop()
 		    	   .centerInside()
 		    	   .resize(width, height)
 		    	   .placeholder(R.drawable.ic_empty)
 		    	   .into(imageView);
 		    
 		    photog.setText("Photographer: " + display_name);
-		    rider.setText("Rider: " + "Anonymous");
+		    rider.setText("Rider: " + rider_name);
 		}
 		
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
