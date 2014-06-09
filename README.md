@@ -33,6 +33,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
     - Don't try to add image, etc...
 - Keep map cached
 - Animations?
+    (android:animateLayoutChanges="true" when setting to gone) 
 
 // Design Changes
 - sliders for numbers on ratings for spots
