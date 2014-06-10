@@ -28,6 +28,12 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - videos along with photos?
 - Make images rider field a user object
 - Have flag for allowing others to also share it (Cred: freeBurg)
+- ** DO SOMETHING WHEN NOT CONNECTED TO THE INTERNET **
+    - Don't reload the map info when no internet
+    - Don't try to add image, etc...
+- Keep map cached
+- Animations?
+    (android:animateLayoutChanges="true" when setting to gone) 
 
 // Design Changes
 - sliders for numbers on ratings for spots
