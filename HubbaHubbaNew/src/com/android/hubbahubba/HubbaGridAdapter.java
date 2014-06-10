@@ -79,12 +79,12 @@ public class HubbaGridAdapter extends BaseAdapter /*implements Filterable*/ {
 		int size = Image.convertDpToPixel(100, context);
 		
 		// Use picasso to load the image into view
-		// XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON SPOT PAGE
+		// TODO - THIS MUST STAY CONSISTENT WITH THE SIZE ON SPOT PAGE
 		Picasso.with(context)
 			   .load(image.get("url"))
 			   .centerCrop()
 			   .resize(size, size)
-			   .placeholder(R.drawable.ic_empty)
+			   .placeholder(R.drawable.ic_empty_sec)
 			   //.into(vh.image);
 			   .into(view);
 		

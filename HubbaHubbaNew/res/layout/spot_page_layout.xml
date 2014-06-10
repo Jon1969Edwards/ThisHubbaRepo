@@ -9,7 +9,6 @@
 	    android:layout_alignParentTop="true"
 	   	layout="@layout/item_row"
 	    android:id="@+id/rowView"/>
-
      
     <LinearLayout
         android:layout_width="fill_parent"

@@ -10,14 +10,14 @@
       
     <ImageView
         android:contentDescription="@+id/titleOfSpot"
-        android:layout_width="wrap_content"   
-        android:layout_height="wrap_content"   
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/imgThumbnail" 
         android:layout_alignParentLeft="true"  
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
         android:layout_marginRight="10dp"
-        android:background="#FFF">  
+        android:background="@drawable/ic_empty_sec">
     </ImageView>  
       
     <TextView   
