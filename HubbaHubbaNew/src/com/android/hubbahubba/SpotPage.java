@@ -24,6 +24,7 @@ public class SpotPage extends Activity {
     Context context = this;
     String spot_id;
     private HubbaGridAdapter dataAdapter;
+    private GridView gridview;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class SpotPage extends Activity {
         mDist = (TextView) findViewById(R.id.txtDistance);
         mDifficulty = (TextView) findViewById(R.id.txtDiffRating);
         mImage = (ImageView) findViewById(R.id.imgThumbnail);
+        gridview = (GridView) findViewById(R.id.gridviewPictures);
 
         Bundle showData = getIntent().getExtras();
         spot_id = showData.getString("spot_id");
@@ -102,7 +104,7 @@ public class SpotPage extends Activity {
                 bundleData.putString("spot_id", spot_id);
                 Intent intent = new Intent(SpotPage.this, AddImage.class);
                 intent.putExtras(bundleData);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
 
@@ -117,7 +119,7 @@ public class SpotPage extends Activity {
                 startActivity(intent);
             }
         });
-		
+
 		
 		/*
 		favoritesButton.setOnClickListener(new View.OnClickListener() {
@@ -143,19 +145,15 @@ public class SpotPage extends Activity {
 
         });
 
-        // Get gridview for images
-        GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
-
         // Send task to get images
-        //imagesArray = new ArrayList<HashMap<String, String>>();
-        //Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
+        imagesArray = new ArrayList<HashMap<String, String>>();
+        Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
 
         // Open full screen image
         // TODO: better full screen view
         gridview.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-
                 Intent intent = new Intent(SpotPage.this, ViewImage.class);
 
                 // TODO: maybe use the above line?
@@ -181,23 +179,27 @@ public class SpotPage extends Activity {
 
     }
 
-    // TODO: USE A TASK TO GET THE RESULTING URL AND ADD IT TO THE ADAPTER
+    // TODO: Remove these?
     // WORKS FOR NOW THOUGH =)
     @Override
     protected void onResume() {
         super.onResume();
-        // Get gridview for images
-        GridView gridview = (GridView) findViewById(R.id.gridviewPictures);
-
-        imagesArray = new ArrayList<HashMap<String, String>>();
-        Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
-
     }
 
     @Override
     protected void onDestroy() {
-        // TODO Auto-generated method stub
-        //imageLoader.destroy();
         super.onDestroy();
+    }
+
+    // TODO Possibly delete this
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+            if (resultCode == Activity.RESULT_OK) {
+                // Refresh list because photo was added
+                imagesArray = new ArrayList<HashMap<String, String>>();
+                Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
+            }
+        }
     }
 }

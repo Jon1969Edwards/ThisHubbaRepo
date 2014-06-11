@@ -113,7 +113,15 @@ public class AddImage extends Activity {
                     // Add image to DB
                     Spot.addImage(getApplicationContext(), spot_id, riderName.getText().toString(), imageURI);
 
-                    // return to page you came from
+                    // Success, set result to OK
+                    Intent data = new Intent();
+                    if (getParent() == null) {
+                        setResult(Activity.RESULT_OK, data);
+                    } else {
+                        getParent().setResult(Activity.RESULT_OK, data);
+                    }
+
+                    // Return to parent page
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(),

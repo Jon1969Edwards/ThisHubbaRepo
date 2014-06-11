@@ -4,7 +4,7 @@ ThisHubbaRepo
 Android mobile application using the Google Maps API, Picasso, OkHttp, and ActionBarSherlock. Our backend is a python API using mongoDB with mongoengine. If you're interested in working on the iOS version of HubbaHubba email me at robsmall@umich.edu and pull the iOS code and to started! 
 
 // TODO For Beta Release:
-- Make sure users can only rate photos/spots and comments once
+- Hide up and down thumbs on images
 - ** Add login to menu button
 - Quit activity when returning from mail
 - ** when spot added ratings appear to be 0 until refresh **
@@ -43,7 +43,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - Lighter style?
 
 // TODO: FOR BACKEND
-- Make sure users can only rate photos/spots once
+- Ratings for images
 - add up and down ratings for images
 - videos along with photos?
 - Comment out Delete endpoints

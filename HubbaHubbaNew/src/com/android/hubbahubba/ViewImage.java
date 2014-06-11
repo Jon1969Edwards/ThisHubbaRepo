@@ -3,12 +3,9 @@ package com.android.hubbahubba;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +16,6 @@ public class ViewImage extends Activity {
 	int mImageID;
 	String url;
 	String display_name;
-	Bitmap mBitmap;
 	ImageView imageView;
 	int counter;				// TODO from db
 	int negCounter;				// TODO from db
@@ -32,10 +28,11 @@ public class ViewImage extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.full_screen_image);
 		Context context = this;
-		
+
+        // TODO: up down buttons
 		//Buttons to incriment/decriment counter
-		Button thumbsUpButton= (Button) findViewById(R.id.thumbs_up);
-		Button thumbsDownButton= (Button) findViewById(R.id.thumbs_down);
+		//Button thumbsUpButton= (Button) findViewById(R.id.thumbs_up);
+		//Button thumbsDownButton= (Button) findViewById(R.id.thumbs_down);
 		
 		// TODO: TO BE FILLED FROM THE DB
 		TextView rider = (TextView) findViewById(R.id.rider_text);
@@ -72,7 +69,7 @@ public class ViewImage extends Activity {
 		    photog.setText("Photographer: " + display_name);
 		    rider.setText("Rider: " + rider_name);
 		}
-		
+		/*
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view){
         		if(votedOn == false){
@@ -90,6 +87,7 @@ public class ViewImage extends Activity {
         		}
         	}
         });
+        */
 
 	};
 }
