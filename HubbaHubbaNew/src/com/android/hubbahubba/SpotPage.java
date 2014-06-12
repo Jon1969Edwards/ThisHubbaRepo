@@ -100,11 +100,14 @@ public class SpotPage extends Activity {
 
         uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Bundle bundleData = new Bundle();
-                bundleData.putString("spot_id", spot_id);
-                Intent intent = new Intent(SpotPage.this, AddImage.class);
-                intent.putExtras(bundleData);
-                startActivityForResult(intent, 0);
+              //User.checkLoggedIn(getApplicationContext());
+
+              Bundle bundleData = new Bundle();
+              bundleData.putString("spot_id", spot_id);
+              Intent intent = new Intent(SpotPage.this, AddImage.class);
+              intent.putExtras(bundleData);
+              startActivityForResult(intent, 0);
+
             }
         });
 
