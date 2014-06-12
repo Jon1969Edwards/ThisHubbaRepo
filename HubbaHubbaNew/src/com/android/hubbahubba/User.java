@@ -2,6 +2,16 @@ package com.android.hubbahubba;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 public class User {
 	
@@ -104,5 +114,32 @@ public class User {
 		// TODO: may not need to pass in the spot_id since it is in the URL
 		new ShareSpotTask(context).execute(new String[] {url, ukey, akey, spot_id, fb_user_id});
 	}
+
+  public static void checkLoggedIn(Context context) {
+    String url = IPD + "/_health";
+
+    new CheckLoggedInTask(context).execute(new String[] {url});
+    //
+    //String url = IPD + "/_health";
+    //HttpClient httpclient = new DefaultHttpClient();
+    //HttpResponse response = null;
+    //try {
+    //  response = httpclient.execute(new HttpGet(url));
+    //  StatusLine statusLine = response.getStatusLine();
+    //  if(statusLine.getStatusCode() == HttpStatus.SC_OK){
+    //    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    //    response.getEntity().writeTo(out);
+    //    out.close();
+    //    String responseString = out.toString();
+    //    Toast.makeText(context, "Success " + responseString, Toast.LENGTH_SHORT).show();
+    //  } else{
+    //    //Closes the connection.
+    //    response.getEntity().getContent().close();
+    //  }
+    //} catch (IOException e) {
+    //  Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+    //  e.printStackTrace();
+    //}
+  }
 	
 }
