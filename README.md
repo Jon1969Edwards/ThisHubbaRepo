@@ -4,7 +4,7 @@ ThisHubbaRepo
 Android mobile application using the Google Maps API, Picasso, OkHttp, and ActionBarSherlock. Our backend is a python API using mongoDB with mongoengine. If you're interested in working on the iOS version of HubbaHubba email me at robsmall@umich.edu and pull the iOS code and to started! 
 
 // TODO For Beta Release:
-- ** Add login to menu button
+- Add Leave Feedback to menu item (Possibly its own row)
 - Quit activity when returning from mail
 - Comment out Delete Endpoint
 - check the post to /me when resuming activities and if its an error repost to /login/facebook
@@ -16,6 +16,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 	  indicating that a photo has been added to refresh
 
 // WishList
+- ** Add login to menu button **
 - Make sure all old code is taken out
 - Pass "photo" from spot object to spot page activity
 	then use it there to load the image. Remove top_photo function.
@@ -33,6 +34,9 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - Keep map cached
 - Animations?
     (android:animateLayoutChanges="true" when setting to gone) 
+- Handle re-auth
+	- post back to fb, then back to us?
+	- button for it?
 
 // Design Changes
 - sliders for numbers on ratings for spots

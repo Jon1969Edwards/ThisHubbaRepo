@@ -241,7 +241,7 @@ public class Spot {
 	}
 	
 	// TODO: make these private
-	//public static String IP = "http://10.0.0.44:5000";
+	public static String IP = "http://10.0.0.44:5000";
     //public static String IP = "http://192.168.1.41:5000";
 	//private static String IP = "http://35.2.211.107:5000";
 	public static String IPD = "http://hubba-api.herokuapp.com";
