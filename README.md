@@ -12,6 +12,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - cronjob to keep api awake
 
 //BUGS:
+- Change type in map view then click
 - change spot in listview then click on spot. crashes.
 - Eliminate race condition with re-auth on post requests
 - Not get /photos so much (firing off too many times)
@@ -20,6 +21,8 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 	  - ** THIS MAY BE DONE **
 
 // WishList
+- *** ADD TYPE INTO SPOT ROWS ***
+- change spinner on listview, go to map view, come back to list view. Spinner reset.
 - ** Add login to menu button **
 - search in listview and mapview
 - add up and down ratings for images

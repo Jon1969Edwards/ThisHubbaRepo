@@ -93,6 +93,8 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
 			for (int i=0; i < spotsArray.length(); i++)
 			{
 			    try {
+                    // TODO: Need a function to do this since it is done 2 times:
+                    // here and in UpdateMapTask
 			        JSONObject spot = spotsArray.getJSONObject(i);
 			        // Pulling items from the array
 			        String snippit = "";

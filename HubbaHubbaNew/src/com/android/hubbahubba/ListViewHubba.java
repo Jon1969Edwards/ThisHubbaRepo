@@ -56,6 +56,8 @@ public class ListViewHubba extends SherlockFragment {
 
             public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
                 Bundle bundleData = new Bundle();
+                //Toast.makeText(getActivity().getApplicationContext(), "size = " +  SpotsArray.size(), Toast.LENGTH_SHORT).show();
+
                 HashMap<String, String> spot = SpotsArray.get(position);
 
                 String spot_id = spot.get("id");
@@ -161,12 +163,13 @@ public class ListViewHubba extends SherlockFragment {
 			ListViewHubba.this.startActivity(addintent);
 			// TODO: add spot
 			return true;
+        /*
 		case R.id.action_search:
 			// TODO: search
 			return true;
+		*/
 		case R.id.action_refresh:
 			refreshList();
-			// refresh
 			return true;
 		case R.id.action_help:
 			Intent intent = new Intent(getActivity(), LeaveFeedback.class);
@@ -178,7 +181,7 @@ public class ListViewHubba extends SherlockFragment {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	public void refreshList() {
 		String type = spinner.getSelectedItem().toString();
 		// reset array

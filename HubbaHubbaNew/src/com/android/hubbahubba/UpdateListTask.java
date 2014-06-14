@@ -1,10 +1,11 @@
 package com.android.hubbahubba;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Base64;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -20,12 +21,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Base64;
-import android.widget.ListView;
-import android.widget.Toast;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class UpdateListTask extends AsyncTask<String, String, String>{
 	
@@ -102,15 +102,10 @@ public class UpdateListTask extends AsyncTask<String, String, String>{
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        
         //Toast.makeText(context, "Result From List: " + result, Toast.LENGTH_LONG).show();
-        
         try{
         	JSONObject jObject = new JSONObject(result);
 			JSONArray spots = jObject.getJSONArray("spots");
-			
-			//akey, user {ukey}
-			SpotsArray = new ArrayList<HashMap<String, String>>();
 			
             for(int i = 0; i < spots.length(); i++){                     
                 HashMap<String, String> spotMap = new HashMap<String, String>();    
@@ -153,22 +148,9 @@ public class UpdateListTask extends AsyncTask<String, String, String>{
         	Toast.makeText(context, "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();
         	e.printStackTrace();
         }
-        /*
-        String[] from = new String[] { "name", "type", "overall", "diff", "bust", "img" };
-		
-		// the XML defined views which the data will be bound to
-		int[] to = new int[] { R.id.txtTitle, R.id.txtType,
-					R.id.txtOverallRating, R.id.txtDiffRating, R.id.txtPoRating, R.id.imgThumbnail };
-        */
-        
         dataAdapter = new HubbaAdapter(context, SpotsArray, R.layout.activity_list_view);
-		// create the adapter using the cursor pointing to the desired data
-		// as well as the layout information
-		//dataAdapter = new HubbaCursorAdapter(getActivity().getApplicationContext(), cursor);
 		
 		// Assign adapter to ListView
 		listView.setAdapter(dataAdapter);
-        
-        
     }
 }

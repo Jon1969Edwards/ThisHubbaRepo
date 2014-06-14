@@ -1,9 +1,16 @@
 package com.android.hubbahubba;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Base64;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -19,17 +26,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Base64;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 // TODO: For async tasks but currently unused
 public class UpdateMapTask extends AsyncTask<String, String, String>{
@@ -101,7 +101,7 @@ public class UpdateMapTask extends AsyncTask<String, String, String>{
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        Toast.makeText(context, "Result: " + result, Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, "Result: " + result, Toast.LENGTH_LONG).show();
         try {
         	// convert to json and get spot entries
 			JSONObject jObject = new JSONObject(result);
@@ -125,6 +125,8 @@ public class UpdateMapTask extends AsyncTask<String, String, String>{
 					snippit += (bust + ",");
 					String type = spot.getString("type");
 					snippit += (type + ",");
+                    String photo_url = spot.getString("photo");
+                    snippit += (photo_url + ",");
 					//Toast.makeText(context, snippit, Toast.LENGTH_LONG).show();
 					
 					double lat = Double.parseDouble(spot.getString("lat"));

@@ -454,6 +454,7 @@ public class ViewMap extends SherlockFragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Take appropriate action for each action item click
 		switch (item.getItemId()) {
+        // TODO: why is this still here?
 		case R.id.action_filter:
 			return true;
 		case R.id.action_add_spot:

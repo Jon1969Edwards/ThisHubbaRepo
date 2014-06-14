@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -79,7 +78,7 @@ public class GetSpotTopImageTask extends AsyncTask<String, String, String>{
             
 			String url = photo.getString("url");
 
-            Toast.makeText(context, "url =  " + url, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "url =  " + url, Toast.LENGTH_SHORT).show();
 			
 			//String display_name = user.getString("display_name");
 			//imageMap.put("display_name", display_name);  

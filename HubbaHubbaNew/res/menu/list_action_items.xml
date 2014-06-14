@@ -6,11 +6,11 @@
           android:showAsAction="ifRoom"
           android:actionLayout="@layout/map_spinner"/>
      
-    <!-- Search -->
-    <item android:id="@+id/action_search"
-          android:icon="@drawable/ic_action_search"
-          android:title="Search"
-          android:showAsAction="ifRoom" />
+    <!-- TODO Search -->
+    <!--<item android:id="@+id/action_search"-->
+          <!--android:icon="@drawable/ic_action_search"-->
+          <!--android:title="Search"-->
+          <!--android:showAsAction="ifRoom" />-->
     
     <!-- Refresh -->
     <item android:id="@+id/action_refresh"
