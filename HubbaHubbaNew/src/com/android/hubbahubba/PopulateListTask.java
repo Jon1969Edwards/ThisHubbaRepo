@@ -1,9 +1,12 @@
 package com.android.hubbahubba;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Base64;
+import android.util.Log;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -16,13 +19,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Base64;
-import android.util.Log;
-import android.widget.ListView;
-import android.widget.Toast;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PopulateListTask extends AsyncTask<String, String, String>{
 	
@@ -108,6 +108,7 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
 				String overall = spot.getString("overall");
 				String bust = spot.getString("bust");
 				String type = spot.getString("type");
+                String photo = spot.getString("photo");
 				
 				// TODO: Figure out distance stuff
 				String distance = "10.0 mi";
@@ -120,6 +121,7 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
                 spotMap.put("difficulty", difficulty);
                 spotMap.put("bust", bust);
                 spotMap.put("distance", distance);
+                spotMap.put("photo", photo);
                 
                 // TODO: Fix this DB side
                 if(type!= null){
