@@ -99,7 +99,7 @@ public class SpotPage extends Activity {
 
         uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                User.checkLoggedIn(getApplicationContext(), spot_id);
+                User.checkLoggedIn(getApplicationContext(), spot_id, "Image");
 
 //                Bundle bundleData = new Bundle();
 //                bundleData.putString("spot_id", spot_id);
@@ -111,13 +111,15 @@ public class SpotPage extends Activity {
 
         uploadCommentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Bundle bundleData = new Bundle();
-                bundleData.putString("spot_id", spot_id);
+                User.checkLoggedIn(getApplicationContext(), spot_id, "Comment");
 
-                Intent intent = new Intent(SpotPage.this, AddComment.class);
-
-                intent.putExtras(bundleData);
-                startActivity(intent);
+//                Bundle bundleData = new Bundle();
+//                bundleData.putString("spot_id", spot_id);
+//
+//                Intent intent = new Intent(SpotPage.this, AddComment.class);
+//
+//                intent.putExtras(bundleData);
+//                startActivity(intent);
             }
         });
 

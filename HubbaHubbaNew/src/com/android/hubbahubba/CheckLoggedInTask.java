@@ -25,6 +25,7 @@ public class CheckLoggedInTask extends AsyncTask<String, Void, String> {
     private String ukey;
     private String akey;
     private String spot_id;
+    private String req_type;
 
     //in constructor:
     public CheckLoggedInTask(Context context, String spot_id) {
@@ -50,6 +51,7 @@ public class CheckLoggedInTask extends AsyncTask<String, Void, String> {
             HttpGet request = new HttpGet(url);
             ukey = params[1];
             akey = params[2];
+            req_type = params[3];
 
             // set header and params
             String source = ukey + ":" + akey;
@@ -85,13 +87,27 @@ public class CheckLoggedInTask extends AsyncTask<String, Void, String> {
 
             //Toast.makeText(context, error, Toast.LENGTH_LONG).show();
             if (result.equals("Success")) {
-                Bundle bundleData = new Bundle();
-                bundleData.putString("spot_id", spot_id);
-                Intent intent = new Intent(context, AddImage.class);
-                intent.putExtras(bundleData);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                if(req_type.equals("Comment")){
+                    Bundle bundleData = new Bundle();
+                    bundleData.putString("spot_id", spot_id);
+                    Intent intent = new Intent(context, AddComment.class);
+                    intent.putExtras(bundleData);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                context.startActivity(intent);
+                    context.startActivity(intent);
+                }
+                else if(req_type.equals("Image")){
+                    Bundle bundleData = new Bundle();
+                    bundleData.putString("spot_id", spot_id);
+                    Intent intent = new Intent(context, AddImage.class);
+                    intent.putExtras(bundleData);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    context.startActivity(intent);
+                }
+                else {
+                    Toast.makeText(context, "Invalid request type", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(context,
                         "Please Return to the home screen and log in to add a photo",
