@@ -11,6 +11,8 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - Remove search button from menu on listview
 - cronjob to keep api awake
 - Cannot back out of app
+- Add correct error messages instead of returning json
+- Take out all debug messages
 
 //BUGS:
 - Change type in map view then click
