@@ -195,12 +195,13 @@ public class SpotPage extends Activity {
     // TODO Possibly delete this
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 0) {
-            if (resultCode == Activity.RESULT_OK) {
+        // TODO: uncomment and figure out how to refresh from coming back here
+        //if (requestCode == 0) {
+        //    if (resultCode == Activity.RESULT_OK) {
                 // Refresh list because photo was added
                 imagesArray = new ArrayList<HashMap<String, String>>();
                 Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
-            }
-        }
+        //    }
+        //}
     }
 }

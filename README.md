@@ -22,6 +22,8 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 	  - ** THIS MAY BE DONE **
 
 // WishList
+- *** Dont refresh photos when photo not added***
+	- resultcode code there but doesnt work coming from the task
 - Dont show users to add to spot if already on access list
 - *** ADD TYPE INTO SPOT ROWS ***
 - change spinner on listview, go to map view, come back to list view. Spinner reset.
