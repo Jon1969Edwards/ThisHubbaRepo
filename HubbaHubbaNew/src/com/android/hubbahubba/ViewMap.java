@@ -189,7 +189,7 @@ public class ViewMap extends SherlockFragment {
                     public void onMapLongClick(LatLng point) {
                         if (!spotAdded) {
                             // TODO: get a better way to do this for real -- THIS IS TERRIBLE
-                            User.checkLoggedIn(getSherlockActivity(), "No_ID", "Comment");
+                            User.checkLoggedIn(getSherlockActivity(), "No_ID", "Marker");
 
                             // Create the marker
                             addSpot = mMap.addMarker(new MarkerOptions()

@@ -105,6 +105,9 @@ public class CheckLoggedInTask extends AsyncTask<String, Void, String> {
 
                     context.startActivity(intent);
                 }
+                else if(req_type.equals("Marker")){
+                    // TODO: fix this -- Do nothing
+                }
                 else {
                     Toast.makeText(context, "Invalid request type", Toast.LENGTH_SHORT).show();
                 }

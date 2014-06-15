@@ -1,7 +1,6 @@
 package com.android.hubbahubba;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Base64;
 import android.widget.Toast;
@@ -145,41 +144,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
 			String error = jResponse.getString("error");
 			
 			if(error.contains("authentication failed")){
-				Toast.makeText(context, "error = " + error, Toast.LENGTH_LONG).show();
-				
-		    	// try to log back in if authentication failed
-		    	SharedPreferences hubbaprefs = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
-				String fb_user_id = hubbaprefs.getString("fb_user_id", "");
-				String fb_access_token = hubbaprefs.getString("fb_access_token", "");
-				String fb_expire = hubbaprefs.getString("fb_expire", "");
-				//Toast.makeText(context, "user_id = " + fb_user_id + "\naccess_token = " + fb_access_token
-				//		+ "\nexpire = " + fb_expire, Toast.LENGTH_LONG).show();
-				
-				/* TODO: Re-auth
-				//Log.i("Our Login:", "is private " + is_private);				
-				// TODO: do this not so sketch
-				if(!fb_access_token.equals("") && !fb_expire.equals("") && !fb_user_id.equals("")){
-					Toast.makeText(context, "Attempting to log back in..." + response, Toast.LENGTH_LONG).show();
-					
-					// log back in
-					User.loginToFacebook(context, fb_user_id, fb_access_token, Integer.parseInt(fb_expire));
-					
-					// create task, wait and run
-					AddSpotTask task = new AddSpotTask(context);
-					synchronized(task){
-						task.wait(3000);
-						task.execute(new String[] {url, name, lat, lon, type, ukey, akey, is_private,
-								overall, difficulty, bust, text}); 
-					}
-					
-//					User.loginToFacebook(context, fb_user_id, fb_access_token, Integer.parseInt(fb_expire));
-//					new AddSpotTask(context).execute(new String[] {url, name, lat, lon, type, ukey, akey, is_private,
-//							overall, difficulty, bust, text}).wait(3000); 
-				}
-				else{
-					Toast.makeText(context, "Please re-authenticate with facebook from the home screen", Toast.LENGTH_LONG).show();
-				}
-				*/
+				Toast.makeText(context, "Please go back to the home screen and log in to continue", Toast.LENGTH_LONG).show();
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

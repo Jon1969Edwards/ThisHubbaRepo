@@ -5,14 +5,9 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 
 // TODO For Beta Release:
 - Comment out Delete Endpoint
-- Add correct error messages instead of returning json
-- Take out all debug messages
 
 //BUGS:
 - ADD SPOT ONLY IF LOGGED IN
-- Change type in map view then click
-- change spot in listview then click on spot. crashes.
-- Eliminate race condition with re-auth on post requests
 - Not get /photos so much (firing off too many times)
 	- Moved to onResume()... Needs to have a var passed down
 	  indicating that a photo has been added to refresh
@@ -20,12 +15,13 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 
 // WishList
 - ADD SPOT ONLY IF LOGGED IN
-- *** Dont refresh photos when photo not added***
+- *** Dont refresh photos when photo not added ***
 	- resultcode code there but doesnt work coming from the task
 - Dont show users to add to spot if already on access list
 - *** ADD TYPE INTO SPOT ROWS ***
 - change spinner on listview, go to map view, come back to list view. Spinner reset.
 - ** Add login to menu button **
+	- Maybe a drawer or menu tab for it
 - search in listview and mapview
 - add up and down ratings for images
 - Make sure all old code is taken out

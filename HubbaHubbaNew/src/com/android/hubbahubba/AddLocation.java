@@ -387,7 +387,8 @@ public class AddLocation extends Activity {
                     uploadPhotoButton.setImageBitmap(null);
 
                 } else if (resultCode == RESULT_CANCELED) {
-                    Toast.makeText(this, "Image cancelled", Toast.LENGTH_LONG).show();
+                    // TODO remove this
+                    //Toast.makeText(this, "Image cancelled", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(this, "Image FAILED", Toast.LENGTH_LONG).show();
                 }

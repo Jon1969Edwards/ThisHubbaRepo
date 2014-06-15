@@ -1,9 +1,10 @@
 package com.android.hubbahubba;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -16,11 +17,10 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FacebookLoginTask extends AsyncTask<String, Void, String> {
 	private Context context;
@@ -107,7 +107,7 @@ public class FacebookLoginTask extends AsyncTask<String, Void, String> {
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			Toast.makeText(context, "Error with akey/ukey in json, mkay", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "Error with akey/ukey in json", Toast.LENGTH_LONG).show();
 		}
 
 		// Toast.makeText(context, "user_id = " + user_id + " access_t = " +
@@ -121,7 +121,5 @@ public class FacebookLoginTask extends AsyncTask<String, Void, String> {
 				akey, Toast.LENGTH_LONG).show();
 		Log.i("SHEEE", "ukey = " + hubbaprefs.getString("ukey", "") + "\nakey = " + hubbaprefs.getString("akey", ""));
 		*/
-		
-		 Toast.makeText(context, "logged in", Toast.LENGTH_LONG).show();
 	}
 }
