@@ -59,13 +59,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97fab327-10b3-4594-bc71-c8451a7654f6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddCommentTask.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddCommentTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddLocation.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddLocation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddSpotTask.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddSpotTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/CheckLoggedInTask.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/CheckLoggedInTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/FacebookLoginTask.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/FacebookLoginTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ListViewHubba.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ListViewHubba.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ViewMap.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ViewMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/Spot.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/Spot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/SpotPage.java" afterPath="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/SpotPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ThisHubbaRepo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,28 +88,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ViewMap.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ViewMap.java">
+      <file leaf-file-name="Spot.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/Spot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2698" max-vertical-offset="7860">
-              <caret line="191" column="86" selection-start-line="191" selection-start-column="86" selection-end-line="191" selection-end-column="86" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#17683#17691#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.8830846" vertical-offset="3425" max-vertical-offset="4830">
+              <caret line="291" column="9" selection-start-line="291" selection-start-column="9" selection-end-line="291" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListViewHubba.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ListViewHubba.java">
+      <file leaf-file-name="SpotPage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/SpotPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8461537" vertical-offset="2398" max-vertical-offset="3315">
-              <caret line="174" column="61" selection-start-line="174" selection-start-column="61" selection-end-line="174" selection-end-column="61" />
+            <state vertical-scroll-proportion="-8.615385" vertical-offset="2101" max-vertical-offset="2970">
+              <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1853#2577#0" expanded="true" />
-                <element signature="e#2566#2567#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,55 +113,47 @@
       <file leaf-file-name="AddLocation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddLocation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.423077" vertical-offset="5045" max-vertical-offset="6090">
-              <caret line="389" column="39" selection-start-line="389" selection-start-column="39" selection-end-line="389" selection-end-column="39" />
+            <state vertical-scroll-proportion="-5.0384617" vertical-offset="2419" max-vertical-offset="6090">
+              <caret line="214" column="37" selection-start-line="214" selection-start-column="37" selection-end-line="214" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FacebookLoginTask.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/FacebookLoginTask.java">
+      <file leaf-file-name="ListViewHubba.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ListViewHubba.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4347826" vertical-offset="1275" max-vertical-offset="1620">
-              <caret line="117" column="23" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActionBarActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ActionBarActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.1538463" vertical-offset="616" max-vertical-offset="2145">
-              <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
-              <folding>
-                <element signature="e#3139#3140#0" expanded="true" />
-                <element signature="e#3176#3177#0" expanded="true" />
-                <element signature="e#3217#3218#0" expanded="true" />
-                <element signature="e#3251#3252#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpotPage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/SpotPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1301" max-vertical-offset="2925">
-              <caret line="113" column="80" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="80" />
+            <state vertical-scroll-proportion="-2.5" vertical-offset="1165" max-vertical-offset="3405">
+              <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1853#2577#0" expanded="true" />
+                <element signature="e#2566#2567#0" expanded="true" />
+                <element signature="e#2688#3217#0" expanded="true" />
+                <element signature="e#3205#3206#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckLoggedInTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/CheckLoggedInTask.java">
+      <file leaf-file-name="AddSpotTask.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddSpotTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1489" max-vertical-offset="2025">
-              <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
+            <state vertical-scroll-proportion="-12.5" vertical-offset="1040" max-vertical-offset="2505">
+              <caret line="93" column="69" selection-start-line="93" selection-start-column="69" selection-end-line="93" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2589#2604#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1002" max-vertical-offset="1770">
+              <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -177,30 +164,8 @@
       <file leaf-file-name="AddSpot.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddSpot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.576923" vertical-offset="136" max-vertical-offset="10305">
-              <caret line="31" column="23" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1362" max-vertical-offset="1770">
-              <caret line="117" column="25" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddCommentTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddCommentTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1189" max-vertical-offset="1575">
-              <caret line="109" column="19" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
+            <state vertical-scroll-proportion="-2.9230769" vertical-offset="404" max-vertical-offset="10305">
+              <caret line="46" column="16" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -1016,27 +981,27 @@
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ViewImage.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddImage.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/build.gradle" />
-        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/Spot.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/PopulateListTask.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/HubbaAdapter.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/res/menu/list_action_items.xml" />
-        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ListViewHubba.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/PopulateMapTask.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/GetSpotTopImageTask.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/UpdateMapTask.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/UpdateListTask.java" />
-        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/User.java" />
-        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/SpotPage.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ListViewComments.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/LeaveFeedback.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ActionBarActivity.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/MainFragment.java" />
-        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddSpotTask.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddCommentTask.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/FacebookLoginTask.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/CheckLoggedInTask.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ViewMap.java" />
+        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/SpotPage.java" />
+        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ListViewHubba.java" />
         <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddLocation.java" />
+        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddSpotTask.java" />
+        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/User.java" />
+        <option value="$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/Spot.java" />
       </list>
     </option>
   </component>
@@ -1092,6 +1057,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1166,7 +1132,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -1236,19 +1201,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1274,6 +1226,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1396,17 +1361,16 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13000818" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2993197" sideWeight="0.210139" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20238096" sideWeight="0.210139" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1377551" sideWeight="0.49959117" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2993197" sideWeight="0.789861" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20238096" sideWeight="0.789861" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1419,6 +1383,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13000818" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44334975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1539,7 +1504,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1935">
           <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
@@ -1563,7 +1527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.55172414" vertical-offset="945" max-vertical-offset="1380">
           <caret line="92" column="30" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1576,14 +1539,6 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ViewImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="803" max-vertical-offset="1350">
-          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/res/layout/full_screen_image.xml">
@@ -1605,14 +1560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddImageTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12801932" vertical-offset="892" max-vertical-offset="2280">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/HubbaGridAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54332554" vertical-offset="803" max-vertical-offset="1245">
@@ -1625,7 +1572,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27522936" vertical-offset="0" max-vertical-offset="570">
           <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1742,24 +1688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23600973" vertical-offset="1688" max-vertical-offset="3645">
-          <caret line="127" column="75" selection-start-line="127" selection-start-column="70" selection-end-line="127" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddSpotTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1594203" vertical-offset="1820" max-vertical-offset="2190">
-          <caret line="146" column="98" selection-start-line="146" selection-start-column="98" selection-end-line="146" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/MainFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="1055" max-vertical-offset="3390">
@@ -1786,25 +1714,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/Spot.java">
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/LeaveFeedback.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="71" max-vertical-offset="4830">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.31266847" vertical-offset="649" max-vertical-offset="1050">
+          <caret line="62" column="43" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddCommentTask.java">
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/FacebookLoginTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1189" max-vertical-offset="1575">
-          <caret line="109" column="19" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.4347826" vertical-offset="1275" max-vertical-offset="1620">
+          <caret line="117" column="23" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ActionBarActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1538463" vertical-offset="616" max-vertical-offset="2145">
+        <state vertical-scroll-proportion="0.37430167" vertical-offset="616" max-vertical-offset="2145">
           <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
           <folding>
             <element signature="e#3139#3140#0" expanded="true" />
@@ -1815,50 +1743,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/LeaveFeedback.java">
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/CheckLoggedInTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31266847" vertical-offset="649" max-vertical-offset="1050">
-          <caret line="62" column="43" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.31266847" vertical-offset="1489" max-vertical-offset="2025">
+          <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddCommentTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35309973" vertical-offset="1189" max-vertical-offset="1575">
+          <caret line="109" column="19" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ListViewHubba.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8461537" vertical-offset="2398" max-vertical-offset="3315">
-          <caret line="174" column="61" selection-start-line="174" selection-start-column="61" selection-end-line="174" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1853#2577#0" expanded="true" />
-            <element signature="e#2566#2567#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/SpotPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1301" max-vertical-offset="2925">
-          <caret line="113" column="80" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1362" max-vertical-offset="1770">
-          <caret line="117" column="25" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ViewMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2698" max-vertical-offset="7860">
-          <caret line="191" column="86" selection-start-line="191" selection-start-column="86" selection-end-line="191" selection-end-column="86" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2940" max-vertical-offset="8025">
+          <caret line="199" column="0" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#17683#17691#0" expanded="true" />
@@ -1866,10 +1772,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/CheckLoggedInTask.java">
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ViewImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1489" max-vertical-offset="2025">
-          <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
+        <state vertical-scroll-proportion="-0.17662337" vertical-offset="398" max-vertical-offset="1350">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddImageTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21991701" vertical-offset="892" max-vertical-offset="2280">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40248963" vertical-offset="1688" max-vertical-offset="3645">
+          <caret line="127" column="75" selection-start-line="127" selection-start-column="70" selection-end-line="127" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1878,24 +1800,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddSpot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923" vertical-offset="136" max-vertical-offset="10305">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="23" />
+        <state vertical-scroll-proportion="-2.9230769" vertical-offset="404" max-vertical-offset="10305">
+          <caret line="46" column="16" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/SpotPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.615385" vertical-offset="2101" max-vertical-offset="2970">
+          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddLocation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.423077" vertical-offset="5045" max-vertical-offset="6090">
-          <caret line="389" column="39" selection-start-line="389" selection-start-column="39" selection-end-line="389" selection-end-column="39" />
+        <state vertical-scroll-proportion="-5.0384617" vertical-offset="2419" max-vertical-offset="6090">
+          <caret line="214" column="37" selection-start-line="214" selection-start-column="37" selection-end-line="214" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/FacebookLoginTask.java">
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/AddSpotTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4347826" vertical-offset="1275" max-vertical-offset="1620">
-          <caret line="117" column="23" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="23" />
+        <state vertical-scroll-proportion="-12.5" vertical-offset="1040" max-vertical-offset="2505">
+          <caret line="93" column="69" selection-start-line="93" selection-start-column="69" selection-end-line="93" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2589#2604#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/ListViewHubba.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5" vertical-offset="1165" max-vertical-offset="3405">
+          <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1853#2577#0" expanded="true" />
+            <element signature="e#2566#2567#0" expanded="true" />
+            <element signature="e#2688#3217#0" expanded="true" />
+            <element signature="e#3205#3206#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1002" max-vertical-offset="1770">
+          <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HubbaHubbaNew/src/com/android/hubbahubba/Spot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8830846" vertical-offset="3425" max-vertical-offset="4830">
+          <caret line="291" column="9" selection-start-line="291" selection-start-column="9" selection-end-line="291" selection-end-column="9" />
           <folding />
         </state>
       </provider>

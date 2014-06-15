@@ -72,6 +72,7 @@ public class ListViewHubba extends SherlockFragment {
             }
         });
 
+
         //long press is to edit the spot (EditActivity.java);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position,long id)
@@ -89,6 +90,7 @@ public class ListViewHubba extends SherlockFragment {
             }
 
         });
+
 
 		return rootView;
 	}

@@ -210,9 +210,9 @@ public class AddLocation extends Activity {
                 mType = typeSpinner.getSelectedItem().toString();
 
                 if (sharedButton.isChecked() == true) {
-                    isSecret = false;
-                } else {
                     isSecret = true;
+                } else {
+                    isSecret = false;
                 }
 
                 int duration = Toast.LENGTH_LONG;

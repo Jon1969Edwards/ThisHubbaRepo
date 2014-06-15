@@ -286,9 +286,9 @@ public class Spot {
 		String akey = preferences.getString("akey", "");
 		
 		//Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
-		String is_private = "false";
+		String is_private = "False";
 		if(isPrivate == true){
-			is_private = "true";
+			is_private = "True";
 		}
 		
 		String url = IPD + "/spots";

@@ -5,6 +5,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 
 // TODO For Beta Release:
 - Comment out Delete Endpoint
+- Rider field not working
 
 //BUGS:
 - ADD SPOT ONLY IF LOGGED IN
@@ -27,7 +28,6 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - Make sure all old code is taken out
 - Pass "photo" from spot object to spot page activity
 	then use it there to load the image. Remove top_photo function.
-- Better image placeholder for images
 - Move code around to be more easily accessible
 - ** when spot added ratings appear to be 0 until refresh **
 - USE http://square.github.io/okhttp/ for get requests other than images

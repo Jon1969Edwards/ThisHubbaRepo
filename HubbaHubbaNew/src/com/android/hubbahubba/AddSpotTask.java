@@ -3,6 +3,7 @@ package com.android.hubbahubba;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -73,13 +74,13 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
         	text = params[11];
         	imageURI = params[12];
         	
-        	/*
+            /*
         	boolean secret = false;
         	if(is_private.equals("True")){
         		secret = true;
         	}
         	*/
-        	
+
         	HttpClient httpClient = new DefaultHttpClient();
             HttpPost request = new HttpPost(url);
 
@@ -91,6 +92,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
             postParameters.add(new BasicNameValuePair("lat", lat));
             postParameters.add(new BasicNameValuePair("lon", lon));
             postParameters.add(new BasicNameValuePair("type", type));
+            Log.i("LOLOLOL", is_private);
             postParameters.add(new BasicNameValuePair("secret", is_private));
 
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(
