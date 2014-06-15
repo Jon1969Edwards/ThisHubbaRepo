@@ -1,6 +1,9 @@
 # build files from android studio
 HubbaHubbaNew/build
 
+# ignore workspace
+.idea/workspace.xml
+
 # built application files
 *.apk
 *.ap_

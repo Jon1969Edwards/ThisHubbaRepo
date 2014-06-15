@@ -21,6 +21,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 	  - ** THIS MAY BE DONE **
 
 // WishList
+- Allow separate ratings vs. comments
 - *** Cant go back out of the app
 - ADD SPOT ONLY IF LOGGED IN
 - *** Dont refresh photos when photo not added ***
