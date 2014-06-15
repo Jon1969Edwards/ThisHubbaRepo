@@ -10,6 +10,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - check the post to /me when resuming activities and if its an error repost to /login/facebook
 - Remove search button from menu on listview
 - cronjob to keep api awake
+- Cannot back out of app
 
 //BUGS:
 - Change type in map view then click
@@ -21,6 +22,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 	  - ** THIS MAY BE DONE **
 
 // WishList
+- Dont show users to add to spot if already on access list
 - *** ADD TYPE INTO SPOT ROWS ***
 - change spinner on listview, go to map view, come back to list view. Spinner reset.
 - ** Add login to menu button **

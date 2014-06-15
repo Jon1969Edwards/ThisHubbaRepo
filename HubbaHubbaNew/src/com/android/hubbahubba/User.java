@@ -2,16 +2,6 @@ package com.android.hubbahubba;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.Toast;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.net.URL;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 public class User {
 	
@@ -116,9 +106,16 @@ public class User {
 	}
 
   public static void checkLoggedIn(Context context) {
-    String url = IPD + "/_health";
+    String url = IPD + "/health";
 
-    new CheckLoggedInTask(context).execute(new String[] {url});
+      // get ukey and akey from shared preferences
+      SharedPreferences preferences = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
+
+      // TODO FIGURE OUT HOW TO GET USERNAME FROM FB
+      String ukey = preferences.getString("ukey", "");
+      String akey = preferences.getString("akey", "");
+
+    new CheckLoggedInTask(context).execute(new String[] {url, ukey, akey});
     //
     //String url = IPD + "/_health";
     //HttpClient httpclient = new DefaultHttpClient();

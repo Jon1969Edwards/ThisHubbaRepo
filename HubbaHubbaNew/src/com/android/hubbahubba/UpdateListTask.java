@@ -149,7 +149,7 @@ public class UpdateListTask extends AsyncTask<String, String, String>{
         	e.printStackTrace();
         }
         dataAdapter = new HubbaAdapter(context, SpotsArray, R.layout.activity_list_view);
-		
+
 		// Assign adapter to ListView
 		listView.setAdapter(dataAdapter);
     }

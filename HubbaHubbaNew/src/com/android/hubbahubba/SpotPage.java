@@ -59,21 +59,20 @@ public class SpotPage extends Activity {
         TextView isSecret = (TextView) findViewById(R.id.isSecret);
 
 
-		// If the spot isn't secret then no need to have a share button
-		if(isSecret.getText().equals("False") || isSecret.getText().equals("false")){
-			((ViewManager)shareButton.getParent()).removeView(shareButton);
-		}
-		else{
-			shareButton.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					Bundle bundleData = new Bundle();
-					bundleData.putString("spot_id", spot_id);
-					Intent intent = new Intent(SpotPage.this, ShareUserList.class);
-					intent.putExtras(bundleData);
-					startActivity(intent);
-				}
-			});
-		}
+        // If the spot isn't secret then no need to have a share button
+        if (isSecret.getText().equals("False") || isSecret.getText().equals("false")) {
+            ((ViewManager) shareButton.getParent()).removeView(shareButton);
+        } else {
+            shareButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    Bundle bundleData = new Bundle();
+                    bundleData.putString("spot_id", spot_id);
+                    Intent intent = new Intent(SpotPage.this, ShareUserList.class);
+                    intent.putExtras(bundleData);
+                    startActivity(intent);
+                }
+            });
+        }
 
         viewMapButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -100,14 +99,13 @@ public class SpotPage extends Activity {
 
         uploadPhotosButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-              //User.checkLoggedIn(getApplicationContext());
+                User.checkLoggedIn(getApplicationContext());
 
-              Bundle bundleData = new Bundle();
-              bundleData.putString("spot_id", spot_id);
-              Intent intent = new Intent(SpotPage.this, AddImage.class);
-              intent.putExtras(bundleData);
-              startActivityForResult(intent, 0);
-
+                Bundle bundleData = new Bundle();
+                bundleData.putString("spot_id", spot_id);
+                Intent intent = new Intent(SpotPage.this, AddImage.class);
+                intent.putExtras(bundleData);
+                startActivityForResult(intent, 0);
             }
         });
 
@@ -125,7 +123,7 @@ public class SpotPage extends Activity {
 
 		
 		/*
-		favoritesButton.setOnClickListener(new View.OnClickListener() {
+        favoritesButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent intent = new Intent(SpotPage.this, ActionBarActivity.class);
 				startActivity(intent);
