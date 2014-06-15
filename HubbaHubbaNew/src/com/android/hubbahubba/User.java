@@ -105,7 +105,7 @@ public class User {
 		new ShareSpotTask(context).execute(new String[] {url, ukey, akey, spot_id, fb_user_id});
 	}
 
-  public static void checkLoggedIn(Context context) {
+  public static void checkLoggedIn(Context context, String spot_id) {
     String url = IPD + "/health";
 
       // get ukey and akey from shared preferences
@@ -115,28 +115,6 @@ public class User {
       String ukey = preferences.getString("ukey", "");
       String akey = preferences.getString("akey", "");
 
-    new CheckLoggedInTask(context).execute(new String[] {url, ukey, akey});
-    //
-    //String url = IPD + "/_health";
-    //HttpClient httpclient = new DefaultHttpClient();
-    //HttpResponse response = null;
-    //try {
-    //  response = httpclient.execute(new HttpGet(url));
-    //  StatusLine statusLine = response.getStatusLine();
-    //  if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-    //    ByteArrayOutputStream out = new ByteArrayOutputStream();
-    //    response.getEntity().writeTo(out);
-    //    out.close();
-    //    String responseString = out.toString();
-    //    Toast.makeText(context, "Success " + responseString, Toast.LENGTH_SHORT).show();
-    //  } else{
-    //    //Closes the connection.
-    //    response.getEntity().getContent().close();
-    //  }
-    //} catch (IOException e) {
-    //  Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-    //  e.printStackTrace();
-    //}
+    new CheckLoggedInTask(context, spot_id).execute(new String[] {url, ukey, akey});
   }
-	
 }
