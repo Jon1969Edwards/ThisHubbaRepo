@@ -2,7 +2,6 @@ package com.android.hubbahubba;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -63,8 +62,11 @@ public class ActionBarActivity extends SherlockFragmentActivity implements TabLi
     
     @Override
     public void onBackPressed() {
+        /*
     	Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		startActivity(intent);
+		*/
+        finish();
     }
     
     @Override

@@ -4,9 +4,7 @@ ThisHubbaRepo
 Android mobile application using the Google Maps API, Picasso, OkHttp, and ActionBarSherlock. Our backend is a python API using mongoDB with mongoengine. If you're interested in working on the iOS version of HubbaHubba email me at robsmall@umich.edu and pull the iOS code to get started!
 
 // TODO For Beta Release:
-- Quit activity when returning from mail
 - Comment out Delete Endpoint
-- Cannot back out of app
 - Add correct error messages instead of returning json
 - Take out all debug messages
 

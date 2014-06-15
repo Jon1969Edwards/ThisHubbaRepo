@@ -1,7 +1,5 @@
 package com.android.hubbahubba;
 
-import java.util.Date;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +21,8 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 import com.facebook.widget.LoginButton.OnErrorListener;
+
+import java.util.Date;
 
 public class MainFragment extends Fragment {
 	// For FaceBook oauth
