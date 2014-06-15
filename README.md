@@ -15,6 +15,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 	  - ** THIS MAY BE DONE **
 
 // WishList
+- *** Cant go back out of the app
 - ADD SPOT ONLY IF LOGGED IN
 - *** Dont refresh photos when photo not added ***
 	- resultcode code there but doesnt work coming from the task
