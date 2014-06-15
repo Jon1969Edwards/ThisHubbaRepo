@@ -72,7 +72,8 @@ public class ListViewHubba extends SherlockFragment {
             }
         });
 
-
+        // TODO: some type of deletion scheme
+        /*
         //long press is to edit the spot (EditActivity.java);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position,long id)
@@ -86,11 +87,12 @@ public class ListViewHubba extends SherlockFragment {
                 Spot.deleteSpotByID(context, spot_id);
 
                 refreshList();
-                return true;
+
+                return false;
             }
 
         });
-
+        */
 
 		return rootView;
 	}
