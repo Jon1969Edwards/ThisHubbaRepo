@@ -110,7 +110,7 @@ public class CheckLoggedInTask extends AsyncTask<String, Void, String> {
                 }
             } else {
                 Toast.makeText(context,
-                        "Please Return to the home screen and log in to continue",
+                        "Please return to the home screen and log in to continue",
                         Toast.LENGTH_LONG)
                         .show();
             }
@@ -119,7 +119,7 @@ public class CheckLoggedInTask extends AsyncTask<String, Void, String> {
             // TODO Auto-generated catch block
             // do nothing, most likely worked =)
             Toast.makeText(context,
-                    "Please Return to the home screen and log in to add a photo",
+                    "Please return to the home screen and log in to continue",
                     Toast.LENGTH_LONG)
                     .show();
         }

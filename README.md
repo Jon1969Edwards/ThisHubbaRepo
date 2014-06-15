@@ -4,17 +4,14 @@ ThisHubbaRepo
 Android mobile application using the Google Maps API, Picasso, OkHttp, and ActionBarSherlock. Our backend is a python API using mongoDB with mongoengine. If you're interested in working on the iOS version of HubbaHubba email me at robsmall@umich.edu and pull the iOS code to get started!
 
 // TODO For Beta Release:
-- Add Leave Feedback to menu item (Possibly its own row)
 - Quit activity when returning from mail
 - Comment out Delete Endpoint
-- check the post to /me when resuming activities and if its an error repost to /login/facebook
-- Remove search button from menu on listview
-- cronjob to keep api awake
 - Cannot back out of app
 - Add correct error messages instead of returning json
 - Take out all debug messages
 
 //BUGS:
+- ADD SPOT ONLY IF LOGGED IN
 - Change type in map view then click
 - change spot in listview then click on spot. crashes.
 - Eliminate race condition with re-auth on post requests
@@ -24,6 +21,7 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 	  - ** THIS MAY BE DONE **
 
 // WishList
+- ADD SPOT ONLY IF LOGGED IN
 - *** Dont refresh photos when photo not added***
 	- resultcode code there but doesnt work coming from the task
 - Dont show users to add to spot if already on access list

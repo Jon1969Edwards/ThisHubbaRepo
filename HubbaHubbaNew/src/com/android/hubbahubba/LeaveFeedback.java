@@ -3,8 +3,6 @@ package com.android.hubbahubba;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,7 +57,8 @@ public class LeaveFeedback extends Activity {
 					i.putExtra(Intent.EXTRA_SUBJECT, "Hubba Hubba Feedback From " + usernameText + ": " + subjectText);
 					i.putExtra(Intent.EXTRA_TEXT   , messageBodyText);
 					try {
-					    startActivity(Intent.createChooser(i, "Send mail..."));
+                        // use bogus request code
+					    startActivityForResult(Intent.createChooser(i, "Send mail..."), 0);
 					} catch (android.content.ActivityNotFoundException ex) {
 					    Toast.makeText(getApplicationContext(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
 					}
@@ -68,4 +67,10 @@ public class LeaveFeedback extends Activity {
 		});
 	}
 
+    // Quit activity when coming back from mail reguardless
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        finish();
+    }
 }
