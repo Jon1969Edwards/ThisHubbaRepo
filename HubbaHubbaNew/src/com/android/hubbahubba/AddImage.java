@@ -102,7 +102,7 @@ public class AddImage extends Activity {
                     String spot_id = showData.getString("spot_id");
 
                     // If Rider Name is left blank, leave blank in db
-                    if(riderName.getText().toString().trim().length() > 0){
+                    if(riderName.getText().toString().trim().length() <= 0){
                         riderName.setText("");
                     }
 

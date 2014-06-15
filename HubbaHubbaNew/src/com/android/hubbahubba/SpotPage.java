@@ -150,8 +150,8 @@ public class SpotPage extends Activity {
         });
 
         // Send task to get images
-        imagesArray = new ArrayList<HashMap<String, String>>();
-        Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
+        //imagesArray = new ArrayList<HashMap<String, String>>();
+        //Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
 
         // Open full screen image
         // TODO: better full screen view
@@ -190,6 +190,10 @@ public class SpotPage extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Set spot images
+        imagesArray = new ArrayList<HashMap<String, String>>();
+        Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
     }
 
     @Override
