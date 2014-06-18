@@ -1,9 +1,11 @@
 package com.android.hubbahubba;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Base64;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -16,12 +18,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Base64;
-import android.widget.ListView;
-import android.widget.Toast;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PopulateCommentsListTask extends AsyncTask<String, String, String>{
 	
@@ -97,9 +97,8 @@ public class PopulateCommentsListTask extends AsyncTask<String, String, String>{
             for(int i = 0; i < comments.length(); i++){                     
                 HashMap<String, String> commentMap = new HashMap<String, String>();    
                 JSONObject comment = comments.getJSONObject(i);
-                
-                // TODO: get username somehow
-                //JSONObject user = comment.getJSONObject("user");
+
+                JSONObject user = comment.getJSONObject("user");
 				
                 //String date = comment.getString("date");
 				//String id = comment.getString("id");
@@ -115,7 +114,7 @@ public class PopulateCommentsListTask extends AsyncTask<String, String, String>{
 
 				//commentMap.put("id",  id);
                 //commentMap.put("date", date);
-				commentMap.put("uname", "robsmall");
+				commentMap.put("uname", user.getString("display_name"));
                 commentMap.put("text", text);
                 //commentMap.put("fb_user_id",  fb_user_id);
                 commentMap.put("overall", overall);
