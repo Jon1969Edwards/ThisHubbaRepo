@@ -8,6 +8,12 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - Messages about logging in (easier to log in)
 - Add spot without being logged in taking you to the end
 - Login issues (please report)
+- Downloading:
+	- enable unknown developers in settings
+	- Download from email
+	- Search for "downloads" ins search bar
+	- Click accept and download
+
 
 // TODO For Beta Release:
 - Comment out Delete Endpoint

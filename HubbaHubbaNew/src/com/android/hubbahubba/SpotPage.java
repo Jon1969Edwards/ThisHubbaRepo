@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -160,13 +159,10 @@ public class SpotPage extends Activity {
                                     int position, long id) {
                 Intent intent = new Intent(SpotPage.this, ViewImage.class);
 
-                // TODO: maybe use the above line?
                 HashMap<String, String> image = imagesArray.get(position);
                 String url = image.get("url");
                 String display_name = image.get("display_name");
                 String rider_name = image.get("rider_name");
-
-                Toast.makeText(context, "Rider" + rider_name, Toast.LENGTH_SHORT).show();
 
                 intent.putExtra("url", url);
                 intent.putExtra("rider_name", rider_name);
