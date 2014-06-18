@@ -12,6 +12,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
@@ -61,8 +62,12 @@ public class ListViewHubba extends SherlockFragment {
                 HashMap<String, String> spot = SpotsArray.get(position);
 
                 String spot_id = spot.get("id");
+                String url = spot.get("photo");
 
                 bundleData.putString("spot_id", spot_id);
+                bundleData.putString("url", url);
+
+                Toast.makeText(getActivity().getApplicationContext(), url, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getActivity().getApplicationContext(),
                         SpotPage.class);

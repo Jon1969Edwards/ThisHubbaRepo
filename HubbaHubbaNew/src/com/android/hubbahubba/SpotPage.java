@@ -13,6 +13,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,6 +25,7 @@ public class SpotPage extends Activity {
     ImageView mImage;
     Context context = this;
     String spot_id;
+    String url;
     private HubbaGridAdapter dataAdapter;
     private GridView gridview;
 
@@ -42,12 +45,33 @@ public class SpotPage extends Activity {
 
         Bundle showData = getIntent().getExtras();
         spot_id = showData.getString("spot_id");
+        url = showData.getString("url");            // TODO: should be null -- "lol" == no image
 
         // for now just sets the title
         Spot.getSpotInfoByID(this, spot_id, context);
 
         // Get and populate header photo for the spot
-        Spot.getTopPhotoBySpotID(context, spot_id, this);
+        //Spot.getTopPhotoBySpotID(context, spot_id, this);
+
+        // Get size
+        int size = Image.convertDpToPixel(90, context);
+
+        // TODO: get better way of doing this
+        if (url != null && !url.equals("null") && !url.equals("lol")) {
+            Picasso.with(context)
+                    .load(url)
+                    .centerCrop()
+                    .resize(size, size)
+                    .placeholder(R.drawable.ic_empty_sec)
+                    .into(mImage);
+        } else {
+            Picasso.with(context)
+                    .load(R.drawable.gettinthere)
+                    .centerCrop()
+                    .resize(size, size)
+                    .placeholder(R.drawable.ic_empty_sec)
+                    .into(mImage);
+        }
 
         // create buttons
         Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
@@ -170,7 +194,7 @@ public class SpotPage extends Activity {
                 startActivity(intent);
             }
         });
-		
+
 		/*
 		//TO AVOID SCROLLING LAGS
 		boolean pauseOnScroll = false; // or true
@@ -203,9 +227,9 @@ public class SpotPage extends Activity {
         // TODO: uncomment and figure out how to refresh from coming back here
         //if (requestCode == 0) {
         //    if (resultCode == Activity.RESULT_OK) {
-                // Refresh list because photo was added
-                imagesArray = new ArrayList<HashMap<String, String>>();
-                Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
+        // Refresh list because photo was added
+        imagesArray = new ArrayList<HashMap<String, String>>();
+        Spot.getPhotosBySpotID(gridview, dataAdapter, imagesArray, context, spot_id);
         //    }
         //}
     }

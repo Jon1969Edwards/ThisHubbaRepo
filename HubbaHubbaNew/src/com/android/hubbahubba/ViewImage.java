@@ -21,7 +21,7 @@ public class ViewImage extends Activity {
 	int counter;				// TODO from db
 	int negCounter;				// TODO from db
 	boolean votedOn = false;	// TODO from db
-	String rider_name;			// TODO from db
+	String rider_name;
 
 	@SuppressLint("NewApi")
 	@Override

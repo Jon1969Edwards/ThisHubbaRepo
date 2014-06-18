@@ -53,7 +53,6 @@ public class ViewMap extends SherlockFragment {
     boolean spinnerTouched = false;
     private View v;
     private Marker selectedMarker = null;
-    private String url;
     private boolean refreshed = false;
 
     public View onCreateView(final LayoutInflater inflater,
@@ -234,9 +233,11 @@ public class ViewMap extends SherlockFragment {
                         // get spot id
                         String[] snip = marker.getSnippet().split(",");
                         String id = snip[0];
+                        String url = snip[5];
 
                         // Add spot_id to spotPage
                         bundleData.putString("spot_id", id);
+                        bundleData.putString("url", url);
 
                         Intent intent = new Intent(getActivity()
                                 .getApplicationContext(), SpotPage.class);
@@ -322,7 +323,7 @@ public class ViewMap extends SherlockFragment {
                         String difficulty = snip[2];
                         String bust = snip[3];
                         // String type = snip[4];
-                        url = snip[5];
+                        String url = snip[5];
 
                         //Toast.makeText(context, "URL = " + url, Toast.LENGTH_LONG).show();
 
