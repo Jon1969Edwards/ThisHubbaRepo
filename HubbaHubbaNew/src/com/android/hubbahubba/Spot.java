@@ -285,7 +285,6 @@ public class Spot {
 		String ukey = preferences.getString("ukey", "");
 		String akey = preferences.getString("akey", "");
 		
-		//Toast.makeText(context, "ukey = " + ukey + "\nand akey = " + akey, Toast.LENGTH_LONG).show();
 		String is_private = "False";
 		if(isPrivate == true){
 			is_private = "True";
@@ -318,8 +317,6 @@ public class Spot {
 		String ukey = preferences.getString("ukey", "");
 		String akey = preferences.getString("akey", "");
 		
-		//Toast.makeText(context, "spotID = " + spot_id, Toast.LENGTH_LONG).show();
-		
 		String url = IPD + "/spots/" + spot_id + "/comments";
 		new AddCommentTask(context).execute(new String[] {url, uname, text, overall, difficulty, bust, ukey, akey}); 
 	}
@@ -330,12 +327,11 @@ public class Spot {
 		SharedPreferences preferences = context.getSharedPreferences(User.PREFS_FILE, Context.MODE_MULTI_PROCESS);
 		
 		// TODO FIGURE OUT HOW TO GET USERNAME FROM FB
-		String uname = "robsmall";
 		String ukey = preferences.getString("ukey", "");
 		String akey = preferences.getString("akey", "");
 		
 		String url = IPD + "/spots/" + spot_id + "/photos";
-		new AddImageTask(context).execute(new String[] {url, uname, rider, imageURI, ukey, akey}); 
+		new AddImageTask(context).execute(new String[] {url, rider, imageURI, ukey, akey});
 	}
 	
 	public static void getSpotInfoByID(Activity activity, String id, Context c){
