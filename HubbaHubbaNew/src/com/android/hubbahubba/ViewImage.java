@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -67,7 +68,12 @@ public class ViewImage extends Activity {
 		    	   .into(imageView);
 		    
 		    photog.setText("Photographer: " + display_name);
-		    rider.setText("Rider: " + rider_name);
+            if(rider_name.trim().length() > 0){
+                rider.setText("Rider: " + rider_name);
+            }
+		    else{
+                rider.setVisibility(View.GONE);
+            }
 		}
 		/*
         thumbsDownButton.setOnClickListener(new View.OnClickListener() {
