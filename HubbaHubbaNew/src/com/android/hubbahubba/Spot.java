@@ -1,6 +1,5 @@
 package com.android.hubbahubba;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.GridView;
@@ -270,11 +269,11 @@ public class Spot {
 			ArrayList<HashMap<String, String>> imagesArray, Context c, String spot_id){
 		new GetSpotImagesTaskTwo(gridView, dataAdapter, imagesArray, c).execute(IPD + "/spots/" + spot_id + "/photos");
 	}
-	
+	/*
 	public static void getTopPhotoBySpotID(Context c, String spot_id, Activity activity){
 		new GetSpotTopImageTask(activity, c).execute(IPD + "/spots/" + spot_id + "/top_photo");
 	}
-
+    */
 	public static void addSpotByLatLon(Context context, String name, String lat,
 			String lon, String type, boolean isPrivate, String overall, String difficulty,
 			String bust, String text, String imageURI){
@@ -333,11 +332,11 @@ public class Spot {
 		String url = IPD + "/spots/" + spot_id + "/photos";
 		new AddImageTask(context).execute(new String[] {url, rider, imageURI, ukey, akey});
 	}
-	
+	/*
 	public static void getSpotInfoByID(Activity activity, String id, Context c){
 		new GetSpotInfoTask(activity, c).execute(IPD + "/spots/" + id);
 	}
-	
+	*/
 	public static Spot[] getAllSpots(GoogleMap map, Context c){
 		//new PopulateMapTask(c).execute("http://hubba.david-app.com/spots");
 		new PopulateMapTask(map, c).execute(IPD + "/spots");

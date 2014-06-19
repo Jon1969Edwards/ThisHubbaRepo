@@ -7,13 +7,11 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 // To mention that is getting fixed
 - Messages about logging in (easier to log in)
 - Add spot without being logged in taking you to the end
-- Login issues (please report)
-- Downloading:
-	- enable unknown developers in settings
-	- Download from email
-	- Search for "downloads" ins search bar
-	- Click accept and download
 
+// Fixed bugs
+- Printing to the screen when clicking on image
+- Comments now say name of user
+- Faster loading spot info from map/list view
 
 // TODO For Beta Release:
 - Comment out Delete Endpoint
@@ -73,6 +71,10 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 - videos along with photos?
 - Comment out Delete endpoints
 	- Eventually Only for Super Users (maybe?)
+
+// Removed
+- Spot top image
+- spot info by id (already returned?)
 
 // Sharing Notes - 
 - Might need usernames to be able to share with eachother

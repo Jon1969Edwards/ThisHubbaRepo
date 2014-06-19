@@ -96,25 +96,37 @@ public class PopulateMapTask extends AsyncTask<String, String, String>{
                     // TODO: Need a function to do this since it is done 2 times:
                     // here and in UpdateMapTask
 			        JSONObject spot = spotsArray.getJSONObject(i);
+
+                    // Get visibility object and isSecret value
+                    JSONObject visibility = spot.getJSONObject("visibility");
+
 			        // Pulling items from the array
 			        String snippit = "";
 			        String name = spot.getString("name");
 					String id = spot.getString("id");
-					snippit += (id + ",");
+					snippit += (id + ",");          // 0
 					String overall = spot.getString("overall");
-					snippit += (overall + ",");
+					snippit += (overall + ",");     // 1
 					String difficulty = spot.getString("difficulty");
-					snippit += (difficulty + ",");
+					snippit += (difficulty + ",");  // 2
 					String bust = spot.getString("bust");
-					snippit += (bust + ",");
+					snippit += (bust + ",");        // 3
 					String type = spot.getString("type");
-					snippit += (type + ",");
+					snippit += (type + ",");        // 4
 					String photo_url = spot.getString("photo");
-					snippit += (photo_url + ",");
-					//Toast.makeText(context, snippit, Toast.LENGTH_LONG).show();
+					snippit += (photo_url + ",");   // 5
+                    String distance = "11.1";
+                    snippit += (distance + ",");    // 6
+                    String latString = spot.getString("lat");
+                    snippit += (latString + ",");   // 7
+                    String lonString = spot.getString("lon");
+                    snippit += (lonString + ",");   // 8
+                    String isSecret = visibility.getString("isSecret");
+                    snippit += isSecret;            // 9
+                    //Toast.makeText(context, snippit, Toast.LENGTH_LONG).show();
 					
-					double lat = Double.parseDouble(spot.getString("lat"));
-					double lon = Double.parseDouble(spot.getString("lon"));
+					double lat = Double.parseDouble(latString);
+					double lon = Double.parseDouble(lonString);
 					
 					// Add spots to map
 					this.map.addMarker(new MarkerOptions()

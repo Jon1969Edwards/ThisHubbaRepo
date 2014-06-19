@@ -12,7 +12,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
@@ -63,11 +62,25 @@ public class ListViewHubba extends SherlockFragment {
 
                 String spot_id = spot.get("id");
                 String url = spot.get("photo");
+                String overall = spot.get("overall");
+                String bust = spot.get("bust");
+                String difficulty = spot.get("difficulty");
+                String title = spot.get("name");
+                String lat = spot.get("lat");
+                String lon = spot.get("lon");
+                String distance = "11.1";       // TODO: calculate this
+                String isSecret = spot.get("isSecret");
 
                 bundleData.putString("spot_id", spot_id);
                 bundleData.putString("url", url);
-
-                Toast.makeText(getActivity().getApplicationContext(), url, Toast.LENGTH_SHORT).show();
+                bundleData.putString("overall", overall);
+                bundleData.putString("bust", bust);
+                bundleData.putString("difficulty", difficulty);
+                bundleData.putString("title", title);
+                bundleData.putString("distance", distance);
+                bundleData.putString("lat", lat);
+                bundleData.putString("lon", lon);
+                bundleData.putString("isSecret", isSecret);
 
                 Intent intent = new Intent(getActivity().getApplicationContext(),
                         SpotPage.class);
@@ -213,17 +226,17 @@ public class ListViewHubba extends SherlockFragment {
     public void onDestroyView() {
         super.onDestroyView();
         // clear spots array
-        if(SpotsArray != null){
-            SpotsArray = null;
-        }
+//        if(SpotsArray != null){
+//            SpotsArray = null;
+//        }
     }
 
 	@Override
 	public void onDestroy(){
 		super.onDestroy();
 		// clear spots array
-        if(SpotsArray != null) {
-            SpotsArray = null;
-        }
+//        if(SpotsArray != null) {
+//            SpotsArray = null;
+//        }
 	}
 }

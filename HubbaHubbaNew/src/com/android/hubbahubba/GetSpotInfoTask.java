@@ -1,7 +1,14 @@
 package com.android.hubbahubba;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Base64;
+import android.view.ViewManager;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -13,18 +20,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Base64;
-import android.view.View;
-import android.view.ViewManager;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 // TODO: For async tasks but currently unused
 public class GetSpotInfoTask extends AsyncTask<String, String, String>{
@@ -117,22 +114,22 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 				//		+ " bust = " + bust + " diff = " + difficulty + " type = " + type, Toast.LENGTH_LONG).show();
 				
 				// get views
-				TextView Title = (TextView) activity.findViewById(R.id.txtTitle);
-				TextView Difficulty = (TextView) activity.findViewById(R.id.txtDiffRating);
-				TextView Overall = (TextView) activity.findViewById(R.id.txtOverallRating);
-				TextView Bust = (TextView) activity.findViewById(R.id.txtPoRating);
-				TextView Distance = (TextView) activity.findViewById(R.id.txtDistance);
+//				TextView Title = (TextView) activity.findViewById(R.id.txtTitle);
+//				TextView Difficulty = (TextView) activity.findViewById(R.id.txtDiffRating);
+//				TextView Overall = (TextView) activity.findViewById(R.id.txtOverallRating);
+//				TextView Bust = (TextView) activity.findViewById(R.id.txtPoRating);
+//				TextView Distance = (TextView) activity.findViewById(R.id.txtDistance);
 				TextView Lat = (TextView) activity.findViewById(R.id.lat);
 				TextView Lon = (TextView) activity.findViewById(R.id.lon);
 				TextView SecretHolder = (TextView) activity.findViewById(R.id.isSecret);
 				
 				// set texts
 				SecretHolder.setText(isSecret);
-				Overall.setText(overall);
-				Bust.setText(bust);
-				Difficulty.setText(difficulty);
-				Distance.setText(distance);
-				Title.setText(name);
+//				Overall.setText(overall);
+//				Bust.setText(bust);
+//				Difficulty.setText(difficulty);
+//				Distance.setText(distance);
+//				Title.setText(name);
 				Lat.setText(lat);
 				Lon.setText(lon);
 		    } catch (JSONException e) {

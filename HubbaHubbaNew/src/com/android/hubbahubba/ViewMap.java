@@ -219,7 +219,7 @@ public class ViewMap extends SherlockFragment {
                     @Override
                     public void onInfoWindowClick(Marker marker) {
                         /*
-						 * String LatLong = marker.getPosition().toString();
+                         * String LatLong = marker.getPosition().toString();
 						 * LatLong = LatLong.substring(10, LatLong.length() -
 						 * 1);
 						 * 
@@ -233,11 +233,28 @@ public class ViewMap extends SherlockFragment {
                         // get spot id
                         String[] snip = marker.getSnippet().split(",");
                         String id = snip[0];
+                        String overall = snip[1];
+                        String difficulty = snip[2];
+                        String bust = snip[3];
+                        //String type = snip[4];
                         String url = snip[5];
+                        String distance = snip[6];
+                        String lat = snip[7];
+                        String lon = snip[8];
+                        String isSecret = snip[9];
+                        String title = marker.getTitle();
 
                         // Add spot_id to spotPage
                         bundleData.putString("spot_id", id);
                         bundleData.putString("url", url);
+                        bundleData.putString("overall", overall);
+                        bundleData.putString("difficulty", difficulty);
+                        bundleData.putString("bust", bust);
+                        bundleData.putString("title", title);
+                        bundleData.putString("distance", distance);
+                        bundleData.putString("lat", lat);
+                        bundleData.putString("lon", lon);
+                        bundleData.putString("isSecret", isSecret);
 
                         Intent intent = new Intent(getActivity()
                                 .getApplicationContext(), SpotPage.class);
@@ -324,6 +341,7 @@ public class ViewMap extends SherlockFragment {
                         String bust = snip[3];
                         // String type = snip[4];
                         String url = snip[5];
+                        String distance = snip[6];
 
                         //Toast.makeText(context, "URL = " + url, Toast.LENGTH_LONG).show();
 
@@ -331,7 +349,7 @@ public class ViewMap extends SherlockFragment {
                         txtOverallRating.setText(overall); // rating
                         txtDiffRating.setText(difficulty); // difficulty
                         txtPoRating.setText(bust); // police level
-                        txtDistance.setText("1.11 mi");
+                        txtDistance.setText(distance + " mi");
 
                         // Convert the dp value for xml to pixels (casted to int
                         // from float)

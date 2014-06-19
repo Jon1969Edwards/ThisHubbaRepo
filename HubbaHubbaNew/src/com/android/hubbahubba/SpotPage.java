@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -21,11 +22,19 @@ import java.util.HashMap;
 public class SpotPage extends Activity {
     private ArrayList<HashMap<String, String>> imagesArray;
 
-    TextView mRating, mLevel, mDifficulty, mTitle, mDist;
+    TextView mRating, mLevel, mDifficulty, mTitle, mDist, SecretHolder, Lat, Lon;
     ImageView mImage;
     Context context = this;
     String spot_id;
     String url;
+    String overall;
+    String bust;
+    String difficulty;
+    String title;
+    String distance;
+    String isSecret;
+    String lat;
+    String lon;
     private HubbaGridAdapter dataAdapter;
     private GridView gridview;
 
@@ -42,13 +51,33 @@ public class SpotPage extends Activity {
         mDifficulty = (TextView) findViewById(R.id.txtDiffRating);
         mImage = (ImageView) findViewById(R.id.imgThumbnail);
         gridview = (GridView) findViewById(R.id.gridviewPictures);
+        SecretHolder = (TextView) findViewById(R.id.isSecret);
+        Lat = (TextView) findViewById(R.id.lat);
+        Lon = (TextView) findViewById(R.id.lon);
 
         Bundle showData = getIntent().getExtras();
         spot_id = showData.getString("spot_id");
         url = showData.getString("url");            // TODO: should be null -- "lol" == no image
+        overall = showData.getString("overall");
+        difficulty = showData.getString("difficulty");
+        bust = showData.getString("bust");
+        title = showData.getString("title");
+        distance = showData.getString("distance");
+        isSecret = showData.getString("isSecret");
+        lat = showData.getString("lat");
+        lon = showData.getString("lon");
+
+        mTitle.setText(title);
+        mRating.setText(overall);
+        mLevel.setText(bust);
+        mDifficulty.setText(difficulty);
+        mDist.setText(distance + " mi");
+        SecretHolder.setText(isSecret);
+        Lat.setText(lat);
+        Lon.setText(lon);
 
         // for now just sets the title
-        Spot.getSpotInfoByID(this, spot_id, context);
+        //Spot.getSpotInfoByID(this, spot_id, context);
 
         // Get and populate header photo for the spot
         //Spot.getTopPhotoBySpotID(context, spot_id, this);
@@ -80,11 +109,11 @@ public class SpotPage extends Activity {
         Button uploadCommentButton = (Button) findViewById(R.id.uploadCommentButton);
         //Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
         Button shareButton = (Button) findViewById(R.id.shareButton);
-        TextView isSecret = (TextView) findViewById(R.id.isSecret);
 
+        Toast.makeText(context, SecretHolder.getText().toString(), Toast.LENGTH_SHORT).show();
 
         // If the spot isn't secret then no need to have a share button
-        if (isSecret.getText().equals("False") || isSecret.getText().equals("false")) {
+        if (SecretHolder.getText().equals("False") || SecretHolder.getText().equals("false")) {
             ((ViewManager) shareButton.getParent()).removeView(shareButton);
         } else {
             shareButton.setOnClickListener(new View.OnClickListener() {

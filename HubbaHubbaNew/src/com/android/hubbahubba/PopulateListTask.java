@@ -94,11 +94,10 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
         	JSONObject jObject = new JSONObject(result);
 			JSONArray spots = jObject.getJSONArray("spots");
 			
-			//akey, user {ukey}
-
-            for(int i = 0; i < spots.length(); i++){                     
+            for(int i = 0; i < spots.length(); i++){
                 HashMap<String, String> spotMap = new HashMap<String, String>();    
                 JSONObject spot = spots.getJSONObject(i);
+                JSONObject visibility = spot.getJSONObject("visibility");
 				
                 String id = spot.getString("id");
 				String name = spot.getString("name");
@@ -109,8 +108,10 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
 				String bust = spot.getString("bust");
 				String type = spot.getString("type");
                 String photo = spot.getString("photo");
-				
-				// TODO: Figure out distance stuff
+                String isSecret = visibility.getString("isSecret");
+
+
+                // TODO: Figure out distance stuff
 				String distance = "10.0 mi";
 
                 spotMap.put("id",  id);
@@ -122,9 +123,10 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
                 spotMap.put("bust", bust);
                 spotMap.put("distance", distance);
                 spotMap.put("photo", photo);
+                spotMap.put("isSecret", isSecret);
                 
                 // TODO: Fix this DB side
-                if(type!= null){
+                if(type != null){
                 	spotMap.put("type", type);
                 }
                 else{
@@ -139,11 +141,6 @@ public class PopulateListTask extends AsyncTask<String, String, String>{
         }
         
         dataAdapter = new HubbaAdapter(context, SpotsArray, R.layout.activity_list_view);
-		// create the adapter using the cursor pointing to the desired data
-		// as well as the layout information
-		//dataAdapter = new HubbaCursorAdapter(getActivity().getApplicationContext(), cursor);
-		
-		// Assign adapter to ListView
 		listView.setAdapter(dataAdapter);
     }
 }
