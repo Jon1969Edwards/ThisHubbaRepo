@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -22,7 +21,7 @@ import java.util.HashMap;
 public class SpotPage extends Activity {
     private ArrayList<HashMap<String, String>> imagesArray;
 
-    TextView mRating, mLevel, mDifficulty, mTitle, mDist, SecretHolder, Lat, Lon;
+    TextView mRating, mLevel, mDifficulty, mTitle, mDist, Lat, Lon;
     ImageView mImage;
     Context context = this;
     String spot_id;
@@ -51,7 +50,6 @@ public class SpotPage extends Activity {
         mDifficulty = (TextView) findViewById(R.id.txtDiffRating);
         mImage = (ImageView) findViewById(R.id.imgThumbnail);
         gridview = (GridView) findViewById(R.id.gridviewPictures);
-        SecretHolder = (TextView) findViewById(R.id.isSecret);
         Lat = (TextView) findViewById(R.id.lat);
         Lon = (TextView) findViewById(R.id.lon);
 
@@ -72,7 +70,6 @@ public class SpotPage extends Activity {
         mLevel.setText(bust);
         mDifficulty.setText(difficulty);
         mDist.setText(distance + " mi");
-        SecretHolder.setText(isSecret);
         Lat.setText(lat);
         Lon.setText(lon);
 
@@ -110,10 +107,8 @@ public class SpotPage extends Activity {
         //Button favoritesButton = (Button) findViewById(R.id.favoritesButton);
         Button shareButton = (Button) findViewById(R.id.shareButton);
 
-        Toast.makeText(context, SecretHolder.getText().toString(), Toast.LENGTH_SHORT).show();
-
         // If the spot isn't secret then no need to have a share button
-        if (SecretHolder.getText().equals("False") || SecretHolder.getText().equals("false")) {
+        if (isSecret.equals("False") || isSecret.equals("false")) {
             ((ViewManager) shareButton.getParent()).removeView(shareButton);
         } else {
             shareButton.setOnClickListener(new View.OnClickListener() {

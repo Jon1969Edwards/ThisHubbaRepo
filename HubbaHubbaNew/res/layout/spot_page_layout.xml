@@ -119,12 +119,5 @@
 	        android:textColor="#FFF"
 	        android:background="@drawable/button_share"/>
     </LinearLayout>
-    
-    <!-- Used to store the visibility of the spot -->
-    <TextView
-        android:id = "@+id/isSecret"
-	    android:layout_width="0dp"
-	    android:layout_height="0dp"
-	    android:visibility="gone" />
 
 </RelativeLayout>

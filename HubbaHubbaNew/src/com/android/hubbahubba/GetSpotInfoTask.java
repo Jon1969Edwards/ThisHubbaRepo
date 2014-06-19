@@ -121,10 +121,10 @@ public class GetSpotInfoTask extends AsyncTask<String, String, String>{
 //				TextView Distance = (TextView) activity.findViewById(R.id.txtDistance);
 				TextView Lat = (TextView) activity.findViewById(R.id.lat);
 				TextView Lon = (TextView) activity.findViewById(R.id.lon);
-				TextView SecretHolder = (TextView) activity.findViewById(R.id.isSecret);
+				//TextView SecretHolder = (TextView) activity.findViewById(R.id.isSecret);
 				
 				// set texts
-				SecretHolder.setText(isSecret);
+				//SecretHolder.setText(isSecret);
 //				Overall.setText(overall);
 //				Bust.setText(bust);
 //				Difficulty.setText(difficulty);
