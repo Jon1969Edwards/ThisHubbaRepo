@@ -3,6 +3,10 @@ ThisHubbaRepo
 
 Android mobile application using the Google Maps API, Picasso, OkHttp, and ActionBarSherlock. Our backend is a python API using mongoDB with mongoengine. If you're interested in working on the iOS version of HubbaHubba email me at robsmall@umich.edu and pull the iOS code to get started!
 
+// Reported bugs
+- patrick: AA skatepark title is too tall, pushes down the ratings and you cant see them.
+- patrick: when you start the app go to your nearest location
+	- ME: check if you have location enabled for this, otherwise default to something.
 
 // To mention that is getting fixed
 - Messages about logging in (easier to log in)
