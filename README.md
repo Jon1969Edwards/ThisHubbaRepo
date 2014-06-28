@@ -5,17 +5,22 @@ Android mobile application using the Google Maps API, Picasso, OkHttp, and Actio
 
 Contributing
 ------------
-- patrick: AA skatepark title is too tall, pushes down the ratings and you cant see them.
-- patrick: too zoomed in on the map view
-
 // To mention that is getting fixed
 - Messages about logging in (easier to log in)
 - Add spot without being logged in taking you to the end
 
-// Fixed bugs
+// 0.2.0
 - Printing to the screen when clicking on image
 - Comments now say name of user
 - Faster loading spot info from map/list view
+
+// 0.3.0
+- Spot title will only be 1 line
+- Map more zoomed out
+- New default images
+- User list cleaned up
+	- Users now have photos for sharing
+	- No blank users
 
 To Do for next release
 ------------
@@ -36,13 +41,13 @@ Wish List
     - Don't try to add image, etc...
 - ** Add login to menu button **
 	- Maybe a drawer or menu tab for it
+- *** Cant go back out of the app
+- *** Dont refresh photos when photo not added ***
+	- resultcode code there but doesnt work coming from the task
 
 - Possibly want this: when you start the app go to your nearest location
 	- ME: check if you have location enabled for this, otherwise default to something.
 - Allow separate ratings vs. comments
-- *** Cant go back out of the app
-- *** Dont refresh photos when photo not added ***
-	- resultcode code there but doesnt work coming from the task
 - Dont show users to add to spot if already on access list
 - change spinner on listview, go to map view, come back to list view. Spinner reset.
 - search in listview and mapview
@@ -77,8 +82,7 @@ Todo For Backend
 - Ratings for images
 - add up and down ratings for images
 - videos along with photos?
-- Comment out Delete endpoints
-	- Eventually Only for Super Users (maybe?)
+- Figure out delete endpoint
 
 
 Sharing Notes
