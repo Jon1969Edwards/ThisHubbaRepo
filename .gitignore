@@ -4,6 +4,9 @@ HubbaHubbaNew/build
 # ignore workspace
 .idea/workspace.xml
 
+# ignore gradle artifacts
+.gradle/*/taskArtifacts/
+
 # built application files
 *.apk
 *.ap_

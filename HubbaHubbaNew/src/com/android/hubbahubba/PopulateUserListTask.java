@@ -1,9 +1,12 @@
 package com.android.hubbahubba;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.util.Base64;
+import android.util.Log;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -16,12 +19,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Base64;
-import android.widget.ListView;
-import android.widget.Toast;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PopulateUserListTask extends AsyncTask<String, String, String>{
 	
@@ -97,12 +98,19 @@ public class PopulateUserListTask extends AsyncTask<String, String, String>{
                 String display_name = user.getString("display_name");
 				String fb_user_id = user.getString("fb_user_id");
 				String ukey = user.getString("ukey");
-				
+                String picture_url = user.getString("picture_url");
+
+                Log.i("DEBUG", "picture_url: " + picture_url);
+
                 userMap.put("display_name",  display_name);
                 userMap.put("fb_user_id", fb_user_id);
                 userMap.put("ukey", ukey);
-                
-                UsersArray.add(userMap);
+                userMap.put("picture_url", picture_url);
+
+                // Only add users that will show up in the list view
+                if(!display_name.equals("") && !(display_name == null)){
+                    UsersArray.add(userMap);
+                }
             }
         } catch(JSONException e) {
         	Toast.makeText(context, "OOPS, JSON PROBLEM in array", Toast.LENGTH_LONG).show();

@@ -1,9 +1,7 @@
 package com.android.hubbahubba;
 
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class HubbaUserAdapter extends BaseAdapter /*implements Filterable*/ {
 	
@@ -56,15 +57,34 @@ public class HubbaUserAdapter extends BaseAdapter /*implements Filterable*/ {
         vh.displayName = (TextView) v.findViewById(R.id.displayName);
         // Convert the dp value for xml to pixels (casted to int from float)
 	    int size = Image.convertDpToPixel(80, context);
-	    
-	    // Use picasso to load the image into view
-	    // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON user PAGE
-	    Picasso.with(context)
-	    	   .load(R.drawable.gettinthere)
-	    	   .centerCrop()
-	    	   .resize(size, size)
-	    	   .placeholder(R.drawable.ic_empty)
-	    	   .into(vh.imgThumbnail);
+        String picture_url = user.get("picture_url");
+
+        // Use picasso to load the picture url if one exits, else use a placeholder
+        if(picture_url != null && !picture_url.equals("")){
+            // TODO: delete
+            Log.i("DEBUG", "url = " + user.get("picture_url"));
+
+            // Use picasso to load the image into view
+            // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON user PAGE
+            Picasso.with(context)
+                    .load(picture_url)
+                    .centerCrop()
+                    .resize(size, size)
+                    .placeholder(R.drawable.ic_empty)
+                    .into(vh.imgThumbnail);
+        }
+        else{
+            // TODO: delete
+            Log.i("DEBUG", "no url");
+            // Use picasso to load the image into view
+            // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON user PAGE
+            Picasso.with(context)
+                    .load(R.drawable.gettinthere)
+                    .centerCrop()
+                    .resize(size, size)
+                    .placeholder(R.drawable.ic_empty)
+                    .into(vh.imgThumbnail);
+        }
 	    
         vh.displayName.setText(user.get("display_name"));
         return v;
