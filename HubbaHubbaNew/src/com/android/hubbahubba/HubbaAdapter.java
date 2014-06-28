@@ -81,7 +81,7 @@ public class HubbaAdapter extends BaseAdapter /*implements Filterable*/ {
         // TODO: make null, do away with lol
         if(photo == null || photo.equals("null") || photo.equals("lol")){
             Picasso.with(context)
-                    .load(R.drawable.gettinthere)
+                    .load(R.drawable.ic_no_images)
                     .centerCrop().resize(size, size)
                     .placeholder(R.drawable.ic_empty_sec)
                     .noFade()

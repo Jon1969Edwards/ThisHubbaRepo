@@ -92,7 +92,7 @@ public class SpotPage extends Activity {
                     .into(mImage);
         } else {
             Picasso.with(context)
-                    .load(R.drawable.gettinthere)
+                    .load(R.drawable.ic_no_images)
                     .centerCrop()
                     .resize(size, size)
                     .placeholder(R.drawable.ic_empty_sec)
@@ -220,7 +220,7 @@ public class SpotPage extends Activity {
         });
 
 		/*
-		//TO AVOID SCROLLING LAGS
+        //TO AVOID SCROLLING LAGS
 		boolean pauseOnScroll = false; // or true
 		boolean pauseOnFling = true; // or false
 		PauseOnScrollListener listener = new PauseOnScrollListener(imageLoader, pauseOnScroll, pauseOnFling);

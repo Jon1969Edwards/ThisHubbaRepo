@@ -54,6 +54,7 @@ public class ViewMap extends SherlockFragment {
     private View v;
     private Marker selectedMarker = null;
     private boolean refreshed = false;
+    int CAMERA_ZOOM = 10;
 
     public View onCreateView(final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
@@ -156,7 +157,7 @@ public class ViewMap extends SherlockFragment {
                         final LatLng spotLoc = new LatLng(dLat, dLon);
                         CameraPosition cameraPosition = new CameraPosition.Builder()
                                 .target(spotLoc)    // sets camera location to spotLoc
-                                .zoom(17)           // Sets the zoom
+                                .zoom(CAMERA_ZOOM)           // Sets the zoom
                                 .bearing(0)         // Sets orientation to north
                                 .tilt(30)           // Sets tilt of the camera to 30 degrees
                                 .build();           // Creates a CameraPosition from the builder
@@ -171,7 +172,7 @@ public class ViewMap extends SherlockFragment {
                     final LatLng Center = new LatLng(42.4409010, -83.3978000);
                     CameraPosition cameraPosition = new CameraPosition.Builder()
                             .target(Center)
-                            .zoom(17)
+                            .zoom(CAMERA_ZOOM)
                             .bearing(0)
                             .tilt(30)
                             .build();
@@ -359,7 +360,7 @@ public class ViewMap extends SherlockFragment {
                         // TODO: make null, do away with lol
                         if (url == null || url.equals("null") || url.equals("lol")) {
                             Picasso.with(getActivity().getApplicationContext())
-                                    .load(R.drawable.gettinthere)
+                                    .load(R.drawable.ic_no_images)
                                     .centerCrop().resize(size, size)
                                     .placeholder(R.drawable.ic_empty_sec)
                                     .noFade()

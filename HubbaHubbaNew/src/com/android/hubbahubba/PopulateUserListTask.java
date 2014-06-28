@@ -118,10 +118,7 @@ public class PopulateUserListTask extends AsyncTask<String, String, String>{
         }
         
         dataAdapter = new HubbaUserAdapter(context, UsersArray, R.layout.activity_list_view);
-		// create the adapter using the cursor pointing to the desired data
-		// as well as the layout information
-		//dataAdapter = new HubbaCursorAdapter(getActivity().getApplicationContext(), cursor);
-		
+
 		// Assign adapter to ListView
 		listView.setAdapter(dataAdapter);
     }
