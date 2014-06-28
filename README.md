@@ -44,7 +44,11 @@ Wish List
 - *** Cant go back out of the app
 - *** Dont refresh photos when photo not added ***
 	- resultcode code there but doesnt work coming from the task
+- *** Add type into spot info ***
 
+- ** Images for features **
+- multiple features per spot
+- no 2 spots in the same location
 - Possibly want this: when you start the app go to your nearest location
 	- ME: check if you have location enabled for this, otherwise default to something.
 - Allow separate ratings vs. comments
@@ -53,14 +57,11 @@ Wish List
 - search in listview and mapview
 - add up and down ratings for images
 - Make sure all old code is taken out
-- Pass "photo" from spot object to spot page activity
-	then use it there to load the image. Remove top_photo function.
 - Move code around to be more easily accessible
 - USE http://square.github.io/okhttp/ for get requests other than images
 - Re-intro delete endpoint and figure out schema for it
 - videos along with photos?
 - Make images rider field a user object
-- Have flag for allowing others to also share it (Cred: freeBurg)
 - Keep map cached
 - Animations?
     (android:animateLayoutChanges="true" when setting to gone) 
