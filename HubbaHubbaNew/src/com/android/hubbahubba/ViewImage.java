@@ -67,7 +67,7 @@ public class ViewImage extends Activity {
 		    	   .placeholder(R.drawable.ic_empty)
 		    	   .into(imageView);
 		    
-		    photog.setText("Photographer: " + display_name);
+		    photog.setText("Posted By: " + display_name);
             if(rider_name.trim().length() > 0){
                 rider.setText("Rider: " + rider_name);
             }

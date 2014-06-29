@@ -129,7 +129,7 @@ public class AddLocation extends Activity {
                     //String lat = Double.toString(D1);
                     //String lon = Double.toString(D2);
                     //Toast.makeText(context, lat + " " + lon + " IOE_EXCEPTION", duration).show();
-                    Toast.makeText(context, "Error parsing lat/long into address", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Error parsing lat/long into address, restarting your device and try again", Toast.LENGTH_SHORT).show();
 
                     e.printStackTrace();
                 }
@@ -250,7 +250,7 @@ public class AddLocation extends Activity {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
-                        if (address.size() == 0) {
+                        if (address == null || address.size() == 0) {
                             Toast.makeText(context, "Please Enter a Valid Address", duration).show();
                         } else if (address.get(0).hasLatitude() && address.get(0).hasLongitude()) {
                             selectedLat = address.get(0).getLatitude();

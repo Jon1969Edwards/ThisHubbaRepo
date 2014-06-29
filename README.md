@@ -25,16 +25,19 @@ Contributing
 
 To Do for next release
 ------------
-- Fix the imagesArray problem for real
 - ADD SPOT ONLY IF LOGGED IN
+- Fix the imagesArray problem for real (associated)
 - Not get /photos so much (firing off too many times)
 	- Moved to onResume()... Needs to have a var passed down
 	  indicating that a photo has been added to refresh
 - Some type of demo to start the app the first time
+- Spot top image doesnt refresh when you post the first image
+- List view not sorted, always changes order.
 
 Wish List
 ------------
 - ** PROXIMITY OF ADDING NEW SPOTS
+- ** how far away spots are
 - *** ADD TYPE INTO SPOT ROWS ***
 - ** when spot added ratings appear to be 0 until refresh **
 - ** DO SOMETHING WHEN NOT CONNECTED TO THE INTERNET **
@@ -70,6 +73,7 @@ Wish List
 	- post back to fb, then back to us?
 	- button for it?
 - Move away from heroku for backend
+- Pads required or not if park
 
 Possible Design Changes
 ------------
