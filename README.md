@@ -21,10 +21,11 @@ Contributing
 - User list cleaned up
 	- Users now have photos for sharing
 	- No blank users
+- Images no longer crash when switched between quickly
 
 To Do for next release
 ------------
-- Images no longer crash when switched between quickly
+- Fix the imagesArray problem for real
 - ADD SPOT ONLY IF LOGGED IN
 - Not get /photos so much (firing off too many times)
 	- Moved to onResume()... Needs to have a var passed down

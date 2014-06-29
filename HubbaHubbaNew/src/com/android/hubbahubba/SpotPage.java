@@ -207,15 +207,20 @@ public class SpotPage extends Activity {
                                     int position, long id) {
                 Intent intent = new Intent(SpotPage.this, ViewImage.class);
 
-                HashMap<String, String> image = imagesArray.get(position);
-                String url = image.get("url");
-                String display_name = image.get("display_name");
-                String rider_name = image.get("rider_name");
+                if(imagesArray.size() > 0){
+                    HashMap<String, String> image = imagesArray.get(position);
+                    String url = image.get("url");
+                    String display_name = image.get("display_name");
+                    String rider_name = image.get("rider_name");
 
-                intent.putExtra("url", url);
-                intent.putExtra("rider_name", rider_name);
-                intent.putExtra("display_name", display_name);
-                startActivity(intent);
+                    intent.putExtra("url", url);
+                    intent.putExtra("rider_name", rider_name);
+                    intent.putExtra("display_name", display_name);
+                    startActivity(intent);
+                }
+                else{
+                    // TODO: possible error message
+                }
             }
         });
 
