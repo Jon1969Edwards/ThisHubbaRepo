@@ -21,15 +21,14 @@ Contributing
 - User list cleaned up
 	- Users now have photos for sharing
 	- No blank users
-- Images no longer crash when switched between quickly
 
 To Do for next release
 ------------
+- Images no longer crash when switched between quickly
 - ADD SPOT ONLY IF LOGGED IN
 - Not get /photos so much (firing off too many times)
 	- Moved to onResume()... Needs to have a var passed down
 	  indicating that a photo has been added to refresh
-	  - ** THIS MAY BE DONE **
 - Some type of demo to start the app the first time
 
 Wish List
