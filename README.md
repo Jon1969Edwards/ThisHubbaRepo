@@ -21,6 +21,7 @@ Contributing
 - User list cleaned up
 	- Users now have photos for sharing
 	- No blank users
+- Images no longer crash when switched between quickly
 
 To Do for next release
 ------------
