@@ -97,14 +97,14 @@ public class PopulateUserListTask extends AsyncTask<String, String, String>{
 				
                 String display_name = user.getString("display_name");
 				String fb_user_id = user.getString("fb_user_id");
-				String ukey = user.getString("ukey");
+//				String ukey = user.getString("ukey");
                 String picture_url = user.getString("picture_url");
 
                 Log.i("DEBUG", "picture_url: " + picture_url);
 
                 userMap.put("display_name",  display_name);
                 userMap.put("fb_user_id", fb_user_id);
-                userMap.put("ukey", ukey);
+//                userMap.put("ukey", ukey);
                 userMap.put("picture_url", picture_url);
 
                 // Only add users that will show up in the list view
