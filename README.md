@@ -50,6 +50,8 @@ Wish List
 	- resultcode code there but doesnt work coming from the task
 - *** Add type into spot info ***
 
+- ** Look into RXjava (https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
+    for things like lists of images, list of spots, etc. to auto refresh
 - ** Images for features **
 - multiple features per spot
 - no 2 spots in the same location
