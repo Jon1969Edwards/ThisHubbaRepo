@@ -138,7 +138,7 @@ public class AddSpotTask extends AsyncTask<String, Void, String>
 			// Toast.makeText(context, "couldn't parse response or post comment: " + response, Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
-        
+
         // Re-auth if possible when failed to add comment
         // TODO: Remove race condition
     	try {

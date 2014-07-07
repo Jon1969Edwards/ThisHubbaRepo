@@ -23,17 +23,22 @@ Contributing
 	- No blank users
 - Images no longer crash when switched between quickly
 
-To Do for next release
+// 0.4.0
+- (Check "To do for Next Release")
+
+
+To do for Next Release
 ------------
 - ADD SPOT ONLY IF LOGGED IN
 - Fix the imagesArray problem for real (associated)
-- Not get /photos so much (firing off too many times)
-	- Moved to onResume()... Needs to have a var passed down
-	  indicating that a photo has been added to refresh
-- Some type of demo to start the app the first time
+	- Not get /photos so much (firing off too many times)
+		- Moved to onResume()... Needs to have a var passed down
+		  indicating that a photo has been added to refresh
 - Spot top image doesnt refresh when you post the first image
 - List view not sorted, always changes order.
-
+- Tutorial for how to use features (stashes locally) on first load
+	- Allow deletion and or editing for those who uploaded them.
+		- Add support into the backend to make the data easily accessible
 Wish List
 ------------
 - ** PROXIMITY OF ADDING NEW SPOTS
@@ -52,6 +57,7 @@ Wish List
 
 - ** Look into RXjava (https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
     for things like lists of images, list of spots, etc. to auto refresh
+- ** Look into dialogs **
 - ** Images for features **
 - multiple features per spot
 - no 2 spots in the same location
