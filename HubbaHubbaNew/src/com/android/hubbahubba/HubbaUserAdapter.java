@@ -79,10 +79,10 @@ public class HubbaUserAdapter extends BaseAdapter /*implements Filterable*/ {
             // Use picasso to load the image into view
             // XXX - THIS MUST STAY CONSISTANT WITH THE SIZE ON user PAGE
             Picasso.with(context)
-                    .load(R.drawable.gettinthere)
+                    .load(R.drawable.ic_no_images)
                     .centerCrop()
                     .resize(size, size)
-                    .placeholder(R.drawable.ic_empty)
+                    .placeholder(R.drawable.ic_empty_sec)
                     .into(vh.imgThumbnail);
         }
 	    
