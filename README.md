@@ -24,6 +24,8 @@ Contributing
 - Images no longer crash when switched between quickly
 
 // 0.4.0
+- Image and ratings now load on post instead of waiting for refresh
+
 - (Check "To do for Next Release")
 
 
